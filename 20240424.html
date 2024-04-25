@@ -1,0 +1,65 @@
+<h1 id="section">20240424</h1>
+<h2 id="a.-bear-and-big-brother"><a
+href="https://codeforces.com/problemset/problem/791/A">791A. Bear and
+Big Brother</a></h2>
+<pre><code>package main
+
+import (
+    &quot;fmt&quot;
+)
+
+func main() {
+    var a int
+    var b int
+    fmt.Scan(&amp;a, &amp;b)
+
+    counter := 0
+    for a &lt;= b {
+        counter += 1
+        a *= 3
+        b *= 2
+    }
+    fmt.Println(counter)
+}</code></pre>
+<p>fmt.Scan() to read multiple values into variables.</p>
+<h2 id="fmt-vs-bufio-to-read-stdin">fmt vs bufio to read stdin</h2>
+<p>I browsed some web pages and documents but could not find any clear
+guides or benchmarks, but here are my guesses</p>
+<h3 id="bufio-is-more-performance-efficient">bufio is more performance
+efficient</h3>
+<p>People on Reddit say that, but I'm not sure at the moment as I
+haven't tested by myself.</p>
+<h3 id="bufio-is-more-flexible">bufio is more flexible</h3>
+<p>fmt.Scan() or its variants read <em>space-separated</em> values
+whereas bufio seems to provide many functions to process data.</p>
+<h3 id="conclusion-for-me">Conclusion (for me)</h3>
+<p>There's no strong urge to use <code>bufio</code>. Let's use
+<code>fmt.Scan</code> to read standard input for now.</p>
+<h2 id="random-thoughts">Random Thoughts</h2>
+<h3 id="competitive-programming">Competitive Programming</h3>
+<p>What I don't like about competitive programming is that no one writes
+code that is understandable from others' perspectives. They don't write
+comments and don't use descriptive variable names to make it hard to
+hack (point out bugs) their submissions, and the technique goes against
+real-life situations.</p>
+<h3 id="color-filter">Color Filter</h3>
+<p>Life is too vivid. I've enabled Color Filters on my iPhone and
+MacBook, and now they only display black &amp; white. It helped me
+reduce time spent on YouTube and others.</p>
+<p>iPhone, MacBook: Setting -&gt; Accessibility -&gt; Color Filter</p>
+<h3 id="loneliness">Loneliness</h3>
+<p>I don't have experience with successful teamwork.</p>
+<p>I only did single-player sports (karate, badminton, and pro
+wrestling) and am jealous of the atmosphere people who play team sports
+have.</p>
+<p>I have found it very difficult to motivate others in the same
+direction, not only in sports but also in programming or business. I
+tried to publish mobile applications and simple video games, but my
+friends seemed not to like the projects.</p>
+<p>I just wanted to have a good time in the same way as playing tag when
+we were in elementary school, but now we got old and have parted
+ways.</p>
+<h2 id="todo">TODO</h2>
+<ul>
+<li>Start tracking calories intake</li>
+</ul>
