@@ -1,0 +1,140 @@
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+</head>
+<h1 id="section">20240501</h1>
+<h2 id="a---card-exchange"><a
+href="https://codeforces.com/contest/1966/problem/A">1966A - Card
+Exchange</a></h2>
+<h3 id="my-mistake">My mistake</h3>
+<p>As far as I remember, my approach was a greedy one like</p>
+<pre><code># THIS APPROACH DOES NOT WORK
+
+from collections import defaultdict
+
+for _ in range(int(input())):
+
+    # process input
+    n, k = map(int, input().split())
+    cards = list(map(int, input().split()))
+    counter = defaultdict(int)
+
+    # create a map (card number, count)
+    for card in cards:
+        counter[card] += 1
+    cards_with_counts = [[k, v] for k, v in counter.items()]
+
+    # for each card, reduce the number and put the remaining to the next card
+    for i in range(len(cards_with_counts)):
+        if i &lt; len(cards_with_counts) - 1:
+            if cards_with_counts[i][1] &gt;= k:
+                cards_with_counts[i][1] = 0
+                cards_with_counts[i + 1][1] += k - 1
+        else:
+            cards_with_counts[i][1] = min(k - 1, cards_with_counts[i][1])
+
+    result = sum(map(lambda x: x[1], cards_with_counts))
+    print(result)</code></pre>
+<p>The problem of my approach is that it can pick the wrong iteration
+order that is not the optimal one. For this case, “2” needs to be picked
+first to get the answer, but the approach above does not guarantee
+that.</p>
+<pre><code>7 2
+4 2 1 100 5 2 3
+
+---
+
+# Optimal
+4 (2) 1 100 5 (2) 3
+4 4 1 100 5 3
+1 1 100 5 3
+100 100 5 3
+5 5 3
+3 3
+3</code></pre>
+<h3 id="what-ive-missed">What I've missed</h3>
+<p><a href="https://codeforces.com/blog/entry/128914">Editorial</a></p>
+<p>I browsed some YouTube videso talking about this problem. They look
+at sample input/output and seem to notice that there are two cases</p>
+<ol type="1">
+<li>if there are any cards with &gt;= k copies =&gt; The answer is k - 1
+<ul>
+<li>Let's say we have three cards; x, y, and z. if we have more than or
+equals to k copies of x, we can remove the copies and add k - 1 copies
+to y. As a result, the number of copies of y exceeds k (the number of
+copies of y is at least 1 + k - 1 converted from x). Now, we can remove
+all the copies of y and convert k - 1 copies into z. The number of z
+copies is more than or equals to k, and by doing the operation, the
+number of z copies can be reduced to k - 1.</li>
+</ul></li>
+<li>if there is no cardd with k &gt;= copies &lt;=&gt; all cards have
+only &lt; k copies =&gt; The answer is n
+<ul>
+<li>Because we cannot do the operation</li>
+</ul></li>
+</ol>
+<pre><code>from collections import defaultdict
+
+
+t = int(input())
+
+for tc in range(t):
+    n, k = map(int, input().split())
+
+    cards = list(map(int, input().split()))
+    ct = defaultdict(int)
+
+    ans = n
+
+    for c in cards:
+        ct[c] += 1
+        if ct[c] &gt;= k:
+            ans = k - 1
+        break
+
+    print(ans)</code></pre>
+<p>I'm not confident I can solve this problem the next time I encounter
+it, but maybe I can start with carefully observing sample input/output
+before thinking about algorithms.</p>
+<p>I finished <a
+href="https://www.techinterviewhandbook.org/grind75">Grind75</a> with my
+friends, but I feel that LeetCode problems and competitive programmiings
+are totally different. I'm not good at both of them and might be wrong
+with the feeling tho.</p>
+<h2 id="what-is-apache-server">What is Apache server</h2>
+<p>Read official documentations</p>
+<ul>
+<li><a href="https://httpd.apache.org/ABOUT_APACHE.html">About
+Apache</a></li>
+</ul>
+<p>Apache is a server software used to run a HTTP server. I’ve been
+using Nginx, so this is the first time I touched this.</p>
+<div class="sourceCode" id="cb4"><pre
+class="sourceCode zsh"><code class="sourceCode zsh"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> brew install apache2  <span class="co"># install Apache in Mac OS</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> brew services start httpd  <span class="co"># run the server</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">$</span> brew services restart httpd  <span class="co"># restart)</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">$</span> brew services stop httpd  <span class="co"># stop the server)</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> pwd</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="ex">/opt/homebrew/etc/httpd</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> vim httpd.conf  <span class="co"># Change DocumenrRoot or Listen as you want</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> curl localhost:8080</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;</span>h1 <span class="va">id</span><span class="op">=</span><span class="st">&quot;index&quot;</span><span class="op">&gt;</span>Index<span class="op">&lt;</span>/h1<span class="op">&gt;</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;</span>p<span class="op">&gt;</span>Hello, <span class="ex">world!</span><span class="op">&lt;</span>/p<span class="op">&gt;</span></span></code></pre></div>
+<p>I've been thinking about how to host this nippo. GitHub Pages is the
+easiest option, but using it does not provide me with experience of
+managing infrastructures.</p>
+<p>Hosting a Mastodon instance was interesting.</p>
+<hr />
+<p>Protein chips 150 Yogurt 650 Coffee 100 Avocado rolls 300 Poke 600
+Bubble tea 300</p>
+<p>Total 2100 kcal</p>
+<hr />
+<p>TODO:</p>
+<ul>
+<li>Codeforces Round 943 (Div. 3)
+<ul>
+<li>Let's carefully observe sample input/output before jumping onto
+implementation</li>
+</ul></li>
+</ul>
