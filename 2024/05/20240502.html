@@ -1,0 +1,53 @@
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+</head>
+<h1 id="section">20240502</h1>
+<ul>
+<li>participated in Codeforces Round 943 (Div. 3)
+<ul>
+<li>solved 3 problems (personal best)</li>
+<li>Contests in codeforces happen too early in the morning (7:30/45 am),
+not suitable for people in the Bay Area</li>
+</ul></li>
+<li>enabled GitHub pages
+<ul>
+<li>TODO: consider using my domain for the GitHub pages</li>
+</ul></li>
+</ul>
+<h2 id="apache-with-https">Apache with HTTPS</h2>
+<p>Same as Nginx, I can get SSL certificate from Let's Encrypt by doing
+something like</p>
+<pre><code>$ sudo certbot certonly --apache -d yourdomain.com  # I have not tested</code></pre>
+<p>This command will perform some tests that check my control over the
+domain and give me SSL certificate.</p>
+<h2 id="decision-on-how-to-host-this-website">Decision on how to host
+this website</h2>
+<p>Using VPS + Nginx or Apache seemts to be a good and feasible choice
+to host this website. However, since this website is a diary-like
+content, I might be going to make changes such as adding a new entry
+everyday. If I go with the VPS approach, everyday I need to ssh to the
+server and pull the latest commits from remote (I don't want to ssh to
+write something). With GitHub pages, I can just push commits and the
+website reflects the changes automatically. I think it's the easiest
+way.</p>
+<p>Oh, and the reason I don't think about using physical servers is that
+I'm sharing a house rn and cannot set up a static IP address. Also, I
+need to buy and configure a mini PC or Raspberry Pi, but it takes time
+and money to complete that.</p>
+<p>Ngrok is easy to use but costs me around $30/month. I used to use it
+and the experience with it is great, but it's a bit expensive for me,
+compared to other options. Additionally, I need a physical PC same as
+the static IP approach.</p>
+<p>Let's proceed with GitHub pages.</p>
+<hr />
+<p>Chips 500 Poke 700 Avocado rolls 300 Yogurt 300 Bubble tea 600</p>
+<p>Total 2400 kcal :sob:</p>
+<hr />
+<p>TODO:</p>
+<ul>
+<li>Review the Codeforces problems I solved today, maybe on the
+weekend</li>
+<li>Check the difference between SSL and TLS</li>
+</ul>
+<hr />
+<p><a href="./20240501.html">20240501</a></p>
