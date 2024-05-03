@@ -13,6 +13,11 @@ not suitable for people in the Bay Area</li>
 <ul>
 <li>TODO: consider using my domain for the GitHub pages</li>
 </ul></li>
+<li>checked <a
+href="https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/about-custom-domains-and-github-pages">documentation</a>
+on configuring custom domains for GitHub pages</li>
+<li>configured a custom domain <a
+href="https://nippo.huyfififi.com">nippo.huyfififi.com</a></li>
 </ul>
 <h2 id="apache-with-https">Apache with HTTPS</h2>
 <p>Same as Nginx, I can get SSL certificate from Let's Encrypt by doing
@@ -39,6 +44,19 @@ and the experience with it is great, but it's a bit expensive for me,
 compared to other options. Additionally, I need a physical PC same as
 the static IP approach.</p>
 <p>Let's proceed with GitHub pages.</p>
+<h2 id="custom-domain-subdomain-configuration-for-github-pages">Custom
+domain (subdomain) configuration for GitHub pages</h2>
+<p>It was very easy to configure a custom subdomain for GitHub pages</p>
+<ol type="1">
+<li>GitHub Settings -&gt; Pages -&gt; Custom domain: Add the custom
+domain you want to use to host the website</li>
+<li>Your DNS service: Add CNAME your subdomain -&gt;
+{your-user-id}.github.io</li>
+<li>GitHub Settings -&gt; Pages -&gt; Custom domain: check if the DNS
+setting is valid -&gt; if valid, you’re all set</li>
+</ol>
+<p>This website is hosted on <a
+href="https://nippo.huyfififi.com">nippo.huyfififi.com</a> now</p>
 <hr />
 <p>Chips 500 Poke 700 Avocado rolls 300 Yogurt 300 Bubble tea 600</p>
 <p>Total 2400 kcal :sob:</p>
