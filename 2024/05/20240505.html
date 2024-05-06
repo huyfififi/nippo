@@ -1,0 +1,183 @@
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+</head>
+<h1 id="section">20240505</h1>
+<p>I left "Fluent Pythoin" at my parents' house. I should have brought
+it here; it's super useful for a Python programmer like me.</p>
+<p>References should be checked when reading Wikipedia, but I don't have
+a plenty of time, so won't do it for now.</p>
+<h2 id="duck-test"><a
+href="https://en.wikipedia.org/wiki/Duck_test">Duck test</a></h2>
+<blockquote>
+<p>The duck test is a form of abductive reasoning. This is its usual
+expression: If it looks like a duck, swims like a duck, and quacks like
+a duck, then it probably is a duck.</p>
+</blockquote>
+<blockquote>
+<p>The test implies that a person can identify an unknown subject by
+observing that subject's habitual characteristics. It is sometimes used
+to counter abstruse arguments that something is not what it appears to
+be.</p>
+</blockquote>
+<h2 id="dock-typing"><a
+href="https://en.wikipedia.org/wiki/Duck_typing">Dock typing</a></h2>
+<blockquote>
+<p>In computer programming, duck typing is an application of the duck
+test, "If it walks like a duck and it quacks like a duck, then it must
+be a duck", to determine whether an object can be used for a particular
+purpose. With nominative typing, an object is of a given type if it is
+declared as such (or if a type's association with the object is inferred
+through mechanisms such as object inheritance). With duck typing, an
+object is of a given type if it has all methods and properties required
+by that type. Duck typing may be viewed as a usage-based structural
+equivalence between a given object and the requirements of a type.</p>
+</blockquote>
+<h2 id="my-understanding">My understanding</h2>
+<p>Duck typing in Pythoon is a concept where the type of class of an
+object is less important than the methods it defines.</p>
+<p>Instead of explicitly checking an object's type, you check if it has
+the necessary methods or attributes to perform a certain action. This
+allows for more flexible and adaptable code.</p>
+<p>The advantages of that in Python is polymorphism.</p>
+<p>Duck typing facilitates polymorphism, where we can use objects of
+different types interchangeably as long as they have the required
+functionality. The flexibility of types suits well with dynamic typing
+in Python; the type of a varialbe is determined at runtime instead of at
+compile time.</p>
+<pre><code>class SpottedSeal:
+    def bark(self):
+        print(&quot;wawawa&quot;)
+
+
+class RingedSeal:
+    def bark(self):
+        print(&quot;wooooo&quot;)
+
+
+class Human:
+    pass
+
+
+animals = [SpottedSeal(), RingedSeal(), Human()]
+for animal in animals:
+    try:
+        animal.bark()  # types are not related as long as they implement bark()
+    except AttributeError:
+        print(f&quot;{animal} does not bark.&quot;)
+
+# OUTPUT
+# wawawa
+# wooooo
+# &lt;__main__.Human object at 0x10415e420&gt; does not bark.</code></pre>
+<h2 id="codeforces-round-943-div.-3"><a
+href="https://codeforces.com/contest/1968">Codeforces Round 943 (Div.
+3)</a></h2>
+<h3 id="a---maximize"><a
+href="https://codeforces.com/problemset/problem/1968/A">1968A -
+Maximize?</a></h3>
+<blockquote>
+<p>1 &lt;= y &lt; x return y that maximizes gcd(x, y) + y</p>
+</blockquote>
+<p>After testing with various input, I noticed that y = x - 1 is always
+one of the optimal answers.</p>
+<p>I tried to rationalize this, but since I'm bad at math, it's not
+possible.</p>
+<pre><code>for _ in range(int(input())):
+    x = int(input())
+    print(x - 1)</code></pre>
+<p><a href="https://codeforces.com/blog/entry/129096">Editorial</a></p>
+<blockquote>
+<p>It is a well-known fact that gcd(a, b) = gcd(a - b, b) for a &gt;=
+b</p>
+</blockquote>
+<blockquote>
+<p>Applying it to our formula, we get gcd(x - y, y) + y</p>
+</blockquote>
+<blockquote>
+<p>Using the fact that gcd(x - y, y) &lt;= x - y, we get gcd(x - y, y) +
+y &lt;= x - y + y = x. # This is the upper bound</p>
+</blockquote>
+<blockquote>
+<p>Hence, gcd(x, y) + y &lt;= x for 1 &lt;= y &lt; x.</p>
+</blockquote>
+<blockquote>
+<p>For y = x - 1, we have gcd(x, x - 1) + x - 1 = 1 + x - 1 = x, which
+is the maximal possible value.</p>
+</blockquote>
+<h4 id="things-to-remember">Things to remember</h4>
+<ul>
+<li>gcd(a, b) = gcd(a - b, b) for a &gt;= b</li>
+<li>gcd(a, b) &lt;= a</li>
+</ul>
+<p>Both are obvious after consideration, but better keep them in the
+accessible part of my brain.</p>
+<h4 id="how-to-tackle-this-problem">how to tackle this problem</h4>
+<ol type="1">
+<li>Find the upper bound of the target formula</li>
+<li>Find a value that results in the upper bound</li>
+</ol>
+<p>Is this a common approach? I better keep that in mind.</p>
+<h3 id="b.-prefiquence"><a
+href="https://codeforces.com/contest/1968/problem/B">1968B.
+Prefiquence</a></h3>
+<p>Two pointers problem. I thought about what I would do if I needed to
+do that manually, and implemented it as a program.</p>
+<pre><code>from collections import defaultdict
+
+
+for _ in range(int(input())):
+    n, m = map(int, input().split())
+    a = input()
+    b = input()
+
+    a_i = b_i = 0
+    while a_i &lt; len(a) and b_i &lt; len(b):
+        if a[a_i] == b[b_i]:
+            a_i += 1
+        b_i += 1
+    print(a_i)</code></pre>
+<h3 id="c.-assembly-via-remain"><a
+href="https://codeforces.com/contest/1968/problem/C">1968C. Assembly via
+Remain</a></h3>
+<p>x_i = a_i mod a_(i-1)</p>
+<p>possible a_i -&gt;</p>
+<ul>
+<li>a_i = x_i + a_(i-1)</li>
+<li>a_i = x_i if x_i &lt; a_(i-1)</li>
+</ul>
+<p>There's a constraint on a</p>
+<blockquote>
+<p>1 &lt;= a_i &lt;= 10 ^ 9 for all 1 &lt;= i &lt;= n</p>
+</blockquote>
+<p>but even with a_i = x_i + a_(i-1), the values of a stays in the
+scope.</p>
+<p>Also, if a_i becomes too small to make the remainder x (i.e., a_(i-1)
+&lt;= x), it will be impossible to construct the rest elements of the
+answer. So, if a is too small, I add the minimal value to make the
+remainder x for all elements.</p>
+<p>The first element of a is (x_0 + 1), which is the smallest and can be
+inferred by looking at the sample output</p>
+<pre><code># there is a constraint on the max(a), but thinking about n &lt;= 500, x &lt;= 500, this algorith, won&#39;t exceed 250000 &lt; 10 ^ 9
+
+for _ in range(int(input())):
+    _ = int(input())
+    x_from_2 = list(map(int, input().split()))
+
+    # O(n)
+    minimal_divisor = max(x_from_2) + 1
+
+    a = [x_from_2[0] + 1]
+    for x in x_from_2:
+        val = x + a[-1]
+        while val &lt; minimal_divisor:
+            val += a[-1]
+        a.append(val)
+    print(&quot; &quot;.join([str(e) for e in a]))</code></pre>
+<hr />
+<p>Avocado rolls 300 Seafood salad 300 Salmon donburi 800 Yogurt 200
+Kombucha 100 Proteim chips 150 Bubble tea 600</p>
+<p>Total 2450 kcal is this due to stress???</p>
+<hr />
+<p><a href="../../index.html">index</a> <a
+href="20240504.html">20240504</a> <a
+href="20240506.html">20240506</a></p>
