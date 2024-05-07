@@ -1,0 +1,131 @@
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+</head>
+<h1 id="section">20240507</h1>
+<h2 id="a.-make-it-zero"><a
+href="https://codeforces.com/problemset/problem/1869/A">1869A. Make It
+Zero</a></h2>
+<p>My friend once talked about his recent interview, where he was asked
+to utilize the fact that XOR turns bits off if they have the same
+value.</p>
+<p>I forgot the exact problem he mentioned, but as I recall, the problem
+might be</p>
+<ul>
+<li>You are given a sequence of integers. Count the bits where their
+occurance count are odd for the given numbers.</li>
+</ul>
+<p>The optimal answer for that problem is to calculate the XOR of all
+numbers, and the resulting number only contains bits with odd
+occurrences.</p>
+<p>The memory guided me to the idea</p>
+<pre><code>s XOR s XOR s XOR ... = 0 when the count of s is even</code></pre>
+<p>solution</p>
+<pre><code>package main
+
+import (
+    &quot;bufio&quot;
+    &quot;fmt&quot;
+    &quot;os&quot;
+    &quot;strconv&quot;
+    &quot;strings&quot;
+)
+
+// &gt; Note that you do not have to minimize k.
+// &gt; If there are multiple solutions, you may output any of them.
+
+// It&#39;s known that XOR of the same numbers results in 0
+// &lt;=&gt; If all the counts of elements in a sequence are even, XOR of all elements is 0
+
+// 1. The number of elements is even
+//  1. replace all elements (1 &lt;= i &lt;= n) with s (The number of s does not matter).
+//  2. replace all elements (1 &lt;= i &lt;= n) with 0. s XOR s XOR, ... = 0 because all elements can find a pair to make 0
+
+// 2. The number of elements is odd (thinking about leveraging the &quot;even&quot; case)
+//  1, 2. replace elements (2 &lt;= i &lt;= n) with 0, used the operations mentioned above
+//  3. replace first two elements with s e.g., [3, 0, 0, ...] =&gt; [3, 3, 0, 0, ...]
+//  4. replace first two elements with 0. s XOR s = 0
+
+// This approach does not exceed the cap &quot;8 operations in total&quot;
+
+func solve(n int, a []int) {
+    if n%2 == 0 {
+        fmt.Println(2)
+        fmt.Println(1, n)
+        fmt.Println(1, n)
+    } else {
+        fmt.Println(4)
+        fmt.Println(2, n)
+        fmt.Println(2, n)
+        fmt.Println(1, 2)
+        fmt.Println(1, 2)
+    }
+}
+
+func main() {
+    scanner := bufio.NewScanner(os.Stdin)
+
+    scanner.Scan()
+    t, _ := strconv.Atoi(scanner.Text())
+
+    for tc := 0; tc &lt; t; tc++ {
+        scanner.Scan()
+        n, _ := strconv.Atoi(scanner.Text())
+
+        a := make([]int, n)
+        scanner.Scan()
+        for i, aStr := range strings.Split(scanner.Text(), &quot; &quot;) {
+            ai, _ := strconv.Atoi(aStr)
+            a[i] = ai
+        }
+
+        solve(n, a)
+    }
+}
+</code></pre>
+<h2 id="a.-painting-the-ribbon"><a
+href="https://codeforces.com/problemset/problem/1954/A">1954A. Painting
+the Ribbon</a></h2>
+<pre><code>package main
+
+import (
+    &quot;fmt&quot;
+)
+
+// My thoughts
+// Alice&#39;s optimal approach is to paint the ribbon with all colors and as evenly as possible.
+// With the ribbon painted, we can split the ribbon into two parts, a color with the largest count (a) and the remaining (b).
+// If Bob can paint the (b) part with color (a), Alice won&#39;t be satisfied.
+// &lt;=&gt; If the (b) part is larger than k, Aliec won&#39;t complain.
+
+func canSatisfyAlice(n int, m int, k int) bool {
+    if n%m == 0 {
+        return n-n/m &gt; k
+    } else {
+        return n-(n/m+1) &gt; k
+    }
+}
+
+func main() {
+    var t int
+    fmt.Scan(&amp;t)
+
+    for tc := 0; tc &lt; t; tc++ {
+        var n, m, k int
+        fmt.Scan(&amp;n, &amp;m, &amp;k)
+        if canSatisfyAlice(n, m, k) {
+            fmt.Println(&quot;YES&quot;)
+        } else {
+            fmt.Println(&quot;NO&quot;)
+        }
+    }
+}</code></pre>
+<p>TODO: Understand the <a
+href="https://codeforces.com/blog/entry/128421">editorial</a></p>
+<hr />
+<p>Kombucha 100 Snacks 200 Avocado rolls 300 Sushi bowl 600 Chips 500
+Yogurt 200</p>
+<p>Total 1900 kcal</p>
+<hr />
+<p><a href="../../index.html">index</a> <a
+href="20240506.html">20240506</a> <a
+href="20240508.html">20240508</a></p>
