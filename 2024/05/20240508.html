@@ -1,0 +1,64 @@
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+</head>
+<h1 id="section">20240508</h1>
+<p>I bought my first curved monitor, which cost over $200 (!). So far,
+my experience with it has been great. High resolution. Unique
+experience.</p>
+<p>Today was a busy day. I feel a bit tired.</p>
+<h2 id="a.-two-friends"><a
+href="https://codeforces.com/problemset/problem/1969/A">1969A. Two
+Friends</a></h2>
+<p>At first glance, Topological sort comes to my mind but its difficulty
+is 800, and I doubt I need to implement an algorithm with Topological
+sort.</p>
+<p>It turned out it's just an implementation problem, as</p>
+<blockquote>
+<p>note that the pi<code>-</code>th friend doesn't have to actually come
+to the party</p>
+</blockquote>
+<pre><code>package main
+
+import (
+    &quot;bufio&quot;
+    &quot;fmt&quot;
+    &quot;os&quot;
+    &quot;strconv&quot;
+    &quot;strings&quot;
+)
+
+func minInvitation(n int, p []int) int {
+    for i := 0; i &lt; n; i++ {
+        if i == p[p[i]-1]-1 {
+            return 2
+        }
+    }
+    return 3
+}
+
+func main() {
+    scanner := bufio.NewScanner(os.Stdin)
+    scanner.Scan()
+    t, _ := strconv.Atoi(scanner.Text())
+
+    for tc := 0; tc &lt; t; tc++ {
+        scanner.Scan()
+        n, _ := strconv.Atoi(scanner.Text())
+        var p []int = make([]int, n)
+        scanner.Scan()
+        for i, piStr := range strings.Split(scanner.Text(), &quot; &quot;) {
+            p[i], _ = strconv.Atoi(piStr)
+        }
+        fmt.Println(minInvitation(n, p))
+    }
+}</code></pre>
+<p>This problem reminds me that I was not the best friend of my best
+friends.</p>
+<hr />
+<p>Avocado rolls 300 Sushi bowl 600 Chips 500 Yogurt 100 Bubble tea
+600</p>
+<p>Total 2100 kcal</p>
+<hr />
+<p><a href="../../index.html">index</a> <a
+href="20240507.html">20240507</a> <a
+href="20240509.html">20240509</a></p>
