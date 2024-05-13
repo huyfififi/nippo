@@ -1,0 +1,135 @@
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+<meta charset="UTF-8">
+</head>
+<h1 id="section">20240512</h1>
+<h2 id="孤独の価値---森博嗣">孤独の価値 - 森博嗣</h2>
+<p>Read “孤独の価値” by Hiroshi Mori.</p>
+<p>The author points out that solitary (?) is too criticized by all
+kinds of media; human relationships are advertised as more important
+than reality, making people feel guilty about spending time alone.</p>
+<p>I, too, have felt the pressure to cooperate with others in society,
+but as I look back on my life, I might be happier reducing social
+relationships.</p>
+<p>I don't mean I avoid social events. I'm good at talking with
+strangers, especially when I use Japanese. Many seniors say that oe of
+my strenghts might be the communication skills. I cannot say that I
+blong to the top tier when it comes to technical skills, but I might be
+able to leverage my communication skills to differentiate from other
+engineers.</p>
+<p>I'm still not confident using English and feel nervous about that
+tho.</p>
+<hr />
+<h2 id="codeforces-round-944-div.-4">Codeforces Round 944 (Div. 4)</h2>
+<h3 id="a.-my-first-sorting-problem"><a
+href="https://codeforces.com/contest/1971/problem/A">1971A. My First
+Sorting Problem</a></h3>
+<p>simple implementation problem with min() and max()</p>
+<pre><code>package main
+
+import (
+    &quot;fmt&quot;
+)
+
+func main() {
+    var t int
+    fmt.Scan(&amp;t)
+    for i := 0; i &lt; t; i++ {
+        var x, y int
+        fmt.Scan(&amp;x, &amp;y)
+        fmt.Println(min(x, y), max(x, y))
+    }
+
+}</code></pre>
+<h3 id="b.-different-string"><a
+href="https://codeforces.com/contest/1971/problem/B">1971B. Different
+String</a></h3>
+<p>if the input string consists of only one letter, it's impossible to
+rearrange the string to form a new string. otherwise (if the input
+string consists of more than one letter), a new string can be created by
+rotating the input string.</p>
+<p>Not sure I can solve this problem next tiem I encounter tho</p>
+<pre><code>from collections import defaultdict
+
+
+for _ in range(int(input())):
+    s = input()
+    d = defaultdict(int)
+    for c in s:
+        d[c] += 1
+
+    if len(d.keys()) == 1:
+        print(&quot;NO&quot;)
+    else:
+        print(&quot;YES&quot;)
+        print(s[1:] + s[0])</code></pre>
+<h3 id="c.-clock-and-strings"><a
+href="https://codeforces.com/contest/1971/problem/C">1971C. Clock and
+Strings</a></h3>
+<p>TODO: Check the editorial tmr</p>
+<p>problem to think of MECE conditions</p>
+<pre><code>package main
+
+import (
+    &quot;fmt&quot;
+)
+
+func intersect(a int, b int, c int, d int) bool {
+    a, b = min(a, b), max(a, b)
+    c, d = min(c, d), max(c, d)
+    return (c &gt; a &amp;&amp; c &lt; b &amp;&amp; d &gt; b &amp;&amp; d &lt; a+12) || (c &lt; a &amp;&amp; d &gt; a &amp;&amp; d &lt; b)
+}
+
+func main() {
+    var t int
+    fmt.Scan(&amp;t)
+    for i := 0; i &lt; t; i++ {
+        var a, b, c, d int
+        fmt.Scan(&amp;a, &amp;b, &amp;c, &amp;d)
+        if intersect(a, b, c, d) {
+            fmt.Println(&quot;YES&quot;)
+        } else {
+            fmt.Println(&quot;NO&quot;)
+        }
+    }
+}</code></pre>
+<h3 id="d.-binary-cut"><a
+href="https://codeforces.com/contest/1971/problem/D">1971D. Binary
+Cut</a></h3>
+<p>To sort the input binary string by spliting and rearranging, the
+splitted parts should belong to one of these</p>
+<ul>
+<li>0s (000….0000)</li>
+<li>01 (only one part is allowed)</li>
+<li>1s (111….1111)</li>
+</ul>
+<p>So that the sorted string can be formed by</p>
+<p>000…0000 + 01 + 111…1111</p>
+<p>To create parts 00…000 and 11..111, we can focus on “01” and “10”,
+where the string should be cut to create a string with only 0s and a
+string with only 1s. Note that 00….01…111 can be allowed one time.</p>
+<pre><code>for _ in range(int(input())):
+    s = input()
+    counter = 1
+    used_01 = False
+    for i in range(len(s) - 1):
+        if s[i : i + 2] == &quot;10&quot;:
+            counter += 1
+        elif s[i : i + 2] == &quot;01&quot;:
+            if not used_01:
+                used_01 = True
+            else:
+                counter += 1
+    print(counter)</code></pre>
+<hr />
+<p>Sushi 800 Salad 500 Chicken 400</p>
+<p>Total 1700 kcal</p>
+<hr />
+<p>TODO:</p>
+<ul>
+<li>Check the editorial of 1971C and 1971E</li>
+</ul>
+<hr />
+<p><a href="../../index.html">index</a> <a
+href="20240511.html">20240511</a> <a
+href="20240513.html">20240513</a></p>
