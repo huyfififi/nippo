@@ -1,0 +1,125 @@
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+<meta charset="UTF-8">
+</head>
+<h1 id="section">20240513</h1>
+<h2 id="c.-clock-and-strings"><a
+href="https://codeforces.com/contest/1971/problem/C">1971C. Clock and
+Strings</a></h2>
+<p><a href="20240512.html">My idea</a> was that there should be an
+intersection when c and d belong to different sides split by a and
+b.</p>
+<p>The approach mentioned in <a
+href="https://codeforces.com/blog/entry/129364">Editorial</a> is to walk
+around the clock from 1 to 12. If two red strings or two blue strings
+appear in a row, there is no intersection.</p>
+<p>Here is my implementation of that approach. The editorial shows a
+more concise way, but for now, I'll put it to follow my natural thought
+process.</p>
+<pre><code>package main
+
+import (
+    &quot;fmt&quot;
+)
+
+func intersect(a int, b int, c int, d int) bool {
+    before := 0
+    for i := 0; i &lt; 12; i++ {
+        if i == a {
+            if before == b {
+                return false
+            }
+            before = a
+        } else if i == b {
+            if before == a {
+                return false
+            }
+            before = b
+        } else if i == c {
+            if before == d {
+                return false
+            }
+            before = c
+        } else if i == d {
+            if before == c {
+                return false
+            }
+            before = d
+        }
+    }
+    return true
+}
+
+func main() {
+    var t int
+    fmt.Scan(&amp;t)
+
+    var a, b, c, d int
+    for i := 0; i &lt; t; i++ {
+        fmt.Scan(&amp;a, &amp;b, &amp;c, &amp;d)
+        if intersect(a, b, c, d) {
+            fmt.Println(&quot;YES&quot;)
+        } else {
+            fmt.Println(&quot;NO&quot;)
+        }
+    }
+}</code></pre>
+<h2 id="e.-find-the-car"><a
+href="https://codeforces.com/contest/1971/problem/E">1971E. Find the
+Car</a></h2>
+<p><a
+href="https://codeforces.com/blog/entry/129364">https://codeforces.com/blog/entry/129364</a></p>
+<blockquote>
+<p>For each query, we binary search to find the last sign we passed
+(since the array a is sorted).</p>
+</blockquote>
+<p>I understand binary search, but I could not come up with using it
+during the contest.</p>
+<p>Let's try to implement this approach tomorrow.</p>
+<h2 id="dom-document-object-model">DOM (Document Object Model)</h2>
+<p>From <a
+href="https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model/Introduction">Introduction
+to the DOM</a></p>
+<blockquote>
+<p>The Document Object Model (DOM) is a programming interface for web
+documents.</p>
+</blockquote>
+<p>The DOM represents the web page content and structure as a tree, and
+each element in the HTML document is treated as a node in the tree.</p>
+<p>As I look at the <a
+href="https://staff.washington.edu/weller/css/DOM1.html">web page of
+University of Wachinton</a>, the tree structure might look like</p>
+<pre><code>document
+└── html
+    ├── body
+    │   ├── h1
+    │   │   └── This is a heading
+    │   └── p
+    │       ├── This is
+    │       ├── a
+    │       └── b
+    │           └── body
+    └── head
+        └── title
+            └── this is a title</code></pre>
+<p>JavaScript can access and manipulate the DOM tree. This allows us to
+dynamically change the content, style, and behavior of a web page.</p>
+<p>Benefits of DOM</p>
+<ul>
+<li>Provides a standardized way to access and manipulate web page
+content across different browsers.</li>
+<li>Enables creation of dynamic and interactive web pages.</li>
+</ul>
+<hr />
+<p>Total 0 kcal</p>
+<hr />
+<p>TODO:</p>
+<ul>
+<li>Research other options than Let's Encrypt to get TLS
+certificates</li>
+<li>Solve 1971E - Find the Car</li>
+</ul>
+<hr />
+<p><a href="../../index.html">index</a> <a
+href="20240512.html">20240512</a> <a
+href="20240514.html">20240514</a></p>
