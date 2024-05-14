@@ -28,3 +28,4 @@
 - [20240423](./2024/04/20240423.html)
 
 [competitive programming](competitive-programming.html)
+[research](research.html)
