@@ -1,0 +1,107 @@
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+<meta charset="UTF-8">
+</head>
+<h1 id="section">20240514</h1>
+<p>I was busy taking care of releases today.</p>
+<p>Everyone is talking about GPT-4o. I usually use Google's Gemini and
+GitHub Co-pilot, but it might be better to check GPT-4o out. I hear that
+GPT-4o is not good at coding tho.</p>
+<p>Wait, perhaps I don't have to be an early-adapter. Apple and OpenAI
+are collaborating to develop AI assistant feature (?) (I suspect it is
+similar to Siri), so I can wait for its release and start enjoying
+talking with AI after its release. Let's stick to what I'm using for the
+time being. I'm an old-fashioned guy who is only interested in
+fundamentals instead of applications. I use zsh and vim.</p>
+<h2 id="lets-encrypt-and-other-ssltls-certificates-providers">Let's
+Encrypt and other SSL/TLS certificates providers</h2>
+<p>Let's Encrypt provides free TLS certificates, and I was wondering
+what the point is of buying certificates from other providers.</p>
+<p>As I browsed a few web pages, I found information on that.o</p>
+<h3 id="validity-duration">Validity Duration</h3>
+<p>Let's Encrypt issues certificates valid for 90 days, whereas paid
+certificates can last 1-3 years. Using paid certificates can reduce
+renewal effot.</p>
+<p>However, <a href="https://certbot.eff.org/">certbot</a> can automate
+the renewal of TLS certificates from Let's Encrypt. I don’'t think the
+longer validity of paid certicicates is the advantage.</p>
+<p>On second thought, certbot's renewal can fail due to misconfiguration
+(it happens in my VPS). Reducing the chances of failure is
+beneficial.</p>
+<h3 id="dv-vs-ov-ev">DV vs OV &amp; EV</h3>
+<p>DV (Domain Validation): Lowest level. Certificate Authority (CA) only
+verifies you control the domain, not your identity.</p>
+<p>OV (Organization Validation): Mid-level. CA confirms your domain
+ownership and validates your organization's legitimacy through
+additional checks.</p>
+<p>EV (Extended Validation): Highest level. EV involves the most
+rigorous checks, verifying your organization's legal existence and good
+standing.</p>
+<p>Let's Encrypt checks if the domain is in control of the person who
+requests a TLS certificate for it (DV), but it's a bare-minimum
+standard.</p>
+<p><a
+href="https://www.digicert.com/difference-between-dv-ov-and-ev-ssl-certificates">https://www.digicert.com/difference-between-dv-ov-and-ev-ssl-certificates</a></p>
+<blockquote>
+<p>What distinguishes OV &amp; EV certificates are the extra layers and
+steps of validation required to obtain them. For both EV &amp; OV
+certificates CAs must verify the domain owner as well as several details
+related to the affiliated business including name, type, status, and
+physical address.</p>
+</blockquote>
+<p>When running business that deal with sensitive data, DV is not enough
+to prove the identity to users.</p>
+<p>This is my certificate of ocalaavenue.net</p>
+<pre><code>Issued to:
+Common Name (CN)    ocalaavenue.net
+Organization (O)    &lt;Not Part Of Certificate&gt;
+Organizational Unit (OU)    &lt;Not Part Of Certificate&gt;
+
+Issued by:
+Common Name (CN)    R3
+Organization (O)    Let&#39;s Encrypt
+Organizational Unit (OU)    &lt;Not Part Of Certificate&gt;</code></pre>
+<p>and this is facebook's</p>
+<pre><code>Issued to:
+Common Name (CN)    *.facebook.com
+Organization (O)    Meta Platforms, Inc.
+Organizational Unit (OU)    &lt;Not Part Of Certificate&gt;
+
+Issued by:
+Common Name (CN)    DigiCert SHA2 High Assurance Server CA
+Organization (O)    DigiCert Inc
+Organizational Unit (OU)    www.digicert.com</code></pre>
+<p>You can see the organization name is provided in the facebook's, but
+not in mine from Let's Encrypt. Facebook's is with at least OV in
+addition to DV.</p>
+<p>Now I'm getting why companies don't use Let's Encrypt. (I see some
+companies I've been involved use Let's Encrypt tho :sweat:)</p>
+<h3 id="other-benefits-of-paid-certificates">Other benefits of paid
+certificates</h3>
+<p>Here are some examples</p>
+<h4 id="customer-support">Customer Support</h4>
+<p>Paid certificate vendors often offer customer support to help with
+installation, troubleshooting, and other certificate-related issues
+whereas Let's Encrypt is a self-service platform.</p>
+<h4 id="warranty">Warranty</h4>
+<p>For example, DigiCert's Secure Site certificate provides warranty[<a
+href="https://docs.digicert.com/en/certcentral/manage-certificates/secure-site-certificate-benefits.html">1</a>].</p>
+<blockquote>
+<p>Industry-leading warranties. Secure Site certificates include
+warranties to protect you and your customers: a $1.75M Netsure
+Protection Warranty for your business and an industry-best $2M aggregate
+Relying Party Warranty for your customers.</p>
+</blockquote>
+<p>I see many other advantages of paid TLS certificates.</p>
+<hr />
+<p>Yogurt 300 Lunchable 500 Sushi bowl 800 Chicken 200</p>
+<p>Total 1800 kcal</p>
+<hr />
+<p>TODO:</p>
+<ul>
+<li>Solve 1971E - Find the Car</li>
+</ul>
+<hr />
+<p><a href="../../index.html">index</a> <a
+href="20240513.html">20240513</a> <a
+href="20240515.html">20240515</a></p>
