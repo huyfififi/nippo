@@ -3,11 +3,70 @@
 <meta charset="UTF-8">
 </head>
 <h1 id="section">20240515</h1>
+<h2 id="gpt-4o">GPT-4o</h2>
+<p>I finally tried GPT-4o; it's a game changer!</p>
+<p>The experience with the real time conversation feature is
+imporessive. The AI understands what I say and responds back to me
+instantly. I'm not sure about its knowledge base or problem-solving
+ability, but I'm sure that it will replace most businesses offering
+online English lessons. I can just begin the conversation in the ChatGPT
+application anytime. The AI can behave what I'm asked.</p>
+<p>I just subscribed to the paid tier for both my wife and me. I hope it
+helps us improve our English and get used to AI.</p>
+<h2 id="e.-find-the-car"><a
+href="https://codeforces.com/contest/1971/problem/E">1971E. Find the
+Car</a></h2>
+<p>Takeaway:</p>
+<ul>
+<li>Binary search to search for the target section</li>
+<li>Avoid float calculation as much as possible
+<ul>
+<li>The calculation I commmented out involves float, but the accepted
+one only uses int</li>
+</ul></li>
+</ul>
+<pre><code>def binary_search(a: list, k: int, d: int) -&gt; int:
+    &quot;&quot;&quot;returns index of the left side of the section&quot;&quot;&quot;
+    left_i: int = 0
+    right_i: int = k
+    mid_i: int = -1
+
+    while right_i - left_i &gt; 1:
+        mid_i = (left_i + right_i) // 2
+        if d == a[mid_i]:
+            return mid_i
+        elif d &lt; a[mid_i]:
+            right_i = mid_i
+        elif d &gt; a[mid_i]:
+            left_i = mid_i
+
+    return left_i
+
+
+t = int(input())
+for tc in range(t):
+    n, k, q = map(int, input().split())
+    a = [0] + list(map(int, input().split()))
+    b = [0] + list(map(int, input().split()))
+
+    result = []
+    for qc in range(q):
+        d: int = int(input())
+        i: int = binary_search(a, k, d)
+        # offset = math.floor((b[i + 1] - b[i]) / (a[i + 1] - a[i]) * (d - a[i])) -&gt; cause differences for some test cases
+        offset: int = (b[i + 1] - b[i]) * (d - a[i]) // (a[i + 1] - a[i])
+        result.append(b[i] + offset)
+    print(&quot; &quot;.join(str(e) for e in result))</code></pre>
 <hr />
-<p>Yogurt 500 Lunchable 500 something like Chipotle 500 Eggs 400</p>
-<p>Total 1900 kcal</p>
+<p>Yogurt 500 Lunchable 500 something like Chipotle 500 Eggs 400 Bubble
+tea 600</p>
+<p>Total 2500 kcal</p>
 <hr />
 <p>TODO:</p>
+<ul>
+<li>Participated a session: Building RAG Applications: Ensuring Safe and
+Reliable GenAI at 8:30 am</li>
+</ul>
 <hr />
 <p><a href="../../index.html">index</a> <a
 href="20240514.html">20240514</a> <a
