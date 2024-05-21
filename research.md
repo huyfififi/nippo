@@ -1,5 +1,6 @@
 <head><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" /></head>
 
+- [Mob Programming / Pair Programming (20240520)](./2024/05/20240520.html)
 - [RAG (20240516)](./2024/05/20240516.html)
 - [TLS certificate providers (20240514)](./2024/05/20240514.html)
 - [DOM (20240513)](./2024/05/20240513.html)
