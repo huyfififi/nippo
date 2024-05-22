@@ -1,0 +1,81 @@
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+<meta charset="UTF-8">
+</head>
+<h1 id="section">20240521</h1>
+<p>ド級のリトライ</p>
+<p><strong>ドリトライだ！</strong></p>
+<h2 id="tags-of-docker-container-images">Tags of Docker Container
+Images</h2>
+<p>I missed to bookmark it, but I read an article about reducing Docker
+image size.</p>
+<p>I browsed some web pages, but couldn't find definitive resources on
+that. Here are my understanding summarizing the information on the
+internet.</p>
+<h3 id="difference-between-shared-and-simple-tags">Difference between
+“Shared” and “Simple” tags</h3>
+<blockquote>
+<p>Short version: “simple tags” will usually be a single platform
+(Windows vs Linux) and “shared tags” will be a combination of multiple
+platforms[<a
+href="https://github.com/docker-library/faq#whats-the-difference-between-shared-and-simple-tags">1</a>].</p>
+</blockquote>
+<p>When using simple tags such as alpine, the specific Linux
+distribution or Windows OS is used.</p>
+<p>When using shared tags such as tags without suffix, Docker checks the
+architecture and OS of our local machine and determines which one of
+listed OS to use.</p>
+<p>For example, <a href="https://hub.docker.com/_/python">Python's
+Docker shared tag <code>3.12</code></a> consists of these</p>
+<ul>
+<li>3.12.3-bookworm</li>
+<li>3.12.3-windowsservercore-ltsc2022</li>
+<li>3.12.3-windowsservercore-1809</li>
+</ul>
+<p>In my case, Debian-based 3.12.3-bookworm (<a
+href="https://wiki.debian.org/DebianBookworm">DebianBookworm</a>) will
+be used because I use MacBook.</p>
+<h3 id="sharedbookwormalpineslim">shared/bookworm/alpine/slim</h3>
+<h4 id="sharedbookworm">shared/bookworm</h4>
+<p><code>bookworm</code> refers to Debian Linux's Bookworm variant,
+which contains up-to-date packages and softwares installed.</p>
+<p>Shared tags often (at least for my MacOS workstation) refers to
+<code>bookworm</code>.</p>
+<h4 id="apline">apline</h4>
+<p><code>alpine</code> refers to Alpine Linux, which is a super
+lightweight Linux distribution. It is the smallest Docker image option,
+but lacks tools or libraries.</p>
+<h4 id="slim">slim</h4>
+<p><code>slim</code> is a down-sized version of <code>bookworm</code>,
+(generated with [<a
+href="https://github.com/slimtoolkit/slim">SlimToolkit</a>] ?) to
+optimize contianer image size.</p>
+<h3 id="choose-which-one-to-use">Choose which one to use</h3>
+<p>Keeping Docker container images as small as possible is a good way to
+reduce the required space in servers. Also, it can make CI (Continuous
+Integration, such as testing or auto-deployment) complete in shorter
+time.</p>
+<p><code>bookworm</code> is the simplest option but contains many
+redundant libraries.</p>
+<p><code>alpine</code> is the smallest option, but I see people don't
+recommend to use it because configuring it is very hard; required
+packages/libraries need to be installed manually. It seems people keep
+running into issues managing <code>alpine</code> container image
+properly.</p>
+<p><code>slim</code> is generally recommended because it has smaller
+container image size than <code>bookworm</code>, but also includes basic
+libraries, making it wasy to configure and manage.</p>
+<p>For our Django (Python) project, replacing a shared tag with slim one
+reduced the container image size by about 40%.</p>
+<hr />
+<p>Sushi bowl 900 Yogurt 300 Bubble tea 600</p>
+<p>Total 1800 kcal</p>
+<hr />
+<p>TODO:</p>
+<ul>
+<li>Check the differences between HTTP/1.1 and HTTP/2</li>
+</ul>
+<hr />
+<p><a href="../../index.html">index</a> <a
+href="20240520.html">20240520</a> <a
+href="20240522.html">20240522</a></p>
