@@ -1,6 +1,7 @@
 <head><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" /></head>
 
-- [HTTP/2 vs HTTP/1.1](./2024/05/20240522.html)
+- [Enabling HTTP/2, Git Aliases (20240523)](./2024/05/20240523.html)
+- [HTTP/2 vs HTTP/1.1 (20240522)](./2024/05/20240522.html)
 - [Docker Image: slim/alpine/bookworm (20240521)](./2024/05/20240521.html)
 - [Mob Programming / Pair Programming (20240520)](./2024/05/20240520.html)
 - [RAG (20240516)](./2024/05/20240516.html)

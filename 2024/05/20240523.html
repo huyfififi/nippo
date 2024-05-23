@@ -1,0 +1,111 @@
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+<meta charset="UTF-8">
+</head>
+<h1 id="section">20240523</h1>
+<ul>
+<li>Added celery in my personal project</li>
+<li>Tried to write a Github Actions configuration file for a gigantic
+Django project, but failed to resolve issues. Tired.
+<ul>
+<li>print() in migration files are in stdout, so the preparation of test
+database should be working fine, but facing errors when running tests
+after the mgiration</li>
+<li>database configuration in settings.py looks very fine to me</li>
+</ul></li>
+</ul>
+<pre><code>/opt/hostedtoolcache/Python/3.11.9/x64/lib/python3.11/site-packages/django/db/backends/base/base.py:289: in ensure_connection
+    self.connect()
+/opt/hostedtoolcache/Python/3.11.9/x64/lib/python3.11/site-packages/django/utils/asyncio.py:26: in inner
+    return func(*args, **kwargs)
+/opt/hostedtoolcache/Python/3.11.9/x64/lib/python3.11/site-packages/django/db/backends/base/base.py:270: in connect
+    self.connection = self.get_new_connection(conn_params)
+/opt/hostedtoolcache/Python/3.11.9/x64/lib/python3.11/site-packages/django/utils/asyncio.py:26: in inner
+    return func(*args, **kwargs)
+/opt/hostedtoolcache/Python/3.11.9/x64/lib/python3.11/site-packages/django/db/backends/postgresql/base.py:275: in get_new_connection
+    connection = self.Database.connect(**conn_params)
+/opt/hostedtoolcache/Python/3.11.9/x64/lib/python3.11/site-packages/psycopg/connection.py:728: in connect
+    attempts = conninfo_attempts(params)
+/opt/hostedtoolcache/Python/3.11.9/x64/lib/python3.11/site-packages/psycopg/_conninfo_attempts.py:45: in conninfo_attempts
+    raise e.OperationalError(str(last_exc))
+E   psycopg.OperationalError: [Errno -3] Temporary failure in name resolution</code></pre>
+<hr />
+<h2 id="git-aliases-to-switch-user-profile">Git Aliases to switch user
+profile</h2>
+<p>I added these aliases in <code>~/.gitconfig</code> to switch user
+profiles for work and personal time</p>
+<pre><code>[alias]
+    suffer = !git config --global user.email &#39;work@email.com&#39;
+    bail-out = !git config --global user.email &#39;personal@email.com&#39;</code></pre>
+<p>Now I can easily switch user profiles. I've been involvd in multiple
+projects/repositories, and found it difficult to manage user
+configurations.</p>
+<hr />
+<h2 id="enabling-http2-and-http3">Enabling HTTP/2 and HTTP/3</h2>
+<p>Enabling HTTP/2 or HTTP/3 for my web application involves configuring
+the web server that serves the application.</p>
+<h3 id="enabling-http2-with-nginx">Enabling HTTP/2 with Nginx</h3>
+<h4 id="update-nginx-to-1.9.5-or-later">1. Update Nginx to 1.9.5 or
+later</h4>
+<p>In my case, my Nginx container should be able to serve with
+HTTP/2</p>
+<p><a
+href="https://github.com/huyfififi/mastodon/blob/main/docker-compose.yml#L136">https://github.com/huyfififi/mastodon/blob/main/docker-compose.yml#L136</a></p>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode docker-compose.yml"><code class="sourceCode yaml"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">services</span><span class="kw">:</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">nginx</span><span class="kw">:</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">image</span><span class="kw">:</span><span class="at"> nginx:1.25.3</span></span></code></pre></div>
+<h4 id="update-the-configuration-for-port-443-https">2. Update the
+configuration for port 443 (HTTPS)</h4>
+<p>HTTP/2 seems to require TLS (encryption for HTTP connections)</p>
+<ul>
+<li><a
+href="https://stackoverflow.com/questions/34076231/why-do-browser-implementations-of-http-2-require-tls">Stack
+OverFlow: Why do browser implementations of HTTP/2 require TLS?</a></li>
+<li><a
+href="https://stackoverflow.com/questions/61051169/is-tls-mandatory-for-http-2">Stack
+Overflow: Is TLS mandatory for HTTP/2?</a></li>
+</ul>
+<p>Therefore, it will go under port 443</p>
+<p>It seems I already turned on HTTP/2</p>
+<p><a
+href="https://github.com/huyfififi/mastodon/blob/main/dist/nginx.conf">https://github.com/huyfififi/mastodon/blob/main/dist/nginx.conf</a>
+&lt;- It’s completely messy. I better review and update it.</p>
+<div class="sourceCode" id="cb4"><pre
+class="sourceCode nginx.conf"><code class="sourceCode toml"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>  <span class="dt">server</span> <span class="er">{</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">listen</span> <span class="dt">443</span> <span class="dt">ssl</span><span class="er">;</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">listen</span> <span class="kw">[</span><span class="er">::]:</span><span class="dt">443</span> <span class="dt">ssl</span><span class="er">;</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">http2</span> <span class="dt">on</span><span class="er">;</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">server_name</span> <span class="dt">ocalaavenue.net</span><span class="er">;</span></span></code></pre></div>
+<p>but it seems this also works</p>
+<div class="sourceCode" id="cb5"><pre
+class="sourceCode nginx.conf"><code class="sourceCode toml"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>  <span class="dt">server</span> <span class="er">{</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">listen</span> <span class="dt">443</span> <span class="dt">ssl</span> <span class="dt">http2</span><span class="er">;</span></span></code></pre></div>
+<h4 id="restart-the-server-and-check-the-protocol-used-in-response">3.
+Restart the server and check the protocol used in response</h4>
+<div class="sourceCode" id="cb6"><pre
+class="sourceCode zsh"><code class="sourceCode zsh"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># curl -I --http2 https://ocalaavenue.net</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="ex">HTTP/2</span> 200</span></code></pre></div>
+<p>I can see that HTTP/2 is in response headers, meaning that my
+Mastodon instance is already served with HTTP/2</p>
+<h3 id="enabling-http3-with-nginx">Enabling HTTP/3 with Nginx</h3>
+<p><a href="https://nginx.org/en/docs/quic.html">nginx: Support for QUIC
+and HTTP/3</a></p>
+<p>It seems I better check QUIC before trying to digest the
+configuration. It looks intimidating.</p>
+<hr />
+<p>Sushi bowl 800 Avocado 200 Yogurt 300 Kombucha 100 Bubble tea 100</p>
+<p>Total 1500 kcal</p>
+<hr />
+<p>TODO:</p>
+<ul>
+<li>Amazon Elastic Kubernetes Service (Amazon EKS)
+<ul>
+<li><a
+href="https://docs.aws.amazon.com/eks/latest/userguide/what-is-eks.html">https://docs.aws.amazon.com/eks/latest/userguide/what-is-eks.html</a></li>
+</ul></li>
+</ul>
+<hr />
+<p><a href="../../index.html">index</a> <a
+href="20240522.html">20240522</a> <a
+href="20240524.html">20240524</a></p>
