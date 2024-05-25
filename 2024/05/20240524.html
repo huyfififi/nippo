@@ -1,0 +1,96 @@
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+<meta charset="UTF-8">
+</head>
+<h1 id="section">20240524</h1>
+<p>Browsed <a
+href="https://github.com/actions/checkout/releases">https://github.com/actions/checkout/releases</a>
+to check which version I should use in my GitHub Actions configuration
+YAML. Updated v3 -&gt; v4 because there is no reason not to. The latest
+does not introduce breaking changes, and it provides bug fixes and
+additional features.</p>
+<p>I suddenly began wondering what would happen if online documentation
+was unavailable for organizational issues or other reasons. I used to
+see people publish books about programming language manuals, but now,
+for example, if servers are down, I cannot check the documentation.</p>
+<p>In that case, I may be able to check the way back machine. I also bet
+someone will host a website to serve the documents voluntarily. Maybe I
+was worried too much.</p>
+<hr />
+<p>Browsed <a
+href="https://docs.aws.amazon.com/eks/latest/userguide/what-is-eks.html">What
+is Amazon EKS? - Amazon EKS</a></p>
+<p>It's embarassing that I have little knowledge on Kubernetes. I'm not
+a DevOps engineer with my full-time position, and also other projects I
+touched are better off sticking to simple architecture. (All my friends
+at BigTech also don't understand how it works, so it's not that
+embarrasing I don't know how to scale it, I hope?)</p>
+<p>I hear that AWS and Azure have very different policy for server
+outage; Azure provides more flexible compensation, but I don't know much
+about it.</p>
+<p><a
+href="https://stackoverflow.com/questions/47536536/whats-the-difference-between-docker-compose-and-kubernetes">Stack
+Overflow: What’s the difference between Docker Compose and
+Kubernetes?</a></p>
+<p>Docker Compose deploys multi-container Docker apps to a single
+server, while Kubernetes is a production-grade container orchestrator
+that can run multiple container runtimes, including Docker's, across
+multiple virtual or physical machines.</p>
+<p>So they are very different.</p>
+<p>I cannot use my compose.yaml</p>
+<p><a href="kompose.io">Kompose</a> (The website looks neat)</p>
+<blockquote>
+<p>An official Kubernetes project, located at
+github.com/kubernetes/kompose</p>
+</blockquote>
+<blockquote>
+<p>GO FROM DOCKER COMPOSE TO KUBERNETES</p>
+</blockquote>
+<blockquote>
+<p>Kompose is a conversion tool for Docker Compose to container
+orchestrators such as Kubernetes (or OpenShift).</p>
+</blockquote>
+<p>I might want to use Kompose if I need to use configure Kubernetes
+with a Compose file.</p>
+<hr />
+<h2 id="preferred-compose-file-name">Preferred compose file name</h2>
+<p><a
+href="https://docs.docker.com/compose/compose-application-model/#the-compose-file">How
+Compose works | Docker Docs</a></p>
+<blockquote>
+<p>The default path for a Compose file is compose.yaml (preferred) or
+compose.yml that is placed in the working directory. Compose also
+supports docker-compose.yaml and docker-compose.yml for backwards
+compatibility of earlier versions. If both files exist, Compose prefers
+the canonical compose.yaml.</p>
+</blockquote>
+<p>Projects I've been involved use <code>docker-compose.yml</code>, so I
+was surprised to know <code>compose.yaml</code> is the preferred name
+here. I will use <code>compose.yaml</code> whenever possible from now
+on.</p>
+<p><a
+href="https://docs.docker.com/compose/compose-file/04-version-and-name/">Version
+and name top-level elements</a></p>
+<p>Also, I see that the top-level <code>version</code> property in a
+Compose file is now obsolete while I can see that in several
+projects.</p>
+<blockquote>
+<p>The top-level version property is defined by the Compose
+Specification for backward compatibility. It is only informative and
+you’ll receive a warning message that it is obsolete if used. Compose
+doesn’t use version to select an exact schema to validate the Compose
+file, but prefers the most recent schema when it’s implemented.</p>
+</blockquote>
+<hr />
+<p>Sushi bowl 800 Avocado 200 Yogurt 300</p>
+<p>Total 1300 kcal</p>
+<hr />
+<p>TODO:</p>
+<ul>
+<li>What is NAS</li>
+<li>Make progress with my personal project</li>
+</ul>
+<hr />
+<p><a href="../../index.html">index</a> <a
+href="20240523.html">20240523</a> <a
+href="20240525.html">20240525</a></p>
