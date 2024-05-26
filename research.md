@@ -1,5 +1,6 @@
 <head><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" /></head>
 
+- [(minor) NAS (20240525)](./2024/05/20240525.html)
 - [(minor) The default path for a Docker Compose file, Kompose to convert Docker Compose to Kubernetes (20240524)](./2024/05/20240524.html)
 - [Enabling HTTP/2, Git Aliases (20240523)](./2024/05/20240523.html)
 - [HTTP/2 vs HTTP/1.1 (20240522)](./2024/05/20240522.html)
