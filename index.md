@@ -2,6 +2,7 @@
 
 # 202405
 
+- [20240527](./2024/05/20240527.html)
 - [20240526](./2024/05/20240526.html)
 - [20240525](./2024/05/20240525.html)
 - [20240524](./2024/05/20240524.html)
@@ -42,3 +43,9 @@
 
 [competitive programming](competitive-programming.html)
 [research](research.html)
+
+---
+
+## Dashboard
+
+[dashboard.huyfififi.com](https://dashboard.huyfififi.com)

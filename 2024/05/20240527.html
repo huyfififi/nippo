@@ -1,0 +1,62 @@
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+<meta charset="UTF-8">
+</head>
+<h1 id="section">20240527</h1>
+<p>Finished implementing the first phase of the personal project, both
+the backend and the frontend. -&gt; Deployed :tada: <a
+href="https://dashboard.huyfififi.com">dashboard.huyfififi.com</a></p>
+<p>There are many issues I resolved today to deploy, and I want to write
+down them here but don't have tiem now. I will whenever possible.</p>
+<h2 id="cloudflare-flexible-ssltls-encryption-modes">Cloudflare Flexible
+SSL/TLS encryption modes</h2>
+<p>I was thinking about obtaining SSL/TLS certificates from Let's
+Encrypt by clearing its challenge, but as I tried to configure the VPS
+(the server for the web application), I noticed that it's already
+configured with SSL certificates. All I needed to do is simply serve the
+application via HTTP; Cloudflare automatically enables HTTPS for end
+users.</p>
+<p>users &lt;-&gt; Cloudflare &lt;-&gt; my VPS</p>
+<p>I have my domain in Cloudflare, and it turned out that it's
+configured with <a
+href="https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/flexible/">Flexible</a>
+mode. The connections between my VPS and Cloudflare is not encrypted at
+all, but the connections between users and Cloudflare are encrypted.
+This encryption mode is called <strong>Flexible</strong>.</p>
+<p>Although it's definitely not recommended, my application does not
+contain any sensitive data, and I don't have enough time to do the right
+configuration now, I decided to let that work for the time being.</p>
+<p>It seems to be useful to have very small and personal projects on the
+internet.</p>
+<p>FYI: To make my subdomain dashboard.huyfififi.com points to the VPS,
+A record was added dashboard.huyfififi.com -&gt; The static IP address
+of the VPS to map them.</p>
+<p>As I mentioned before, I cannot get static IP addresses at home
+because I share a house and I will move soon. VPS (Virtual Private
+Server) such as Amazon Lightsail provides a feature to attach a static
+IP address, and it makes hosting personal projects possible at low
+cost.</p>
+<h2 id="frontend-deployment">Frontend Deployment</h2>
+<p>This is the first time I serve frontend to production (?) and I
+noticed that I did not understand how it works.</p>
+<p>When developing features, node server is always run to serve the
+frontend.</p>
+<p>However, frontend servers won't be used in production. The static
+files are generated from the build <code>npm run build</code> and the
+server (such as NGINX) serve them. I don't need to start a separate
+server for the frontend like I do in local development.</p>
+<p>It's embarrassing that I was confused about that for a long time.</p>
+<hr />
+<p>Sushi bowl 800 Avocado 200 Yogurt 500</p>
+<p>Total 1500 kcal</p>
+<hr />
+<p>TODO:</p>
+<ul>
+<li>meaning of port 80, 443</li>
+<li>GitHub Actions cache action <a
+href="https://github.com/actions/cache">https://github.com/actions/cache</a></li>
+</ul>
+<hr />
+<p><a href="../../index.html">index</a> <a
+href="20240526.html">20240526</a> <a
+href="20240528.html">20240528</a></p>
