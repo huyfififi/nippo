@@ -16,7 +16,7 @@ Encrypt by clearing its challenge, but as I tried to configure the VPS
 configured with SSL certificates. All I needed to do is simply serve the
 application via HTTP; Cloudflare automatically enables HTTPS for end
 users.</p>
-<p>users &lt;-&gt; Cloudflare &lt;-&gt; my VPS</p>
+<p>users &lt;- (HTTPS) -&gt; Cloudflare &lt;- (HTTP) -&gt; my VPS</p>
 <p>I have my domain in Cloudflare, and it turned out that it's
 configured with <a
 href="https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/flexible/">Flexible</a>
@@ -29,8 +29,8 @@ configuration now, I decided to let that work for the time being.</p>
 <p>It seems to be useful to have very small and personal projects on the
 internet.</p>
 <p>FYI: To make my subdomain dashboard.huyfififi.com points to the VPS,
-A record was added dashboard.huyfififi.com -&gt; The static IP address
-of the VPS to map them.</p>
+<strong>A</strong> record was added dashboard.huyfififi.com -&gt; The
+static IP address of the VPS to map them.</p>
 <p>As I mentioned before, I cannot get static IP addresses at home
 because I share a house and I will move soon. VPS (Virtual Private
 Server) such as Amazon Lightsail provides a feature to attach a static
