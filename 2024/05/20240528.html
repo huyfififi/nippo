@@ -108,7 +108,48 @@ Caching packages dependencies</a></p>
 environment as a walkaround, and the step <code>setup-python</code> does
 not exist. I will try to use it later.</p>
 <hr />
-<p>Total _ kcal</p>
+<p><a href="https://codeforces.com/problemset/problem/1974/A">1974A.
+Phone Desktop</a></p>
+<p>It's been a while since I solved a problem last time, so I tackled a
+very easy problem today.</p>
+<pre><code>package main
+
+import (
+    &quot;fmt&quot;
+)
+
+func minRequiredScreens(x int, y int) int {
+    var numPagesFilledWithBig int
+    if y%2 == 0 {
+        numPagesFilledWithBig = y / 2
+    } else {
+        numPagesFilledWithBig = y/2 + 1
+    }
+
+    vacanciesForSmall := numPagesFilledWithBig*15 - y*4
+    remainingSmall := x - vacanciesForSmall
+
+    if remainingSmall &lt;= 0 {
+        return numPagesFilledWithBig
+    } else if remainingSmall%15 == 0 {
+        return numPagesFilledWithBig + remainingSmall/15
+    } else {
+        return numPagesFilledWithBig + remainingSmall/15 + 1
+    }
+}
+
+func main() {
+    var t int
+    fmt.Scan(&amp;t)
+    for i := 0; i &lt; t; i++ {
+        var x, y int
+        fmt.Scan(&amp;x, &amp;y)
+        fmt.Println(minRequiredScreens(x, y))
+    }
+}</code></pre>
+<hr />
+<p>Poke 800 Yogurt 300 California rools 300 Veggie sticks 400</p>
+<p>Total 1800 kcal</p>
 <hr />
 <p>TODO:</p>
 <ul>
