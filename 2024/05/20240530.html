@@ -103,6 +103,10 @@ results?</p>
     return arr[n]</code></pre>
 <p>Actually, we don't need an array with length = n because we only need
 to track the previous element and the previous previous element.</p>
+<p>Because each fibonacci(i) will be calculated only once, the time
+complexity of it is O(n), but unlike tabulation, checking the results of
+subproblems happens multiple times, and I can see that tabulation is
+always faster than memoization.</p>
 <h3 id="a.-chess-for-three"><a
 href="https://codeforces.com/contest/1973/problem/A">1973A. Chess For
 Three</a></h3>
