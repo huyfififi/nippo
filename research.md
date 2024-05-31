@@ -1,5 +1,6 @@
 <head><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" /></head>
 
+- [Memoization / Tabulation (20240530)](./2024/05/20240530.html)
 - [The Internet Engineering Task Force (IETF) (20240529)](./2024/05/20240529.html)
 - [How port numbers assigned (22, 80, 443) / GitHub Actions actions/cache (20240528)](./2024/05/20240528.html)
 - [Cloudflare Flexible SSL/TLS encryption models / Frontend Deployment (20240527)](./2024/05/20240527.html)
