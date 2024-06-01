@@ -1,0 +1,63 @@
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+<meta charset="UTF-8">
+</head>
+<h1 id="section">20240531</h1>
+<h2 id="tamagotchi">Tamagotchi</h2>
+<p>Tamagotchi got popular among Japanese software developers because the
+Tamagotchi team released a blog about how they use AWS to build the
+complex system.</p>
+<p>I browsed the Tamagotchi website today and found that there is a web
+page to list OSS they use. It's rare that a project for children
+discloses such technical details.</p>
+<p><a
+href="https://tamagotchi-official.com/legalinfo/toy/uni/">Tamagotchi Uni
+Toy OSS</a></p>
+<p>I'm considering ordering one for myself. It's not that expensive ($59
+before tax).</p>
+<h2 id="c.-rudolf-and-the-ugly-string"><a
+href="https://codeforces.com/problemset/problem/1941/C">1941C. Rudolf
+and the Ugly String</a></h2>
+<p>I cannot simply use memoization because it involves string
+manipulations.</p>
+<p>For example,</p>
+<pre><code>memo = {}
+
+
+def min_removal(s: str) -&gt; int:
+    if s in memo:
+        return memo[s]
+
+    if &quot;pie&quot; not in s and &quot;map&quot; not in s:
+        memo[s] = 0
+        return 0
+
+    res = 10 ** 7
+    for i in range(len(s)):
+        res = min(res, min_removal(s[:i] + s[i+1:]) + 1)
+    memo[s] = res
+    return res
+
+
+for _ in range(int(input())):
+    n = int(input())
+    s = input()
+    print(min_removal(s))</code></pre>
+<p>if the length of the input string s is n, the creation of a substring
+s[:i] + s[i+1:] costs O(n), making the total time complexity ~= O(n^2)?
+which is not suitable for the constraints of this problem.</p>
+<p>I'll try to come up with a tabulation solution tomorrow.</p>
+<hr />
+<p>Cheat day</p>
+<p>Total ???? kcal</p>
+<hr />
+<p>TODO:</p>
+<ul>
+<li>Fix env for dashboard.huyfififi.com</li>
+<li><a href="https://codeforces.com/problemset/problem/1941/C">1941C.
+Rudolf and the Ugly String</a></li>
+</ul>
+<hr />
+<p><a href="../../index.html">index</a> <a
+href="20240530.html">20240530</a> <a
+href="../06/20240601.html">20240601</a></p>
