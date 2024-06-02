@@ -1,15 +1,20 @@
 <head><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" /></head>
 
-TODO: try again
+## Dynamic Programming
+
+- [20240601](./2024/06/20240601.html)
+- [20240531](./2024/05/20240531.html)
+- [20240530](./2024/05/20240530.html)
+
+## Binary Search
 
 - [20240515](./2024/05/20240515.html)
+
+## Others
+
 - [20240513](./2024/05/20240513.html)
 - [20240512](./2024/05/20240512.html)
 - [20240509](./2024/05/20240509.html)
-
-## Dynamic Programming
-
-- [20240530](./2024/05/20240530.html)
 
 ---
 

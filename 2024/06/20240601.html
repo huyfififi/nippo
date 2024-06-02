@@ -1,0 +1,44 @@
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+<meta charset="UTF-8">
+</head>
+<h1 id="section">20240601</h1>
+<p>Worked a bit on the system design of a new micro service.</p>
+<h2 id="c.-rudolf-and-the-ugly-string"><a
+href="https://codeforces.com/problemset/problem/1941/C">1941C. Rudolf
+and the Ugly String</a></h2>
+<p>Tabulation</p>
+<pre><code>def min_removal(s: str) -&gt; int:
+    dp = [0] * (
+        n + 1
+    )  # dp[i] will hold the minimum deletions needed to make s[:i] beautiful
+    for i in range(3, n + 1):
+        if s[i - 3 : i] in (&quot;pie&quot;, &quot;map&quot;):
+            dp[i] = dp[i - 3] + 1
+        else:
+            dp[i] = dp[i - 1]  # same as s[:i-1] because s[i] does not increase the number of removals
+    return dp[n]
+
+
+for _ in range(int(input())):
+    n = int(input())
+    s = input()
+    print(min_removal(s))</code></pre>
+<p>I can't fully explain how to replicate this solution. I'll come back
+later.</p>
+<p>The only thing I'm sure is that, dynamic programming is all about
+finding recurrence relations.</p>
+<hr />
+<p>Sushi bowl 1000 Teriyaki bowl 1500</p>
+<p>Total 2500 kcal</p>
+<p>As I get older, it’s getting harder to stop eating, or maybe I'm just
+stressted out.</p>
+<hr />
+<p>TODO:</p>
+<ul>
+<li>Fix env for dashboard.huyfififi.com</li>
+</ul>
+<hr />
+<p><a href="../../index.html">index</a> <a
+href="../05/20240531.html">20240531</a> <a
+href="20240602.html">20240602</a></p>
