@@ -1,5 +1,9 @@
 <head><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" /></head>
 
+## Parity
+
+- [20240602](./2024/06/20240602.html)
+
 ## Dynamic Programming
 
 - [20240601](./2024/06/20240601.html)
