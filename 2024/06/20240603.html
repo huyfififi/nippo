@@ -9,8 +9,6 @@
 <li>It was hard.</li>
 </ul></li>
 </ul>
-<h2 id="datadogs-pricing-model">DataDog's pricing model</h2>
-<h2 id="github-actions-pricing-model">GitHub Actions Pricing Model</h2>
 <h2 id="b.-ugu"><a
 href="https://codeforces.com/problemset/problem/1732/B">1732B.
 Ugu</a></h2>
@@ -29,6 +27,32 @@ Ugu</a></h2>
         i += 1
 
     print(count)</code></pre>
+<h2 id="b.-also-try-minecraft"><a
+href="https://codeforces.com/problemset/problem/1709/B">1709B. Also Try
+Minecraft</a></h2>
+<p>Sum Array (?) is a popular technique to solve this sort of
+problem.</p>
+<pre><code>n, m = map(int, input().split())
+a = list(map(int, input().split()))
+
+sum_arr: list[int] = [0] * n
+for i in range(n):
+    if i == 0:
+        continue
+    sum_arr[i] = sum_arr[i - 1] + max(a[i - 1] - a[i], 0)
+
+sum_arr_rev: list[int] = [0] * n
+for i in range(n - 1, -1, -1):
+    if i == n - 1:
+        continue
+    sum_arr_rev[i] = sum_arr_rev[i + 1] + max(a[i + 1] - a[i], 0)
+
+for i in range(m):
+    s, t = map(int, input().split())
+    if s &lt; t:
+        print(sum_arr[t - 1] - sum_arr[s - 1])
+    else:
+        print(sum_arr_rev[t - 1] - sum_arr_rev[s - 1])</code></pre>
 <hr />
 <p>Sushi 800 Lunchable 300 yogurt 800</p>
 <p>Total 1900 kcal</p>
@@ -36,9 +60,11 @@ Ugu</a></h2>
 <hr />
 <p>TODO:</p>
 <ul>
-<li>Take the device to the office</li>
+<li>Take the device to the office (low priority)</li>
 <li>I cannot sign in to DMV somehow (Cloudfront returns errors). Try
-again tomorrow.</li>
+again tomorrow. (low priority)</li>
+<li>Check DataDog's pricing model</li>
+<li>Check GitHub Actions Pricing Model</li>
 </ul>
 <hr />
 <p><a href="../../index.html">index</a> <a
