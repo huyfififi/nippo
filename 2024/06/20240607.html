@@ -1,0 +1,87 @@
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+<meta charset="UTF-8">
+</head>
+<h1 id="section">20240607</h1>
+<h2 id="personalities">16 Personalities</h2>
+<p>Checked <a
+href="https://www.16personalities.com/">16Personalities</a> with my
+wife. This time, my personalities turned out to be INFJ (Advocate) and
+my wife's is ISFJ. Only the second is different (N, Intuition vs S,
+Sensing), so it may be said that we are very similiar, but my peronality
+always change depending on life stages. I believe both logical thinking
+and emotional feeling are very important, and it does not make sense to
+bring logic into everyday life, such as dietary pereferences. I had a
+frined from college, and he thought everything should be judged by
+logic. To be honest, I found a bit difficult to spent my personal time
+with him because he always try to bring logic to my emotional judgement.
+I didn't say to him at that time, but he did not exercise regularly or
+pay attention to his health. It's a known fact that exercising can help
+in many ways for a long term, but he did not do that. I find his
+attitude is contradictory.</p>
+<p>As a human, it's not possible to work like a machine. It's important
+to consider things logically, but it's also important to respect the
+hormone balance and feelings.</p>
+<p>I digress, but what I wanted to say is, I weight emotion and logic
+equally, and personality tests such as 16 personalities cannot get the
+nuance of mine. Also, I have experienced a lot in life. I am always out
+of my comfort zone. Therefore, my peronality constantly changes.</p>
+<p>I was surprised that all my friends don't feel that way. Their
+personalities tests results are fixed from their young ages.</p>
+<p>Maybe that is because my upbringing was very unique.</p>
+<h2 id="a.-problem-generator"><a
+href="https://codeforces.com/contest/1980/problem/A">1980A. Problem
+Generator</a></h2>
+<p>A simple problem to count the number of missing ones.</p>
+<pre><code>for _ in range(int(input())):
+    m, n = map(int, input().split())
+    a = input()
+
+    counts = {
+        &quot;A&quot;: n,
+        &quot;B&quot;: n,
+        &quot;C&quot;: n,
+        &quot;D&quot;: n,
+        &quot;E&quot;: n,
+        &quot;F&quot;: n,
+        &quot;G&quot;: n,
+    }
+
+    for c in a:
+        counts[c] -= 1
+
+    print(sum([count for count in counts.values() if count &gt;= 0]))</code></pre>
+<h2 id="b.-choosing-cubes"><a
+href="https://codeforces.com/contest/1980/problem/B">1900B. Choosing
+Cubes</a></h2>
+<p>sorting + conditions</p>
+<pre><code>for _ in range(int(input())):
+    n, f, k = map(int, input().split())
+    a = list(map(int, input().split()))
+    f_num = a[f - 1]
+
+    a.sort(reverse=True)
+
+    if f_num &lt; a[k - 1]:
+        print(&quot;NO&quot;)
+    elif f_num &gt; a[k - 1]:
+        print(&quot;YES&quot;)
+    else:  # f_num == a[k-1]:
+        if k &lt; n and a[k] == f_num:
+            print(&quot;MAYBE&quot;)
+        else:
+            print(&quot;YES&quot;)</code></pre>
+<hr />
+<p>Protein bar 200 Bagels 400</p>
+<p>Total 2000 kcal</p>
+<hr />
+<p>TODO:</p>
+<ul>
+<li>Take the device to the office (low priority)</li>
+<li>Check DMV status</li>
+<li>Review Codeforces 1980C</li>
+</ul>
+<hr />
+<p><a href="../../index.html">index</a> <a
+href="20240606.html">20240606</a> <a
+href="20240608.html">20240608</a></p>
