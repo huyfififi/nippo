@@ -1,0 +1,81 @@
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+<meta charset="UTF-8">
+</head>
+<h1 id="section">20240610</h1>
+<p>I forgot I would have an MTG, which conflicts with the Codeforces
+contest tomorrow. I reluctantly withdrew from the contest.</p>
+<p>My address was successfully updated, but it seems I need wait for
+some time to renew my DL/ID.</p>
+<p>Checked GitHub payment information.</p>
+<p>RDBMS (Relational Database Management System)</p>
+<p>Ordered shoes. I will run 6+km with my friends next Friday, so I'm
+preparing for that, running regularly and trying to reduce weight.</p>
+<h2 id="netlify">Netlify</h2>
+<p>Netlify is a powerful platform for deploying and managing modern web
+projects.</p>
+<p>Netlify provides various features for deploying and managing modern
+web projects, but here are the features I might want to use for personal
+projects.</p>
+<h3 id="redirects-and-rewrites-to-return-410-gone"><a
+href="https://docs.netlify.com/routing/redirects/"><code>Redirects and rewrites</code>
+to return 410 Gone</a></h3>
+<blockquote>
+<p>You can configure redirect and rewrite rules for your Netlify
+site…</p>
+</blockquote>
+<p>When configuring <code>410 Gone</code> for my website…</p>
+<ol type="1">
+<li>create a Netlify application</li>
+<li>create a plain text file <code>_redirects</code> with
+<code>/* /410.html 410!</code></li>
+<li>push changes to the Git repository to trigger the build</li>
+</ol>
+<p>It redirects all traffic to 410.html, so that I can let users know
+the service is gone.</p>
+<p>However, I already have a VPS running the Mastodon instance with
+Nginx as a reverse proxy. Why not update the Nginx configuration
+directly to return <code>410 Gone</code>?</p>
+<p>I won't close the instance anytime soon, but better do more research
+later.</p>
+<h3 id="ci-to-deploy-a-static-site">CI to deploy a static site</h3>
+<p><a
+href="https://www.netlify.com/blog/2016/10/27/a-step-by-step-guide-deploying-a-static-site-or-single-page-app/">A
+Step-by-Step Guide: Deploying A Static Site or Single-page App</a></p>
+<p>This blog guides us through the configuration and looks very easy to
+follow.</p>
+<p>I'm tired of writing Nginx configuration or managing TLS
+certificates, so maybe I should use Netlify for the next project (if
+any).</p>
+<h2 id="b.-make-it-divisible-by-25"><a
+href="https://codeforces.com/problemset/problem/1593/B">1593B. Make it
+Divisible by 25</a></h2>
+<p><a href="https://codeforces.com/blog/entry/96034">Editorial for
+Codeforces Round #748 (Div.3)</a></p>
+<p>It seems the optimal solution is not different from mine; the only
+difference is the solution extracts the common operations.</p>
+<h2 id="b.-mocha-and-red-and-blue"><a
+href="https://codeforces.com/problemset/problem/1559/B">1559B. Mocha and
+Red and Blue</a></h2>
+<p>I think we can do a greedy solution.</p>
+<p><code>?</code> -&gt; skip <code>R</code> -&gt; (<code>BR</code> or
+<code>RB</code>) * n (n &gt;= 0) + <code>B</code> <code>B</code> -&gt;
+(<code>BR</code> or <code>RB</code>) * n (n &gt;= 0) +
+<code>R</code></p>
+<p>It works on paper, but I could not make it work as the conditions are
+complex (for me). I'll check its editorial tomorrow.</p>
+<hr />
+<p>Kombucha 400 Yogurt drink 100 Protein shake 300 Smoothie 300</p>
+<p>Total 1100 kcal</p>
+<p>6k run push ups</p>
+<hr />
+<p>TODO:</p>
+<ul>
+<li>DMV: Check if I'm eligible for online renewal (20240617)</li>
+<li>Update resume</li>
+<li>Review Codeforces 1559B</li>
+</ul>
+<hr />
+<p><a href="../../index.html">index</a> <a
+href="20240609.html">20240609</a> <a
+href="20240611.html">20240611</a></p>
