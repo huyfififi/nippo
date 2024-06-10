@@ -1,0 +1,204 @@
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+<meta charset="UTF-8">
+</head>
+<h1 id="section">20240609</h1>
+<p>woke up at 3:30 pm</p>
+<h2 id="read-dont-dry-your-code-prematurely">Read <a
+href="https://testing.googleblog.com/2024/05/dont-dry-your-code-prematurely.html">“Don’t
+DRY Your Code Prematurely”</a></h2>
+<p>I tend to group similar logic, so the advice</p>
+<blockquote>
+<p>Applying DRY principles too rigidly leads to premature abstractions
+that make future changes more complex than necessary.</p>
+</blockquote>
+<p>made me doubt my thought process and reconsider it.</p>
+<p>I still don't have that many experiences, but I will keep that in
+mind.</p>
+<h2 id="c.-sofia-and-the-lost-operations"><a
+href="https://codeforces.com/contest/1980/problem/C">1980C. Sofia and
+the Lost Operations</a></h2>
+<p>If the last element of <code>d</code> does not appear in the modified
+array <code>b</code>, it's impossible to transform the original array
+<code>a</code> into <code>b</code> with the modifications
+<code>d</code>.</p>
+<p>If the last elemenf of <code>d</code> does exist in the modified
+array <code>b</code>, we can just check if differences of <code>b</code>
+and <code>a</code> (set(b) - set(a)) exist in the modifications
+<code>d</code>. That is because any redundant modifications that do not
+contribute to the transformations <code>a</code> -&gt; <code>b</code>
+can be overridden by the last element of <code>d</code>. (i.e., the
+transformations can be done by concentrating all the redundant
+operations under the bi=dm).</p>
+<p>The difficulty of this problem is 1300, so I might want to skip this
+problem for now though I kind of understand the solution. I'll look in
+details later.</p>
+<pre><code>def possible(
+    n: int, b: list[int], m: int, drr: list[int], dif: list[int], k: int
+) -&gt; bool:
+    # drr[m - 1] must be present in the changed array brr
+    if drr[m - 1] not in brr:
+        return False
+
+    drr = sorted(drr)
+
+    bi: int = 0
+    di: int = 0
+
+    while bi &lt; k and di &lt; m:
+        if dif[bi] == drr[di]:
+            bi += 1
+            di += 1
+        elif dif[bi] &lt; drr[di]:
+            return False
+        else:
+            di += 1
+
+    return bi == k
+
+
+for _ in range(int(input())):
+    n = int(input())
+    arr = list(map(int, input().split()))
+    brr = list(map(int, input().split()))
+    m = int(input())
+    drr = list(map(int, input().split()))
+
+    dif = []
+    for i in range(n):
+        if arr[i] != brr[i]:
+            dif.append(brr[i])
+    dif.sort()
+
+    if possible(n, brr, m, drr, dif, len(dif)):
+        print(&quot;YES&quot;)
+    else:
+        print(&quot;NO&quot;)</code></pre>
+<h2 id="gone">410 Gone</h2>
+<p>It is advised that services should return 410 Gone when shutting
+down. For example, I have a Mastodon instance on ocalaavenue.net, and I
+should use AWS lambda function or Netlify to return 410 Gone if I decide
+to shut down the server. That will help relay (or connected) servers to
+know my instance is removed.</p>
+<p>I didn't follow this with my previous Mastodon instance. I just used
+its <code>self-destruct</code> command. It should have been sufficient,
+but I'll try to return 410 Gone next time I migrate the instance (or
+finally decide to remove my instance).</p>
+<p><a
+href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/410">410
+Gone - HTTP | MDN</a></p>
+<blockquote>
+<p>The HyperText Transfer Protocol (HTTP) <code>410 Gone</code> client
+error response code indicates that access to the target resource is no
+longer available at the origin server and that this condition is likely
+to be permanent.</p>
+</blockquote>
+<h2 id="b.-make-it-divisible-by-25"><a
+href="https://codeforces.com/problemset/problem/1593/B">1593B. Make it
+Divisible by 25</a></h2>
+<p>BFS approach results in “Time limit exceeded.” I haven't encountered
+any competitive programming problems to use BFS. Are there?</p>
+<pre><code>from collections import deque
+
+
+def bfs(n: int) -&gt; int:
+    q = deque()
+    q.append((n, 0))
+
+    while q:
+        num, steps = q.popleft()
+        if num &lt; 10:
+            continue
+
+        if num % 25 == 0:
+            return steps
+
+        num_s: str = str(num)
+        for i in range(len(num_s)):
+            q.append((int(num_s[:i] + num_s[i + 1 :]), steps + 1))
+
+
+for _ in range(int(input())):
+    n = int(input())
+    print(bfs(n))</code></pre>
+<p>Because 100 = 25 * 4, we can focus on suffix which creates numbers
+divisible by 25 (00, 25, 50, 75).</p>
+<p>For example, 32925 = 329 * 100 (25 * 4) + 25 -&gt; divisible by
+25</p>
+<p>You can see the 329 part is irrelevant.</p>
+<p>My solution is dirty. I'll check the editorial tomorrow as it's
+getting too late here.</p>
+<pre><code>def min_steps(n: int) -&gt; int:
+    n_str: str = str(n)
+    len_n: int = len(n_str)
+
+    res = len_n
+
+    # *00
+    i0 = -1
+    i = len_n - 1
+    while i &gt;= 0:
+        if n_str[i] == &quot;0&quot;:
+            if i0 &gt; 0:
+                res = min(res, len_n - i - 2)
+            else:
+                i0 = i
+        i -= 1
+
+    # *25
+    i5 = -1
+    i2 = -1
+    i = len_n - 1
+    while i &gt;= 0:
+        if n_str[i] == &quot;5&quot;:
+            i5 = i
+        elif n_str[i] == &quot;2&quot; and i5 &gt; 0:
+            res = min(res, len_n - i - 2)
+            break
+        i -= 1
+
+    # *50
+    i0 = -1
+    i5 = -1
+    i = len_n - 1
+    while i &gt;= 0:
+        if n_str[i] == &quot;0&quot;:
+            i0 = i
+        elif n_str[i] == &quot;5&quot; and i0 &gt; 0:
+            res = min(res, len_n - i - 2)
+            break
+        i -= 1
+
+    # *75
+    i5 = -1
+    i7 = -1
+    i = len_n - 1
+    while i &gt;= 0:
+        if n_str[i] == &quot;5&quot;:
+            i5 = i
+        elif n_str[i] == &quot;7&quot; and i5 &gt; 0:
+            res = min(res, len_n - i - 2)
+            break
+        i -= 1
+
+    return res
+
+
+for _ in range(int(input())):
+    n = int(input())
+    print(min_steps(n))</code></pre>
+<hr />
+<p>Smootie 300 Bubble tea 400</p>
+<p>Total 700 kcal</p>
+<hr />
+<p>TODO:</p>
+<ul>
+<li>Take the device to the office (low priority)</li>
+<li>Check DMV status</li>
+<li>Check the editorial of Codeforces 1593B</li>
+<li>Remind me of Codeforces Round 952</li>
+</ul>
+<hr />
+<p><a href="../../index.html">index</a> <a
+href="20240608.html">20240608</a> <a
+href="20240610.html">20240610</a></p>
