@@ -1,5 +1,6 @@
 <head><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" /></head>
 
+- [ping, ICMP (Internet Control Message Protocol) (20240611)](./2024/06/20240611.html)
 - [Some of Netlify features (20240610)](./2024/06/20240610.html)
 - [410 Gone (20240609)](./2024/06/20240609.html)
 - [Billing of DataDog and GitHub Actions / Google Testing Blog (20240604)](./2024/06/20240604.html)

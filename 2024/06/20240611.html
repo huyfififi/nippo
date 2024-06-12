@@ -1,0 +1,137 @@
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+<meta charset="UTF-8">
+</head>
+<h1 id="section">20240611</h1>
+<p>The work was hard…</p>
+<h2 id="ping"><code>ping</code></h2>
+<pre><code>$ ping nippo.huyfififi.com -c 5
+PING nippo.huyfififi.com (172.67.175.186): 56 data bytes
+64 bytes from 172.67.175.186: icmp_seq=0 ttl=55 time=19.744 ms
+64 bytes from 172.67.175.186: icmp_seq=1 ttl=55 time=19.450 ms
+64 bytes from 172.67.175.186: icmp_seq=2 ttl=55 time=21.113 ms
+64 bytes from 172.67.175.186: icmp_seq=3 ttl=55 time=19.446 ms
+64 bytes from 172.67.175.186: icmp_seq=4 ttl=55 time=20.897 ms
+
+--- nippo.huyfififi.com ping statistics ---
+5 packets transmitted, 5 packets received, 0.0% packet loss
+round-trip min/avg/max/stddev = 19.446/20.130/21.113/0.726 ms</code></pre>
+<p>I use <code>ping</code> to check the internet connection or server
+availability, but I didn't know how it works.</p>
+<pre><code>$ man ping
+...
+NAME         Stop after sending (and receiving) count ECHO_RESPONSE packets.  If this option is not specified, ping will operate until
+     ping – send ICMP ECHO_REQUEST packets to network hostsonjunction with ping sweeps, each sweep will consist of count packets.
+...</code></pre>
+<p>What is ICMP then?</p>
+<p><a
+href="https://www.cloudflare.com/learning/ddos/glossary/internet-control-message-protocol-icmp/">CloudFlare:
+What is the Internet Control Message Protocol (ICMP)?</a></p>
+<blockquote>
+<p>The Internet Control Message Protocol (ICMP) is a network layer
+protocol used by network devices to diagnose network communication
+issues.</p>
+</blockquote>
+<blockquote>
+<p>ICMP is mainly used to determine whether or not data is reaching its
+intended destination in a timely manner.</p>
+</blockquote>
+<blockquote>
+<p>Commonly, the ICMP protocol is used on network devices, such as
+routers.</p>
+</blockquote>
+<p>So, ICMP is a network layer protocol. When sending ICMP packets from
+my computer to a server (domain -&gt; IP translation is involved), the
+server replies packages back to my computer ('s IP address). The logic
+is in OS, so without explicitly writing logic for it with Nginx or
+Apache, the protocol works.</p>
+<blockquote>
+<p>The primary purpose of ICMP is for error reporting. When two devices
+connect over the Internet, the ICMP generates errors to share with the
+sending device in the event that any of the data did not get to its
+intended destination. For example, if a packet of data is too large for
+a router, the router will drop the packet and send an ICMP message back
+to the original source for the data.</p>
+</blockquote>
+<blockquote>
+<p>A secondary use of ICMP protocol is to perform network diagnostics;
+the commonly used terminal utilities traceroute and ping both operate
+using ICMP. The traceroute utility is used to display the routing path
+between two Internet devices. The routing path is the actual physical
+path of connected routers that a request must pass through before it
+reaches its destination. The journey between one router and another is
+known as a ‘hop,’ and a traceroute also reports the time required for
+each hop along the way. This can be useful for determining sources of
+network delay.</p>
+</blockquote>
+<p>I was not aware of these use cases. I'm not a network engineer, so I
+feel that the knowledge won't stay in my brain long. Maybe I should
+check <code>traceroute</code> tomorrow?</p>
+<h2 id="b.-mocha-and-red-and-blue"><a
+href="https://codeforces.com/contest/1559/problem/B">1559B. Mocha and
+Red and Blue</a></h2>
+<p>Managed to make it work by a greedy approach, but the code is messy,
+and it was very difficult to spot a bug. I'll check the editorial
+tomorrow.</p>
+<pre><code>def solve(n: int, s: str) -&gt; str:
+    res: str = &quot;&quot;
+
+    prev_i: int = -1
+    for i in range(n):
+        if s[i] == &quot;?&quot;:
+            continue
+        elif s[i] == &quot;B&quot;:
+            if (i - prev_i) % 2 == 1:
+                res += &quot;BR&quot; * ((i - prev_i) // 2) + &quot;B&quot;
+            else:
+                res += &quot;RB&quot; * ((i - prev_i) // 2)
+            prev_i = i
+        elif s[i] == &quot;R&quot;:
+            if (i - prev_i) % 2 == 1:
+                res += &quot;RB&quot; * ((i - prev_i) // 2) + &quot;R&quot;
+            else:
+                res += &quot;BR&quot; * ((i - prev_i) // 2)
+            prev_i = i
+
+    if prev_i != n - 1:
+        if len(res) == 0:
+            if (n - prev_i) % 2 == 0:
+                res = &quot;B&quot; + &quot;RB&quot; * ((n - 1 - prev_i) // 2)
+            else:
+                res = &quot;BR&quot; * ((n - 1 - prev_i) // 2)
+        elif res[-1] == &quot;B&quot;:
+            if (n - prev_i) % 2 == 0:
+                res += &quot;R&quot; + &quot;BR&quot; * ((n - 1 - prev_i) // 2)
+            else:
+                res += &quot;RB&quot; * ((n - 1 - prev_i) // 2)
+        else:
+            if (n - prev_i) % 2 == 0:
+                res += &quot;B&quot; + &quot;RB&quot; * ((n - 1 - prev_i) // 2)
+            else:
+                res += &quot;BR&quot; * ((n - 1 - prev_i) // 2)
+
+    return res
+
+
+
+for _ in range(int(input())):
+    n = int(input())
+    s = input()
+    print(solve(n, s))</code></pre>
+<hr />
+<p>Sushi 1000 Avocado 200 Lunchable 300 Bagel 300</p>
+<p>Total 1800 kcal</p>
+<p>*vomiting sound*</p>
+<p>6k run push ups pull ups</p>
+<hr />
+<p>TODO:</p>
+<ul>
+<li>DMV: Check if I'm eligible for online renewal (20240617)</li>
+<li>Update resume</li>
+<li>Review Codeforces 1559B editorial</li>
+<li>Check <code>traceroute</code></li>
+</ul>
+<hr />
+<p><a href="../../index.html">index</a> <a
+href="20240610.html">20240610</a> <a
+href="20240612.html">20240612</a></p>
