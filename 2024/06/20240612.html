@@ -1,0 +1,91 @@
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+<meta charset="UTF-8">
+</head>
+<h1 id="section">20240612</h1>
+<p>Today was not very busy, but could be every productive. I used to
+have a weekly study group. Maybe I should create another, but the
+problem is that I don't have many friends interested in what I'm
+interested in.</p>
+<p>The next Codeforces Round starts at 2:15 am PST !? There's no way I
+can join.</p>
+<p>Skyrim is too interesting… It feels like I live another life.</p>
+<h2 id="aws-efs-elastic-file-system">AWS EFS (Elastic File System)</h2>
+<p><a href="https://aws.amazon.com/efs/">AWS: Shared File Storage -
+Amazon Elastic File System (EFS)</a></p>
+<p>I don't get time to look into all the details, but here is my current
+understanding.</p>
+<p>Amazon EFS is a file storage that auto-scale and can be shared across
+AWS infrastructures such as EC2 instances, AWS containers, and Lambda
+functions. On-premises servers can access the file storage with Amazon
+Direct Connect, too.</p>
+<p>The only thing to do to use the file system is mounting the file
+system on AWS infrastructures like EC2 instances. Then, files can be
+accessed as if they are on the computers.</p>
+<h2 id="traceroute">traceroute</h2>
+<pre><code>$ man traceroute
+
+NAME
+     traceroute – print the route packets take to network host
+
+DESCRIPTION
+     The Internet is a large and complex aggregation of network hardware, connected together by gateways.  Tracking the route one&#39;s packets follow (or finding the miscreant gateway that&#39;s discarding your
+     packets) can be difficult.  traceroute utilizes the IP protocol `time to live&#39; field and attempts to elicit an ICMP TIME_EXCEEDED response from each gateway along the path to some host.
+
+     The only mandatory parameter is the destination host name or IP number.  The default probe datagram length is 40 bytes, but this may be increased by specifying a packet size (in bytes) after the
+     destination host name.</code></pre>
+<p>tried in my local machine, but the ICMP packets are only responded up
+to the 11th packet.</p>
+<pre><code> 9  50.242.149.166 (50.242.149.166)  15.273 ms  15.185 ms  16.009 ms
+10  52.93.141.165 (52.93.141.165)  94.054 ms
+    52.93.141.141 (52.93.141.141)  31.317 ms
+    52.93.141.147 (52.93.141.147)  30.425 ms
+11  54.240.243.41 (54.240.243.41)  22.620 ms
+    150.222.111.95 (150.222.111.95)  14.888 ms
+    150.222.111.129 (150.222.111.129)  16.212 ms
+12  * * *
+13  * * *
+14  * * *
+15  * * *</code></pre>
+<p><a
+href="https://serverfault.com/questions/334029/what-does-mean-when-traceroute">Server
+Fault: what does “***” mean when traceroute</a></p>
+<p>I tried some options such as -P to specify IP protocol or -m to
+specify the max time-to-live, but could not make it past the 11th hop.
+Maybe something happens at the 12th router, and it does not send ICMP
+packets back?</p>
+<h2 id="a.-stickogon"><a
+href="https://codeforces.com/problemset/problem/1957/A">1957A.
+Stickogon</a></h2>
+<p>Problems with the difficulty 800 still hit me hard.</p>
+<pre><code>from collections import defaultdict
+
+
+for _ in range(int(input())):
+    n = int(input())
+    a = list(map(int, input().split()))
+
+    counter = defaultdict(int)
+    for ai in a:
+        counter[ai] += 1
+
+    res = 0
+    for _length, count in counter.items():
+        res += count // 3  # the minimum number of sides is 3. To maximize the number of polygons generated, we create as many triangles as possible.
+
+    print(res)</code></pre>
+<hr />
+<p>Sushi 800 Lunchable 300 Bagel 600</p>
+<p>Total 1700 kcal</p>
+<p>jogging push ups pull ups</p>
+<hr />
+<p>TODO:</p>
+<ul>
+<li>DMV: Check if I'm eligible for online renewal (20240617)</li>
+<li>Update resume</li>
+<li>important MTG</li>
+</ul>
+<hr />
+<p><a href="../../index.html">index</a> <a
+href="20240611.html">20240611</a> <a
+href="20240613.html">20240613</a></p>
