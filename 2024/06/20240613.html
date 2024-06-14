@@ -1,0 +1,39 @@
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+<meta charset="UTF-8">
+</head>
+<h1 id="section">20240613</h1>
+<p>There are so many things to learn when exploring machine-learning. I
+need to understand how they work, read research paper, and learn how to
+implement the feature upon them.</p>
+<h2 id="a.-contest-proposal"><a
+href="https://codeforces.com/problemset/problem/1972/A">1972A. Contest
+Proposal</a></h2>
+<pre><code>for _ in range(int(input())):
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = list(map(int, input().split()))
+
+    res = 0
+    ai = 0
+    for bi in range(n):
+        if a[ai] &gt; b[bi]:
+            res += 1
+        else:
+            ai += 1
+
+    print(res)</code></pre>
+<hr />
+<p>Sushi 800 Protein shake 200 Bagels 600</p>
+<p>Total 1600 kcal</p>
+<p>6k run push ups</p>
+<hr />
+<p>TODO:</p>
+<ul>
+<li>DMV: Check if I'm eligible for online renewal (20240617)</li>
+<li>Update resume</li>
+</ul>
+<hr />
+<p><a href="../../index.html">index</a> <a
+href="20240612.html">20240612</a> <a
+href="20240614.html">20240614</a></p>
