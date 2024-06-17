@@ -39,6 +39,10 @@
 
 - [1956B-800 (20240614)](./2024/06/20240614.html)
 
+## Constructive Algorithms
+
+- [1948A-800 (20240617)](./2024/06/20240617.html)
+
 ## Miscellaneous
 
 ### Time Format

@@ -1,0 +1,146 @@
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+<meta charset="UTF-8">
+</head>
+<h1 id="section">20240617</h1>
+<p>chatgpt.com/backend-api stopped responding…</p>
+<p>It seems I'm not eligible for DL online renewal as it's too early?
+will wait for a few months to get the notice.</p>
+<h2 id="awk">AWK</h2>
+<p><a
+href="https://www.math.utah.edu/docs/info/gawk_3.html#SEC10">math.utah.edu:
+AWK Language Programming - Getting Started with awk</a></p>
+<blockquote>
+<p>The basic function of awk is to search files for lines (or other
+units of text) that contain certain patterns. When a line matches one of
+the patterns, awk performs specified actions on that line. awk keeps
+processing input lines in this way until the end of the input files are
+reached.</p>
+</blockquote>
+<blockquote>
+<p>Programs in awk are different from programs in most other languages,
+because awk programs are data-driven; that is, you describe the data you
+wish to work with, and then what to do when you find it. Most other
+languages are procedural; you have to describe, in great detail, every
+step the program is to take. When working with procedural languages, it
+is usually much harder to clearly describe the data your program will
+process. For this reason, awk programs are often refreshingly easy to
+both write and read.</p>
+</blockquote>
+<blockquote>
+<p>When you run awk, you specify an awk program that tells awk what to
+do. The program consists of a series of rules… Each rule specifies one
+pattern to search for, and one action to perform when that pattern is
+found.</p>
+</blockquote>
+<blockquote>
+<p>Syntactically, a rule consists of a pattern followed by an action.
+The action is enclosed in curly braces to separate it from the pattern.
+Rules are usually separated by newlines. Therefore, an awk program looks
+like this:</p>
+</blockquote>
+<pre><code>pattern { action }
+pattern { action }
+...</code></pre>
+<blockquote>
+<p>There are several ways to run an awk program. If the program is
+short, it is easiest to include it in the command that runs awk, like
+this:</p>
+</blockquote>
+<pre><code>awk &#39;program&#39; input-file1 input-file2 ...</code></pre>
+<blockquote>
+<p>where program consists of a series of patterns and actions, as
+described earlier.</p>
+</blockquote>
+<blockquote>
+<p>When the program is long, it is usually more convenient to put it in
+a file and run it with a command like this:</p>
+</blockquote>
+<pre><code>awk -f program-file input-file1 input-file2 ...</code></pre>
+<p><a
+href="https://www.math.utah.edu/docs/info/gawk_22.html#GLOSS52">math.utah.edu:
+AWK Language Programming - Glossary</a></p>
+<blockquote>
+<p>Pattern: Patterns tell awk which input records are interesting to
+which rules. A pattern is an arbitrary conditional expression against
+which input is tested. If the condition is satisfied, the pattern is
+said to match the input record. A typical pattern might compare the
+input record against a regular expression.</p>
+</blockquote>
+<blockquote>
+<p>Action: A series of awk statements attached to a rule. If the rule’s
+pattern matches an input record, awk executes the rule’s action. Actions
+are always enclosed in curly braces.</p>
+</blockquote>
+<p>OK now it's time to write my first <code>awk</code> program. I have
+this Python file <code>c.py</code> created yesterday.</p>
+<pre><code>def convert_time(s: str) -&gt; str:
+    hh, mm = s.split(&quot;:&quot;)
+    if hh == &quot;00&quot;:
+        return f&quot;12:{mm} AM&quot;
+    elif hh == &quot;12&quot;:
+        return f&quot;12:{mm} PM&quot;
+    elif 0 &lt; int(hh) &lt; 12:
+        return f&quot;{hh}:{mm} AM&quot;
+    else:  # 12 &lt; int(hh) &lt; 24
+        return f&quot;{str((int(hh) - 12)).zfill(2)}:{mm} PM&quot;
+
+
+for _ in range(int(input())):
+    s = input()
+    print(convert_time(s))</code></pre>
+<p>An AWK program <code>'/return/ {print}'</code> prints all the return
+statements in the file.</p>
+<pre><code>$ awk &#39;/return/ {print}&#39; c.py
+        return f&quot;12:{mm} AM&quot;
+        return f&quot;12:{mm} PM&quot;
+        return f&quot;{hh}:{mm} AM&quot;
+        return f&quot;{str((int(hh) - 12)).zfill(2)}:{mm} PM&quot;</code></pre>
+<p>As I browsed <a
+href="https://www.gnu.org/software/gawk/manual/html_node/Concatenation.html">gnu.org:
+Concatenation (The GNU Awk User’s Guide)</a>, it's possible to tweak the
+output.</p>
+<pre><code>$ awk &#39;/return/ {print &quot;found return statement: &quot; $0}&#39; c.py
+found return statement:         return f&quot;12:{mm} AM&quot;
+found return statement:         return f&quot;12:{mm} PM&quot;
+found return statement:         return f&quot;{hh}:{mm} AM&quot;
+found return statement:         return f&quot;{str((int(hh) - 12)).zfill(2)}:{mm} PM&quot;</code></pre>
+<p>Printing only the return values</p>
+<pre><code>$ awk &#39;/return/ {print $2}&#39; c.py
+f&quot;12:{mm}
+f&quot;12:{mm}
+f&quot;{hh}:{mm}
+f&quot;{str((int(hh)</code></pre>
+<p>Now, I have very basic knowledge of <code>awk</code>. Though Python
+scripts might be more straightforward solutions in most cases,
+performing simple actions with minimal setup is cool, might be useful
+when troubleshooting servers.</p>
+<h2 id="a.-special-characters"><a
+href="https://codeforces.com/problemset/problem/1948/A">1948A. Special
+Characters</a></h2>
+<pre><code>for _ in range(int(input())):
+    n = int(input())
+
+    if n % 2 == 1:
+        print(&quot;NO&quot;)
+    else:  # n % 2 == 0:
+        s = &quot;&quot;
+        for i in range(n // 2):
+            s += &quot;AA&quot; if i % 2 == 0 else &quot;BB&quot;
+        print(&quot;YES&quot;)
+        print(s)</code></pre>
+<hr />
+<p>Bagels 700</p>
+<p>Total 0 kcal</p>
+<p>push ups</p>
+<hr />
+<p>TODO:</p>
+<ul>
+<li>Update resume</li>
+<li>Reseach NFS (Network File System)</li>
+<li>Check what will happen when adding A/AAAA records</li>
+</ul>
+<hr />
+<p><a href="../../index.html">index</a> <a
+href="20240616.html">20240616</a> <a
+href="20240618.html">20240618</a></p>
