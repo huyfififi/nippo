@@ -1,0 +1,137 @@
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+<meta charset="UTF-8">
+</head>
+<h1 id="section">20240616</h1>
+<p>I'm motivated to work as I recharged during the weekend, but I'll pay
+attention to not going full throttle to avoid burnout. Oh, I think this
+Wednesday is a holiday.</p>
+<p>It still takes a long time to solve Codeforces problems with
+difficulty 800. Maybe I can focus on the <code>800</code> problems this
+week.</p>
+<p>On second thought, I might want to contine tackling problems with
+difficulty 900. I solved many <code>800</code> problems, but I felt that
+they were too easy. I cannot say that I solved them instantly tho.</p>
+<p>Fixed the dependencies group in Poetry, adding a group for
+development.</p>
+<h2 id="a.-nenes-game"><a
+href="https://codeforces.com/problemset/problem/1956/A">1956A. Nene’s
+Game</a></h2>
+<p>We need to count the indexes in the [0..n] range for each round.
+Binary search can be used to find the largest index that fits in the
+range, and we can subtract the counts in the range from the players.</p>
+<pre><code>def brute_force(t: int, l: list[int]):
+    li = 0
+    while li &lt; len(l) and t &gt;= l[li]:
+        li += 1
+    return li
+
+
+def binary_search(t: int, l: list[int]):
+    li = 0
+    ri = len(l)
+    while ri - li &gt; 1:
+        mi = (li + ri) // 2
+        if l[mi] == t:
+            return mi + 1
+        elif l[mi] &lt; t:
+            li = mi
+        else:  # l[mi] &gt; t
+            ri = mi
+    assert li + 1 == ri
+    return li + 1
+
+
+def solve(ni: int, a: list[int]) -&gt; int:
+    while ni &gt;= a[0]:
+        # rm = brute_force(ni, a)
+        rm = binary_search(ni, a)
+        ni -= rm
+
+    return ni
+
+
+for _ in range(int(input())):
+    k, q = map(int, input().split())
+    a = list(map(int, input().split()))
+    n = list(map(int, input().split()))
+    res: list[str] = []
+    for ni in n:
+        res.append(str(solve(ni, a)))
+    print(&quot; &quot;.join(res))</code></pre>
+<h2 id="a.-yogurt-sale"><a
+href="https://codeforces.com/problemset/problem/1955/A">1955A. Yogurt
+Sale</a></h2>
+<pre><code>for _ in range(int(input())):
+    n, a, b = map(int, input().split())
+    if a * 2 &lt;= b:
+        print(n * a)
+    else:
+        if n % 2 == 0:
+            print(n // 2 * b)
+        else:
+            print(n // 2 * b + a)</code></pre>
+<h2 id="c.-clock-conversion"><a
+href="https://codeforces.com/problemset/problem/1950/C">1950C. Clock
+Conversion</a></h2>
+<p>The conversion 12:00 -&gt; 12:00 PM and 0:00 -&gt; 12:00 AM are
+always confusing.</p>
+<pre><code>def convert_time(s: str) -&gt; str:
+    hh, mm = s.split(&quot;:&quot;)
+    if hh == &quot;00&quot;:
+        return f&quot;12:{mm} AM&quot;
+    elif hh == &quot;12&quot;:
+        return f&quot;12:{mm} PM&quot;
+    elif 0 &lt; int(hh) &lt; 12:
+        return f&quot;{hh}:{mm} AM&quot;
+    else:  # 12 &lt; int(hh) &lt; 24
+        return f&quot;{str((int(hh) - 12)).zfill(2)}:{mm} PM&quot;
+
+
+for _ in range(int(input())):
+    s = input()
+    print(convert_time(s))</code></pre>
+<h2 id="b.-upscaling"><a
+href="https://codeforces.com/problemset/problem/1950/B">1950B.
+Upscaling</a></h2>
+<p>It took some time to implement this, but I could not deduct something
+reproducible.</p>
+<pre><code>for _ in range(int(input())):
+    n = int(input())
+    for i in range(n):
+        s = &quot;&quot;
+        for j in range(n):
+            if j % 2 == 0:
+                s += &quot;##&quot; if i % 2 == 0 else &quot;..&quot;
+            else:
+                s += &quot;..&quot; if i % 2 == 0 else &quot;##&quot;
+
+        print(s)
+        print(s)</code></pre>
+<h2 id="a.-stair-peak-or-neither"><a
+href="https://codeforces.com/problemset/problem/1950/A">1950A. Stair,
+Peak, or Neither?</a></h2>
+<pre><code>for _ in range(int(input())):
+    a, b, c = map(int, input().split())
+    if a &lt; b &lt; c:
+        print(&quot;STAIR&quot;)
+    elif b &gt; a and b &gt; c:
+        print(&quot;PEAK&quot;)
+    else:
+        print(&quot;NONE&quot;)</code></pre>
+<hr />
+<p>Pho Ga 1200 Bubble tea 500 Rolls 300</p>
+<p>Total 2000 kcal</p>
+<p>4km run (The new shoes don't fit still) push ups</p>
+<hr />
+<p>TODO:</p>
+<ul>
+<li>DMV: Check if I'm eligible for online renewal (20240617)</li>
+<li>Update resume</li>
+<li>Reseach NFS (Network File System)</li>
+<li>Check what will happen when adding A/AAAA records</li>
+</ul>
+<hr />
+<p><a href="../../index.html">index</a> <a
+href="20240615.html">20240615</a> <a
+href="20240617.html">20240617</a></p>
