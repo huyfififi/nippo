@@ -129,16 +129,83 @@ Characters</a></h2>
             s += &quot;AA&quot; if i % 2 == 0 else &quot;BB&quot;
         print(&quot;YES&quot;)
         print(s)</code></pre>
+<h2 id="network-file-system-nfs">Network File System (NFS)</h2>
+<p><a
+href="https://www.ibm.com/docs/en/aix/7.1?topic=management-network-file-system">Network
+File System - IBM Documentation</a></p>
+<blockquote>
+<p>The Network File System (NFS) is a mechanism for storing files on a
+network. It is a distributed file system that allows users to access
+files and directories located on remote computers and treat those files
+and directories as if they were local.</p>
+</blockquote>
+<p><a
+href="https://docs.aws.amazon.com/efs/latest/ug/mounting-fs-old.html">Amazon
+Web Services: Using Network File System to mount EFS file
+systems</a></p>
+<p>Amazon Elastic File System (EFS) is an implementation of the Network
+File System (NFS) protocol. Specifically, Amazon EFS supports NFSv4.0
+and NFSv4.1 (recommended) to mount the file system and use it with
+various NFS clients.</p>
+<p>When using EFS with Amazon EKS (or other services such as EC2), the
+NFS protocol is used to mount the EFS file system to the pods in EKS,
+enabling persistent and shared storage across multiple pods. It seems I
+don't need to worry about the NFS clients when using Amazon EFS, as it
+wraps the implementation.</p>
+<p>cf. <a href="20240612.html">Amazon EFS (20240612)</a></p>
+<h2 id="dns-propagation">DNS Propagation</h2>
+<p><a
+href="https://www.lenovo.com/us/en/glossary/dns-resolver/?orgRef=https%253A%252F%252Fwww.google.com%252F">Lenovo
+US - How does a DNS Resolver Work and How to Set it Up</a></p>
+<blockquote>
+<p>A DNS server is a broader term that encompasses various types of
+servers involved in the DNS system. A DNS resolver is a specific type of
+DNS server responsible for translating domain names into internet
+protocol (IP) addresses.</p>
+</blockquote>
+<h3 id="adding-aaaaa-records">Adding A/AAAA records</h3>
+<p>DNS resolvers will not query the A/AAAA records unless they receive a
+request for that information.</p>
+<p>A client initiates a request to access the domain and checks its
+local DNS cache for it. If the record is not in the cache or has
+expired, it forwards the request to a DNS resolver.</p>
+<p>When a DNS resolver (ISP or public DNS service such as Google DNS)
+receives the request, it checks its cache. Same as the client, it
+queries the authoritative DNS server for the domain to obtain the latest
+A/AAAA records.</p>
+<p><a
+href="https://www.cloudflare.com/learning/dns/dns-server-types/">Cloudflare
+| DNS server types</a></p>
+<blockquote>
+<p>The authoritative nameserver is usually the resolver’s last step in
+the journey for an IP address. The authoritative nameserver contains
+information specific to the domain name it serves (e.g. google.com) and
+it can provide a recursive resolver with the IP address of that server
+found in the DNS A record, or if the domain has a CNAME record (alias)
+it will provide the recursive resolver with an alias domain, at which
+point the recursive resolver will have to perform a whole new DNS lookup
+to procure a record from an authoritative nameserver (often an A record
+containing an IP address)</p>
+</blockquote>
+<h3 id="updating-aaaaa-records">Updating A/AAAA records</h3>
+<p>When you update the A or AAAA records, DNS resolvers will continue
+using the cached old IP address until the TTL expires. After TTL
+expiration, resolvers will query the authoritative DNS server for the
+updated record.</p>
+<p>I know the big picture, but am not familiar with the terminologies:
+DNS recursive resolver (DNS recursor), DNS root nameserver, TLD
+nameserver, and authoritative nameserver. will try to understand them
+tomorrow. I'm sleepy now…</p>
 <hr />
-<p>Bagels 700</p>
-<p>Total 0 kcal</p>
-<p>push ups</p>
+<p>Bagels 800 Yogurt 200 Protein shake 200 Inari 500</p>
+<p>Total 1700 kcal</p>
 <hr />
 <p>TODO:</p>
 <ul>
-<li>Update resume</li>
-<li>Reseach NFS (Network File System)</li>
-<li>Check what will happen when adding A/AAAA records</li>
+<li>Update one of the bullet points of my resume</li>
+<li>Understand DNS server types: <a
+href="https://www.cloudflare.com/learning/dns/dns-server-types/">https://www.cloudflare.com/learning/dns/dns-server-types/</a></li>
+<li>Check Apache Airflow (w/ GPT4o)</li>
 </ul>
 <hr />
 <p><a href="../../index.html">index</a> <a
