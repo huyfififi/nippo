@@ -1,0 +1,137 @@
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+<meta charset="UTF-8">
+</head>
+<h1 id="section">20240618</h1>
+<p>As tomorrow is a holiday, I needed to wrap things up by EOD, making
+it difficult to do things outside work. will tackle TODOs tomorrow.</p>
+<h2 id="llamaparse">LlamaParse</h2>
+<p><a
+href="https://docs.llamaindex.ai/en/stable/llama_cloud/llama_parse/#resources">LlamaParse
+- LlamaIndex</a></p>
+<p><a
+href="https://github.com/run-llama/llama_parse">run-llama/llmada_parse</a></p>
+<blockquote>
+<p>LlamaParse is the world’s first genAI-native document parsing
+platform - built with LLMs and for LLM use cases.</p>
+</blockquote>
+<blockquote>
+<p>Your LLM application performance is only as good as your data. The
+main goal of LlamaParse is to parse and clean your data, ensuring that
+it’s good quality before passing to any downstream LLM use case such as
+advanced RAG.</p>
+</blockquote>
+<blockquote>
+<p>You get 1k free pages a day. If you sign up for the paid plan, you
+get 7k free pages a week, and then $0.003 for each page.</p>
+</blockquote>
+<p>Processing documents by parsing/cleanin data is a very difficult job.
+For example, I need to extract texts or tables from PDF, chunking data,
+and convert them into embedding records for RAG. The service seems to be
+a good choice for simple RAG usecases, but not sure it's suitable for
+B2B softwares. Though I need to talk with the team directly, its ability
+to comply with the EU Data Act is not mentioned. Also, as I checked, it
+does not provide options to fine-tune the results. It might not be the
+best option when the accuracy of the specific type of documents is
+important and fine-tuning is needed.</p>
+<p><a
+href="https://github.com/run-llama/llama_parse/blob/main/llama_parse/base.py">llama_parse/llama_parse/base.py</a></p>
+<pre><code>class LlamaParse(BasePydanticReader):
+    &quot;&quot;&quot;A smart-parser for files.&quot;&quot;&quot;
+
+    api_key: str = ...
+    base_url: str = ...
+    result_type: ResultType = ...
+    num_workers: int = ...
+    check_interval: int = ...
+    max_timeout: int = ...
+    verbose: bool = ...
+    show_progress: bool = ...
+    language: Language = ...
+    parsing_instruction: Optional[str] = ...
+    skip_diagonal_text: Optional[bool] = ...
+    invalidate_cache: Optional[bool] = ...
+    do_not_cache: Optional[bool] = ...
+    fast_mode: Optional[bool] = ...
+    do_not_unroll_columns: Optional[bool] = ...
+    page_separator: Optional[str] = ...
+    gpt4o_mode: bool = Field(
+        default=False,
+        description=&quot;Whether to use gpt-4o extract text from documents.&quot;,
+    )
+    gpt4o_api_key: Optional[str] = Field(
+        default=None,
+        description=&quot;The API key for the GPT-4o API. Lowers the cost of parsing.&quot;,
+    )
+    ignore_errors: bool = ...
+    split_by_page: bool = ...</code></pre>
+<p>Also, I'm reluctant to use specific AI services, since there are a
+lot of changes happening in the world and it's not guaranteed that the
+services last for a next few years. If startups go bust, we need to
+rewrite the logic with the integrations.</p>
+<p>In addition to the document and the GitHub repository, I checked its
+blog about the feature launch.</p>
+<p><a
+href="https://www.llamaindex.ai/blog/launching-the-first-genai-native-document-parsing-platform">Launching
+the first GeAI-native document parsing platform - LlamaIndex</a></p>
+<blockquote>
+<p>Since we first released LlamaParse it has featured industry-leading
+table extraction capabilities. Under the hood, this has been using LLM
+intelligence since the start. It seamlessly integrates with the advanced
+indexing/retrieval capabilities that the open-source framework offers,
+enabling users to build state-of-the-art document RAG.</p>
+</blockquote>
+<p>It mentions PyPDF, PyMuPDF, Textract, and PdfMiner… so their
+algorithm uses LLM on top of these open-source projects to extract
+texts??</p>
+<p>The service seems to be in its very early stage, and I cannot find
+any other resources about its algorithm.</p>
+<h2 id="apache-airflow">Apache Airflow</h2>
+<p>It was hard to navigate the website to understand what Apache Airflow
+offers, but DAG (Directed Asynclic Graph) seems to be the one I can
+start digesting.</p>
+<p><a
+href="https://airflow.apache.org/docs/apache-airflow/stable/core-concepts/dags.html">DAGs
+- Airflow Documentation</a></p>
+<blockquote>
+<p>A DAG (Directed Acyclic Graph) is the core concept of Airflow,
+collecting Tasks together, organized with dependencies and relationships
+to say how they should run.</p>
+</blockquote>
+<p>So, the main use case of Apache Airflow is to define dependencies of
+tasks with DAG and schedule the workflow.</p>
+<p>In this YouTube video <a
+href="https://youtu.be/SWZvtL1uxJE?si=pPLxJlMXQ-O-bM-h">https://youtu.be/SWZvtL1uxJE?si=pPLxJlMXQ-O-bM-h</a>,
+they say that their initial thought is to automate this process (? the
+video is long and I didn't check the details)</p>
+<ol type="1">
+<li>1:00 am, Cronjob: Run query and update table records</li>
+<li>6:00 am, Execute the query of the current day, Download CSV, Run
+script and wait</li>
+<li>8:00 am, Validate the files, Generates a report (xlsx), Upload the
+report to S3 and send an email</li>
+<li>9:00 am, Daily meeting</li>
+</ol>
+<p>My impression is that the service is for people on the business-side
+(Sales, Customer Support), not for build system on it, though I haven't
+checked the use cases page and might misunderstood.</p>
+<p>I don't hear this service on a daily basis and might want to forget
+about that for now.</p>
+<hr />
+<p>Protein shake 300 Yogurt 200 Avocado 200 Eggs 600</p>
+<p>Total 1300 kcal</p>
+<hr />
+<p>TODO:</p>
+<ul>
+<li>Update one of the bullet points of my resume</li>
+<li>Understand DNS server types: <a
+href="https://www.cloudflare.com/learning/dns/dns-server-types/">https://www.cloudflare.com/learning/dns/dns-server-types/</a></li>
+<li>SSH with GitHub: SSH (Secure Shell) is a protocol to send shell
+commands to another computer securely from my understanding… the
+relationship between secure shell and GitHub is not clear at first
+glance.</li>
+</ul>
+<hr />
+<p><a href="../../index.html">index</a> <a
+href="20240617.html">20240617</a> <a
+href="20240619.html">20240619</a></p>
