@@ -1,0 +1,49 @@
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+<meta charset="UTF-8">
+</head>
+<h1 id="section">20240620</h1>
+<p>I wasn't expecting today would be this busy day.</p>
+<ul>
+<li>updated a bullet point in my resume. will continue to work on
+that</li>
+</ul>
+<p>It's super helpful that Django's extensions come with admin sites.
+API keys can be revoked on UI. Cron schedule can be adjusted on UI.</p>
+<p>I didn't have much time to do things in the TODO list. I have some
+appointments tomorrow, but I hope I can continue to make process.</p>
+<h2 id="a.-median-of-an-array"><a
+href="https://codeforces.com/problemset/problem/1946/A">1946A. Median of
+an Array</a></h2>
+<p>It took me 3 hours to understand and solve this problem…</p>
+<p>Coming up with an algorithm that counts the number of elements to be
+increased was difficult.</p>
+<pre><code>for _ in range(int(input())):
+    n = int(input())
+    a = list(map(int, input().split()))
+    a.sort()
+    mid_i = n // 2 - 1 if n % 2 == 0 else n // 2
+    mid = a[mid_i]
+    mid_count = len([ai for ai in a if ai == mid])
+    keep_count = 0
+    for i in range(mid_i):
+        if a[i] == mid:
+            keep_count += 1
+    print(mid_count - keep_count)</code></pre>
+<hr />
+<p>Protein shake 700 Sushi bowl 800 avocado 200</p>
+<p>Total 1700 kcal</p>
+<p>abs push ups</p>
+<hr />
+<p>TODO:</p>
+<ul>
+<li>Update one of the bullet points of my resume</li>
+<li>Understand DNS server types: <a
+href="https://www.cloudflare.com/learning/dns/dns-server-types/">https://www.cloudflare.com/learning/dns/dns-server-types/</a></li>
+<li>SSH and GitHub</li>
+<li>20240623: Codeforces Round 954 (Div. 3)</li>
+</ul>
+<hr />
+<p><a href="../../index.html">index</a> <a
+href="20240619.html">20240619</a> <a
+href="20240621.html">20240621</a></p>
