@@ -6,6 +6,7 @@
 
 # Network
 
+- [DNS server types (20240623)](./2024/06/20240623.html)
 - [SSH and Git hosting services (20240622)](./2024/06/20240622.html)
 - [AWK / Network File System (NFS) / DNS propagation (20240617)](./2024/06/20240617.html)
 - [Amazon EFS (Elastic File System) / traceroute (20240612)](./2024/06/20240612.html)

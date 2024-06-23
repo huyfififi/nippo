@@ -1,0 +1,147 @@
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+<meta charset="UTF-8">
+</head>
+<h1 id="section">20240623</h1>
+<p>My circadian rhythm is broken and *vomiting sound*</p>
+<ul>
+<li>Participated in Codeforces Round 954 (Div. 3)
+<ul>
+<li>could not sleep before the contest, as usual</li>
+<li>solved three problems, but I'm always not confident that I can
+repeat the same performance.</li>
+</ul></li>
+</ul>
+<h2 id="dns-server-types">DNS server types</h2>
+<p><a
+href="https://www.cloudflare.com/learning/dns/dns-server-types/">[1] DNS
+server types | Cloudflare</a></p>
+<blockquote>
+<p>All DNS servers fall into one of four categories: Recursive
+resolvers, root nameservers, TLD nameservers, and authoritative
+nameservers.</p>
+</blockquote>
+<h3
+id="dns-recursive-resolver-also-known-as-recursive-dns-resolver-or-recursive-dns-server">DNS
+Recursive resolver (also known as recursive DNS resolver or recursive
+DNS server)</h3>
+<p><a href="https://www.ibm.com/topics/dns-server">[2] IBM: What Is a
+DNS server?</a></p>
+<blockquote>
+<p>…this is the first stop for a recursive query—the process of one DNS
+server communicating with other DNS servers to locate and return an IP
+address.</p>
+</blockquote>
+<blockquote>
+<p>This server receives a DNS query and can connect a user to the
+desired site using cached data, or if site data is not cached, send a
+follow-up request to DNS name servers.</p>
+</blockquote>
+<blockquote>
+<p>Most DNS recursors are provided by internet service providers
+(ISP).</p>
+</blockquote>
+<p><a href="https://www.verizon.com/about/blog/isp-meaning">[3] Verizon:
+What is an Internet Service Provider (ISP)?</a></p>
+<blockquote>
+<p>An internet service provider (ISP) is a company that provides access
+to the internet.</p>
+</blockquote>
+<h3 id="dns-root-name-server">DNS root name server</h3>
+<blockquote>
+<p>When a recursive DNS server does not have cached data, it sends a DNS
+query to the DNS root name server. The root name server accepts the
+query and forwards it to a top level domain (TLD) name server[2].</p>
+</blockquote>
+<blockquote>
+<p>Which TLD server the query is forwarded to depends on the desired
+sites extension: .com, .org or .net, for example. There are 13 main DNS
+root servers operated by the Internet Corporation for Assigned Names and
+Numbers (ICANN)[2].</p>
+</blockquote>
+<blockquote>
+<p>The 13 DNS root nameservers are known to every recursive resolver,
+and they are the first stop in a recursive resolver’s quest for DNS
+records. A root server accepts a recursive resolver’s query which
+includes a domain name, and the root nameserver responds by directing
+the recursive resolver to a TLD nameserver, based on the extension of
+that domain (.com, .net, .org, etc.). The root nameservers are overseen
+by a nonprofit called the Internet Corporation for Assigned Names and
+Numbers (ICANN)[1].</p>
+</blockquote>
+<h3 id="top-level-domain-tld-name-server">Top level domain (TLD) name
+server</h3>
+<blockquote>
+<p>TLD name servers contain data related to domain names with the same
+extension. This means there are designated TLD servers for websites with
+the extensions .com, .org and .net. Once the query reaches the correct
+TLD name server, it is then directed to the authoritative name
+server[2].</p>
+</blockquote>
+<blockquote>
+<p>Management of TLD nameservers is handled by the Internet Assigned
+Numbers Authority (IANA), which is a branch of ICANN. The IANA breaks up
+the TLD servers into two main groups:[1]</p>
+</blockquote>
+<blockquote>
+<ul>
+<li>Generic top-level domains: These are domains that are not country
+specific, some of the best-known generic TLDs include .com, .org, .net,
+.edu, and .gov.</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li>Country code top-level domains: These include any domains that are
+specific to a country or state. Examples include .uk, .us, .ru, and
+.jp.</li>
+</ul>
+</blockquote>
+<h3 id="authoritative-name-server">Authoritative name server</h3>
+<blockquote>
+<p>Generally the final step in the process of retrieving an IP address,
+authoritative DNS servers store information related to specific domain
+names in DNS resource records. These DNS records contain information
+about a specific domain and its corresponding IP address. When the
+correct IP address is found, it is sent back to the recursive resolver.
+If it is not located, the user will receive an error message[2].</p>
+</blockquote>
+<p><a
+href="https://www.cloudns.net/blog/authoritative-dns-server/#Authoritative_DNS_server">ClouDNS:
+What Is Authoritative DNS server?</a></p>
+<blockquote>
+<p>The authoritative DNS servers can be where the website is hosted or
+where the DNS provider is.</p>
+</blockquote>
+<p>I use Cloudflare to manage DNS records of my domain. Here, Cloudflare
+serves as the authoritative DNS server for my domain.</p>
+<h3 id="summary">Summary</h3>
+<ol type="1">
+<li>User’s device → Recursive DNS server</li>
+<li>Recursive DNS server → Root name server (root server responds with
+TLD server information)</li>
+<li>Recursive DNS server → TLD server (TLD server responds with
+authoritative server information)</li>
+<li>Recursive DNS server → Authoritative server (authoritative server
+responds with the domain’s IP address)</li>
+<li>Recursive DNS server → User’s device</li>
+</ol>
+<p>Root servers and TLD servers don’t cache DNS records; Recursive
+Resolvers do.</p>
+<p><small>Our current internet infrastructure consists of so many
+components that I’m surprised the internet continues to work without
+major incidents.</small></p>
+<hr />
+<p>Total 3000 kcal :cry: but I don't feel well, so it may be
+justifiable.</p>
+<hr />
+<p>TODO:</p>
+<ul>
+<li>Update one of the bullet points of my resume (N+1, API revise)</li>
+<li>Review A and B problems of Codeforces Round 954</li>
+<li>Update the TLS certificate of the Mastodon instance</li>
+</ul>
+<hr />
+<p><a href="../../index.html">index</a> <a
+href="20240622.html">20240622</a> <a
+href="20240624.html">20240624</a></p>
