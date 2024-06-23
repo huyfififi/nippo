@@ -1,0 +1,167 @@
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+<meta charset="UTF-8">
+</head>
+<h1 id="section">20240622</h1>
+<ul>
+<li>Updated my resume with the experience of desining/developing a RAG
+system.</li>
+</ul>
+<h2 id="a.-setting-up-camp"><a
+href="https://codeforces.com/problemset/problem/1945/A">1945A. Setting
+up Camp</a></h2>
+<blockquote>
+<p>Each introvert wants to live in a tent alone.</p>
+</blockquote>
+<p>I can really sympathize with this. I don’t want to share a room or
+tent at a hotel, even with my close friends.</p>
+<pre><code>def solve(intr: int, extr: int, univ: int) -&gt; int:
+    while univ &gt; 0 and extr % 3 != 0:
+        univ -= 1
+        extr += 1
+
+    if extr % 3 != 0:
+        return -1
+
+    return intr + extr // 3 + (univ // 3 if univ % 3 == 0 else univ // 3 + 1)
+
+
+for _ in range(int(input())):
+    a, b, c = map(int, input().split())
+    print(solve(a, b, c))</code></pre>
+<h2 id="a.-destroying-bridges"><a
+href="https://codeforces.com/problemset/problem/1944/A">1944A.
+Destroying Bridges</a></h2>
+<pre><code>def solve(n: int, k: int) -&gt; int:
+    if n - 1 &gt; k:
+        # it&#39;s impossible to isolate any islands
+        return n
+    else:
+        return 1
+
+
+for _ in range(int(input())):
+    n, k = map(int, input().split())
+    print(solve(n, k))</code></pre>
+<h2 id="ssh-and-git-repositories-githubbitbucket">SSH and Git
+repositories (GitHub/BitBucket)</h2>
+<p>I thought SSH is only used to send shell commands to remote computers
+securely because of the name “Secure Shell,” but it can be generally
+used for secure authentication and communication.</p>
+<p><a href="https://datatracker.ietf.org/doc/html/rfc4253">RFC 4253 -
+The Secure Shell (SSH) Transport Layer Protocol</a></p>
+<blockquote>
+<p>Abstract</p>
+</blockquote>
+<blockquote>
+<p>The Secure Shell (SSH) is a protocol for secure remote login and
+other secure network services over an insecure network.</p>
+</blockquote>
+<blockquote>
+<p>This document describes the SSH transport layer protocol, which
+typically runs on top of TCP/IP. The protocol can be used as a basis for
+a number of secure network services. It provides strong encryption,
+server authentication, and integrity protection. It may also provide
+compression.</p>
+</blockquote>
+<blockquote>
+<p>Key exchange method, public key algorithm, symmetric encryption
+algorithm, message authentication algorithm, and hash algorithm are all
+negotiated.</p>
+</blockquote>
+<blockquote>
+<p>This document also describes the Diffie-Hellman key exchange method
+and the minimal set of algorithms that are needed to implement the SSH
+transport layer protocol.</p>
+</blockquote>
+<p>When used to communicate with Git repositories,</p>
+<p>Authentication: Instead of using passwords, SSH uses cryptographic
+keys for authentication. I generate a pair of keys (private and public)
+and the public key is uploaded to the Git hosting service whereas my
+private key stays in my local. When interacting with remote
+repositories, the SSH protocol is used to verify my identity securely
+without sending my private key over the network.</p>
+<p>Data Transmission: All data transmitted between my machine and Git
+repositories will be encrypted with the protocol, ensuring that my code
+will be transferred securely.</p>
+<h3 id="diffie-hellman-key-exchange">Diffie-Hellman Key Exchange</h3>
+<p>Diffie-Hellman algorithm is used to share the same secret between two
+parties (In my case, my computer and the GitHub server). After sharing
+the same secret, that can be used to communicate data.</p>
+<ol type="1">
+<li>Asymmetric key exchange (the operation is expensive, so will be done
+only once)</li>
+<li>data transmission with a symmetric cryptography</li>
+</ol>
+<p><a href="https://wiki.openssl.org/index.php/Diffie_Hellman">Diffie
+Hellman - OpenSSLWiki</a></p>
+<blockquote>
+<p>In static-static mode both Alice and Bob retain their private/public
+keys over multiple communications. Therefore the resulting shared secret
+will be the same every time. In ephemeral-static mode one party will
+generate a new private/public key every time, thus a new shared secret
+will be generated.</p>
+</blockquote>
+<blockquote>
+<p>There are a number of standards relevant to Diffie-Hellman key
+agreement.</p>
+</blockquote>
+<p>It seems there are variants of the algorithms.</p>
+<p><a
+href="https://www.reddit.com/r/crypto/comments/hswtjs/does_modern_ssh_always_use_ephemeral_session_keys/">Reddit:
+Does modern SSH always use ephemeral session keys after
+authentication?</a></p>
+<blockquote>
+<p>IIRC, yes it’s always ephemeral. SSH does it’s “KEX” thing to
+generate a new symmetric key per connection and employs a re-key
+interval to provide forward security.</p>
+</blockquote>
+<p>I googled a little bit, but this is the only web page referring
+static vs ephemeral.</p>
+<p>I suspect that the SSH communications with GitHub (and other
+platforms) does not reuse the same secret for a symmetric cryptography
+due to security concern (ephemeral-static mode), but I'm not confident
+as I couldn’t find resources of that at the moment.</p>
+<h2 id="a.-farmer-johns-challenge"><a
+href="https://codeforces.com/problemset/problem/1942/A">1942A. Farmer
+John’s Challenge</a></h2>
+<p>I'm still not confident with tackling problems with difficulty 800 no
+matter how many problems I solved. No matter how many problems I solved,
+I’m still not confident about tackling problems with difficulty 800.
+Maybe more experience can give me the confidence and courage to move on
+to more difficult problems.</p>
+<p>I want to update the dashboard with a breakdown (like, showing the
+number of problems with difficulty 800 I solved), but I've been quite
+busy these days.. will consider adding the feature in the next long day
+offs.</p>
+<pre><code>def solve(n: int, k: int) -&gt; list[int]:
+    # all the elements have the same number =&gt; n sorted patterns
+    # non-decreasing =&gt; 1 pattern
+    if n == k:
+        return [1] * n
+    elif k == 1:
+        return [1] * (n - 1) + [2]
+    else:
+        return [-1]
+
+
+for _ in range(int(input())):
+    n, k = map(int, input().split())
+    print(&quot; &quot;.join([str(a) for a in solve(n, k)]))</code></pre>
+<hr />
+<p>Eggs 100 Bubble tea 800 Salad 500 Protein shake 500 Bagel 400
+Luchable 300</p>
+<p>Total 2600 kcal (will try to go back to the normal state
+tomorrow)</p>
+<hr />
+<p>TODO:</p>
+<ul>
+<li>Update one of the bullet points of my resume (N+1, API revise)</li>
+<li>Understand DNS server types: <a
+href="https://www.cloudflare.com/learning/dns/dns-server-types/">https://www.cloudflare.com/learning/dns/dns-server-types/</a></li>
+<li>Codeforces Round 954 (Div. 3)</li>
+</ul>
+<hr />
+<p><a href="../../index.html">index</a> <a
+href="20240621.html">20240621</a> <a
+href="20240623.html">20240623</a></p>

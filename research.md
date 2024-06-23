@@ -1,29 +1,50 @@
 <head><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" /></head>
 
-- [LlamaParse / Apache Airflow (20240618)](./2024/06/20240618.html)
+# Data Structure & Algorithms
+
+- [Memoization / Tabulation (20240530)](./2024/05/20240530.html)
+
+# Network
+
+- [SSH and Git hosting services (20240622)](./2024/06/20240622.html)
 - [AWK / Network File System (NFS) / DNS propagation (20240617)](./2024/06/20240617.html)
 - [Amazon EFS (Elastic File System) / traceroute (20240612)](./2024/06/20240612.html)
 - [ping, ICMP (Internet Control Message Protocol) (20240611)](./2024/06/20240611.html)
-- [Some of Netlify features (20240610)](./2024/06/20240610.html)
 - [410 Gone (20240609)](./2024/06/20240609.html)
-- [Billing of DataDog and GitHub Actions / Google Testing Blog (20240604)](./2024/06/20240604.html)
-- [Memoization / Tabulation (20240530)](./2024/05/20240530.html)
 - [The Internet Engineering Task Force (IETF) (20240529)](./2024/05/20240529.html)
 - [How port numbers assigned (22, 80, 443) / GitHub Actions actions/cache (20240528)](./2024/05/20240528.html)
-- [Cloudflare Flexible SSL/TLS encryption models / Frontend Deployment (20240527)](./2024/05/20240527.html)
 - [NAS (20240525)](./2024/05/20240525.html)
-- [The default path for a Docker Compose file, Kompose to convert Docker Compose to Kubernetes (20240524)](./2024/05/20240524.html)
 - [Enabling HTTP/2, Git Aliases (20240523)](./2024/05/20240523.html)
 - [HTTP/2 vs HTTP/1.1 (20240522)](./2024/05/20240522.html)
-- [Docker Image: slim/alpine/bookworm (20240521)](./2024/05/20240521.html)
-- [Mob Programming / Pair Programming (20240520)](./2024/05/20240520.html)
-- [RAG (20240516)](./2024/05/20240516.html)
 - [TLS certificate providers (20240514)](./2024/05/20240514.html)
 - [DOM (20240513)](./2024/05/20240513.html)
+- [WebRTC (20240503)](./2024/05/20240503.html)
+
+# Infrastructures
+
+- [Cloudflare Flexible SSL/TLS encryption models / Frontend Deployment (20240527)](./2024/05/20240527.html)
+- [The default path for a Docker Compose file, Kompose to convert Docker Compose to Kubernetes (20240524)](./2024/05/20240524.html)
+- [Docker Image: slim/alpine/bookworm (20240521)](./2024/05/20240521.html)
+- [Apache (20240501)](./2024/05/20240501.html)
+
+# Machine-learning
+
+- [RAG (20240516)](./2024/05/20240516.html)
+
+# Services
+
+- [LlamaParse / Apache Airflow (20240618)](./2024/06/20240618.html)
+- [Some of Netlify features (20240610)](./2024/06/20240610.html)
+- [Billing of DataDog and GitHub Actions / Google Testing Blog (20240604)](./2024/06/20240604.html)
+- [Custom domain configuration for GitHub pages (20240502)](./2024/05/20240502.html)
+
+# Programming Languages
+
 - [global installation in npm (20240506)](./2024/05/20240506.html)
 - [Duck typing (20240505)](./2024/05/20240505.html)
 - [Responsibility of Node.js (20240504)](./2024/05/20240504.html)
-- [WebRTC (20240503)](./2024/05/20240503.html)
-- [Custom domain configuration for GitHub pages (20240502)](./2024/05/20240502.html)
-- [Apache (20240501)](./2024/05/20240501.html)
 - [== vs === in JavaScript (20240425)](./2024/04/20240425.html)
+
+# Others
+
+- [Mob Programming / Pair Programming (20240520)](./2024/05/20240520.html)
