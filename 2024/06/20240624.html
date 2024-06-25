@@ -4,10 +4,12 @@
 </head>
 <h1 id="section">20240624</h1>
 <ul>
-<li>Update the TLS certificate of the Mastodon instance</li>
+<li>Updated the TLS certificate of the Mastodon instance</li>
+<li>Updated my resume with the experience of fixing N+1 problems.</li>
 </ul>
-<p><a href="https://codeforces.com/problemset/problem/1941/A">1941A.
-Rudolf and the Ticket</a></p>
+<h2 id="a.-rudolf-and-the-ticket"><a
+href="https://codeforces.com/problemset/problem/1941/A">1941A. Rudolf
+and the Ticket</a></h2>
 <pre><code>for _ in range(int(input())):
     n, m, k = map(int, input().split())
     b = list(map(int, input().split()))
@@ -18,14 +20,68 @@ Rudolf and the Ticket</a></p>
             if bi + ci &lt;= k:
                 res += 1
     print(res)</code></pre>
+<h2 id="a.-x-axis"><a
+href="https://codeforces.com/contest/1986/problem/A">1986A. X
+Axis</a></h2>
+<p>I first explored mathematical approaches, but as I looked at the
+constraint, I noticed I could just use brute force.</p>
+<pre><code>for _ in range(int(input())):
+    x1, x2, x3 = map(int, input().split())
+    mi = 30
+    for i in range(1, 11):
+        mi = min(mi, abs(x1 - i) + abs(x2 - i) + abs(x3 - i))
+    print(mi)</code></pre>
+<p>However, there is a clever way as <a
+href="https://codeforces.com/blog/entry/130762">Codeforces Round 954
+(Div. 3) Editorial</a> points out</p>
+<blockquote>
+<p>Let x1 &lt;= x2 &lt;= x3. Notice that the answer is at least x3 - x1,
+because |x3 - a| + |x1 - a| &gt;= |x3 - x1| for any numbers a, x1,
+x3.</p>
+</blockquote>
+<blockquote>
+<p>The answer is equal to x3 - x1, since we can choose a = x2.</p>
+</blockquote>
+<pre><code>for _ in range(int(input())):
+    x1, x2, x3 = map(int, input().split())
+    ma = max(x1, max(x2, x3))
+    mi = min(x1, min(x2, x3))
+    print(ma - mi)</code></pre>
+<p>It sounds like a common technique, and I better keep that in
+mind.</p>
+<h2 id="a.-shuffle-party"><a
+href="https://codeforces.com/problemset/problem/1937/A">1937A. Shuffle
+Party</a></h2>
+<p><a href="https://codeforces.com/blog/entry/126513">Codeforces Round
+930 Editorial</a></p>
+<pre><code># i=_: [1, 2, 3, 4, 5, 6, 7, 8]
+# i=2: [2, 1, 3, 4, 5, 6, 7, 8]
+# i=3: [3, 1, 2, 4, 5, 6, 7, 8]
+# i=4: [3, 4, 2, 1, 5, 6, 7, 8]
+# i=5: [5, 4, 2, 1, 3, 6, 7, 8]
+# i=6: [5, 4, 6, 1, 3, 2, 7, 8]
+# i=7: [7, 4, 6, 1, 3, 2, 5, 8]
+
+# observation: largest power of 2 up to n
+
+
+for _ in range(int(input())):
+    n = int(input())
+    res = 1
+    while True:
+        if res * 2 &gt; n:
+            print(res)
+            break
+        res *= 2</code></pre>
 <hr />
 <p>Protein shake 800 Chicken wings 1000</p>
 <p>Total 1800 kcal</p>
 <hr />
 <p>TODO:</p>
 <ul>
-<li>Update one of the bullet points of my resume (N+1, API revise)</li>
-<li>Review A and B problems of Codeforces Round 954</li>
+<li>Research Amazon Lambda</li>
+<li>Update my resume with FastAPI/MongoDB/marketplace experience</li>
+<li>Review Codeforces Round 954 C</li>
 </ul>
 <hr />
 <p><a href="../../index.html">index</a> <a
