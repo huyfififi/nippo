@@ -23,6 +23,7 @@
 
 # Infrastructures
 
+- [AWS Lambda (20240626)](./2024/06/20240626.html)
 - [Cloudflare Flexible SSL/TLS encryption models / Frontend Deployment (20240527)](./2024/05/20240527.html)
 - [The default path for a Docker Compose file, Kompose to convert Docker Compose to Kubernetes (20240524)](./2024/05/20240524.html)
 - [Docker Image: slim/alpine/bookworm (20240521)](./2024/05/20240521.html)

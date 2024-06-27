@@ -1,0 +1,68 @@
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+<meta charset="UTF-8">
+</head>
+<h1 id="section">20240626</h1>
+<h2 id="aws-lambda">AWS Lambda</h2>
+<p><a href="https://aws.amazon.com/pm/lambda/">Serverless Computing
+Service - Free AWS Lambda - AWS</a></p>
+<blockquote>
+<p>Compute service that runs your code in response to events and
+automatically manages the compute resources.</p>
+</blockquote>
+<p><a
+href="https://aws.amazon.com/getting-started/hands-on/build-web-app-s3-lambda-api-gateway-dynamodb/module-two/">Module
+2: Build a Serverless Function</a></p>
+<blockquote>
+<p>In this module, you will be writing a small piece of code, in Python,
+JavaScript, or Java, to be used in a later module to add interactivity
+to your web page. You will use AWS Lambda, a compute service that lets
+you create serverless functions, eliminating the need for you to manage
+software and hardware. Instead, applications are broken up into
+individual functions that can be invoked and scaled individually.</p>
+</blockquote>
+<blockquote>
+<p>These serverless functions are triggered based on a specific event
+you will define in the code. … Best of all, you do not have to worry
+about managing any servers.</p>
+</blockquote>
+<p>OK, so I think AWS Lambda is about creating small functions and
+attaching them with events.</p>
+<p><code>lambda_function.py</code> from the tutorial</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode lambda_function.py"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># import the JSON utility package since we will be working with a JSON object</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> json</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># define the handler function that the Lambda service will use as an entry point</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> lambda_handler(event, context):</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># extract values from the event object we got from the Lambda service</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    name <span class="op">=</span> event[<span class="st">&#39;firstName&#39;</span>] <span class="op">+</span><span class="st">&#39; &#39;</span><span class="op">+</span> event[<span class="st">&#39;lastName&#39;</span>]</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># return a properly formatted JSON object</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> {</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>        <span class="st">&#39;statusCode&#39;</span>: <span class="dv">200</span>,</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>        <span class="st">&#39;body&#39;</span>: json.dumps(<span class="st">&#39;Hello from Lambda, &#39;</span> <span class="op">+</span> name)</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    }</span></code></pre></div>
+<p>then,</p>
+<p><a
+href="https://aws.amazon.com/getting-started/hands-on/build-web-app-s3-lambda-api-gateway-dynamodb/module-three/">Module
+3: Link a Serverless Function to a Web App</a></p>
+<p>configure a path with the function created to serve API (In this
+module, it's REST API).</p>
+<p>AWS Lambda seems to be helpful when creating a very simple API, such
+as an experimental one or API with tiny responsiblity, but I'm not sure
+how it works in real life.</p>
+<hr />
+<p>Protein shake 400 Smoothie 300 Sushi bowl 800</p>
+<p>Total 1500 kcal</p>
+<hr />
+<p>TODO:</p>
+<ul>
+<li>Update my resume with FastAPI/MongoDB/marketplace experience</li>
+<li>Review Codeforces Round 954 B</li>
+</ul>
+<hr />
+<p><a href="../../index.html">index</a> <a
+href="20240625.html">20240625</a> <a
+href="20240627.html">20240627</a></p>
