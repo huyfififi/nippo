@@ -1,0 +1,85 @@
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+<meta charset="UTF-8">
+</head>
+<h1 id="section">20240628</h1>
+<p>Thanks to enough sleep, I feel that I'm recovered.</p>
+<ul>
+<li>Update my resume with an experience with FastAPI and MongoDB</li>
+</ul>
+<h2 id="a.-entertainment-in-mac"><a
+href="https://codeforces.com/problemset/problem/1935/A">1935A.
+Entertainment in MAC</a></h2>
+<p>n =&gt; even</p>
+<p>we have two options for each operation</p>
+<ol type="1">
+<li>s =&gt; s + s[::-1]</li>
+<li>s =&gt; s[::-1]</li>
+</ol>
+<p>for each two operations</p>
+<ol type="1">
+<li>s =&gt; s[::-1] =&gt; s’[::-1] =&gt; s (no change)</li>
+<li>s =&gt; s + s[::-1] =&gt; s’[::-1] =&gt; s + s[::-1] &gt; s</li>
+<li>s =&gt; s[::-1] =&gt; s’ + s’[::-1] =&gt; s[::-1] + s</li>
+</ol>
+<p>We only need to compare s and s[::-1] + s. Once we get the smallest
+string, we can simply keep reversing it, ending up the smallest
+string.</p>
+<pre><code>for _ in range(int(input())):
+    n = int(input())
+    s = input()
+    srev = s[::-1]
+    if s &lt;= srev:
+        print(s)
+    else:
+        print(srev + s)</code></pre>
+<h2 id="b.-matrix-stabilization"><a
+href="https://codeforces.com/problemset/problem/1986/B">1986B. Matrix
+Stabilization</a></h2>
+<p>First impression: that would be great if we could simply iterate
+through the matrix to perform the modifications.</p>
+<pre><code>for i in range(n):
+  for j in range(m):
+    # operations</code></pre>
+<p>After observation, once a cell is decreased to meet the requirement,
+we don't need to modify it because it makes its adjacent cells meet the
+requirement (?).</p>
+<pre><code>def solve(n: int, m: int, mat: list[list[int]]) -&gt; None:
+    for i in range(n):
+        for j in range(m):
+            max_nei = -1
+            if i &gt; 0:
+                max_nei = max(max_nei, mat[i - 1][j])
+            if i &lt; n - 1:
+                max_nei = max(max_nei, mat[i + 1][j])
+            if j &gt; 0:
+                max_nei = max(max_nei, mat[i][j - 1])
+            if j &lt; m - 1:
+                max_nei = max(max_nei, mat[i][j + 1])
+            mat[i][j] = min(mat[i][j], max_nei)
+
+
+for _ in range(int(input())):
+    n, m = map(int, input().split())
+    matrix = []
+    for i in range(n):
+        matrix.append(list(map(int, input().split())))
+
+    solve(n, m, matrix)
+    for i in range(n):
+        print(&quot; &quot;.join([str(e) for e in matrix[i]]))</code></pre>
+<hr />
+<p>Total 3500 kcal</p>
+<p>push ups</p>
+<hr />
+<p>TODO:</p>
+<ul>
+<li>Update my resume with the experience with CI pipelines</li>
+<li>Review Codeforces Round 954 C</li>
+<li>Reach 300 solved problems during the weekend (with <code>800</code>
+problems as the next goal).</li>
+</ul>
+<hr />
+<p><a href="../../index.html">index</a> <a
+href="20240627.html">20240627</a> <a
+href="20240629.html">20240629</a></p>
