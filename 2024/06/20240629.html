@@ -380,6 +380,27 @@ Square</a></h2>
     width = square[1][1] - square[0][1]
     height = square[2][0] - square[0][0]
     print(width * height)</code></pre>
+<h2 id="a.-wallet-exchange"><a
+href="https://codeforces.com/problemset/problem/1919/A">1919A. Wallet
+Exchange</a></h2>
+<pre><code>for _ in range(int(input())):
+    a, b = map(int, input().split())
+    if (a + b) % 2 == 1:
+        print(&quot;Alice&quot;)
+    else:
+        print(&quot;Bob&quot;)</code></pre>
+<h2 id="b.-plus-minus-split"><a
+href="https://codeforces.com/problemset/problem/1919/B">1919B.
+Plus-Minus Split</a></h2>
+<p>I just found the solution, but the it's impossible for me (for now)
+to understand the <a
+href="https://codeforces.com/blog/entry/124220">editorial</a>.</p>
+<pre><code>for _ in range(int(input())):
+    n = int(input())
+    a = input()
+    plus = len([x for x in a if x == &quot;+&quot;])
+    minus = len([x for x in a if x == &quot;-&quot;])
+    print(abs(plus - minus))</code></pre>
 <hr />
 <p>Protein shake 400 Salad 300 Chicken 400 Bagel 400 Meat stick 100</p>
 <p>Total 1600 kcal</p>
