@@ -1,0 +1,84 @@
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+<meta charset="UTF-8">
+</head>
+<h1 id="section">20240629</h1>
+<ul>
+<li>Solved _ problems</li>
+</ul>
+<h2 id="a.-too-min-too-max"><a
+href="https://codeforces.com/problemset/problem/1934/A">1934A. Too Min
+Too Max</a></h2>
+<pre><code>&quot;&quot;&quot;
+Time limit exceeded
+
+t = 500, n = 100 =&gt; 100 ** 4 * 500 ~= 10 ** 10 =&gt; TLE
+&quot;&quot;&quot;
+
+
+def greedy(n: int, a: list) -&gt; int:
+    res = -1
+
+    for i in range(n):
+        for j in range(n):
+            for k in range(n):
+                for l in range(n):
+                    if len(set([i, j, k, l])) &lt; 4:
+                        continue
+                    res = max(
+                        res,
+                        abs(a[i] - a[j])
+                        + abs(a[j] - a[k])
+                        + abs(a[k] - a[l])
+                        + abs(a[l] - a[i]),
+                    )
+
+    return res
+
+
+for _ in range(int(input())):
+    n = int(input())
+    a = list(map(int, input().split()))
+    print(greedy(n, a))</code></pre>
+<p><a href="https://codeforces.com/blog/entry/126423">Codeforces Round
+931 (Div. 2) Editorial</a></p>
+<p>TODO: Tackle again</p>
+<p><a href="https://codeforces.com/problemset/problem/1933/B">1933B.
+Turtle Math: Fast Three Tasks</a></p>
+<pre><code>def solve(n: int, a: list[int]) -&gt; int:
+    init_sum = sum(a)
+
+    if init_sum % 3 == 0:
+        return 0
+
+    if init_sum % 3 == 2:
+        return 1  # choose any element and increase the sum by 1
+
+    if init_sum % 3 == 1:
+        if [x for x in a if x % 3 == 1]:
+            return 1  # remove x where x mod 3 = 1
+        return 2  # choose any elements and increase the sum by 2
+
+    return -1
+
+
+for _ in range(int(input())):
+    n = int(input())
+    a = list(map(int, input().split()))
+    res = solve(n, a)
+    print(res)</code></pre>
+<hr />
+<p>Protein shake 400 Salad 300 Chicken 400 Bagel 400 Meat stick 100</p>
+<p>Total 1600 kcal</p>
+<hr />
+<p>TODO:</p>
+<ul>
+<li>Update my resume with the experience with CI pipelines</li>
+<li>Review Codeforces Round 954 C</li>
+<li>Reach 300 solved problems during the weekend (with <code>800</code>
+problems as the next goal).</li>
+</ul>
+<hr />
+<p><a href="../../index.html">index</a> <a
+href="20240628.html">20240628</a> <a
+href="20240630.html">20240630</a></p>
