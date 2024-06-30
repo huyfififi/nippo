@@ -43,8 +43,9 @@ for _ in range(int(input())):
 <p><a href="https://codeforces.com/blog/entry/126423">Codeforces Round
 931 (Div. 2) Editorial</a></p>
 <p>TODO: Tackle again</p>
-<p><a href="https://codeforces.com/problemset/problem/1933/B">1933B.
-Turtle Math: Fast Three Tasks</a></p>
+<h2 id="b.-turtle-math-fast-three-tasks"><a
+href="https://codeforces.com/problemset/problem/1933/B">1933B. Turtle
+Math: Fast Three Tasks</a></h2>
 <pre><code>def solve(n: int, a: list[int]) -&gt; int:
     init_sum = sum(a)
 
@@ -67,12 +68,326 @@ for _ in range(int(input())):
     a = list(map(int, input().split()))
     res = solve(n, a)
     print(res)</code></pre>
+<h2 id="a.-turtle-puzzle-rearrange-and-negate"><a
+href="https://codeforces.com/problemset/problem/1933/A">1933A. Turtle
+Puzzle: Rearrange and Negate</a></h2>
+<pre><code>def solve(n: int, a: list[int]) -&gt; int:
+    # all negative numbers can be positive after the operations
+    # 1. sort a
+    # 2. reverse all the negative elements
+    return sum([abs(x) for x in a])
+
+
+for _ in range(int(input())):
+    n = int(input())
+    a = list(map(int, input().split()))
+    res = solve(n, a)
+    print(res)</code></pre>
+<h2 id="a.-throns-and-coins"><a
+href="https://codeforces.com/problemset/problem/1932/A">1932A. Throns
+and Coins</a></h2>
+<pre><code>def solve(n: int, s: str) -&gt; int:
+    # res(n) = {@: 1, _: 0, *: -1 (unreachiable)} + max(res(n - 1), res(n - 2))
+    # classic dp problem
+    # we only need two variables, but the conditions would get complicated
+
+    def _val(c: str) -&gt; int:
+        match c:
+            case &quot;.&quot;:
+                return 0
+            case &quot;@&quot;:
+                return 1
+            case _:
+                return -1
+
+    if n == 1:
+        return 0
+
+    res = [-1] * n
+
+    res[0] = 0
+    res[1] = _val(s[1])
+
+    for i in range(2, n):
+        if res[i - 1] == res[i - 2] == -1:
+            break
+
+        res[i] = _val(s[i])
+        if res[i] == -1:
+            continue
+
+        res[i] += max(
+            res[i - 1] if res[i - 1] != -1 else 0,
+            res[i - 2] if res[i - 2] != -1 else 0,
+        )
+
+    return max(res)
+
+
+for _ in range(int(input())):
+    n = int(input())
+    s = input()
+    res = solve(n, s)
+    print(res)</code></pre>
+<h2 id="b.-make-equal"><a
+href="https://codeforces.com/problemset/problem/1931/B">1931B. Make
+Equal</a></h2>
+<pre><code>def solve(n: int, a: list[int]) -&gt; bool:
+    target = sum(a) // n
+    for i in range(n - 1):
+        if a[i] &lt; target:
+            return False
+        a[i + 1] += a[i] - target
+    return True
+
+
+for _ in range(int(input())):
+    n = int(input())
+    a = list(map(int, input().split()))
+    res = solve(n, a)
+    if res:
+        print(&quot;YES&quot;)
+    else:
+        print(&quot;NO&quot;)</code></pre>
+<h2 id="a.-recovering-a-small-string"><a
+href="https://codeforces.com/problemset/problem/1931/A">1931A.
+Recovering a Small String</a></h2>
+<pre><code>def solve(n: int) -&gt; int:
+    ALPHABETS = &quot;abcdefghijklmnopqrstuvwxyz&quot;
+
+    res = &quot;zzz&quot;
+    for i in range(27):
+        for j in range(27):
+            for k in range(27):
+                if i + j + k != n:
+                    continue
+
+                res = min(
+                    res,
+                    (ALPHABETS[i - 1] if i &gt; 0 else &quot;&quot;)
+                    + (ALPHABETS[j - 1] if j &gt; 0 else &quot;&quot;)
+                    + (ALPHABETS[k - 1] if k &gt; 0 else &quot;&quot;),
+                )
+    return res
+
+
+for _ in range(int(input())):
+    n = int(input())
+    res = solve(n)
+    print(res)</code></pre>
+<h2 id="a.-maximise-the-score"><a
+href="https://codeforces.com/problemset/problem/1930/A">1930A. Maximise
+The Score</a></h2>
+<pre><code>for _ in range(int(input())):
+    n = int(input())
+    a = list(map(int, input().split()))
+    a.sort()
+    res = 0
+    for i in range(0, n * 2, 2):
+        res += a[i]
+    print(res)</code></pre>
+<h2 id="b.-sasha-and-the-drawing"><a
+href="https://codeforces.com/problemset/problem/1929/B">1929B. Sasha and
+the Drawing</a></h2>
+<p>Observation: - the number of cells that can color 2 diagonals = 2 * n
+- 2 - remaining cells only color 1 diagonal</p>
+<pre><code>O###O
+OOOOO
+#####
+
+# =&gt; cells that can color 2 diagonals</code></pre>
+<pre><code>import math
+
+
+def solve(n: int, k: int) -&gt; int:
+    # num of cells that can remove 2 diagonals
+    rm2: int = 2 * n - 2
+    return math.ceil(min(2 * rm2, k) / 2) + max(0, k - 2 * rm2)
+
+
+for _ in range(int(input())):
+    n, k = map(int, input().split())
+    res = solve(n, k)
+    print(res)</code></pre>
+<h2 id="a.-sasha-and-the-beautiful-array"><a
+href="https://codeforces.com/problemset/problem/1929/A">1929A. Sasha and
+the Beautiful Array</a></h2>
+<p>My thought process</p>
+<ol type="1">
+<li>How can I make all (a_i - a_i-1) positive?</li>
+<li>making the array non-decreasing can make all the values positive.
+Maybe that's the solution</li>
+</ol>
+<pre><code>for _ in range(int(input())):
+    n = int(input())
+    a = list(map(int, input().split()))
+    a.sort()
+    res = 0
+    for i in range(1, n):
+        res += a[i] - a[i - 1]
+    print(res)</code></pre>
+<p><a href="https://codeforces.com/blog/entry/125943">Codeforces Round
+#926 (Div. 2) Editorial</a></p>
+<blockquote>
+<p>a2 - a1 + a3 - a2 + … + an - an-1 = an - n1. So we just need to
+maximize this value, which means the answer is the maximum number in the
+array minus the minimum.</p>
+</blockquote>
+<p>It's embarrasing that I didn't notice this… maybe I'm getting tired
+(it's 3 am), or maybe I'm super stupid.</p>
+<h2 id="a.-rectangle-cutting"><a
+href="https://codeforces.com/problemset/problem/1928/A">1928A. Rectangle
+Cutting</a></h2>
+<pre><code>def is_wasting_time(a: int, b: int) -&gt; int:
+    a, b = min(a, b), max(a, b)
+
+    # horizontal
+    if b % 2 == 0:
+        c, d = a * 2, b // 2
+        c, d = min(c, d), max(c, d)
+        if (c, d) != (a, b):
+            return False
+
+    # vertical
+    if a % 2 == 0:
+        c, d = a // 2, b * 2
+        c, d = min(c, d), max(c, d)
+        if (c, d) != (a, b):
+            return False
+
+    return True
+
+
+for _ in range(int(input())):
+    a, b = map(int, input().split())
+    if is_wasting_time(a, b):
+        print(&quot;NO&quot;)
+    else:
+        print(&quot;YES&quot;)</code></pre>
+<h2 id="a.-make-it-white"><a
+href="https://codeforces.com/problemset/problem/1927/A">1927A. Make it
+White</a></h2>
+<pre><code>from typing import Optional
+
+
+def solve(n: int, s: str) -&gt; int:
+    bfirst: Optional[int] = None
+    blast: Optional[int] = None
+    for i in range(n):
+        if s[i] == &quot;B&quot;:
+            if bfirst is None:
+                bfirst = i
+            blast = i
+    if bfirst is None:
+        return 0
+    return blast - bfirst + 1
+
+
+for _ in range(int(input())):
+    n = int(input())
+    s = input()
+    res = solve(n, s)
+    print(res)</code></pre>
+<h2 id="b.-vlad-and-shapes"><a
+href="https://codeforces.com/problemset/problem/1926/B">1926B. Vlad and
+Shapes</a></h2>
+<p>leveraging the fact that</p>
+<blockquote>
+<p>The grid contains exactly one triangle or exactly one square that
+contains all the 𝟷s in the grid. It is guaranteed that the size of the
+triangle or square is greater than 1 (i.e., the shape cannot consist of
+exactly one 1).</p>
+</blockquote>
+<pre><code>def is_square(n: int, mat: list[list[int]]) -&gt; bool:
+    for i in range(n - 1):
+        if 1 in mat[i]:
+            return mat[i] == mat[i+1]
+    return False
+
+
+for _ in range(int(input())):
+    n = int(input())
+    mat = []
+    for i in range(n):
+        mat.append(list(map(int, list(input()))))
+    if is_square(n, mat):
+        print(&quot;SQUARE&quot;)
+    else:
+        print(&quot;TRIANGLE&quot;)</code></pre>
+<h2 id="a.-vlad-and-the-best-of-five"><a
+href="https://codeforces.com/problemset/problem/1926/A">1926A. Vlad and
+the Best of Five</a></h2>
+<pre><code>from collections import defaultdict
+
+
+for _ in range(int(input())):
+    s = input()
+    counter = defaultdict(int)
+    for c in s:
+        counter[c] += 1
+    if counter[&quot;A&quot;] &gt; counter[&quot;B&quot;]:
+        print(&quot;A&quot;)
+    else:
+        print(&quot;B&quot;)</code></pre>
+<h2 id="a.-we-got-everything-covered"><a
+href="https://codeforces.com/problemset/problem/1925/A">1925A. We Got
+Everything Covered!</a></h2>
+<p>I noticed that the positions of characters don't matter. We can just
+choose any indexes.</p>
+<pre><code>import string
+
+
+def solve(n: int, k: int) -&gt; str:
+    return string.ascii_lowercase[:k] * n
+
+
+for _ in range(int(input())):
+    n, k = map(int, input().split())
+    res = solve(n, k)
+    print(res)</code></pre>
+<h2 id="a.-moving-chips"><a
+href="https://codeforces.com/problemset/problem/1923/A">1923A. Moving
+Chips</a></h2>
+<p>It seems to be a classic problem, but I'm not confident next time I
+encounter this sort of problem.</p>
+<p>oh, it's getting very late … (4 am)</p>
+<pre><code>for _ in range(int(input())):
+    n = int(input())
+    a = list(map(int, input().split()))
+    i = 0
+    while a[i] == 0:
+        i += 1
+    res = 0
+    tmp = 0
+    while i &lt; n:
+        if a[i] == 1:
+            res += tmp
+            tmp = 0
+        else:
+            tmp += 1
+        i += 1
+    print(res)</code></pre>
+<h2 id="a.-square"><a
+href="https://codeforces.com/problemset/problem/1921/A">1921A.
+Square</a></h2>
+<pre><code>for _ in range(int(input())):
+    square = []
+    square.append(list(map(int, input().split())))
+    square.append(list(map(int, input().split())))
+    square.append(list(map(int, input().split())))
+    square.append(list(map(int, input().split())))
+    square.sort()
+    width = square[1][1] - square[0][1]
+    height = square[2][0] - square[0][0]
+    print(width * height)</code></pre>
 <hr />
 <p>Protein shake 400 Salad 300 Chicken 400 Bagel 400 Meat stick 100</p>
 <p>Total 1600 kcal</p>
 <hr />
 <p>TODO:</p>
 <ul>
+<li>Codeforces 1934A</li>
+<li>Pay the rent</li>
 <li>Update my resume with the experience with CI pipelines</li>
 <li>Review Codeforces Round 954 C</li>
 <li>Reach 300 solved problems during the weekend (with <code>800</code>
