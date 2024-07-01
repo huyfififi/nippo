@@ -1,0 +1,51 @@
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+<meta charset="UTF-8">
+</head>
+<h1 id="section">20240701</h1>
+<h2 id="c.-update-queries"><a
+href="https://codeforces.com/problemset/problem/1986/C">1986C. Update
+Queries</a></h2>
+<p>It's been a while since I solved this in the contest, and it took me
+some time to remember how I approached this.</p>
+<p>If there are multiple indices with the same value, we can use the
+corresponding lexicographically smallest character from c. The others
+will be discarded.</p>
+<p>s = “abc”</p>
+<p>ind = [0, 0, 0]</p>
+<p>c = “def” -(rearrange)-&gt; “fed”</p>
+<p>result = “dbc” ( &lt; “ebc” or “fbc”)</p>
+<ul>
+<li>sort <code>ind</code> to group the same values</li>
+<li>sort <code>c</code> to update <code>s</code> with the
+lexicographically smallest values.</li>
+</ul>
+<pre><code>for _ in range(int(input())):
+    n, m = map(int, input().split())
+    s: list[str] = list(input())
+    ind: list[int] = list(map(int, input().split()))
+    ind.sort()
+    c = input()
+    c: list[str] = sorted(c)
+
+    prev_ind = None
+    ci = 0
+    for i in range(m):
+        if ind[i] != prev_ind:
+            s[ind[i] - 1] = c[ci]
+            ci += 1
+        prev_ind = ind[i]
+    print(&quot;&quot;.join(s))</code></pre>
+<hr />
+<p>Kombucha 200</p>
+<p>Total 200 kcal</p>
+<hr />
+<p>TODO:</p>
+<ul>
+<li>Update my resume with the experience with CI pipelines</li>
+<li>Sign up for the next Codeforces Round</li>
+</ul>
+<hr />
+<p><a href="../../index.html">index</a> <a
+href="../06/20240630.html">20240630</a> <a
+href="20240702.html">20240702</a></p>

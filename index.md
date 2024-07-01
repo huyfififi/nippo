@@ -1,5 +1,9 @@
 <head><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" /></head>
 
+# 202407
+
+- [20240701](./2024/07/20240701.html)
+
 # 202406
 
 - [20240630](./2024/06/20240630.html)
