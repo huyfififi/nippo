@@ -4,7 +4,13 @@
 </head>
 <h1 id="section">20240629</h1>
 <ul>
-<li>Solved _ problems</li>
+<li>Solved 18 problems (!!) and reached the goal <strong>300</strong>
+:tada: <a
+href="https://dashboard.huyfififi.com">dashboard.huyfififi.com</a>
+<ul>
+<li>As I challenged many problems with <code>800</code> difficulty, my
+learning zone is 800~1000.</li>
+</ul></li>
 </ul>
 <h2 id="a.-too-min-too-max"><a
 href="https://codeforces.com/problemset/problem/1934/A">1934A. Too Min
@@ -40,9 +46,17 @@ for _ in range(int(input())):
     n = int(input())
     a = list(map(int, input().split()))
     print(greedy(n, a))</code></pre>
+<pre><code>for _ in range(int(input())):
+    n = int(input())
+    a = list(map(int, input().split()))
+    a.sort()
+    ai, aj, ak, al = a[0], a[-1], a[1], a[-2]
+    # aj - ai + aj - ak + al - ak + al - ai
+    print(2 * (aj + al - ai - ak))</code></pre>
+<p>I found the solution with observation/constructive algorithms, but
+will try to understand the editorial later.</p>
 <p><a href="https://codeforces.com/blog/entry/126423">Codeforces Round
 931 (Div. 2) Editorial</a></p>
-<p>TODO: Tackle again</p>
 <h2 id="b.-turtle-math-fast-three-tasks"><a
 href="https://codeforces.com/problemset/problem/1933/B">1933B. Turtle
 Math: Fast Three Tasks</a></h2>
@@ -407,12 +421,9 @@ href="https://codeforces.com/blog/entry/124220">editorial</a>.</p>
 <hr />
 <p>TODO:</p>
 <ul>
-<li>Codeforces 1934A</li>
 <li>Pay the rent</li>
 <li>Update my resume with the experience with CI pipelines</li>
 <li>Review Codeforces Round 954 C</li>
-<li>Reach 300 solved problems during the weekend (with <code>800</code>
-problems as the next goal).</li>
 </ul>
 <hr />
 <p><a href="../../index.html">index</a> <a
