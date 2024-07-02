@@ -3,6 +3,10 @@
 <meta charset="UTF-8">
 </head>
 <h1 id="section">20240701</h1>
+<p>I didn't plan to work hard today, but did somehow.</p>
+<ul>
+<li>Updated my resume with the experience with CI pipelines</li>
+</ul>
 <h2 id="c.-update-queries"><a
 href="https://codeforces.com/problemset/problem/1986/C">1986C. Update
 Queries</a></h2>
@@ -36,13 +40,34 @@ lexicographically smallest values.</li>
             ci += 1
         prev_ind = ind[i]
     print(&quot;&quot;.join(s))</code></pre>
+<h2 id="b.-fireworks"><a
+href="https://codeforces.com/problemset/problem/1945/B">1945B.
+Fireworks</a></h2>
+<p>1 &lt;= a, b, m &lt;= 10 ** 18 -&gt; need to solve in O(1)</p>
+<p>To maximize the number of fireworks -&gt; fires both of the fireworks
+at the same time (at <code>a</code> * <code>b</code> minutes for any
+<code>a</code> and <code>b</code>).</p>
+<p>When firing both fireworks, the number of fireworks that can be seen
+at <code>m</code> is <code>m // a + 1</code> (including the starting
+point). Same goes for <code>b</code></p>
+<p>result: (m // a + 1) + (m // b + 1)</p>
+<pre><code>for _ in range(int(input())):
+    a, b, m = map(int, input().split())
+    # num of 1st fireworks that can exist at the same time
+    first: int = m // a + 1
+    # num of 2nd fireworks that can exist at the same time
+    second: int = m // b + 1
+    res: int = first + second
+    print(res)</code></pre>
 <hr />
-<p>Kombucha 200</p>
-<p>Total 200 kcal</p>
+<p>Kombucha 200 Hamburgers 700 Vietnamese quisine 800 (unexpected)
+Protein shake 200 Meat stick 100 Chicken breast</p>
+<p>Total 2200 kcal</p>
 <hr />
 <p>TODO:</p>
 <ul>
-<li>Update my resume with the experience with CI pipelines</li>
+<li>Update my resume with the sign up feature</li>
+<li>Update my resume with the document structure and AWS S3</li>
 <li>Sign up for the next Codeforces Round</li>
 </ul>
 <hr />
