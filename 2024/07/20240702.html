@@ -22,9 +22,33 @@ vertical bricks.</p>
         print(n * m // 2)
     else:
         print(n * (m - 1) // 2)</code></pre>
+<h2 id="a.-least-product"><a
+href="https://codeforces.com/problemset/problem/1917/A">1917A. Least
+Product</a></h2>
+<pre><code>def solve(n: int, a: list[int]) -&gt; tuple[int, list[tuple[int, int]]]:
+    if 0 in a:
+        return 0, []
+
+    if sum(1 for x in a if x &lt; 0) % 2 == 0:
+        return 1, [(1, 0)]
+
+    return 0, []
+
+
+for _ in range(int(input())):
+    n = int(input())
+    a = list(map(int, input().split()))
+    k, ops = solve(n, a)
+    print(k)
+    for i in range(k):
+        print(f&quot;{ops[i][0]} {ops[i][1]}&quot;)</code></pre>
 <hr />
-<p>Eggs 1200</p>
-<p>Total 1200 kcal</p>
+<p>Since tracking calories intake did not work this time and I'm getting
+overweight, let's try low carbohydrate diet for a few months.</p>
+<p>MCT oil is not sold at the nearest Safeway. I might want to check
+Target tomorrow.</p>
+<p>Eggs 20g salad 20g Sashimi 5g</p>
+<p>Total carbohydrate 45g (&lt; 60g)</p>
 <hr />
 <p>TODO:</p>
 <ul>
