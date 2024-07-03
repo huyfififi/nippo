@@ -42,12 +42,43 @@ for _ in range(int(input())):
     print(k)
     for i in range(k):
         print(f&quot;{ops[i][0]} {ops[i][1]}&quot;)</code></pre>
+<h2 id="a.-tricky-template"><a
+href="https://codeforces.com/problemset/problem/1922/A">1922A. Tricky
+Template</a></h2>
+<blockquote>
+<p>Accordingly, the string doesn't match the template if the condition
+doesn't hold for at least one <em>i</em>.</p>
+</blockquote>
+<p>To make the string <em>c</em> does not match the template, we only
+need one position that does not meet the criteria.</p>
+<p>When c[i] equals to a[i] or b[i], we cannot create a template that
+a[i] and b[i] match and c[i] does not.</p>
+<p>a[i] = “a”, b[i] = “b”, c[i] = “c” =&gt; t[i] = “C”</p>
+<p>a[i] = “a”, b[i] = “b”, c[i] = “a” =&gt; cannot make a[i] meet the
+criteria and c[i] does not as they are the same.</p>
+<pre><code>def exists(n: int, a: str, b: str, c: str) -&gt; bool:
+    for i in range(n):
+        if c[i] != a[i] and c[i] != b[i]:
+            return True
+    return False
+
+
+for _ in range(int(input())):
+    n = int(input())
+    a = input()
+    b = input()
+    c = input()
+
+    if exists(n, a, b, c):
+        print(&quot;YES&quot;)
+    else:
+        print(&quot;NO&quot;)</code></pre>
 <hr />
 <p>Since tracking calories intake did not work this time and I'm getting
 overweight, let's try low carbohydrate diet for a few months.</p>
 <p>MCT oil is not sold at the nearest Safeway. I might want to check
 Target tomorrow.</p>
-<p>Eggs 20g salad 20g Sashimi 5g</p>
+<p>Eggs 20g salad 20g Sashimi 5g Meat stick 0g</p>
 <p>Total carbohydrate 45g (&lt; 60g)</p>
 <hr />
 <p>TODO:</p>
