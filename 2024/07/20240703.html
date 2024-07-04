@@ -1,0 +1,76 @@
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+<meta charset="UTF-8">
+</head>
+<h1 id="section">20240703</h1>
+<p>The ordered book “Just for Fun” about Linus Torvalds and the history
+of Linux just arrived. I peeked inside, and I was already hooked on it.
+Tomorrow is a holiday. I may read the book and chill.</p>
+<h2 id="a.-2023"><a
+href="https://codeforces.com/contest/1916/problem/A">1916A.
+2023</a></h2>
+<pre><code>def solve(rms: int, b: list[int]) -&gt; tuple[bool, list[int]]:
+    # 1. calculate the product of the removed numbers
+    bproduct = 1
+    for bi in b:
+        bproduct *= bi
+
+    if 2023 % bproduct != 0:
+        return False, []
+
+    removed = 2023 // bproduct
+
+    # 2. factorization in prime numbers
+    factors = []
+    while removed &gt; 1:
+        for i in range(2, 2024):
+            if removed % i == 0:
+                factors.append(i)
+                removed //= i
+
+    # 3. append `1` to meet the number k
+    # `1` does not change product of the removed numbers
+    while len(factors) &lt; rms:
+        factors.append(1)
+
+    # 4. combine factors when exceeding the number k
+    while len(factors) &gt; rms:
+        if len(factors) == 1:
+            return False, []
+        # bug: factors = [factors[0] + factors[1]] + factors[2:]
+        factors = [factors[0] * factors[1]] + factors[2:]
+
+    return True, factors
+
+
+for _ in range(int(input())):
+    n, k = map(int, input().split())
+    b = list(map(int, input().split()))
+    exists, removed = solve(k, b)
+    if exists:
+        print(&quot;YES&quot;)
+        print(&quot; &quot;.join([str(x) for x in removed]))
+    else:
+        print(&quot;NO&quot;)</code></pre>
+<hr />
+<p>low carbo diet does not suit to be extremely ripped, but in this
+phase, I think it is a good option.</p>
+<p>Squid 0g 700kcal Cheese 10g 300kcal Protein shake 10g 200kcal Salad
+20g 400kcal Monster 5g 0kcal Octopus 0g 300kcal meat stick 0g
+100kcal</p>
+<p>Total carbohydrate 45g (&lt; 60g) 2000kcal</p>
+<hr />
+<p>MUST:</p>
+<ul>
+<li>Read the first section of “Just for Fun.”</li>
+<li>Solve one Codeforces problem</li>
+</ul>
+<p>TODO:</p>
+<ul>
+<li>Update my resume with the sign up feature</li>
+<li>Update my resume with the document structure and AWS S3</li>
+</ul>
+<hr />
+<p><a href="../../index.html">index</a> <a
+href="20240702.html">20240702</a> <a
+href="20240704.html">20240704</a></p>
