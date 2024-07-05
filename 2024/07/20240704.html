@@ -1,0 +1,78 @@
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+<meta charset="UTF-8">
+</head>
+<h1 id="section">20240704</h1>
+<ul>
+<li>Update the Mastodon version v4.2.8 -&gt; v4.2.10
+<ul>
+<li>Because I have no knowledge on Ruby on Rails, I always get scared
+when merging the main branch of mastodon/mastodon and resolving
+conflicts. If things break, I would quit hosting an instance.</li>
+</ul></li>
+<li>Read the first chapter of “Just for Fun.”
+<ul>
+<li>I already begain to understand his personality.</li>
+<li>The talk about Finland is new to me and interesting</li>
+</ul></li>
+<li>Solved Codeforces problems
+<ul>
+<li>The range of the difficulty <code>800</code> is very wide. Some are
+too easy. Some take too much time to solve.</li>
+</ul></li>
+</ul>
+<h2 id="a.-odd-one-out"><a
+href="https://codeforces.com/problemset/problem/1915/A">1915A. Odd One
+Out</a></h2>
+<pre><code>for _ in range(int(input())):
+    a, b, c = map(int, input().split())
+    if a == b:
+        print(c)
+    elif a == c:
+        print(b)
+    else:
+        print(a)</code></pre>
+<h2 id="b.-not-quite-latin-square"><a
+href="https://codeforces.com/problemset/problem/1915/B">1915B. Not Quite
+Latin Square</a></h2>
+<p>We only need to check the row which contains “?”</p>
+<pre><code>for _ in range(int(input())):
+    row_to_check: str = &quot;&quot;
+    for i in range(3):
+        row = input()
+        if &quot;?&quot; in row:
+            row_to_check = row
+
+    if &quot;A&quot; not in row_to_check:
+        print(&quot;A&quot;)
+    elif &quot;B&quot; not in row_to_check:
+        print(&quot;B&quot;)
+    elif &quot;C&quot; not in row_to_check:
+        print(&quot;C&quot;)
+    else:
+        raise Exception(&quot;unexpected&quot;)</code></pre>
+<hr />
+<p>Meat 5g Protein shake 35g keto noodle 10g Eggs 20g</p>
+<p>Total carbohydrate 70g</p>
+<p>I should reduce more</p>
+<p>Protein shake have more carbohydrates than expected. better avoid
+it.</p>
+<hr />
+<p>MUST:</p>
+<ul>
+<li>Read the first chapter of “Code That Fits In Your Head” by Mark
+Seemann
+<ul>
+<li>For a study group</li>
+</ul></li>
+<li>Solve one Codeforces problem</li>
+</ul>
+<p>TODO:</p>
+<ul>
+<li>Update my resume with the sign up feature</li>
+<li>Update my resume with the document structure and AWS S3</li>
+</ul>
+<hr />
+<p><a href="../../index.html">index</a> <a
+href="20240703.html">20240703</a> <a
+href="20240705.html">20240705</a></p>
