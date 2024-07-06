@@ -1,0 +1,51 @@
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+<meta charset="UTF-8">
+</head>
+<h1 id="section">20240705</h1>
+<ul>
+<li>Read the first chapter of “Code That Fits In Your Head” and
+summarized on the Notion page used in the study group.
+<ul>
+<li>The first chapter is boring. He provides some metaphers and points
+out their flaws. Then, he says that although software engineering does
+not have clear guidelines or methodologies like other engineering
+branches, we can use <strong>some</strong> of the approaches from them.
+That's it.</li>
+</ul></li>
+</ul>
+<h2 id="a.-problemsolving-log"><a
+href="https://codeforces.com/contest/1914/problem/A">1914A.
+Problemsolving Log</a></h2>
+<pre><code>import string
+
+
+for _ in range(int(input())):
+    n: int = int(input())
+    s: str = input()
+
+    res: int = 0
+    for i in range(26):
+        if i + 1 &lt;= sum(1 for c in s if c == string.ascii_uppercase[i]):
+            res += 1
+    print(res)</code></pre>
+<hr />
+<p>Meat 10g Cheese 10g Pistachio 10g</p>
+<p>Total carbohydrate 30g</p>
+<hr />
+<p>MUST:</p>
+<ul>
+<li>Read the second chapter of “Just for Fun”</li>
+<li>Solve one Codeforces problem</li>
+<li>Checked three problems I have solved so far</li>
+<li>Set alarm for the Codeforces Round #956</li>
+</ul>
+<p>TODO:</p>
+<ul>
+<li>Update my resume with the sign up feature</li>
+<li>Update my resume with the document structure and AWS S3</li>
+</ul>
+<hr />
+<p><a href="../../index.html">index</a> <a
+href="20240704.html">20240704</a> <a
+href="20240706.html">20240706</a></p>
