@@ -8,11 +8,86 @@
 <ul>
 <li>The second chapter is much longer than expected. Reading one chapter
 a day is an unrealistic goal.</li>
+<li>I read “Unix: A History and a Memoir” a long time ago, and it helps
+me enjoy the book about Linux now.</li>
+<li>It's interesting that several books suggest the free software
+movement (?) is derived from the (sort of) hippie culture which was
+trending at that time. Of course, I was not born yet at that time.</li>
+<li>Even Linus was not there when Unix appeared.</li>
 </ul></li>
 <li>Merged pull requests created by Dependabot in
 <code>dashboard-backend</code></li>
 <li>Solved 2 Codeforces problems</li>
+<li>Reviewed 2 Codeforces problems I have solved</li>
 </ul>
+<hr />
+<p>BSD (Berkeley Software Distribution), Bill Joy, <code>vi</code></p>
+<p>GNU (GNU is Not Unix), GPL (General Public License)</p>
+<p>If I had been born into a rich and supportive family, and with a
+higher IQ, I would have pursued a Ph.D. in OS research.</p>
+<hr />
+<p>Reviewed problems</p>
+<h2 id="a.-nenes-game"><a
+href="https://codeforces.com/contest/1956/problem/A">1956A. Nene's
+Game</a></h2>
+<p>brute force can solve the problem O(n^3) (?)</p>
+<pre><code>while there are players to kick out:  # ~= O(n)
+  new_players = []
+  for player in players:  # ~= O(n)
+    if player not in ITH_TO_KICK_OUT:  # ~= O(n)
+      new_players.append(player)</code></pre>
+<p>The search part can be improved to O(logn) by leveraging a binary
+search</p>
+<p>O(n^2logn)?</p>
+<pre><code>if player not in a:
+-&gt;
+if binary_search(player) == -1:</code></pre>
+<p><a href="https://codeforces.com/blog/entry/128426">Editorial:
+Codeforces Roudn 939 (Div. 2)</a></p>
+<p>It's embarassing that I did not notice this last time I tackled the
+problem.</p>
+<p>Let's say we have 10 players [1, 2, …, 10] and a (indices to kick
+out) = [3, 5]</p>
+<p>The players [1, 2] always stays after any number of operations to
+remove 3th and 5th players. Conversely, [3, 4, …] players will be kicked
+out in the end by repeating kicking out the 3th player.</p>
+<p>Therefore, the answer to the question, i.e., the number of players
+left in the end is <code>a[0] - 1 if n &gt;= a[0] else n</code></p>
+<pre><code>for _ in range(int(input())):
+    k, q = map(int, input().split())
+    a = list(map(int, input().split()))
+    n = list(map(int, input().split()))
+    res = []
+    for ni in n:
+        res.append(min(a[0] - 1, ni))
+    print(&quot; &quot;.join(str(x) for x in res))</code></pre>
+<h2 id="a.-too-min-too-max"><a
+href="https://codeforces.com/problemset/problem/1934/A">1934A. Too Min
+Too Max</a></h2>
+<p>Let's consider with only 4 numbers where a &lt;= b &lt;= c &lt;=
+d</p>
+<p>When thinking about possible expressions(orderings), they are</p>
+<ul>
+<li><code>|a - b| + |b - c| + |c - d| + |d - a|</code>,
+(<code>|a - b| + |b - d| + |d - c| + |c - a|</code>)
+<ul>
+<li><code>(b - a) + (c - b) + (d - c) + (d - a) = 2d - 2a</code></li>
+</ul></li>
+<li><code>|a - c| + |c - b| + |b - d| + |d - a|</code>
+<ul>
+<li><code>(c - a) + (c - b) + (d - b) + (d - a) = 2d + 2c - 2b - 2a &gt; 2d - 2a because 2c &gt; 2b</code></li>
+</ul></li>
+</ul>
+<p>Therefore, the answer is 2(c + d) - 2(a + b), picking the two largest
+numbers as c and d, and the smallest numbers as a and b</p>
+<pre><code>for _ in range(int(input())):
+    n = int(input())
+    a = list(map(int, input().split()))
+    a.sort()
+    # a &lt;= b &lt;= c &lt;= d
+    a, b, c, d = a[0], a[1], a[-2], a[-1]
+    print(2 * (c + d) - 2 * (a + b))</code></pre>
+<hr />
 <h2 id="c.-can-i-square"><a
 href="https://codeforces.com/problemset/problem/1915/C">1915C. Can I
 Square?</a></h2>
@@ -69,20 +144,24 @@ for _ in range(int(input())):
     print(profit(n, k, a, b))</code></pre>
 <hr />
 <p>Meat 30g Cheese 10g Protein shake 20g</p>
-<p>Total carbohydrate 60g</p>
+<p>Total carbohydrate 60g 4k run, pull ups, push ups</p>
+<p>I missed to record my exercises last few weeks but that should be
+fine. The primary reason of this report is to push me to study
+programming.</p>
 <hr />
 <p>MUST:</p>
 <ul>
-<li>Read the next section of “Just for Fun”</li>
 <li>Participate in Codeforces Round 956</li>
-<li>Checked three problems I have solved so far</li>
 </ul>
 <p>TODO:</p>
 <ul>
+<li>Read the next section of “Just for Fun” by Tuesday</li>
+<li>Read the next chapter of “Code That Fits In Your Head” by next
+week</li>
 <li>Update my resume with the sign up feature</li>
 <li>Update my resume with the document structure and AWS S3</li>
 </ul>
 <hr />
 <p><a href="../../index.html">index</a> <a
-href="20240704.html">20240704</a> <a
-href="20240706.html">20240706</a></p>
+href="20240705.html">20240705</a> <a
+href="20240707.html">20240707</a></p>
