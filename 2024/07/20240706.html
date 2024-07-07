@@ -11,9 +11,10 @@ a day is an unrealistic goal.</li>
 </ul></li>
 <li>Merged pull requests created by Dependabot in
 <code>dashboard-backend</code></li>
+<li>Solved 2 Codeforces problems</li>
 </ul>
-<h2 id="can-i-square"><a
-href="https://codeforces.com/problemset/problem/1915/C">Can I
+<h2 id="c.-can-i-square"><a
+href="https://codeforces.com/problemset/problem/1915/C">1915C. Can I
 Square?</a></h2>
 <p>I know how the binary search works, but I always feel unconfident
 about corner cases and base conditions(?).</p>
@@ -44,9 +45,31 @@ for _ in range(int(input())):
         print(&quot;YES&quot;)
     else:
         print(&quot;NO&quot;)</code></pre>
+<h2 id="b.-new-bakery"><a
+href="https://codeforces.com/problemset/problem/1978/B">1978B. New
+Bakery</a></h2>
+<pre><code>def profit(n: int, k: int, a: int, b: int) -&gt; int:
+    discounted: int = (b + 1) * k - (1 + k) * k // 2  # sum(1..k), k or k + 1 % 2 == 1
+    usual: int = (n - k) * a
+    return discounted + usual
+
+
+def return_k(n: int, a: int, b: int) -&gt; int:
+    if b &lt; a:
+        return 0
+    k = b - a + 1  # max
+    if k &gt; n:
+        return n
+    return k
+
+
+for _ in range(int(input())):
+    n, a, b = map(int, input().split())
+    k = return_k(n, a, b)
+    print(profit(n, k, a, b))</code></pre>
 <hr />
-<p>Meat 10g Cheese 10g Protein shake 20g</p>
-<p>Total carbohydrate 40g</p>
+<p>Meat 30g Cheese 10g Protein shake 20g</p>
+<p>Total carbohydrate 60g</p>
 <hr />
 <p>MUST:</p>
 <ul>
