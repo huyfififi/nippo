@@ -1,0 +1,49 @@
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+<meta charset="UTF-8">
+</head>
+<h1 id="section">20240708</h1>
+<ul>
+<li>Read the next section of “Just for Fun”</li>
+<li>Read three sections of “Code That Fits In Your Head”</li>
+</ul>
+<hr />
+<h2 id="a.-array-divisibility"><a
+href="https://codeforces.com/contest/1983/problem/A">1983A. Array
+Divisibility</a></h2>
+<p>It felt good to have this problem solved.</p>
+<pre><code>for _ in range(int(input())):
+    n = int(input())
+    print(&quot; &quot;.join([str(x) for x in range(1, n + 1)]))</code></pre>
+<p><strong>My Thought Process</strong></p>
+<p>The easiest way to make the sum of numbers, whose indices are
+multiple of <code>k</code>, divisible by <code>k</code>, we can pick
+multiples of <code>k</code> for the numbers.</p>
+<p>For example, when thinking about <code>k = 3</code> and 10 input
+numbers, we need to pick
+<code>{3a, 3b, 3c} where a, b, and c are integers</code> for indices
+<code>3, 6, and 9</code>, so that, the sum will be
+<code>3(a + b + c)</code> which is divisible by 3.</p>
+<p>I first thought of multiplying corresponding indices by 1, 2, 3, …,
+n, but after consideration, found out the array [1, 2, …, n] meets the
+condition!</p>
+<hr />
+<p>Cheese 10g Protein shake 10g</p>
+<p>Total carbohydrate 20g</p>
+<hr />
+<p>MUST:</p>
+<ul>
+<li>Prepare for the MTG and discuss the thing.</li>
+<li>Read the next section of “Just for Fun”</li>
+</ul>
+<p>TODO:</p>
+<ul>
+<li>Read the next chapter of “Code That Fits In Your Head” by next
+week</li>
+<li>Update my resume with the sign up feature</li>
+<li>Update my resume with the document structure and AWS S3</li>
+</ul>
+<hr />
+<p><a href="../../index.html">index</a> <a
+href="20240707.html">20240707</a> <a
+href="20240709.html">20240709</a></p>
