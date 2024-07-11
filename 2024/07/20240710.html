@@ -1,0 +1,99 @@
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+<meta charset="UTF-8">
+</head>
+<h1 id="section">20240710</h1>
+<ul>
+<li>Finished reading the chapter 2 of “Just for Fun”</li>
+<li>Tweaked the LinkedIn profile</li>
+</ul>
+<p>灼熱カバディの最新刊アツすぎだろ！</p>
+<p>Bourne-Again Shell, bash</p>
+<p>Andrew S. Tanenbaum, MINIX</p>
+<h2 id="b.-corner-twist"><a
+href="https://codeforces.com/problemset/problem/1983/B">1983B. Corner
+Twist</a></h2>
+<p>I could not solve this problem during the contest. As I checked the
+solution, I noticed that I was very close to the answer.</p>
+<blockquote>
+<p>2*2 square can be used to generate the same result as the operation
+applied on any rectangle.</p>
+</blockquote>
+<p>So, I can focus on applying 2*2 square to <code>a</code> to make it
+<code>b</code> (?), i.e., thinking about applying 2*2 square
+<code>[[1, 2], [2, 1]]</code> or <code>[[2, 1], [1, 2]]</code> should be
+enough to consider applying i*j square.</p>
+<p>To convert <code>a</code> into <code>b</code>, I can iterate through
+1…n-1 for rows and 1…m-1 for columns, applying
+<code>[[1, 2], [2, 1]]</code> or <code>[[2, 1], [1, 2]]</code>.</p>
+<blockquote>
+<p>Feedback 215 Good problem 19 Average problem 292 Bad problem 37 Did
+not solve</p>
+</blockquote>
+<p>It's interesting the community seems not to like the problem. I have
+little experience in competitive programming and don't know what
+determines whether a problem is good, and I'm grateful to the author for
+making the contest happen.</p>
+<p>We can make the first n - 1 rows and m - 1 columns equal by doing
+that, but we need to check if the last row and column of <code>a</code>
+(modified) and <code>b</code> equal.</p>
+<blockquote>
+<p>Note that the sum of each row and each column stays constant after
+each operation.</p>
+</blockquote>
+<p>both rows and columns will get (1 + 2) mod 3 by applying the 2*2
+square, so any number of operations don't change the sum mod 3 for rows
+and columns.</p>
+<p>That being said, the nth row and mth column of <code>a</code>
+(modified) and <code>b</code> need to have the same value after the
+operations &lt;=&gt; Every row and colum need to have the same value
+(mod 3).</p>
+<pre><code>def possible(n: int, m: int, a: list[int], b: list[int]) -&gt; bool:
+    for rowi in range(n):
+        if sum(a[rowi]) % 3 != sum(b[rowi]) % 3:
+            return False
+
+    for coli in range(m):
+        asum: int = 0
+        bsum: int = 0
+        for rowi in range(n):
+            asum = (asum + a[rowi][coli]) % 3
+            bsum = (bsum + b[rowi][coli]) % 3
+        if asum != bsum:
+            return False
+
+    return True
+
+
+for _ in range(int(input())):
+    n, m = map(int, input().split())
+    a: list[int] = []
+    b: list[int] = []
+    for i in range(n):
+        a.append(list(map(int, list(input()))))
+    for i in range(n):
+        b.append(list(map(int, list(input()))))
+
+    if possible(n, m, a, b):
+        print(&quot;YES&quot;)
+    else:
+        print(&quot;NO&quot;)</code></pre>
+<p>I'm still not quite sure if I understand this problem properly.</p>
+<hr />
+<p>Snacks 20g Protein shake 20g</p>
+<p>Total carbohydrate 40g</p>
+<hr />
+<p>MUST:</p>
+<ul>
+<li>Read the next section of “Just for Fun”</li>
+</ul>
+<p>TODO:</p>
+<ul>
+<li>Update my resume with the sign up feature</li>
+<li>Update my resume with the document structure and AWS S3</li>
+<li>Update my LinkedIn summary section</li>
+</ul>
+<hr />
+<p><a href="../../index.html">index</a> <a
+href="20240709.html">20240709</a> <a
+href="20240711.html">20240711</a></p>
