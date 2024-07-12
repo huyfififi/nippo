@@ -1,0 +1,61 @@
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+<meta charset="UTF-8">
+</head>
+<h1 id="section">20240712</h1>
+<p>I feel a bit tired, mainly because I researched how to optimize
+resources in machine-learning model inference very hard. Let's relax on
+the weekend.</p>
+<hr />
+<h2 id="a.-only-pluses"><a
+href="https://codeforces.com/contest/1992/problem/A">1992A. Only
+Pluses</a></h2>
+<p>Let's consider a simpler situation in which I get to incrase one of
+the three numbers by 1.</p>
+<p><code>a &lt;= b &lt;= c</code></p>
+<p>I have three options</p>
+<ul>
+<li><code>(a + 1) * b * c</code> = <code>abc + bc</code></li>
+<li><code>a * (b + 1) * c</code> = <code>abc + ac</code></li>
+<li><code>a * b * (c + 1)</code> = <code>abc + ab</code></li>
+</ul>
+<p>Because a &lt;= b &lt;= c, bc &gt;= ac &gt;= ab. Therefore,
+<code>(a + 1) * b * c</code> is the largest option, i.e., increaseing
+the smallest number of three maximizing their product.</p>
+<p>Is it guaranteed that maximizing the product for each step leads to
+the maximum value in the end after applying the operation 5 times? I
+don't know…</p>
+<hr />
+<p><code>torch.no_grad()</code> to disable gradient calculation and save
+memory.</p>
+<blockquote>
+<p>Disabling gradient calculation is useful for inference, when you are
+sure that you will not call Tensor.backward(). It will reduce memory
+consumption for computations that would otherwise have
+requires_grad=True.</p>
+</blockquote>
+<p>I tried with our project, and (only) see a slight improvement on the
+memory usage. Or, it's totally possible that I misunderstood something
+and applied it in the wrong way (I don't see many web pages on the
+function usage).</p>
+<p>Also, I was browing the web pages of TorchScript, but couldn't figure
+it out.</p>
+<hr />
+<p>Cheese 10g</p>
+<p>Total carbohydrate 10g</p>
+<hr />
+<p>MUST:</p>
+<ul>
+<li>Finish “Just for Fun”</li>
+<li>Social Interaction @ Sushi Maru</li>
+</ul>
+<p>TODO:</p>
+<ul>
+<li>Update my resume with the sign up feature</li>
+<li>Update my resume with the document structure and AWS S3</li>
+<li>Update my LinkedIn summary section</li>
+</ul>
+<hr />
+<p><a href="../../index.html">index</a> <a
+href="20240711.html">20240711</a> <a
+href="20240713.html">20240713</a></p>
