@@ -3,6 +3,17 @@
 <meta charset="UTF-8">
 </head>
 <h1 id="section">20240714</h1>
+<ul>
+<li>Created a health insurance account.
+<ul>
+<li>When I switch positions or company structure changes, I always need
+to create a new health insurance account. It's sort of annoying.</li>
+</ul></li>
+<li>Configured Lens
+<ul>
+<li>will check logs and the admin site tomorrow.</li>
+</ul></li>
+</ul>
 <hr />
 <p>It's annoying to be disputed without clear evidence or understanding
 of the topic.</p>
@@ -50,13 +61,49 @@ package. It is as simple as one command:</p>
 <p>This will automatically build a wheel and a source
 distribution(sdist), and upload them to the PyPI index.</p>
 </blockquote>
+<h2 id="b.-angry-monk"><a
+href="https://codeforces.com/contest/1992/problem/B">1992B. Angry
+Monk</a></h2>
+<p>To make one number as a result, the (num of operations required) -
+1th is (1, _) or (_, 1). And its previous step is (1, 1, _)… and so on.
+to combine all the numbers, we need to break all the numbers greater
+than 1 down except for one number to combine 1 to.</p>
+<p>For example, to combine (1, 5, 1, 7), we first need to make 5 -&gt; 1
+* 5 or 7 -&gt; 1 * 7.</p>
+<p>To minimize the number of the operations, we can pick the largest
+number and convert the rest into 1s.</p>
+<pre><code>def solve(k: int, a: list[int]) -&gt; int:
+    imax = -1
+    valmax = -1
+    for i in range(k):
+        if a[i] &gt; valmax:
+            imax = i
+            valmax = a[i]
+
+    res = 0
+    for i in range(k):
+        if i == imax:
+            continue
+        res += 1 + (a[i] - 1) * 2
+    return res
+
+
+for _ in range(int(input())):
+    n, k = map(int, input().split())
+    a: list[int] = list(map(int, input().split()))
+    res: int = solve(k, a)
+    print(res)</code></pre>
+<p><a href="https://codeforces.com/blog/entry/131461">Codeforces Round
+957 Editorial</a> -&gt; if you want to check more detailed
+explanation</p>
 <hr />
 <p>Ketone 40 mg/dl</p>
-<p>Total carbohydrate 0g</p>
+<p>Cheese 10g Snacks 10g Salad 10g</p>
+<p>Total carbohydrate 30g</p>
 <hr />
 <p>MUST:</p>
 <ul>
-<li>Set up health insurance</li>
+<li>Review Codeforces 1992C</li>
 </ul>
 <p>TODO:</p>
 <ul>
