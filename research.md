@@ -51,5 +51,6 @@
 
 # Others
 
+- [Red Green Refactor (20240714)](./2024/07/20240714.html)
 - [Forking v.s. Branching (only have link to StackOverFlow) (20240713)](./2024/07/20240713.html)
 - [Mob Programming / Pair Programming (20240520)](./2024/05/20240520.html)
