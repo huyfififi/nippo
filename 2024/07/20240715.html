@@ -80,6 +80,21 @@ subarray, and end with an increasing subarray to minimize g().</p>
         else:
             res.append(i - n + m + 1)
     print(&quot; &quot;.join([str(x) for x in res]))</code></pre>
+<h2 id="cyclomatic-complexity">Cyclomatic Complexity</h2>
+<p><a
+href="https://www.ibm.com/docs/en/raa/6.1?topic=metrics-cyclomatic-complexity">IBM
+Documentation: Cyclomatic complexity</a></p>
+<blockquote>
+<p>Cyclomatic complexity is a measurement developed by Thomas McCabe to
+determine the stability and level of confidence in a program. It
+measures the number of linearly-independent paths through a program
+module. Programs with lower Cyclomatic complexity are easier to
+understand and less risky to modify.</p>
+</blockquote>
+<p><a href="https://github.com/rubik/radon">rubik/radon</a> seems to be
+the most popular code analysis tool to check cyclomatic complexity, but
+the package does not support Python 3.11~.</p>
+<p>TODO: Research the detailed algorithm of it.</p>
 <hr />
 <p>Ketone 50 mg/dl</p>
 <p>Cheese 5g Salad 10g Bacon Egg 5g</p>
@@ -97,6 +112,13 @@ dashboard/codeforces API</li>
 <li>Update my resume with the sign up feature</li>
 <li>Update my resume with the document structure and AWS S3</li>
 <li>Update my LinkedIn summary section</li>
+<li>Check how to calculate cyclomatic complexity. Maybe it would be a
+good personal project
+<ul>
+<li>On second thought, OCaml, Rust, or Haskell are used to analyze code.
+Python might not be suitable for it.</li>
+<li>It would be just a personal project. Using Python might be OK.</li>
+</ul></li>
 </ul>
 <hr />
 <p><a href="../../index.html">index</a> <a
