@@ -16,14 +16,81 @@ human mind maxes out, so we have to keep chunking and slicing
 differently if we want to keeep making changes.</p>
 </blockquote>
 <p>I think this is the primary message the book tells.</p>
+<h2 id="async-and-await"><code>async</code> and <code>await</code></h2>
+<p><a href="https://fastapi.tiangolo.com/async/">FastAPI: Concurrency
+and async / await</a></p>
+<p>The detailed exmaples are a bit confusing for me… and it does not
+provide clear definitions of the terminologies, not sure they have clear
+definitions tho.</p>
+<p>By leveraging asynchronous (concurrency) code, we can avoid blocking
+I/O operations. Let's say, we have an API server that queries a database
+and returns the result. When the server accept a request, the process
+does not have to block I/O during database queries. Instead, the process
+can wait for the result on the side, without blocking I/O, leveraging
+concurrency.</p>
+<p><a href="https://docs.python.org/3/library/asyncio-task.html">Python
+Documentation: Coroutines and Tasks</a></p>
+<blockquote>
+<p>Coroutines declared with the async/await syntax is the preferred way
+of writing asyncio applications. For example, the following snippet of
+code prints “hello”, waits 1 second, and then prints “world”:</p>
+</blockquote>
+<pre><code>&gt;&gt;&gt; import asyncio
+
+&gt;&gt;&gt; async def main():
+...     print(&#39;hello&#39;)
+...     await asyncio.sleep(1)
+...     print(&#39;world&#39;)
+
+&gt;&gt;&gt; asyncio.run(main())
+hello
+world</code></pre>
+<blockquote>
+<p>coroutine Coroutines are a more generalized form of subroutines.
+Subroutines are entered at one point and exited at another point.
+Coroutines can be entered, exited, and resumed at many different points.
+They can be implemented with the async def statement.</p>
+</blockquote>
+<h2 id="c.-gorilla-and-permutation"><a
+href="https://codeforces.com/contest/1992/problem/C">1992C. Gorilla and
+Permutation</a></h2>
+<p>I started with observation, using the third test case.</p>
+<p><code>(n, m, k) = (10, 3, 8)</code></p>
+<p>The sample test cases result in non-complete decreasing arrays. So, I
+went ahead with <code>[10, 9, 8, ..., 3, 2, 1]</code></p>
+<pre><code>f(1) = 10, g(1) = 0
+f(2) = 19, g(2) = 0
+f(3) = 27, g(3) = 0
+f(4)~f(7) = 27, g(4)~g(7) = 0
+f(8) = 27, g(8) = 3
+f(9) = 27, g(9) = 5</code></pre>
+<p>From the observation, to minimize the sum of g(), we must order
+<code>1, 2, ...</code> from where g() &gt; 0.</p>
+<p>How about f()? to max out f() as soon as possible, we need to order
+<code>10, 9, ...</code> from the beginning.</p>
+<p>Given the constraint <code>m &lt; k</code>, f() maxes out earlier
+than g() starts having values. Therefore, we can start with a decreasing
+subarray, and end with an increasing subarray to minimize g().</p>
+<pre><code>for _ in range(int(input())):
+    n, m, k = map(int, input().split())
+    res = []
+    for i in range(n):
+        if i &lt; n - m:
+            res.append(n - i)
+        else:
+            res.append(i - n + m + 1)
+    print(&quot; &quot;.join([str(x) for x in res]))</code></pre>
 <hr />
-<p>Ketone 0 mg/dl</p>
-<p>Total carbohydrate 0g</p>
+<p>Ketone 50 mg/dl</p>
+<p>Cheese 5g Salad 10g Bacon Egg 5g</p>
+<p>Total carbohydrate 20g</p>
+<p>push ups 6k run</p>
 <hr />
 <p>MUST:</p>
 <ul>
-<li>Review Codeforces 1992C</li>
-<li>Check the FastAPI documentation on async/await again</li>
+<li>Review Codeforces 1992D</li>
+<li>Check if I can add <code>difficulty</code> in the
+dashboard/codeforces API</li>
 </ul>
 <p>TODO:</p>
 <ul>
