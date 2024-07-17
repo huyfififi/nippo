@@ -37,6 +37,7 @@
 
 # Services
 
+- [GitHub Issue & PR templates (20240716)](./2024/07/20240716.html)
 - [Ingress (20240716)](./2024/07/20240716.html)
 - [LlamaParse / Apache Airflow (20240618)](./2024/06/20240618.html)
 - [Some of Netlify features (20240610)](./2024/06/20240610.html)

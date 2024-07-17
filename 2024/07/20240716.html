@@ -81,6 +81,38 @@ reverse proxy, but I believe they are the same at a high level;</p>
 <p>An ingress controller routes traffic from the outside of the cluter
 to services within the cluster whereas a reverse proxy routes traffic to
 (internal) servers.</p>
+<h2 id="issuepr-templates-in-github">Issue/PR Templates in GitHub</h2>
+<p><a
+href="https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/about-issue-and-pull-request-templates">About
+issue and pull request templates</a></p>
+<blockquote>
+<p>With issue and pull request templates, you can customize and
+standardize the information you'd like contributors to include when they
+open issues and pull requests in your repository.</p>
+</blockquote>
+<p><a
+href="https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/configuring-issue-templates-for-your-repository">Configuring
+issue templates for your repository</a></p>
+<blockquote>
+<p>To use an issue form in your repository, you must create a new file
+and add it to the .github/ISSUE_TEMPLATE folder in your repository.</p>
+</blockquote>
+<p>I can have multiple templates (YAML) under the
+<code>.github/ISSUE_TEMPLATE</code> folder. For example, I can have
+different templates for a bug report and a feature request.</p>
+<p><a
+href="https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/creating-a-pull-request-template-for-your-repository">Creating
+a pull request template for your repository</a></p>
+<blockquote>
+<p>When you add a pull request template to your repository, project
+contributors will automatically see the template’s contents in the pull
+request body.</p>
+</blockquote>
+<p>It seems I need to create a template in
+<code>.github/pull_request_template.md</code>. If I want to have
+multiple templates, I can have
+<code>.github/PULL_REQUEST_TEMPLATE/</code> folder same as the issue
+templates.</p>
 <hr />
 <p>Ketone 60 mg/dl</p>
 <p>Cheese 10g Snacks 10g</p>
