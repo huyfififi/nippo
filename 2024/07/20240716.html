@@ -11,6 +11,15 @@ result of side effects is helpful and I don't find any db packages that
 enforce it. For example, <code>pymongo</code> returns the result of db
 operations such as inserts.</li>
 </ul></li>
+<li>Checked Codeforces API to see if there are some problem rating
+information I can use
+<ul>
+<li><a
+href="https://codeforces.com/apiHelp/objects#Problem">Problem.rating</a>
+can be used.</li>
+<li>Added some metrics about problem ratings in dashboard-backend API
+(not deployed yet)</li>
+</ul></li>
 </ul>
 <hr />
 <h2 id="mime-types">MIME types</h2>
@@ -43,15 +52,44 @@ whitespace between:</p>
 <code>text/html</code>, <code>application/json</code></p>
 <p><a href="https://datatracker.ietf.org/doc/html/rfc6838">RFC 6838 -
 Media Type Specifications and Registration Procedures</a></p>
+<h2 id="ingress">Ingress</h2>
+<p><a
+href="https://kubernetes.io/docs/concepts/services-networking/ingress/">Ingress
+| Kubernetes</a></p>
+<blockquote>
+<p>Ingress exposes HTTP and HTTPS routes from outside the cluster to
+services within the cluster. Traffic routing is controlled by rules
+defined on the Ingress resource.</p>
+</blockquote>
+<h3 id="ingress-controllers">Ingress Controllers</h3>
+<p><a
+href="https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/">Ingress
+Controllers | Kubernetes</a></p>
+<blockquote>
+<p>In order for the Ingress resource to work, the cluster must have an
+ingress controller running.</p>
+</blockquote>
+<p>Ingress Controllers seem to be softwares required to make Ingress
+work. There are various ingress controller implementation as the web
+page lists.</p>
+<p>For example, when using AWS EKS, AWS Application Load Balancer (ALB)
+will be used.</p>
+<h3 id="an-ingress-controller-as-a-reverse-proxy">An ingress controller
+as a reverse proxy</h3>
+<p>The official document says nothing about the similarity with a
+reverse proxy, but I believe they are the same at a high level;</p>
+<p>An ingress controller routes traffic from the outside of the cluter
+to services within the cluster whereas a reverse proxy routes traffic to
+(internal) servers.</p>
 <hr />
 <p>Ketone 60 mg/dl</p>
-<p>Total carbohydrate 0g</p>
+<p>Cheese 10g Snacks 10g</p>
+<p>Total carbohydrate 20g</p>
 <hr />
 <p>MUST:</p>
 <ul>
 <li>Review Codeforces 1992D</li>
-<li>Check if I can add <code>difficulty</code> in the
-dashboard/codeforces API</li>
+<li>Read the chapter 9 of “Code That Fits in Your Head.”</li>
 </ul>
 <p>TODO:</p>
 <ul>
