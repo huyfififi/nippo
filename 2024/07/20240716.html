@@ -13,8 +13,38 @@ operations such as inserts.</li>
 </ul></li>
 </ul>
 <hr />
+<h2 id="mime-types">MIME types</h2>
+<p><a
+href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types">MDN
+| MIME types (IANA media types) - HTTP</a></p>
+<blockquote>
+<p>A media type (also known as a Multipurpose Internet Mail Extensions
+or MIME type) indicates the nature and format of a document, file, or
+assortment of bytes.</p>
+</blockquote>
+<blockquote>
+<p>Warning: Browsers use the MIME type, not the file extension, to
+determine how to process a URL, so it’s important that web servers send
+the correct MIME type in the response's <code>Content-Type</code>
+header. If this is not correctly configured, browsers are likely to
+misinterpret the contents of files, sites will not work correctly, and
+downloaded files may be mishandled.</p>
+</blockquote>
+<p>This is the exact mistake I made today. CSS files are passed as
+<code>text/html</code>, failing to make browsers understand it.</p>
+<h3 id="structure-of-a-mime-type">Structure of a MIME type</h3>
+<blockquote>
+<p>A MIME type most commonly consists of just two parts: a <em>type</em>
+and a <em>subtype</em>, separated by a slash (<code>/</code>) — with no
+whitespace between:</p>
+</blockquote>
+<pre><code>type/subtype</code></pre>
+<p>Examples: <code>text/plain</code>, <code>text/css</code>,
+<code>text/html</code>, <code>application/json</code></p>
+<p><a href="https://datatracker.ietf.org/doc/html/rfc6838">RFC 6838 -
+Media Type Specifications and Registration Procedures</a></p>
 <hr />
-<p>Ketone (will measure) mg/dl</p>
+<p>Ketone 60 mg/dl</p>
 <p>Total carbohydrate 0g</p>
 <hr />
 <p>MUST:</p>
