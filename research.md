@@ -37,9 +37,10 @@
 
 # Services
 
-- [GitHub Issue & PR templates (20240716)](./2024/07/20240716.html)
-- [Ingress (20240716)](./2024/07/20240716.html)
-- [LlamaParse / Apache Airflow (20240618)](./2024/06/20240618.html)
+- [`dependabot` and `poetry`](./2024/07/20240718.html)
+- [GitHub Issue & PR templates](./2024/07/20240716.html)
+- [Ingress](./2024/07/20240716.html)
+- [LlamaParse / Apache Airflow](./2024/06/20240618.html)
 - [Some of Netlify features (20240610)](./2024/06/20240610.html)
 - [Billing of DataDog and GitHub Actions / Google Testing Blog (20240604)](./2024/06/20240604.html)
 - [Custom domain configuration for GitHub pages (20240502)](./2024/05/20240502.html)
