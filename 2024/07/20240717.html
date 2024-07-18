@@ -63,6 +63,58 @@ running <code>gc.collect()</code> at the end of a task frees huge amount
 of memory.</p>
 <p>So, in our case, calling <code>gc.collect()</code> to free memory
 used in Celery makes sense.</p>
+<h2 id="d.-test-of-love"><a
+href="https://codeforces.com/contest/1992/problem/D">1992D. Test of
+Love</a></h2>
+<p>greedy approach</p>
+<p>I should have noticed that I could check if the person could jump for
+each position. <code>m</code> is at most <code>10</code>, so for-looping
+10 times for each position does not affect the time complexity. 10 is a
+constant.</p>
+<pre><code>def possible(n: int, m: int, k: int, a: list[str]) -&gt; bool:
+    posi: int = -1
+    while posi &lt; n:
+        if posi &gt;= 0 and a[posi] == &quot;C&quot;:
+            return False
+
+        elif posi &gt;= 0 and a[posi] == &quot;W&quot;:
+            posi += 1
+            k -= 1
+
+        else:  # posi == -1 or a[posi] == &quot;L&quot;
+            # if there is a log in the range, jump to it
+            # if there is no log, jump to to the farthest water
+            logi: int = -1
+            wateri: int = -1
+            # at most m = 10, and this loop does not affect the time complexity
+            for jumplen in range(1, m + 1):
+                if posi + jumplen &gt;= n:
+                    logi = n  # goal
+                    break
+
+                if a[posi + jumplen] == &quot;L&quot;:
+                    logi = posi + jumplen
+                elif a[posi + jumplen] != &quot;C&quot;:
+                    wateri = posi + jumplen
+
+            if logi != -1:
+                posi = logi
+            elif wateri != -1:
+                posi = wateri
+            else:
+                return False
+
+    return k &gt;= 0
+
+
+for _ in range(int(input())):
+    n, m, k = map(int, input().split())
+    a: list[str] = list(input())
+
+    if possible(n, m, k, a):
+        print(&quot;YES&quot;)
+    else:
+        print(&quot;NO&quot;)</code></pre>
 <hr />
 <p>Ketone 60 mg/dl</p>
 <p>Cheese 10g Snacks 10g Protein shake 10g Bacon Egg 0g</p>
