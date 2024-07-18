@@ -46,6 +46,7 @@
 
 # Programming Languages
 
+- [gc - Garbage Collector Interface - Python (20240717)](./2024/07/20240717.html)
 - [Wheel (Python) (20240714)](./2024/07/20240714.html)
 - [global installation in npm (20240506)](./2024/05/20240506.html)
 - [Duck typing (20240505)](./2024/05/20240505.html)

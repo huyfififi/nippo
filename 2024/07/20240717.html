@@ -1,0 +1,75 @@
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+<meta charset="UTF-8">
+</head>
+<h1 id="section">20240717</h1>
+<ul>
+<li>Finished helping my friend to set up FastAPI project.
+<ul>
+<li><a
+href="https://github.com/mie-h/notsureyet/pull/40">https://github.com/mie-h/notsureyet/pull/40</a>
+<ul>
+<li>The repository name will be changed tho.</li>
+</ul></li>
+</ul></li>
+</ul>
+<hr />
+<h2 id="gc---garbage-collector-interface-python">gc - Garbage Collector
+Interface (Python)</h2>
+<p>Python already has garbage collectors. For example, CPython counts
+the number of references to a specific memory field, and once the memory
+is not referenced anymore, the memory will be freed.</p>
+<p>If my understanding is correct, I have no idea when and how to use
+<code>gc</code> module. I can see that my colleagues use it to reduce
+the memory usage, but I need to check if it's right.</p>
+<p><a href="https://docs.python.org/3/library/gc.html">gc - Garbage
+Collector Interface - Python 3.12.4 Documentation</a></p>
+<blockquote>
+<p>This module provides an interface to the optional garbage collector.
+It provides the ability to disable the collector, tune the collection
+frequency, and set debugging options. It also provides access to
+unreachable objects that the collector found but cannot free. Since the
+collector supplements the reference counting already used in Python, you
+can disable the collector if you are sure your program does not create
+reference cycles.</p>
+</blockquote>
+<h3
+id="gc.collectgeneration2"><code>gc.collect(generation=2)</code></h3>
+<blockquote>
+<p>With no arguments, run a full collection. The effect of calling
+gc.collect() while the interpreter is already performing a collection is
+undefined.</p>
+</blockquote>
+<p>In general, calling <code>gc.collect()</code> is dangerous because
+CPython's garbage collection is already running, and they would
+conflict.</p>
+<p>However, I found this thread.</p>
+<p><a
+href="https://groups.google.com/g/celery-users/c/jVc3I3kPtlw">Celery
+doesn't release memory after finishing a task</a></p>
+<p>It's an old thread, but our application seems to face the same issue,
+running <code>gc.collect()</code> at the end of a task frees huge amount
+of memory.</p>
+<p>So, in our case, calling <code>gc.collect()</code> to free memory
+used in Celery makes sense.</p>
+<hr />
+<p>Ketone 60 mg/dl</p>
+<p>Cheese 10g Snacks 10g Protein shake 10g</p>
+<p>Total carbohydrate 30g</p>
+<hr />
+<p>MUST:</p>
+<ul>
+<li>Implement Codeforces 1992D</li>
+<li>Read the chapter 9 of “Code That Fits in Your Head.”</li>
+</ul>
+<p>TODO:</p>
+<ul>
+<li>Update my resume with the sign up feature</li>
+<li>Update my resume with the document structure and AWS S3</li>
+<li>Update my LinkedIn summary section</li>
+<li>Cyclomatic Complexity</li>
+</ul>
+<hr />
+<p><a href="../../index.html">index</a> <a
+href="20240716.html">20240716</a> <a
+href="20240718.html">20240718</a></p>
