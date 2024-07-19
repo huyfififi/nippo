@@ -18,6 +18,8 @@ Kahneman.</li>
 <code>huyfififi/dashboard-backend</code></li>
 <li>Sent an email to the lawyer</li>
 <li>Created two repositories for my personal projects in mind</li>
+<li>worked hard</li>
+<li>Read chapter 10 and 11 of “Code That Fits in Your Head”</li>
 </ul>
 <h2 id="rye"><code>Rye</code></h2>
 <p><a href="https://github.com/astral-sh/rye">astral-sh/rye</a></p>
@@ -71,15 +73,58 @@ updates:
     reviewers:
       - &quot;huyfififi&quot;
     versioning-strategy: &quot;increase&quot;</code></pre>
+<h2 id="d.-test-of-love"><a
+href="https://codeforces.com/contest/1992/problem/D">1992D. Test of
+Love</a></h2>
+<p>I implemented the greedy approach yesterday, and now I'm trying
+dynamic programming.</p>
+<p>I don't see much differences between the greedy approach and the
+dynamic programming approach though.</p>
+<p>The meaning of dpi in this problem and the way I can iterate
+<code>m</code> for each position should be remembered.</p>
+<pre><code>import math
+
+
+def possible(n: int, m: int, k: int, a: list[str]) -&gt; bool:
+    # dpi =&gt; total swim at position i
+    res = [math.inf] * (n + 2)
+    res[0] = 0
+
+    def _try_jump(ai: int, m: int, res: list[int], a: list[str]) -&gt; None:
+        for i in range(1, m + 1):
+            if ai - i + 1 &lt; 0:
+                break
+            if ai - i + 1 == 0 or a[ai - i] == &quot;L&quot;:  # left bank or log
+                res[ai + 1] = min(res[ai + 1], res[ai - i + 1])
+        res[ai + 1] = min(res[ai + 1], res[ai] + 1)  # no jump
+
+    for ai in range(n + 1):
+        if ai &lt; n and a[ai] == &quot;C&quot;:
+            continue
+        else:  # ai == n or a[ai] in (&quot;W&quot;, &quot;L&quot;)
+            _try_jump(ai, m, res, a)
+
+    return res[n + 1] &lt;= k
+
+
+for _ in range(int(input())):
+    n, m, k = map(int, input().split())
+    a = list(input())
+    if possible(n, m, k, a):
+        print(&quot;YES&quot;)
+    else:
+        print(&quot;NO&quot;)</code></pre>
 <hr />
 <p>Ketone 20 mg/dl</p>
-<p>Protein shake 5g Salmon 5g Cheese 10g</p>
-<p>Total carbohydrate 20g</p>
+<p>Protein shake 5g Salmon 5g Cheese 10g Bacon Egg 10g</p>
+<p>Total carbohydrate 30g</p>
 <hr />
 <p>MUST:</p>
 <ul>
-<li>Implement Codeforces 1992D (dynamic programming)</li>
 <li>Consider the microservice independency with Redis/RabbitMQ</li>
+<li>Read the chapter 12 and 13 of “Code That Fits in Your Head”</li>
+<li>Created a note for the chapter 13</li>
+<li>Crated a base structure of the Rust project</li>
 </ul>
 <p>TODO:</p>
 <ul>
