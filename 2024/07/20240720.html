@@ -5,12 +5,37 @@
 <h1 id="section">20240720</h1>
 <ul>
 <li>Read the chapter 13 of “Code That Fits in Your Head”</li>
-<li>Created a summary of the chatper 13</li>
+<li>Created a summary of the chatper 13
+<ul>
+<li>Logging is important, and it can be implemented with
+<em>Decorator</em> pattern (from GoF).</li>
+<li>Tried to write a simple example with the Python decorator</li>
+</ul></li>
 </ul>
+<pre><code>logs = []
+
+
+def log_decorator(method):
+    @functools.wraps(method)
+    def wrapper(*args, **kwargs):
+        result = method(*args, **kwargs)
+        logs.append(
+            {
+                &quot;timestamp&quot;: time.time(),
+                &quot;result&quot;: result,
+            }
+        )
+        return result
+    return wrapper</code></pre>
+<p>In the real world, I better use <code>logging</code> or
+<code>structlog</code>, but it's worth remembering I can use the
+decorator for some use cases.</p>
 <hr />
-<p>Ketone 30 mg/dl</p>
-<p>Protein shake 20g Sushi Salad 10g Cheese 10g</p>
-<p>Total carbohydrate 40g</p>
+<p>Ketone 10 mg/dl (From my experience, I'm no good at Keto. That mey be
+because I'm Vietnamese, which has a long history with rice, i.e.,
+carbohydrate)</p>
+<p>Protein shake 20g Sushi Salad 10g Cheese 10g Salmon 5g Cabbage 5g</p>
+<p>Total carbohydrate 50g</p>
 <hr />
 <p>MUST:</p>
 <ul>

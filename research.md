@@ -47,6 +47,7 @@
 
 # Programming Languages
 
+- [Decorator - Python](./2024/07/20240720.html)
 - [Rye - Python (20240718)](./2024/07/20240718.html)
 - [gc - Garbage Collector Interface - Python (20240717)](./2024/07/20240717.html)
 - [Wheel (Python) (20240714)](./2024/07/20240714.html)
