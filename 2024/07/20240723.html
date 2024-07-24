@@ -21,6 +21,27 @@ tho.</li>
 contests.</li>
 </ul></li>
 </ul>
+<h2 id="a.-split-the-multiset"><a
+href="https://codeforces.com/contest/1988/problem/A">1988A. Split the
+Multiset</a></h2>
+<p>The maximum number of ones I can increase in one operation =&gt;
+<code>k - 1</code></p>
+<p>How can I do that? =&gt; remove <code>n</code> and add
+(<code>k - 1</code> ones and <code>n - (k - 1)</code>)</p>
+<p>For example, (n, k) = (16, 4)</p>
+<pre><code>{16}: initial state
+{1, 1, 1, 13}
+{1, 1, 1, 1, 1, 1, 10}
+{1, 1, 1, 1, 1, 1, 1, 1, 1, 7}
+{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4}
+{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}</code></pre>
+<pre><code>for _ in range(int(input())):
+    n, k = map(int, input().split())
+    count: int = 0
+    while n &gt; 1:
+        n -= k - 1
+        count += 1
+    print(count)</code></pre>
 <hr />
 <p>Ketone 5 mg/dl</p>
 <p>Protein shake 15g Sushi salad 15g Cheese 10g</p>
@@ -28,8 +49,8 @@ contests.</li>
 <hr />
 <p>MUST:</p>
 <ul>
-<li>Review the Codeforces problem I could not solve last week</li>
-<li>Review the problem I solved in the contest</li>
+<li>Review 1995A</li>
+<li>Review 1995B</li>
 <li>Go to Hayword Library</li>
 </ul>
 <p>TODO:</p>
@@ -37,9 +58,7 @@ contests.</li>
 <li>Update my resume with the sign up feature</li>
 <li>Update my resume with the document structure and AWS S3</li>
 <li>Update my LinkedIn summary section</li>
-<li>Cyclomatic Complexity</li>
 <li>Consider the microservice independency with Redis/RabbitMQ</li>
-<li>Crated a base structure of the Rust project</li>
 </ul>
 <hr />
 <p><a href="../../index.html">index</a> <a
