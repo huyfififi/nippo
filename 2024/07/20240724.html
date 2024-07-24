@@ -1,0 +1,64 @@
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+<meta charset="UTF-8">
+</head>
+<h1 id="section">20240724</h1>
+<h2 id="a.-diagonals"><a
+href="https://codeforces.com/contest/1995/problem/A">1995A.
+Diagonals</a></h2>
+<p>It took me some time to realize that <em>diagonals</em> in this
+problem does not include ones from top-left to bottom-right.</p>
+<blockquote>
+<p>A diagonal is the set of cells for which the value <code>i + j</code>
+is the same.</p>
+</blockquote>
+<p>To minimize the number of occupied diagonals, we should place chips
+from the longest diagonals to the shortest.</p>
+<p>first diagonal =&gt; <code>i + j = n</code> =&gt; <code>n</code>
+chips</p>
+<p>second/third diagonals =&gt; <code>i + j = n - 1</code> =&gt;
+<code>2 * (n - 1)</code> chips</p>
+<p><code>2 * (n - 2)</code>, <code>2 * (n - 3)</code>, …</p>
+<pre><code>def solve(n: int, k: int) -&gt; int:
+    if k == 0:
+        return 0
+    if k &lt;= n:
+        return 1
+
+    count = 1
+    k -= n
+    for i in range(n - 1, 0, -1):
+        count += 1
+        k -= i
+        if k &lt;= 0:
+            return count
+        count += 1
+        k -= i
+        if k &lt;= 0:
+            return count
+    return count
+
+
+for _ in range(int(input())):
+    n, k = map(int, input().split())
+    print(solve(n, k))</code></pre>
+<hr />
+<p>Ketone 0 mg/dl</p>
+<p>Total carbohydrate 0g</p>
+<hr />
+<p>MUST:</p>
+<ul>
+<li>Review 1995B</li>
+<li>Go to Hayword Library</li>
+</ul>
+<p>TODO:</p>
+<ul>
+<li>Update my resume with the sign up feature</li>
+<li>Update my resume with the document structure and AWS S3</li>
+<li>Update my LinkedIn summary section</li>
+<li>Consider the microservice independency with Redis/RabbitMQ</li>
+</ul>
+<hr />
+<p><a href="../../index.html">index</a> <a
+href="20240723.html">20240723</a> <a
+href="20240725.html">20240725</a></p>
