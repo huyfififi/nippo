@@ -1,0 +1,72 @@
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+<meta charset="UTF-8">
+</head>
+<h1 id="section">20240725</h1>
+<ul>
+<li>Solved 1 problem.</li>
+<li>Set an alarm for tomorrow.</li>
+</ul>
+<h2 id="d.-manhattan-circle"><a
+href="https://codeforces.com/problemset/problem/1985/D">1985D. Manhattan
+Circle</a></h2>
+<pre><code>from typing import Optional
+
+
+def solve(n: int, m: int, mat: list[list[str]]) -&gt; tuple[int, int]:
+    longest_rowi: int = -1
+    longest_len: int = 0
+
+    for rowi in range(n):
+        manlen: int = sum(1 if x == &quot;#&quot; else 0 for x in mat[rowi])
+        if manlen &gt; longest_len:
+            longest_len = manlen
+            longest_rowi = rowi
+
+    li: Optional[int] = None
+    ri: Optional[int] = None
+    for coli in range(m):
+        if mat[longest_rowi][coli] != &quot;#&quot;:
+            continue
+        if li is None:
+            li = coli
+        ri = coli
+
+    # because of the nature of Manhattan circle, `ri + li` is always even
+    midi = (ri + li) // 2
+    return longest_rowi + 1, midi + 1
+
+
+for _ in range(int(input())):
+    n, m = map(int, input().split())
+    mat = []
+    for i in range(n):
+        mat.append(list(input()))
+
+    res: tuple[int, int] = solve(n, m, mat)
+    print(f&quot;{res[0]} {res[1]}&quot;)</code></pre>
+<hr />
+<p>Ketone 10 mg/dl</p>
+<p>Chipotle Keto Bowl 50g Bacon Egg 0g Salad 10g Cheese 5g</p>
+<p>Total carbohydrate 65g</p>
+<p>pull ups push ups 6k run</p>
+<hr />
+<p>MUST:</p>
+<ul>
+<li>Set an alarm for Codeforces Round 962 (Div. 3)</li>
+<li>Solve 2 problems.</li>
+<li>Review 1 problem.</li>
+<li>Create my first pull request in <code>cyclon</code>, updating a
+function with Result&lt;&gt; (20240728)</li>
+</ul>
+<p>TODO:</p>
+<ul>
+<li>Update my resume with the sign up feature</li>
+<li>Update my resume with the document structure and AWS S3</li>
+<li>Update my LinkedIn summary section</li>
+<li>Consider the microservice independency with Redis/RabbitMQ</li>
+</ul>
+<hr />
+<p><a href="../../index.html">index</a> <a
+href="20240723.html">20240723</a> <a
+href="20240725.html">20240725</a></p>
