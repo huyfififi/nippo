@@ -1,0 +1,80 @@
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+<meta charset="UTF-8">
+</head>
+<h1 id="section">20240729</h1>
+<p>back to work</p>
+<h2 id="c.-sort"><a
+href="https://codeforces.com/contest/1996/problem/C">1996C.
+Sort</a></h2>
+<p>I remember that when sorted strings are the same, the occurrences of
+characters are the same.</p>
+<p>What I overlooked was</p>
+<blockquote>
+<p>It is guaranteed <code>a</code> only contains lowercase latin
+letters. It is guaranteed <code>b</code> only contains lowercase latin
+letters.</p>
+</blockquote>
+<p>The number of lowercase latin latters is finite (<code>= 26</code>),
+and we can afford to store extra in memory or run for loops.</p>
+<p>The idea is to have prefix-sum array of the occurrences. For each
+index, we will have two lists of length <code>= 26</code>; one for
+<code>a</code> and the other for <code>b</code>.</p>
+<pre><code>import string
+
+
+for _ in range(int(input())):
+    n, q = map(int, input().split())
+
+    asumarr: list[list[int]] = [[0] * 26 for _ in range(n + 1)]
+    bsumarr: list[list[int]] = [[0] * 26 for _ in range(n + 1)]
+
+    a: list[str] = list(input())
+    b: list[str] = list(input())
+
+    for i in range(1, n + 1):
+        ai: int = string.ascii_lowercase.find(a[i - 1])
+        bi: int = string.ascii_lowercase.find(b[i - 1])
+
+        for j in range(26):
+            asumarr[i][j] = asumarr[i - 1][j]
+            if j == ai:
+                asumarr[i][j] += 1
+            bsumarr[i][j] = bsumarr[i - 1][j]
+            if j == bi:
+                bsumarr[i][j] += 1
+
+    anss: list[int] = []
+    for qc in range(q):
+        ans: int = 0
+        l, r = map(int, input().split())
+        for i in range(26):
+            aran: int = asumarr[r][i] - asumarr[l - 1][i]
+            bran: int = bsumarr[r][i] - bsumarr[l - 1][i]
+            ans += max(bran - aran, 0)
+        anss.append(ans)
+
+    for ans in anss:
+        print(ans)</code></pre>
+<hr />
+<p>Ketone not measured 15 mg/dl</p>
+<p>Roasted seaweed snacks 5g Sushi Salad 20g Macadamia nuts 20g Cheese
+5g</p>
+<p>Total carbohydrate 50 g</p>
+<hr />
+<p>MUST:</p>
+<ul>
+<li>Review Codeforces Round 962 D (by this friday)</li>
+</ul>
+<p>TODO:</p>
+<ul>
+<li>Update my resume with the sign up feature</li>
+<li>Update my resume with the document structure and AWS S3</li>
+<li>Update my LinkedIn summary section</li>
+<li>Consider the microservice independency with Redis/RabbitMQ</li>
+<li>Clean my keyboard</li>
+</ul>
+<hr />
+<p><a href="../../index.html">index</a> <a
+href="20240728.html">20240728</a> <a
+href="20240730.html">20240730</a></p>
