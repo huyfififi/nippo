@@ -146,6 +146,11 @@
 
 ---
 
+- 1996D. Fun - 1200
+	- [20240801](./2024/08/20240801.html)
+
+---
+
 - 1915A. Odd One Out - 800
 - 1926A. Vlad and the Best of Five - 800
 - 1927A. Make it White - 800
