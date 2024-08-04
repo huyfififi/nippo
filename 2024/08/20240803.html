@@ -20,6 +20,7 @@ time.</li>
 it's better to maintain the profile sometimes.</li>
 </ul></li>
 <li>Added some projects on my LinkedIn profile</li>
+<li>Solved some problems and reviewed them.</li>
 </ul>
 <h2
 id="microservice-independency-should-i-have-a-dedicated-cachemessage-queue-for-a-microservice">Microservice
@@ -115,6 +116,52 @@ class="sourceCode a.py"><code class="sourceCode python"><span id="cb2-1"><a href
 <h2 id="retry-1995b1.-bouquet-easy-version">Retry: <a
 href="https://codeforces.com/problemset/problem/1995/B1">1995B1. Bouquet
 (Easy Version)</a></h2>
+<pre><code>from collections import defaultdict
+
+
+for _ in range(int(input())):
+    n, m = map(int, input().split())
+    a: list[int] = list(map(int, input().split()))
+
+    counter = defaultdict(int)
+    for x in a:
+        counter[x] += 1
+
+    ans: int = 0
+    for sml, cnt in counter.items():
+        if sml + 1 not in counter:
+            cntmax: int = m // sml
+            ans = max(ans, sml * min(cnt, cntmax))  # I overlooked min() here
+            continue
+
+        # O(n) in total including the outer for-loop
+        # for each size of petals
+        #   for i in range(occurrence of the size of petals)
+        for _cnt in range(1, cnt + 1):
+            if sml * _cnt &gt; m:
+                break
+            remcoins: int = m - sml * _cnt
+            lrgcntmax = min(counter[sml + 1], remcoins // (sml + 1))
+            ans = max(ans, sml * _cnt + (sml + 1) * lrgcntmax)
+
+    print(ans)
+second|
+</code></pre>
+<h2 id="review-1956b.-nene-and-the-card-game">Review: <a
+href="https://codeforces.com/problemset/problem/1956/B">1956B. Nene and
+the Card Game</a></h2>
+<pre><code>from collections import defaultdict
+
+
+for _ in range(int(input())):
+    n: int = int(input())
+    a: list[int] = list(map(int, input().split()))
+
+    d: defaultdict = defaultdict(int)
+    for x in a:
+        d[x] += 1
+    ans: int = sum([1 if v == 2 else 0 for v in d.values()])
+    print(ans)</code></pre>
 <hr />
 <p>Ketone 10 mg/dl</p>
 <p>Salad 30g Macadamia nuts 30g Protein shake 10g</p>
@@ -123,6 +170,7 @@ href="https://codeforces.com/problemset/problem/1995/B1">1995B1. Bouquet
 <p>MUST:</p>
 <ul>
 <li>Participate in Codeforces Round 963 (Div. 2)</li>
+<li>Check the production issue</li>
 </ul>
 <p>TODO:</p>
 <ul>
