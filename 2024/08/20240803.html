@@ -82,6 +82,39 @@ Redis instance is better in our case, from the technical standpoint.</p>
 other tasks. It also makes sense not to add another overhead,
 considering our current team structure.</p>
 <p>I'll use the shared infastructure for now.</p>
+<h2 id="a.-submission-bait"><a
+href="https://codeforces.com/problemset/problem/1990/A">1990A.
+Submission Bait</a></h2>
+<p>Alice's winning strategy is to pick the most significant number with
+odd counts first. This move makes the count of remaining numbers no more
+than the first picked number even. After making the situation, any picks
+Bob makes are followed by Alice's pick of the same number, leading to
+Bob's defeat.</p>
+<p>Simply put, Alice wins if there is a number with odd counts.</p>
+<p>Examples</p>
+<pre><code>[2, 2, 3, 3] -&gt; (alice, bob) =&gt; [(2, 2), (3, 3)] or [(3, 3)] =&gt; Alice loses
+[1, 2, 2, 3, 3] -&gt; (alice, bob) =&gt; [(1, 2), (2, 3), (3, _)] or [(1, 3), (3, _)] =&gt; Alice wins</code></pre>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode a.py"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> collections <span class="im">import</span> defaultdict</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">int</span>(<span class="bu">input</span>())):</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    n: <span class="bu">int</span> <span class="op">=</span> <span class="bu">int</span>(<span class="bu">input</span>())</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    a: <span class="bu">list</span>[<span class="bu">int</span>] <span class="op">=</span> <span class="bu">list</span>(<span class="bu">map</span>(<span class="bu">int</span>, <span class="bu">input</span>().split()))</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    d <span class="op">=</span> defaultdict(<span class="bu">int</span>)</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> x <span class="kw">in</span> a:</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>        d[x] <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> cnt <span class="kw">in</span> d.values():</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> cnt <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">1</span>:</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="st">&quot;YES&quot;</span>)</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>            <span class="cf">break</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">&quot;NO&quot;</span>)</span></code></pre></div>
+<h2 id="retry-1995b1.-bouquet-easy-version">Retry: <a
+href="https://codeforces.com/problemset/problem/1995/B1">1995B1. Bouquet
+(Easy Version)</a></h2>
 <hr />
 <p>Ketone 10 mg/dl</p>
 <p>Salad 30g Macadamia nuts 30g Protein shake 10g</p>
