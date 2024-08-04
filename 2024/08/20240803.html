@@ -16,13 +16,70 @@ time.</li>
 </ul></li>
 </ul>
 <h2
-id="microservice-independency-should-i-have-dedicated-cachemessage-queue-for-each-microservice">Microservice
-Independency: Should I have dedicated cache/message queue for each
+id="microservice-independency-should-i-have-a-dedicated-cachemessage-queue-for-a-microservice">Microservice
+Independency: Should I have a dedicated cache/message queue for a
 microservice?</h2>
+<p>I googled some but did not find a direct guide on the topic, so I
+considered it for some time and wrote this note for reference.</p>
+<p>I was motivated to consider this because I was desining a
+microservice with a dedicated cache and message queue, but my colleague
+asked me not to do that. Unfortunately, neither of us had much knowledge
+to explain the approahces to others.</p>
+<p>My initial thought was that a dedicated cache could make the
+microservice truly independent, and this fit our use case. My mind did
+not change after checking web pages and some consideration.</p>
+<p>For simplicity, I will assume we're talking about Redis (I hear that
+Redis stopped being OSS, and we might want to migrate to other projects
+such as dragonfly tho).</p>
+<h3 id="pros-of-having-dedicated-redis-instances">Pros of having
+dedicated Redis instances</h3>
+<ul>
+<li>Isolation
+<ul>
+<li>Issues in other services do not affect the microservice. Even if
+some services go down, the microservice continues to serve for running
+services.</li>
+</ul></li>
+<li>Better performance
+<ul>
+<li>Workloads of other services do not affect the performance of the
+microservice, making the performance consistent and preventing
+contention.</li>
+<li>Resources can be tuned, e.g., scale up/down, for the
+microservice.</li>
+</ul></li>
+<li>Better security
+<ul>
+<li>Because the Redis instance don't have to be open to multiple
+services, it's easier to control access and manage security
+policies.</li>
+</ul></li>
+</ul>
+<h3 id="cons-of-having-dedicated-redis-instances">Cons of having
+dedicated Redis instances</h3>
+<ul>
+<li>Cost
+<ul>
+<li>Adding a new instance costs extra.</li>
+</ul></li>
+<li>More complicated management
+<ul>
+<li>Adding a new instance increases the burden of configuring.</li>
+</ul></li>
+</ul>
+<h3 id="conclusion-for-the-microservice-i-designed">Conclusion for the
+microservice I designed</h3>
+<p>The microservice is used by multiple services, and its workload is
+expected to increase hugely. Therefore, I believe having a dedicated
+Redis instance is better in our case, from the technical standpoint.</p>
+<p>However, DevOps engineers and I have been busy and occupied with
+other tasks. It also makes sense not to add another overhead,
+considering our current team structure.</p>
+<p>I'll use the shared infastructure for now.</p>
 <hr />
-<p>Ketone not measured not measured mg/dl</p>
-<p>Salad 30g Macadamia nuts 15g Protein shake 10g</p>
-<p>Total carbohydrate 55 g</p>
+<p>Ketone 10 mg/dl</p>
+<p>Salad 30g Macadamia nuts 30g Protein shake 10g</p>
+<p>Total carbohydrate 70 g</p>
 <hr />
 <p>MUST:</p>
 <ul>

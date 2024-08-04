@@ -24,6 +24,7 @@
 
 # Infrastructures
 
+- [Should microservices share a cache and message queue?](./2024/08/20240803.html)
 - [Amazon S3 Miscellaneous](./2024/08/20240801.html)
 - [AWS Lambda (20240626)](./2024/06/20240626.html)
 - [Cloudflare Flexible SSL/TLS encryption models / Frontend Deployment (20240527)](./2024/05/20240527.html)
