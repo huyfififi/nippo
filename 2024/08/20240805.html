@@ -1,0 +1,56 @@
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+<meta charset="UTF-8">
+</head>
+<h1 id="section">20240805</h1>
+<ul>
+<li>updated my resume with the sign up feature</li>
+<li>updated my resume with the document structure and AWS S3</li>
+<li>added some more bullet points</li>
+<li>completed updating my resume and asked my wife to review it
+<ul>
+<li>I'm not considering changing jobs at the moment tho</li>
+</ul></li>
+</ul>
+<h2 id="review-1993a.-question-marks">Review: <a
+href="https://codeforces.com/contest/1993/problem/A">1993A. Question
+Marks</a></h2>
+<p>For every option, <code>n</code> score can be obtained at most.</p>
+<pre><code>from collections import defaultdict
+
+
+for _ in range(int(input())):
+    n: int = int(input())
+    s: list[str] = list(input())
+
+    d: defaultdict = defaultdict(int)
+    for x in s:
+        d[x] += 1
+
+    score: int = 0
+    score += min(d[&quot;A&quot;], n)
+    score += min(d[&quot;B&quot;], n)
+    score += min(d[&quot;C&quot;], n)
+    score += min(d[&quot;D&quot;], n)
+    print(score)</code></pre>
+<hr />
+<p>Ketone not measured yet mg/dl</p>
+<p>Salad 30g Protein shake 10g</p>
+<p>Total carbohydrate 40 g</p>
+<hr />
+<p>MUST:</p>
+<ul>
+<li>Review 1993A (by Friday)</li>
+<li>Review 1993B (by Friday)</li>
+<li>Review 1993C (by Friday)</li>
+</ul>
+<p>TODO:</p>
+<ul>
+<li>Clean my keyboard</li>
+<li>DL Renewal (20240812)</li>
+<li>Get a photo for password renewal</li>
+</ul>
+<hr />
+<p><a href="../../index.html">index</a> <a
+href="20240804.html">20240804</a> <a
+href="20240806.html">20240806</a></p>

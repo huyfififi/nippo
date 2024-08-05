@@ -138,6 +138,8 @@
 
 ### Others
 
+- 1993A. Question Marks
+	- [20240805](./2024/08/20240805.html)
 - [1985D. Manhattan Circle - 900](./2024/07/20240725.html)
 - [1995A. Diagonals - 800](./2024/07/20240724.html)
 - [1928A-800 (20240629)](./2024/06/20240629.html)
@@ -152,10 +154,14 @@
 
 ---
 
+## Too Difficult For Me (Help Wanted)
+
 - 1996D. Fun - 1200
 	- [20240801](./2024/08/20240801.html)
 
 ---
+
+## Trivial Problems
 
 - 1915A. Odd One Out - 800
 - 1926A. Vlad and the Best of Five - 800
