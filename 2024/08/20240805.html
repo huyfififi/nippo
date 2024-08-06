@@ -33,15 +33,65 @@ for _ in range(int(input())):
     score += min(d[&quot;C&quot;], n)
     score += min(d[&quot;D&quot;], n)
     print(score)</code></pre>
+<h2 id="review-1993b.-parity-and-sum">Review: <a
+href="https://codeforces.com/contest/1993/problem/B">1993B. Parity and
+Sum</a></h2>
+<p>Observation:</p>
+<ul>
+<li>With the given operation, we can only turn even numbers into odd
+numbers to meet the condition except for a corner case where all the
+elements are even.</li>
+<li>To update a parity, an odd number and an even number smaller than
+the odd number must be chosen.
+<ul>
+<li>When the maximum odd number is bigger than an even number, the even
+number can be replaced with an odd number in 1 operation.</li>
+<li>Otherwise, the maximum odd number needs to be increased by adding
+the even number chosen. And then, the even number can be replaced with a
+new odd number. 2 operations in total.</li>
+</ul></li>
+<li>To avoid the additional operation that does not change parity but
+increases the maximum odd number, keep choosing the largest odd number
+and the smallest even number.
+<ul>
+<li>Suppose it's not possible to make the temporary most significant odd
+onumber larger than even numbers. In that case, the optimal solution is
+to choose the largest odd number and the largest even number in the
+first operation, creating a new odd number that is larger than all the
+evens.</li>
+</ul></li>
+</ul>
+<pre><code>def solve(n: int, a: list[int]) -&gt; int:
+    evens: list[int] = [x for x in a if x % 2 == 0]
+    odds: list[int] = [x for x in a if x % 2 == 1]
+
+    if len(evens) == n or len(odds) == n:
+        return 0
+
+    evens.sort()
+    oddmax: int = max(odds)
+
+    for x in evens:
+        if oddmax &gt; x:
+            oddmax += x
+        else:
+            return len(evens) + 1
+    return len(evens)
+
+
+for _ in range(int(input())):
+    n: int = int(input())
+    a: list[int] = list(map(int, input().split()))
+
+    ans: int = solve(n, a)
+    print(ans)</code></pre>
 <hr />
-<p>Ketone not measured yet mg/dl</p>
+<p>Ketone 5 mg/dl</p>
 <p>Salad 30g Protein shake 10g</p>
 <p>Total carbohydrate 40 g</p>
 <hr />
 <p>MUST:</p>
 <ul>
-<li>Review 1993A (by Friday)</li>
-<li>Review 1993B (by Friday)</li>
 <li>Review 1993C (by Friday)</li>
 </ul>
 <p>TODO:</p>

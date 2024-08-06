@@ -40,6 +40,10 @@
 	- [20240614](./2024/06/20240614.html)
 	- [20240803](./2024/08/20240803.html)
 
+## Constructive Algorithms
+
+- 1993B. Parity and Sum - 900
+	- [20240805](./2024/08/20240805.html)
 
 ## Binary String
 
@@ -47,7 +51,7 @@
 
 ## Greedy
 
-- 1995B1. Bouquet (Easy Version)
+- 1995B1. Bouquet (Easy Version) - 1000
 	- [20240803](./2024/08/20240803.html)
 - [1988A. Split the Multiset - 900](./2024/07/20240723.html)
 - [X 1992D-1200 (20240717)](./2024/07/20240717.html)
