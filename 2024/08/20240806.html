@@ -1,0 +1,49 @@
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+<meta charset="UTF-8">
+</head>
+<h1 id="section">20240806</h1>
+<ul>
+<li>Visited Japan Innovation Campus</li>
+</ul>
+<h2 id="retry-1993c.-light-switches">Retry: <a
+href="https://codeforces.com/contest/1993/problem/C">1993C. Light
+Switches</a></h2>
+<p>I could not solve this problem during the contest, but after some
+struggle, I managed to pass the tests.</p>
+<p>TODO: Explain my approach</p>
+<pre><code>from collections import defaultdict
+
+
+for _ in range(int(input())):
+    n, k = map(int, input().split())
+    a: list[int] = list(map(int, input().split()))
+
+    amax: int = max(a)
+    amod: list[int] = [x + (amax - x) // (2 * k) * (2 * k) for x in a]
+    amod = [x + 2 * k if amax - x &gt; k else x for x in amod]
+    amodmax = max(amod)
+    amodmin = min(amod)
+    if amodmax - amodmin &lt; k:
+        print(amodmax)
+    else:
+        print(-1)</code></pre>
+<hr />
+<p>Ketone 5 mg/dl</p>
+<p>Salad 30g Protein shake 10g</p>
+<p>Total carbohydrate 40 g</p>
+<hr />
+<p>MUST:</p>
+<ul>
+<li>pass</li>
+</ul>
+<p>TODO:</p>
+<ul>
+<li>Clean my keyboard</li>
+<li>DL Renewal (20240812)</li>
+<li>Get a photo for password renewal</li>
+</ul>
+<hr />
+<p><a href="../../index.html">index</a> <a
+href="20240805.html">20240805</a> <a
+href="20240807.html">20240807</a></p>
