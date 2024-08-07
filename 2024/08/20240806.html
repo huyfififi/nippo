@@ -23,7 +23,20 @@ href="https://codeforces.com/contest/1993/problem/C">1993C. Light
 Switches</a></h2>
 <p>I could not solve this problem during the contest, but after some
 struggle, I managed to pass the tests.</p>
-<p>TODO: Explain my approach</p>
+<ul>
+<li>Each room repeats the statuses (on and off) every <code>2 * k</code>
+minutes.</li>
+<li>If there is a timing all the lights are turned on, it is
+<code>amax &lt;= t &lt;= amax + k</code>.
+<ul>
+<li><code>t &lt; amax</code>: the last room's light are off.</li>
+<li><code>t &gt; amax + 2k</code>: repeating the same pattern, and they
+are not the earliest moment.</li>
+</ul></li>
+<li>Consider the time the last chip is installed as a base.</li>
+<li>Move all the switch cycle closest to the base</li>
+<li>Return the earliest intersection</li>
+</ul>
 <pre><code>from collections import defaultdict
 
 
