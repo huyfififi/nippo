@@ -1,0 +1,74 @@
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+<meta charset="UTF-8">
+</head>
+<h1 id="section">20240809</h1>
+<p>My skin has had problems. Maybe I have a nut allergy?</p>
+<p>slept 15 hours straight (~20240810). I may be exhausted</p>
+<ul>
+<li>Set an alarm for tomorrow</li>
+</ul>
+<h2 id="b.-xor-sequences"><a
+href="https://codeforces.com/problemset/problem/1979/B">1979B. XOR
+Sequences</a></h2>
+<p>TODO: Add observation</p>
+<p>TODO: Read Editorial</p>
+<pre><code>&quot;&quot;&quot;
+0 1
+2 ** 0
+
+  0
+101
+2 ** 0
+
+1100
+ 100
+2 ** 3
+
+111001
+100101
+2 ** 2
+
+10010110111100101010111010001
+     110111100101010111010001
+2 ** 25
+&quot;&quot;&quot;
+
+
+for _ in range(int(input())):
+    x, y = map(int, input().split())
+
+    xbin: list[str] = list(map(int, list(bin(x)[2:])))
+    ybin: list[str] = list(map(int, list(bin(y)[2:])))
+
+    ybin = [0] * (len(xbin) - len(ybin)) + ybin
+    xbin = [0] * (len(ybin) - len(xbin)) + xbin
+
+    count: int = 0
+    for i in range(len(xbin)):
+        if ybin[i] != xbin[i]:
+            count = 0
+        else:
+            count += 1
+
+    print(2 ** count)</code></pre>
+<hr />
+<p>Ketone 5 mg/dl</p>
+<p>Salad 40g Nuts 20g Protein shake 10g</p>
+<p>Total carbohydrate 70 g</p>
+<hr />
+<p>MUST:</p>
+<ul>
+<li>Buy bath tissue</li>
+<li>Codeforces Round 965 (Div. 2) (20240810)</li>
+<li>DL Renewal (20240812)</li>
+</ul>
+<p>TODO:</p>
+<ul>
+<li>Read editorial of 1979B</li>
+<li>Retry 1986C</li>
+</ul>
+<hr />
+<p><a href="../../index.html">index</a> <a
+href="20240808.html">20240808</a> <a
+href="20240810.html">20240810</a></p>
