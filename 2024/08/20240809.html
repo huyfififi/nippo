@@ -11,8 +11,60 @@
 <h2 id="b.-xor-sequences"><a
 href="https://codeforces.com/problemset/problem/1979/B">1979B. XOR
 Sequences</a></h2>
-<p>TODO: Add observation</p>
-<p>TODO: Read Editorial</p>
+<p>Observation: maximum matching suffix?</p>
+<p><a href="https://codeforces.com/blog/entry/130213">Codeforces Round
+951 (Div. 2) Editorial</a></p>
+<blockquote>
+<p>Consider two numbers <code>v</code> and <code>u</code> such that
+<code>x xor v = y xor u</code>. Then consider the numbers
+<code>x xor (v + 1)</code> and <code>y xor (u + 1)</code>. Let's look at
+the last bit of <code>v</code> and <code>u</code>.</p>
+</blockquote>
+<p>We're considering arbitrary numbers that elements from both sequences
+match.</p>
+<blockquote>
+<p>Possible scenarios:</p>
+</blockquote>
+<blockquote>
+<ul>
+<li>Both bits are equal to 0 - adding one will change the bits at the
+same positions, therefore
+<code>x xor (v + 1) = y xor (u + 1)</code>;</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li>Both bits are equal to 1 - adding one will change the bits at the
+same positions and also add one to the next bit, therefore we can
+similarly consider the next bit;</li>
+</ul>
+</blockquote>
+<p>I guess this means <code>x xor (v + 1) = y for (u + 1)</code>,
+too.</p>
+<blockquote>
+<ul>
+<li>Bits are different - adding one to the zero bit will only change one
+bit, while the subsequent bit of the other number will be changed. This
+means that <code>x xor (v + 1) != y xor (u + 1)</code>.</li>
+</ul>
+</blockquote>
+<blockquote>
+<p>It is clear that we need to maximize the number of zeros in the
+maximum matching suffix of <code>u</code> and <code>v</code>.</p>
+</blockquote>
+<p>?</p>
+<blockquote>
+<p>Obviously, this number is equal to the maximum matching suffix of
+<code>x</code> and <code>y</code>.</p>
+</blockquote>
+<p>:thinking_face:</p>
+<blockquote>
+<p>Let <code>k</code> be the length of the maximum matching suffic of
+<code>x</code> and <code>y</code>, then the answer is
+<code>2 ** k</code>.</p>
+</blockquote>
+<p>I think I understand the explanation 30%. I'll visit here again later
+to fully understand it.</p>
 <pre><code>&quot;&quot;&quot;
 0 1
 2 ** 0
@@ -41,13 +93,14 @@ for _ in range(int(input())):
     xbin: list[str] = list(map(int, list(bin(x)[2:])))
     ybin: list[str] = list(map(int, list(bin(y)[2:])))
 
+    # padding
     ybin = [0] * (len(xbin) - len(ybin)) + ybin
     xbin = [0] * (len(ybin) - len(xbin)) + xbin
 
     count: int = 0
     for i in range(len(xbin)):
         if ybin[i] != xbin[i]:
-            count = 0
+            count = 0  # I don\&#39;t remember how I got to this solution
         else:
             count += 1
 
