@@ -3,12 +3,47 @@
 <meta charset="UTF-8">
 </head>
 <h1 id="section">20240811</h1>
+<p>I don't have any motivation left in my brain… I will lie on the
+bed.</p>
 <ul>
 <li>Finished household chores</li>
 <li>Set an alarm</li>
 </ul>
+<h2 id="a.-find-k-distinct-points-with-fixed-center"><a
+href="https://codeforces.com/contest/1998/problem/A">1998A. Find K
+Distinct Points with Fixed Center</a></h2>
+<p>Simply keep adding two points on both sides centered with the given
+point.</p>
+<p><code>1 &lt;= k &lt;= 1000</code> and
+<code>-100 &lt;= xc, yc &lt;= 100</code>, so this approach does not make
+<code>xi</code> and <code>yi</code> exceed the limit.</p>
+<p>In hindsight, the solve() function seems to be confusing, but I'll
+let it as it is. I hope I can write more readable code next time.</p>
+<pre><code>def solve(xc: int, yc: int, k: int) -&gt; list[tuple[int, int]]:
+    ans: list[tuple[int, int]] = []
+
+    if k % 2 == 1:
+        ans.append((xc, yc))
+        k -= 1
+
+    ce: int = 1
+    while k &gt; 0:
+        ans.append((xc - ce * k, yc - ce * k))
+        ans.append((xc + ce * k, yc + ce * k))
+        k -= 2
+    return ans
+
+
+for _ in range(int(input())):
+    xc, yc, k = map(int, input().split())
+    ans: list[tuple[int, int]] = solve(xc, yc, k)
+    assert len(ans) == k
+    assert sum([x for x, y in ans]) // k == xc
+    assert sum([y for x, y in ans]) // k== yc
+    for x, y in ans:
+        print(f&quot;{x} {y}&quot;)</code></pre>
 <hr />
-<p>Ketone not measured yet mg/dl</p>
+<p>Ketone 60 mg/dl</p>
 <p>Salad 40g Meat 0g Protein shake 20g</p>
 <p>Total carbohydrate 60 g</p>
 <hr />
@@ -24,7 +59,6 @@
 <ul>
 <li>Read editorial of 1979B</li>
 <li>Retry 1986C</li>
-<li>Review 1998A</li>
 <li>Retry 1998B</li>
 <li>Print out the document to explain the reason of passport
 renewal</li>

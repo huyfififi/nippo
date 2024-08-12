@@ -42,6 +42,8 @@
 
 ## Constructive Algorithms
 
+- 1998A. Find K Distinct Points with Fixed Center
+	- [20240811](./2024/08/20240811.html)
 - 1993B. Parity and Sum - 900
 	- [20240805](./2024/08/20240805.html)
 
