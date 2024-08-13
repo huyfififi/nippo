@@ -42,14 +42,16 @@
 
 ## Constructive Algorithms
 
-- 1998A. Find K Distinct Points with Fixed Center
+- 1998B. Minimize Equal Sum Subarrays - 800
+	- [20240812](./2024/08/20240812.html)
+- 1998A. Find K Distinct Points with Fixed Center - 800
 	- [20240811](./2024/08/20240811.html)
 - 1993B. Parity and Sum - 900
 	- [20240805](./2024/08/20240805.html)
 
 ## Bitmasks
 
-- 1979B. XOR Sequence
+- 1979B. XOR Sequence - 1000
 	- [20240809](./2024/08/20240809.html)
 
 ## Binary String
@@ -65,7 +67,7 @@
 
 ## Math
 
-- 1993C. Light Switches
+- 1993C. Light Switches - 1000
 	- [20240806](./2024/08/20240806.html)
 - 1956A. Nene\'s Game - 800
 	- [20240706](./2024/07/20240706.html)

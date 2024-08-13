@@ -13,9 +13,43 @@ tired.</li>
 </ul></li>
 <li>Checked 1979B editorial and updated my note on that problem <a
 href="./20240809.html">20240809</a></li>
+<li>I had too much momentum and created many pull requests.</li>
 </ul>
+<h2 id="b.-minimize-equal-sum-subarrays"><a
+href="https://codeforces.com/problemset/problem/1998/B">1998B. Minimize
+Equal Sum Subarrays</a></h2>
+<p>As I looked at the number of contestants who solved the problem, it
+seemed that it was not as difficult as I thought.</p>
+<p><a href="https://codeforces.com/blog/entry/130647">Codeforces Round
+965 (Div. 2) Editorial</a></p>
+<blockquote>
+<p>We can always construct a solution such that the number of pairs
+<code>(i, j)</code> is 1 where the only pair is <code>(1, n)</code>.</p>
+</blockquote>
+<blockquote>
+<p>There exists several constructions, such as rotating <code>p</code>
+once or increment all <code>pi</code> (and <code>pi = n</code> turns
+into <code>pi = 1</code>).</p>
+</blockquote>
+<blockquote>
+<p>Consider the former construction, where
+<code>q = [p2, p3, ..., pn, p1]</code>. For an arbitrarily interval
+<code>[i, j]</code>, <code>p[i..j]</code> and <code>[i..j]</code> will
+have exactly 1 element that's different, disregarding ordering.</p>
+</blockquote>
+<p>That totally makes sense now.</p>
+<pre><code>&quot;&quot;&quot;
+one of the possible solutions
+&quot;&quot;&quot;
+for _ in range(int(input())):
+    n: int = int(input())
+    p: list[int] = list(map(int, input().split()))
+    q = [p[-1]] + p[:-1]
+    print(&quot; &quot;.join([str(x) for x in q]))</code></pre>
 <hr />
-<p>Ketone 60 mg/dl</p>
+<p>Ketone 0 mg/dl I drank too much water today and I suspect that makes
+the denominator very large, so that the mg/dl became nearly zero, but
+not sure</p>
 <p>Salad 40g Protein shake 20g</p>
 <p>Total carbohydrate 60 g</p>
 <hr />
@@ -25,9 +59,7 @@ href="./20240809.html">20240809</a></li>
 </ul>
 <p>TODO:</p>
 <ul>
-<li>Read editorial of 1979B</li>
 <li>Retry 1986C</li>
-<li>Retry 1998B</li>
 <li>Print out the document to explain the reason of passport
 renewal</li>
 </ul>
