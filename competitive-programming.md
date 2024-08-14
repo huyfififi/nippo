@@ -114,7 +114,9 @@
 
 ## Only the last element matters
 
-- [O 1986C-1100 (20240701)](./2024/07/20240701.html)
+- 1986C. Update Queries
+	- [20240701](./2024/07/20240701.html)
+	- [20240813](./2024/08/20240813.html)
 
 ## Time Format
 

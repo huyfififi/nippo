@@ -5,18 +5,50 @@
 <h1 id="section">20240813</h1>
 <p>Something that does not give me swift feedback is not
 interesting/attractive.</p>
+<ul>
+<li>Had dinner with my friend
+<ul>
+<li>My friend said that my talk was too logical and sounded like a
+robot.</li>
+<li>I try to balance emotion and logic, but as I work hard to survive as
+a programmer here, I feel that I’m too inclined to my logical
+aspect.</li>
+</ul></li>
+</ul>
+<h2 id="c.-update-queries"><a
+href="https://codeforces.com/problemset/problem/1986/C">1986C. Update
+Queries</a></h2>
+<p>It's surprising that I'm allowed to modify both <code>ind</code> and
+<code>c</code>. Anyting can be done with that power.</p>
+<p>Duplicate indices will be ignored except for the first one, so I can
+reduce the <code>ind</code> array with unique elements.</p>
+<p>Fill the unique indices with characters from the lexicographically
+smallest one.</p>
+<pre><code>for _ in range(int(input())):
+    n, m = map(int, input().split())
+    s: list[str] = list(input())
+    ind: list[int] = list(map(int, input().split()))
+    c: list[str] = list(input())
+
+    unique_ind: list[int] = list(set(ind))
+    unique_ind.sort()
+    c.sort()
+
+    for i in range(len(unique_ind)):
+        s[unique_ind[i] - 1] = c[i]
+
+    print(&quot;&quot;.join(s))</code></pre>
 <hr />
 <p>Ketone not measured yet mg/dl</p>
-<p>Salad 60g Protein shake 10g</p>
-<p>Total carbohydrate 70 g</p>
+<p>Salad 100g Protein shake 10g</p>
+<p>Total carbohydrate 110 g</p>
 <hr />
 <p>MUST:</p>
 <ul>
-<li>None</li>
+<li>Check how I solved 1986C first time</li>
 </ul>
 <p>TODO:</p>
 <ul>
-<li>Retry 1986C</li>
 <li>Print out the document to explain the reason of passport
 renewal</li>
 </ul>
