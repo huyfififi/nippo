@@ -8,6 +8,24 @@ that day. disappointed: 10%, relieved 90%. I can (to some extent) relax
 this week.</p>
 <p>My relatives force me to eat Vietnamese food. The atmosphere made me
 feel nostalgic.</p>
+<h2 id="a.-strange-splitting"><a
+href="https://codeforces.com/problemset/problem/1984/A">1984A. Strange
+Splitting</a></h2>
+<p>It seems the Codeforces server is down, and my code is not run.</p>
+<p>TODO: Check the result and review it tomorrow 20240816</p>
+<pre><code>for _ in range(int(input())):
+    n: int = int(input())
+    a: list[int] = list(map(int, input().split()))
+
+    if len(set(a)) == 1:
+        print(&quot;NO&quot;)
+        continue
+
+    print(&quot;YES&quot;)
+    if a[0] != a[1]:
+        print(&quot;R&quot; * (n - 1) + &quot;B&quot;)
+    else:
+        print(&quot;B&quot; + &quot;R&quot; * (n - 1))</code></pre>
 <hr />
 <p>The end of Keto. This was the third time I tried Keto, and I think I
 have enough data that I'm not good at it.</p>
