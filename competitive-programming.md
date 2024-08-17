@@ -42,6 +42,8 @@
 
 ## Constructive Algorithms
 
+- 1984A. Strainge Splitting - 800
+	- [20240815](./2024/08/20240815.html)
 - 1998B. Minimize Equal Sum Subarrays - 800
 	- [20240812](./2024/08/20240812.html)
 - 1998A. Find K Distinct Points with Fixed Center - 800
