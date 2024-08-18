@@ -1,0 +1,55 @@
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+<meta charset="UTF-8">
+</head>
+<h1 id="section">20240818</h1>
+<h2 id="c.-can-i-square"><a
+href="https://codeforces.com/problemset/problem/1915/C">1915C. Can I
+Square?</a></h2>
+<p>I always require some time to think about the end condition, but I
+bet it is fine as long as I understand how the algorithm works.</p>
+<pre><code>def can_i_square(a: int) -&gt; bool:
+    # binary search
+    li: int = 1
+    ri: int = a
+    while li &lt; ri - 1:
+        mi: int = (li + ri) // 2
+        sq: int = mi * mi
+        if sq == a:
+            return True
+        elif sq &lt; a:
+            li = mi
+        else:
+            ri = mi
+    return li * li == a
+
+
+for _ in range(int(input())):
+    _: int = int(input())
+    a: int = sum(map(int, input().split()))
+
+    if can_i_square(a):
+        print(&quot;YES&quot;)
+    else:
+        print(&quot;NO&quot;)</code></pre>
+<hr />
+<p>Salad 400 Mexico rice 500 Protein shake 400 Protein bar 200</p>
+<p>Total 1500 kcal</p>
+<p>push-ups</p>
+<hr />
+<p>MUST:</p>
+<ul>
+<li>Retry 1971E by Friday
+<ul>
+<li><a href="../05/20240515.html">20240515</a></li>
+</ul></li>
+</ul>
+<p>TODO:</p>
+<ul>
+<li>Print out the document to explain the reason of passport
+renewal</li>
+</ul>
+<hr />
+<p><a href="../../index.html">index</a> <a
+href="20240817.html">20240817</a> <a
+href="20240819.html">20240819</a></p>
