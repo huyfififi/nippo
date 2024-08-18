@@ -6,6 +6,11 @@
 <ul>
 <li>Read “覚悟のススメ” and “戦隊レッド 異世界で冒険者になる”. They were
 very good.</li>
+<li>Did the laundry.</li>
+<li>I have no energy to do anything. My brain and body might be
+damaged.</li>
+<li>I browsed the problem set of Codeforces, but very few problems with
+difficulty between 900~1100 (my current target) exist.</li>
 </ul>
 <h2 id="a.-little-nikita---800"><a
 href="https://codeforces.com/problemset/problem/1977/A">1977A. Little
@@ -31,6 +36,22 @@ for _ in range(int(input())):
         print(&quot;YES&quot;)
     else:
         print(&quot;NO&quot;)</code></pre>
+<h2 id="b.-symmetric-encoding---800"><a
+href="https://codeforces.com/problemset/problem/1974/B">1974B. Symmetric
+Encoding - 800</a></h2>
+<pre><code>for _ in range(int(input())):
+    n: int = int(input())
+    b: list[str] = list(input())
+
+    r: list[str] = sorted(list(set(b)))
+    mapping: dict[str, str] = {}
+    for i in range(len(r)):
+        mapping[r[i]] = r[-(i + 1)]  # This might come in handy in the future..
+
+    for i in range(n):
+        b[i] = mapping[b[i]]
+
+    print(&quot;&quot;.join(b))</code></pre>
 <hr />
 <p>Salad 400 Sushi bowl 900 Protein shake 400</p>
 <p>Total 1700 kcal</p>
