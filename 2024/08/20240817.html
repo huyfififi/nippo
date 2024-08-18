@@ -1,0 +1,51 @@
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+<meta charset="UTF-8">
+</head>
+<h1 id="section">20240817</h1>
+<ul>
+<li>Read “覚悟のススメ” and “戦隊レッド 異世界で冒険者になる”. They were
+very good.</li>
+</ul>
+<h2 id="a.-little-nikita---800"><a
+href="https://codeforces.com/problemset/problem/1977/A">1977A. Little
+Nikita - 800</a></h2>
+<p>It's possible to make the tower height <code>m</code> if the
+remaining moves are couples of <code>(+1, -1)</code>.</p>
+<pre><code>def possible_math(n: int, m: int) -&gt; bool:
+    if n &lt; m:
+        return False
+    return (n - m) % 2 == 0
+
+
+def possible_greedy(n: int, m: int) -&gt; bool:
+    for i in range(1, n + 1):
+        if m == i - (n - i):
+            return True
+    return False
+
+
+for _ in range(int(input())):
+    n, m = map(int, input().split())
+    if possible_math(n, m):
+        print(&quot;YES&quot;)
+    else:
+        print(&quot;NO&quot;)</code></pre>
+<hr />
+<p>Salad 400 Sushi bowl 900 Protein shake 400</p>
+<p>Total 1700 kcal</p>
+<p>push-ups</p>
+<hr />
+<p>MUST:</p>
+<ul>
+<li>None</li>
+</ul>
+<p>TODO:</p>
+<ul>
+<li>Print out the document to explain the reason of passport
+renewal</li>
+</ul>
+<hr />
+<p><a href="../../index.html">index</a> <a
+href="20240816.html">20240816</a> <a
+href="20240818.html">20240818</a></p>
