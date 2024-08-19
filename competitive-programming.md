@@ -72,6 +72,8 @@
 
 ## Math
 
+- 1991A. Maximize the Last Element - 800
+	- [20240818](./2024/08/20240818.html)
 - 1977A. Little Nikita - 800
 	- [20240817](./2024/08/20240817.html)
 - 1993C. Light Switches - 1000

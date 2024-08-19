@@ -3,9 +3,9 @@
 <meta charset="UTF-8">
 </head>
 <h1 id="section">20240818</h1>
-<h2 id="c.-can-i-square"><a
+<h2 id="c.-can-i-square---800"><a
 href="https://codeforces.com/problemset/problem/1915/C">1915C. Can I
-Square?</a></h2>
+Square? - 800</a></h2>
 <p>I always require some time to think about the end condition, but I
 bet it is fine as long as I understand how the algorithm works.</p>
 <pre><code>def can_i_square(a: int) -&gt; bool:
@@ -32,10 +32,29 @@ for _ in range(int(input())):
         print(&quot;YES&quot;)
     else:
         print(&quot;NO&quot;)</code></pre>
+<h2 id="a.-maximize-the-last-element---800"><a
+href="https://codeforces.com/problemset/problem/1991/A">1991A. Maximize
+the Last Element - 800</a></h2>
+<p>Only numbers with odd indicnes can be left in the result.</p>
+<p>Trying to leave a number with an even index makes the lengths of the
+remaining two parts odd, meaning it's impossible.</p>
+<pre><code>def solve(n: int, a: list[int]) -&gt; int:
+    odds: list[int] = []
+    for i in range(n):
+        if i % 2 == 1:
+            continue
+        odds.append(a[i])
+    return max(odds)
+
+
+for _ in range(int(input())):
+    n: int = int(input())
+    a: list[int] = list(map(int, input().split()))
+    print(solve(n, a))</code></pre>
 <hr />
-<p>Salad 400 Mexico rice 500 Protein shake 400 Protein bar 200</p>
-<p>Total 1500 kcal</p>
-<p>push-ups</p>
+<p>Salad 600 Mexico rice 500 Protein shake 400 Protein bar 200</p>
+<p>Total 1700 kcal</p>
+<p>push-ups, pull-ups</p>
 <hr />
 <p>MUST:</p>
 <ul>
