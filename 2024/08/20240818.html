@@ -3,6 +3,15 @@
 <meta charset="UTF-8">
 </head>
 <h1 id="section">20240818</h1>
+<ul>
+<li>I was considering going to a a threater to watch the movie of
+Borderlands, but it has so many bad reviews that I decided to skip the
+movie.
+<ul>
+<li>Rotten Tomatoes: 10%, IMDb: 4.3/10, Metacritic: 27%</li>
+<li>The metrics are terrible</li>
+</ul></li>
+</ul>
 <h2 id="c.-can-i-square---800"><a
 href="https://codeforces.com/problemset/problem/1915/C">1915C. Can I
 Square? - 800</a></h2>
@@ -51,6 +60,32 @@ for _ in range(int(input())):
     n: int = int(input())
     a: list[int] = list(map(int, input().split()))
     print(solve(n, a))</code></pre>
+<h2 id="a.-dual-trigger"><a
+href="https://codeforces.com/problemset/problem/1951/A">1951A. Dual
+Trigger</a></h2>
+<pre><code>def possible(n: int, s: str) -&gt; bool:
+    ones: int = len([c for c in s if c == &quot;1&quot;])
+
+    # two positions are required to perform one operation
+    if ones % 2 == 1:
+        return False
+
+    if ones == 2 and s.rfind(&quot;1&quot;) - s.find(&quot;1&quot;) == 1:
+        return False
+
+    # if there are more than two positions to turn on, it\&#39;s always possible
+    # for i in range((num of &quot;1&quot;) // 2):
+    #   turn_on(i-th &quot;1&quot;, (num of &quot;1&quot;) // 2 + 1-th &quot;1&quot;)
+    return True
+
+
+for _ in range(int(input())):
+    n: int = int(input())
+    s: str = input()
+    if possible(n, s):
+        print(&quot;YES&quot;)
+    else:
+        print(&quot;NO&quot;)</code></pre>
 <hr />
 <p>Salad 600 Mexico rice 500 Protein shake 400 Protein bar 200</p>
 <p>Total 1700 kcal</p>

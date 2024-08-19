@@ -45,6 +45,8 @@
 
 ## Constructive Algorithms
 
+- 1951A. Dual Trigger - 900
+	- [20240818](./2024/08/20240818.html)
 - 1984A. Strainge Splitting - 800
 	- [20240815](./2024/08/20240815.html)
 - 1998B. Minimize Equal Sum Subarrays - 800
