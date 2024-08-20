@@ -3,6 +3,16 @@
 <meta charset="UTF-8">
 </head>
 <h1 id="section">20240819</h1>
+<ul>
+<li>Video call with my relatives in Vietnam
+<ul>
+<li>That was a good experience. One of my cousin is learning Japanese,
+and her Japanese is so cute.</li>
+<li>I am considering cutting a relationship with my parents, but other
+relatives are actually nice. It's a tough situation.</li>
+</ul></li>
+</ul>
+<hr />
 <p><a
 href="https://en.wikipedia.org/wiki/When_life_gives_you_lemons,_make_lemonade">“When
 life gives you lemons, make lemonade”</a> is my friend's favorite
@@ -18,17 +28,58 @@ said that engineers there work at least 60 hours a week.</p>
 just graduated from college, but I got old (to some extent) and had no
 energy left in me to burn.</p>
 <hr />
+<p>I need to wake up early tomorrow. It's daunting… though my circadian
+rhythm is almost repaired.</p>
+<hr />
+<h2 id="e.-find-the-car"><a
+href="https://codeforces.com/problemset/problem/1971/E">1971E. Find the
+Car</a></h2>
+<p>Wow, I managed to solve the problem without references.</p>
+<ol type="1">
+<li>find the section <code>d</code> belongs to</li>
+<li>calculate the offset</li>
+</ol>
+<pre><code>def find_section(k: int, a: list[int], d: int) -&gt; int:
+    # binary search
+    li: int = 0
+    ri: int = k
+    while li &lt; ri - 1:
+        mi: int = (li + ri) // 2
+        if a[mi] == d:
+            return mi
+        elif a[mi] &lt; d:
+            li = mi
+        else:
+            ri = mi
+    return li
+
+
+for tc in range(int(input())):
+    n, k, q = map(int, input().split())
+    a: list[int] = [0] + list(map(int, input().split()))
+    b: list[int] = [0] + list(map(int, input().split()))
+
+    ans: list[int] = []
+    for qc in range(q):
+        d: int = int(input())
+        i: int = find_section(k, a, d)
+
+        if a[i] == d:
+            ans.append(b[i])
+            continue
+
+        _ans: int = b[i] + (d - a[i]) * (b[i + 1] - b[i]) // (a[i + 1] - a[i])
+        ans.append(_ans)
+
+    print(&quot; &quot;.join([str(x) for x in ans]))</code></pre>
 <hr />
 <p>Salad 400 Rice 400 Smoothie 300 Protein bar 200 Yogurt 300</p>
 <p>Total 1600 kcal</p>
-<p>6k run</p>
+<p>6k run, push-ups</p>
 <hr />
 <p>MUST:</p>
 <ul>
-<li>Retry 1971E by Friday
-<ul>
-<li><a href="../05/20240515.html">20240515</a></li>
-</ul></li>
+<li>Tackle a binary search problem by the end of August</li>
 </ul>
 <p>TODO:</p>
 <ul>
