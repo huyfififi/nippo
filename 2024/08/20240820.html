@@ -3,24 +3,95 @@
 <meta charset="UTF-8">
 </head>
 <h1 id="section">20240820</h1>
-<h2 id="todo-jenkins-pipeline-and-github-actions">TODO: Jenkins Pipeline
-and GitHub Actions</h2>
+<ul>
+<li>I'm bored. My friends are not active on their personal projects. To
+be honest, I have no idea why it takes that much time to make small
+changes, and it makes me a bit jittery, though great engineers would
+think the same thing about me.
+<ul>
+<li>I always try to provide evidence or references when making
+arguments, trying not to hurt one's feelings at the same time, but it
+seems not everyone appreciates that.</li>
+<li>Maybe I'm too tired, having meetings. Let's go to bed…</li>
+</ul></li>
+</ul>
+<h2 id="jenkins-and-github-actions">Jenkins and GitHub Actions</h2>
+<h3 id="differences-between-them">Differences between them</h3>
+<p>Motivation: I have a project that uses Jenkins to deploy code to
+development environments. I want to auto-trigger the build/deploy when
+merging pull requests to a dev branch.</p>
+<p><a
+href="https://docs.github.com/en/actions/migrating-to-github-actions/manually-migrating-to-github-actions/migrating-from-jenkins-to-github-actions">Migrating
+from Jenkins to GitHub Actions</a></p>
+<blockquote>
+<p>Jenkins and GitHub Actions both allow you to create workflows that
+automatically build, test, publish, release, and deploy code.</p>
+</blockquote>
+<p>Although there syntaxes are different, Their basic capabilities are
+the same, as I browsed the document.</p>
+<p>The documentation above shows the syntax differences, and it seems
+due to the similarities, it's easy to migrate from Jenkins to GitHub
+Actions.</p>
+<h3
+id="is-it-possible-to-simply-trigger-jenkins-pipelines-from-github">Is
+it possible to simply trigger Jenkins pipelines from GitHub?</h3>
+<p>I searched for a Jenkins integration in GitHub workflow templates,
+but nothing hit.</p>
+<p><a
+href="https://www.jenkins.io/doc/book/using/remote-access-api/">Remote
+Access API - jenkins.io</a></p>
+<p>There is an API to which I can send a request to trigger a specific
+job, but because I cannot notice any errors in the pipeline if I send a
+request from GitHub Actions, i.e., there is no complete integration,
+there is little advantage of doing that.</p>
+<h3 id="my-conclusion">My conclusion</h3>
+<p>For a small project, using GitHub Actions is better (when using
+GitHub as a Git repository server) because running and managing Jenkins
+servers correctly require engineering resources, whereas with GitHub, I
+don't have to worry about the infrastructure much. Also, GitHub Actions
+have free minutes to run workflows, which usually does not exceed the
+limit for a small project/organization. Thinking about hosting a Jenkins
+server and engineering hours to manage its infrastructures, leveraging
+GitHub Actions is much more cost-efficient.</p>
+<p><a
+href="https://docs.github.com/en/billing/managing-billing-for-github-actions/about-billing-for-github-actions">About
+billing for GitHub Actions</a></p>
+<p>Let's say we use GitHub Team, because GitHub Enterprise Cloud is
+overkill for a small-mid size startup, we have 3000 free minutes per
+month, which is ~= 100 minutes per day.</p>
+<p>From my experience,</p>
+<ul>
+<li>Running linters =&gt; ~1 minute</li>
+<li>Running tests =&gt; 5 minutes</li>
+<li>Deployment =&gt; 5 minutes</li>
+</ul>
+<p>Roughly, one pull request consumes 10 minutes of resources. 10 pull
+requests can be run freely. If we exceed the limit, Linux-based OS
+runners cost $0.008, so each addtiional pull request only costs
+$0.08.</p>
+<p>I'm not familiar with the best practice of Jenkins infrastructure,
+but if we go for a very simple infrastructure such as VPS, it costs
+around $30 per month including domains.</p>
+<p>Also, managing Jenkins pipeline costs some engineering-hour, which is
+not free.</p>
 <hr />
 <p>Mexican rice 500 Rice 400 Protein bar 200 Yogurt 300 Protein shake
-200 Nori 200</p>
-<p>Total 1800 kcal</p>
+200 Nori 200 Salad 300</p>
+<p>Total 2100 kcal</p>
 <p>I feel I increased my calories deficit too much for several days.
 Therefore, I took a bit of extra calories.</p>
-<p>1 hour walking</p>
+<p>1 hour walking, push-ups</p>
 <hr />
 <p>MUST:</p>
 <ul>
+<li>Print out the documents for passport renewal, 20240821</li>
+<li>Codeforces Round 968 (Div. 2), 20240825 (Sunday)</li>
+<li>Passport Renewal, 20240826 (Monday)</li>
 <li>Tackle a binary search problem by the end of August</li>
 </ul>
 <p>TODO:</p>
 <ul>
-<li>Print out the document to explain the reason of passport
-renewal</li>
+<li>None</li>
 </ul>
 <hr />
 <p><a href="../../index.html">index</a> <a
