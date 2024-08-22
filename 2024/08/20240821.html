@@ -3,20 +3,77 @@
 <meta charset="UTF-8">
 </head>
 <h1 id="section">20240821</h1>
+<ul>
+<li>Went to the office</li>
+<li>Booked a self-guided tour of an apartment</li>
+<li>Printed out the documents</li>
+<li>Replied back to the leasing company</li>
+<li>Wrote a <a
+href="https://note.com/_huyfififi/n/n6d7592e01b33?sub_rt=share_pw">blog
+post on note.com</a></li>
+</ul>
+<h2 id="b.-haunted-house"><a
+href="https://codeforces.com/problemset/problem/1884/B">1884B. Haunted
+House</a></h2>
+<pre><code>&quot;&quot;&quot;
+n is divisible by 2 ** i &lt;=&gt; the i suffix bits are 0
+to meet the condition, we move 0s to the right
+&quot;&quot;&quot;
+
+
+for _ in range(int(input())):
+    n: int = int(input())
+    s: list[str] = list(input())
+
+    num0: int = len([x for x in s if x == &quot;0&quot;])
+    # it&#39;s impossible to make 0s suffix
+    if num0 == 0:
+        print(&quot; &quot;.join([str(-1) for i in range(n)]))
+        continue
+
+    # distance from the right
+    # we will move the 0s to the right
+    pos0: list[int] = []
+    for i in range(n):
+        if s[i] == &quot;0&quot;:
+            pos0.append(n - i - 1)
+
+    # to make it easier to perform following operations
+    # pos0 = pos0[::-1] also works
+    pos0.sort()
+
+    # the first zero needs to go to the right most position to fill suffix with 0
+    # the second zero needs to go to the n - 1 position to fill the right corner with 0s
+    #   the first zero already fills the rightmost cell, so the second moves to n - 1
+    # ...
+    for i in range(num0):
+        pos0[i] -= i
+
+    # sum array to not repeat the same calculation
+    sumarr: list[int] = [pos0[0]]
+    for i in range(1, num0):
+        sumarr.append(sumarr[-1] + pos0[i])
+
+    # padding. if the number of 0s needed exceeds 0s we have, it&#39;s impossible to meet the condition
+    for i in range(n - num0):
+        sumarr.append(-1)
+
+    print(&quot; &quot;.join([str(x) for x in sumarr]))</code></pre>
 <hr />
-<p>Kombucha 200</p>
-<p>Total 200 kcal</p>
+<p>Kombucha 200 Protein shake 200 Salad 400 Rice 400 Mexican rice 500
+Yogurt 200</p>
+<p>Total 1900 kcal</p>
+<p>pull-ups, 30 minutes walking, push-ups</p>
 <hr />
 <p>MUST:</p>
 <ul>
-<li>Print out the documents for passport renewal, 20240821</li>
 <li>Codeforces Round 968 (Div. 2), 20240825 (Sunday)</li>
 <li>Passport Renewal, 20240826 (Monday)</li>
-<li>Tackle a binary search problem by the end of August</li>
 </ul>
 <p>TODO:</p>
 <ul>
-<li>None</li>
+<li>Retry 1884B with a binary search approach</li>
+<li>Self-guided tour, 20240914 3:00 pm</li>
 </ul>
 <hr />
 <p><a href="../../index.html">index</a> <a
