@@ -1,0 +1,61 @@
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+<meta charset="UTF-8">
+</head>
+<h1 id="section">20240823</h1>
+<ul>
+<li>went to a hot pot place my friend recommended and did some
+networking</li>
+<li>contributed to <a
+href="https://github.com/xavctn/img2table">xavctn/img2table</a>
+<ul>
+<li>created an issue <a
+href="https://github.com/xavctn/img2table/issues/211">https://github.com/xavctn/img2table/issues/211</a></li>
+<li>replied to an issue <a
+href="https://github.com/xavctn/img2table/issues/178">https://github.com/xavctn/img2table/issues/178</a></li>
+</ul></li>
+</ul>
+<h2 id="a.-closest-point---800"><a
+href="https://codeforces.com/problemset/problem/2004/A">2004A. Closest
+Point - 800</a></h2>
+<pre><code>def possible(n: int, x: list[int]) -&gt; bool:
+    assert n &gt;= 2
+
+    # it&#39;s impossible to have a point that is the middle of three distinct points on the same axis line
+    if n &gt; 2:
+        return False
+
+    # the middle point is not an integer
+    if x[1] - x[0] == 1:
+        return False
+
+    return True
+
+
+for _ in range(int(input())):
+    n: int = int(input())
+    x: list[int] = list(map(int, input().split()))
+
+    if possible(n, x):
+        print(&quot;YES&quot;)
+    else:
+        print(&quot;NO&quot;)</code></pre>
+<hr />
+<p>Sushi bowl 1000 Protein shake 200 Rice 300</p>
+<p>Total 1500 kcal</p>
+<p>30 minutes walk</p>
+<hr />
+<p>MUST:</p>
+<ul>
+<li>Codeforces Round 968 (Div. 2), 20240825 (Sunday)</li>
+<li>Passport Renewal, 20240826 (Monday)</li>
+</ul>
+<p>TODO:</p>
+<ul>
+<li>Retry 1884B with a binary search approach</li>
+<li>Self-guided tour, 20240914 3:00 pm</li>
+</ul>
+<hr />
+<p><a href="../../index.html">index</a> <a
+href="20240822.html">20240822</a> <a
+href="20240824.html">20240824</a></p>
