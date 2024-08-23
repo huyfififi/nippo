@@ -40,6 +40,7 @@
 
 # Services
 
+- [GitHub Actions to perform operations only for changes](./2024/08/20240822.html)
 - [`dependabot` and `poetry`](./2024/07/20240718.html)
 - [GitHub Issue & PR templates](./2024/07/20240716.html)
 - [Ingress](./2024/07/20240716.html)

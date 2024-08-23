@@ -1,0 +1,84 @@
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+<meta charset="UTF-8">
+</head>
+<h1 id="section">20240822</h1>
+<ul>
+<li>I ran a lot today. My legs hurt.</li>
+<li>Browsed <a href="https://www.stacking.dev/">stacking.dev</a>
+<ul>
+<li>It's a new concept for me, stacking pull requests. As I read the
+page, I'm not very motivated to try that. Shouldn't we create a healthy
+culture in engineering teams first?</li>
+<li>Also, I have never heard of my friends use the technique.</li>
+<li>I might want to browse <a
+href="https://graphite.dev/features/cli">graphite.dev</a> tomorrow</li>
+</ul></li>
+</ul>
+<h2
+id="github-actions-is-it-possible-to-apply-linters-only-to-changes">GitHub
+Actions: Is it possible to apply linters only to changes?</h2>
+<h3 id="motivation">Motivation</h3>
+<p>I'm refactoring a (sort of) old and large code base, and I want to
+force contributors to apply <code>black</code> for their changes.</p>
+<p>(On second thought, maybe I can just apply <code>black</code> to all
+the files first and use <code>black</code> as a linter in GitHub
+Actions? :thinking_face:)</p>
+<h3 id="paths-filter"><code>paths</code> filter</h3>
+<p>I can use <code>paths</code> filter to trigger only when, for
+example, Python files change</p>
+<pre><code>on:
+  pull_request:
+    paths:
+      - &#39;**/*.py&#39;</code></pre>
+<p>This way, we can avoid triggering linters such as Ruff or Flake8 when
+the changes are not about Python code.</p>
+<h3 id="access-changes-in-github-actions">Access changes in GitHub
+Actions</h3>
+<p>As I browsed several web pages / blogs, it seems there is no easy way
+to access changes.</p>
+<p>We migt be able to</p>
+<ul>
+<li>leverage <code>git diff</code>
+<ul>
+<li>Because GitHub Actions checkout a specific commit, we can do
+something like <code>git diff HEAD~</code> to get differences.</li>
+</ul></li>
+<li>use GitHub Action <a
+href="https://github.com/marketplace/actions/changed-files">tj-actions/changed-files</a>
+<ul>
+<li>This action seems to provide names/paths of changed files, but it
+does not provide access to changes directly.</li>
+</ul></li>
+</ul>
+<h3 id="my-conclusion">My conclusion</h3>
+<p>It seems to be difficult to implement it in GitHub Actions. I think
+configuring pre-hook on <code>git commit</code> is a popular practice,
+but I doubt the collaborators are happy configuring that.</p>
+<p>We already have a workflow to run <code>ruff</code>, and it makes
+sense to not impose strict formatting rules. As long as changes follow
+PEP8, it should be fine.</p>
+<p>Wait, it also makes sense to use <code>black</code> when having
+members who are not familiar with PEP8 because <code>black</code> can
+automate or get rid of effort formatting Python code. Hmm…</p>
+<p>I will just stick to <code>ruff</code> for now.</p>
+<hr />
+<p>Protein shake 200 Salad 500 Rice 400 Mexican rice 500 Yogurt 200
+Protein bar 200</p>
+<p>Total 2000 kcal</p>
+<p>1-hour walking, 10k run (!)</p>
+<hr />
+<p>MUST:</p>
+<ul>
+<li>Codeforces Round 968 (Div. 2), 20240825 (Sunday)</li>
+<li>Passport Renewal, 20240826 (Monday)</li>
+</ul>
+<p>TODO:</p>
+<ul>
+<li>Retry 1884B with a binary search approach</li>
+<li>Self-guided tour, 20240914 3:00 pm</li>
+</ul>
+<hr />
+<p><a href="../../index.html">index</a> <a
+href="20240821.html">20240821</a> <a
+href="20240823.html">20240823</a></p>
