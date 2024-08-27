@@ -60,6 +60,10 @@
 - [Responsibility of Node.js (20240504)](./2024/05/20240504.html)
 - [== vs === in JavaScript (20240425)](./2024/04/20240425.html)
 
+# News
+
+- [Tim Peters has been suspended from Python Software Foundation](./2024/08/20240826.html)
+
 # Others
 
 - [STRIDE](./2024/07/20240721.html)
