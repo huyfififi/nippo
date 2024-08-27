@@ -17,6 +17,75 @@ people.</li>
 </ul></li>
 <li>Replied back to a mentee about unit/end-to-end testing</li>
 </ul>
+<h2 id="a.-turtle-and-good-strings---800"><a
+href="https://codeforces.com/contest/2003/problem/A">2003A. Turtle and
+Good Strings - 800</a></h2>
+<h3 id="my-idea">My idea</h3>
+<p><code>k = 2</code> is the simplest scenario, and if it's impossible
+with <code>k = 2</code>, it's also impossible with
+<code>k &gt;= 3</code>.</p>
+<p>When we think about <code>k = 3</code>, the first character of
+<code>t1</code> must be different from last characters of
+<code>t2</code> and <code>t3</code>, but the condition is more strict
+than thinking about only <code>t1</code> v.s. <code>t2</code>.
+Therefore, I only consider <code>k = 2</code> for simplicity's sake.
+(not very confident about the explanation).</p>
+<p>When <code>k = 2</code>, we just have to check if there is a pair of
+<code>(t1, t2)</code> where
+<code>t1[0] != t2[-1] and t1[-1] != t2[0]</code>.</p>
+<pre><code>def possible(n: int, s: list[str]) -&gt; bool:
+    for i in range(n - 1):
+        if s[i] != s[i + 1]:
+            return s[0] != s[n - 1]
+    return False
+
+
+for _ in range(int(input())):
+    n: int = int(input())
+    s: list[str] = list(input())
+    if possible(n, s):
+        print(&quot;YES&quot;)
+    else:
+        print(&quot;NO&quot;)</code></pre>
+<h3 id="the-answer-from-the-editorial">The answer from the
+editorial</h3>
+<p><a href="https://codeforces.com/blog/entry/132953">Codeforces Round
+968 (Div. 2) Editorial</a></p>
+<blockquote>
+<p>A necessary condition for <code>s</code> to be good is that
+<code>s1 != sn</code>.</p>
+</blockquote>
+<blockquote>
+<p>For a string <code>s</code> where <code>s1 != sn</code>, let
+<code>t1</code> be a string composed of just the simple character
+<code>s1</code>, and let <code>t2</code> be a string composed of the
+<code>n - 1</code> characters from <code>s2</code> to
+<code>sn</code>.</p>
+</blockquote>
+<blockquote>
+<p>In this way, the condition is satisfied.</p>
+</blockquote>
+<blockquote>
+<p>Therefore, if <code>s1</code> != <code>sn</code>, the answer is
+“Yes”; otherwise, the answer is “No”.</p>
+</blockquote>
+<p>I misunderstood the problem. I thought <code>t2</code>'s first
+character must not be equal to <code>t1</code>'s last character, but the
+condition is</p>
+<blockquote>
+<p>For all <code>1 &lt;= i &lt; j &lt;= k</code>, the first character of
+<code>ti</code> isn't equal to the last character of <code>tj</code>. We
+only have to compare the first character of <code>ti</code> with the
+last characters of strings come after <code>ti</code>.</p>
+</blockquote>
+<p>The answer is as simple as</p>
+<pre><code>for _ in range(int(input())):
+    n: int = int(input())
+    s: str = input()
+    if s[0] != s[-1]:
+        print(&quot;YES&quot;)
+    else:
+        print(&quot;NO&quot;)</code></pre>
 <hr />
 <p>Rice 400 Meat and Potatos 500 Protein bars 400 Protein shake 200
 Salad 400 Yogurt 200</p>
@@ -29,7 +98,6 @@ Salad 400 Yogurt 200</p>
 </ul>
 <p>TODO:</p>
 <ul>
-<li>Review Codeforces 2003A</li>
 <li>Review Codeforces 2003B</li>
 <li>Check the editorial of 1884B</li>
 <li>Self-guided tour, 20240914 3:00 pm</li>

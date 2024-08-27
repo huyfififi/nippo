@@ -126,6 +126,7 @@
 
 ## Strings
 
+- [2003A. Turtle and Good Strings - 800](./2024/08/20240826.html)
 - [1931A. Recovering a Small String - 800](./2024/06/20240629.html)
 
 ## Only the last element matters
