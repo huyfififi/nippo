@@ -1,0 +1,166 @@
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+<meta charset="UTF-8">
+</head>
+<h1 id="section">20240828</h1>
+<ul>
+<li>Updated 在留届
+<ul>
+<li>Governments websites are not very intuitive, which might be due to
+the lack of direct paying customers.</li>
+<li>I was not born in Japan, and I don't feel very attached to the
+country, but because I have a nationality there, they care about me.
+It's kind of funny to me, but I appreciate that. Maybe it's the only
+thing that cares about me.</li>
+</ul></li>
+<li>Sent an email to a lawyer</li>
+<li>Checked the editorial of 1884B - Haunted House
+<ul>
+<li><a href="https://codeforces.com/blog/entry/121618">Codeforces Round
+#904 (Div. 2) Editorial</a></li>
+<li>The solution is hard for me to understand. Let's skip that for
+now.</li>
+<li>My approach is not that far from the optimal, so I will stick to it
+(for now).</li>
+</ul></li>
+</ul>
+<h2 id="how-to-download-a-file-from-amazon-s3-in-github-actions">How to
+download a file from Amazon S3 in GitHub Actions</h2>
+<h3 id="motivation">Motivation</h3>
+<p><code>Git</code> is designed to manage text files, not binary files,
+and it's generally not recommended to have binary files that tend to
+have large sizes.</p>
+<p><a
+href="https://docs.github.com/en/repositories/working-with-files/managing-large-files/about-large-files-on-github#file-size-limits">About
+large files on GitHub - GitHub Docs</a></p>
+<blockquote>
+<p>GitHub limits the size of files allowed in repositories. If you
+attempt to add or update a file that is larger than 50 MiB, you will
+receive a warning from Git. The changes will still successfully push to
+your repository, but you can consider removing the commit to minimize
+performance impact.</p>
+</blockquote>
+<blockquote>
+<p>GitHub blocks files larger than 100 MiB.</p>
+</blockquote>
+<p>However, it is totally possible that in some cases, we want to
+perform integration tests with a machine-learning model. For example,
+running a classification algorithm and assert that the accuracy is above
+90% or something.</p>
+<p>and as I did some research, I think using Amazon S3 bucket for that
+is the most straightforward approach.</p>
+<h3 id="aws-cli-cp-and-aws-actionsconfigure-aws-credentials">AWS CLI:
+<code>cp</code> and
+<code>aws-actions/configure-aws-credentials</code></h3>
+<p><a
+href="https://docs.aws.amazon.com/cli/latest/reference/s3/cp.html">cp -
+AWS CLI 1.34.7 Command Reference</a></p>
+<p>There is a convenient command we can use to copy a S3 object to a
+location locally or in S3.</p>
+<pre><code>$ aws s3 cp {s3 uri} .</code></pre>
+<p><a
+href="https://github.com/aws-actions/configure-aws-credentials">aws-actions/configure-aws-credentials</a></p>
+<p>This action seems to provide a concise way to configure credentials
+in GitHub Actions. When setting up AWS CLI, <code>$ aws configure</code>
+is what we do in general, but doing it correctly in a workflow looks a
+bit tricky because we need to provide multiple values as prompts.</p>
+<p><a
+href="https://docs.aws.amazon.com/cli/v1/userguide/cli-authentication-user.html#cli-authentication-user-configure.title">Authenticate
+with IAM user credentials - AWS Command Line Interface</a></p>
+<h3 id="using-secrets-in-github-actions">Using secrets in GitHub
+Actions</h3>
+<p><a
+href="https://docs.github.com/en/actions/security-for-github-actions/security-guides/using-secrets-in-github-actions">Using
+secrets in GitHub Actions - GitHub Docs</a></p>
+<p>Repository-level secrets for GitHub Actions can be added under
+“Settings” &gt; “Secrets and variables” &gt; “Actions”.</p>
+<p>After adding secrets, they can be accessed from a workflow by
+<code>${{ secrets.YOUR_SECRET_NAME }}</code></p>
+<h3 id="sample-workflow-yaml">Sample workflow YAML</h3>
+<pre><code>name: Testing
+
+on: push
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout a commit
+        uses: actions/checkout@v4
+
+      - name: Set up AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          # loaded from GitHub secrets
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          # region is required
+          aws-region: us-east-1
+
+      - name: Download a S3 object from S3
+        run: aws s3 cp s3://BUCKET_NAME/OBJECT_NAME .</code></pre>
+<h3 id="future-improvements">Future improvements</h3>
+<h4 id="assume-role-directly-using-github-oidc-provider">Assume Role
+directly using GitHub OIDC provider</h4>
+<p><a
+href="https://github.com/aws-actions/configure-aws-credentials">aws-actions/configure-aws-credentials</a></p>
+<blockquote>
+<p>API calls to AWS need to be signed with credential information, so
+when you use one of the AWS SDKs or an AWS tool, you must provide it
+with AWS credentials and and AWS region. One way to do that in GitHub
+Actions is to use a repository secret with IAM credentials, but this
+doesn’t follow AWS security guidelines on using long term credentials.
+Instead, we recommend that you use a long term credential or JWT to
+fetch a temporary credential, and use that with your tools instead. This
+GitHub Action facilitates just that.</p>
+</blockquote>
+<blockquote>
+<p>We recommend using the first option above: GitHub’s OIDC provider.
+This method uses OIDC to get short-lived credentials needed for your
+actions. See OIDC for more information on how to setup your AWS account
+to assume a role with OIDC.</p>
+</blockquote>
+<p>I need some time to digest the authentication flow. For now, I'm
+manually rotating access keys.</p>
+<h4 id="cache-the-s3-object">Cache the S3 object</h4>
+<p>It might make sense to cache the S3 object you need to run a workflow
+if the object does not change frequently.</p>
+<p>On second thought, caching does not provide much advantages because
+<code>$ aws s3 cp</code> is well optimized, and the step to copy objects
+finish very quickly. Also, the cost to access the S3 objects is very low
+and negligible.</p>
+<p><a href="https://aws.amazon.com/s3/pricing/">Amazon S3 Simple Storage
+Service Pricing - Amazon Web Docs</a></p>
+<blockquote>
+<p>You pay for requests made against your S3 buckets and objects.</p>
+</blockquote>
+<blockquote>
+<p>S3 Standard / GET/SELECT, and all the other requests (per 1000
+requests) -&gt; $0.0004</p>
+</blockquote>
+<p>I think keeping the workflow simple is more important than optimizing
+the tiny metrics. Not every engineer is great at engineering, and from
+my experience, I believe making it possible for most collaborators
+maintain the feature is critical.</p>
+<hr />
+<p>Rice 400 Mexican rice 500 Protein shake 200 Sushi Salad 500 Nori
+100</p>
+<p>Total 1700 kcal</p>
+<p>6k run</p>
+<hr />
+<p>MUST:</p>
+<ul>
+<li>None</li>
+</ul>
+<p>TODO:</p>
+<ul>
+<li>Retry 1995B1</li>
+<li>Review Codeforces 2003B</li>
+<li>Ask the house agent about utility bills</li>
+<li>Self-guided tour, 20240914 3:00 pm</li>
+</ul>
+<hr />
+<p><a href="../../index.html">index</a> <a
+href="20240827.html">20240827</a> <a
+href="20240829.html">20240829</a></p>
