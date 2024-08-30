@@ -63,6 +63,7 @@
 
 # News
 
+- [Conguratulations: Tourist has reached a rating of 4000! by MikeMirzayanov](./2024/08/20240830.html)
 - [Tim Peters has been suspended from Python Software Foundation](./2024/08/20240826.html)
 
 # Others

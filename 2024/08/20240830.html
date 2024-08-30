@@ -1,0 +1,73 @@
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+<meta charset="UTF-8">
+</head>
+<h1 id="section">20240830</h1>
+<ul>
+<li>Drove my friend to the SF airport.
+<ul>
+<li>Because the following Monday is a holiday, I can see that many
+people are going on trips.</li>
+</ul></li>
+<li>Payed the rent</li>
+<li>Reviewed a pull request that isolates responsibilities of React
+components</li>
+<li>Left a study group due to a mismatch of skill levels.</li>
+</ul>
+<p>Panela Bread is a good place to study/work. The drinks are cheap, the
+seats are comfortable, and the WiFi is not slow.</p>
+<p>My issue got a like! Yay! <a
+href="https://github.com/xavctn/img2table/issues/211">xavctn/img2table/issues/211</a>
+- and I noticed that there are open pull requests regarding the issue
+already. Yikes!</p>
+<h2
+id="news-codeforces---congratulations-tourist-has-reachd-a-rating-of-4000">News:
+<a href="https://codeforces.com/blog/entry/133401">Codeforces -
+Congratulations: Tourist has reachd a rating of 4000!</a></h2>
+<blockquote>
+<p>As you may have already noticed, tourist has reached the symbolic
+milestone of 4000 rating points.</p>
+</blockquote>
+<blockquote>
+<p>Right now, we have assigned a new rank “Tourist” to the 4+ rating.
+This highlights the uniqueness of the moment!</p>
+</blockquote>
+<h2 id="review-2003b.-turtle-and-piggy-are-playing-a-game-2">Review: <a
+href="https://codeforces.com/contest/2003/problem/B">2003B. Turtle and
+Piggy Are Playing a Game 2</a></h2>
+<p>My assumption/approach</p>
+<pre><code>&quot;&quot;&quot;
+Turtle -&gt; remove the minimum value to increase the min of the array
+Piggy -&gt; remove the maximum value to decrease the max of the array
+indices (i, i + 1) do not matter; one operation removes one value from the array
+&quot;&quot;&quot;
+for _ in range(int(input())):
+    n: int = int(input())
+    a: list[int] = list(map(int, input().split()))
+    a.sort()
+    print(a[n // 2])</code></pre>
+<p>but I'm not very sure that the optimal moves are greedy ones.</p>
+<p><a href="https://codeforces.com/blog/entry/132953">Codeforce Round
+968 (Div. 2) Editorial</a></p>
+<p>My approach seems to be correct, but I'm still not confident why it
+always works.</p>
+<p>Maybe I'm overthinking. Let's skip this for now.</p>
+<hr />
+<p>Gyu-don 1000 Rice 400 Salad 300 Bagels 500 Protein bar 200 Pocky 200
+Protein shake 200</p>
+<p>Total 2800 kcal (mini-cheat)</p>
+<hr />
+<p>MUST:</p>
+<ul>
+<li>Codeforces Round 970 (Div. 3) (20240901)</li>
+</ul>
+<p>TODO:</p>
+<ul>
+<li>Retry 1995B1</li>
+<li>Ask the house agent about utility bills</li>
+<li>Self-guided tour, 20240914 3:00 pm</li>
+</ul>
+<hr />
+<p><a href="../../index.html">index</a> <a
+href="20240829.html">20240829</a> <a
+href="20240831.html">20240831</a></p>

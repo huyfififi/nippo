@@ -40,6 +40,8 @@
 
 ## Games
 
+- 2003B. Turtle and Piggy Are Playing a Game 2 - 800
+	- [20240830](./2024/08/20240830.html)
 - 1990A. Submission Bait - 900
 	- [20240803](./2024/08/20240803.html)
 - 1956B. Nene and the Card Game - 800
