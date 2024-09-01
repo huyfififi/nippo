@@ -1,0 +1,105 @@
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+<meta charset="UTF-8">
+</head>
+<h1 id="section">20240831</h1>
+<ul>
+<li>Browsed Discord API <a
+href="https://discord.com/developers/docs/reference">https://discord.com/developers/docs/reference</a>
+<ul>
+<li>As expected, the API seems to be easy to use, but I could not come
+up with an interesting project. Anyway, I don't have any active Discord
+groups, so it's meaningless to develop a Discord application.</li>
+</ul></li>
+<li>Set an alarm for tomorrow</li>
+<li>Met my parents :angry:</li>
+</ul>
+<h2 id="retry-1995b1.-bouquet-easy-version---1100">Retry: <a
+href="https://codeforces.com/contest/1995/problem/B1">1995B1. Bouquet
+(Easy Version) - 1100</a></h2>
+<pre><code>from collections import defaultdict
+
+
+for _ in range(int(input())):
+    n, m = map(int, input().split())
+    a: list[int] = list(map(int, input().split()))
+
+    c = defaultdict(int)
+    for ai in a:
+        c[ai] += 1
+
+    ans: int = -1
+    for k1, c1 in c.items():
+        k2 = k1 + 1
+        if k2 not in c:
+            ans = max(ans, k1 * min(m // k1, c1))
+            continue
+
+        c2 = c[k2]
+        for pc1 in range(1, c1 + 1):
+            pv1: int = k1 * pc1
+            rem: int = m - pv1
+            if rem &lt; 0:
+                break
+            ans = max(ans, pv1 + k2 * min(c2, (rem // k2)))
+
+    assert ans &lt;= m
+    print(ans)</code></pre>
+<h2 id="b.-card-game---1000"><a
+href="https://codeforces.com/problemset/problem/1999/B">1999B. Card Game
+- 1000</a></h2>
+<p>My solution</p>
+<pre><code>def suneet_win(su1: int, su2: int, sl1: int, sl2: int) -&gt; bool:
+    if su1 &gt; sl1:
+        return su2 &gt;= sl2
+    elif su1 == sl1:
+        return su2 &gt; sl2
+    else:
+        return False
+
+
+for _ in range(int(input())):
+    a1, a2, b1, b2 = map(int, input().split())
+
+    # [(Suneet 1, Suneet 2, Slavic 1, Slavic 2)]
+    # Beacuse of the symmetry, I can skip thinking about (a2, a1, ...) types
+    # and double the ans in the end.
+    combs: list[tuple[int, int, int, int]] = []
+    combs.append((a1, a2, b1, b2))
+    combs.append((a1, a2, b2, b1))
+
+    ans: int = 0
+    for comb in combs:
+        if suneet_win(*comb):
+            ans += 1
+    print(ans * 2)</code></pre>
+<p><a href="https://codeforces.com/blog/entry/132373">Codeforces Round
+964 (Div. 4) Editorial</a></p>
+<p>The only direction it has is</p>
+<blockquote>
+<p>For each test case, we can brute force through all possible games
+(there are only four of them) and calculate who is the winner of the
+game by simulating the game.</p>
+</blockquote>
+<p>I was overthinking.</p>
+<p>I'm not sure why this brute force problem has <code>1000</code>
+rating. Maybe people overthought same as me.</p>
+<hr />
+<p>Rice 400 Nori 100 Bagels 500 Protein shake 100 Nimono 600 Yogurt
+300</p>
+<p>Total 2000 kcal</p>
+<p>pull-ups, push-ups</p>
+<hr />
+<p>MUST:</p>
+<ul>
+<li>Codeforces Round 970 (Div. 3) (20240901)</li>
+</ul>
+<p>TODO:</p>
+<ul>
+<li>Ask the house agent about utility bills</li>
+<li>Self-guided tour, 20240914 3:00 pm</li>
+</ul>
+<hr />
+<p><a href="../../index.html">index</a> <a
+href="20240830.html">20240830</a> <a
+href="../09/20240901.html">20240901</a></p>
