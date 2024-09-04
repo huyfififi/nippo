@@ -3,17 +3,68 @@
 <meta charset="UTF-8">
 </head>
 <h1 id="section">20240903</h1>
+<h2 id="review-2008a.-sakurakos-exam">Review: <a
+href="https://codeforces.com/contest/2008/problem/A">2008A. Sakurako’s
+Exam</a></h2>
+<p>It took me some time to solve.</p>
+<p>At first glance, I thought of generating all the patterns such as</p>
+<p><code>[1, 2]</code> -&gt;</p>
+<p><code>[+1, +2]</code>, <code>[-1, +2]</code>, <code>[+1, -2]</code>,
+<code>[-1, -2]</code></p>
+<p>but it's impossible to calculate all the patterns due to its time
+complexity.</p>
+<p>I noticed that, luckily, the order of 1s and 2s does not matter. I
+can focus on the counts of 1s and 2s instead.</p>
+<pre><code>def possible(a: int, b: int) -&gt; bool:
+    for apc in range(a + 1):
+        for bpc in range(b + 1):
+            if apc - (a - apc) + 2 * bpc - 2 * (b - bpc) == 0:
+                return True
+    return False
+
+
+for _ in range(int(input())):
+    a, b = map(int, input().split())
+    if possible(a, b):
+        print(&quot;YES&quot;)
+    else:
+        print(&quot;NO&quot;)</code></pre>
+<p><a href="https://codeforces.com/blog/entry/133509">Codeforces Round
+970 (Div. 3) Editorial</a></p>
+<p>I considered this approach, too, but could not come up with the
+solution. I should retry this later.</p>
+<blockquote>
+<p>First of all, this task is the same as: “divide an array into two
+arrays with equal sum”.</p>
+</blockquote>
+<blockquote>
+<p>So, obviously, we need to check if the sum of all elements is even
+which implies that the number of ones is even.</p>
+</blockquote>
+<p>!</p>
+<blockquote>
+<p>Then, we can out half of 2s in one array and the other half in
+another, but if number of 2s is odd, then one array will have a greater
+sum then another, so we need to put two 1s there.</p>
+</blockquote>
+<p>! distributing 2s (and 1s) evenly!</p>
+<blockquote>
+<p>So, if we don’t have two ones while the number of 2s is odd then the
+answer is “NO”. Also, if sum is odd, the answer is also “NO”. In all
+other cases, the answer is “YES”.</p>
+</blockquote>
 <hr />
-<p>Rice 800 Yogurt 300 Salad 400 Honey 200</p>
-<p>Total 1700 kcal</p>
+<p>Rice 1700 Yogurt 900 Salad 600 Honey 200</p>
+<p>Total 3400 kcal :cry:</p>
+<p>9k run + 2k walk</p>
+<p>but I didn't eat junk food. This should be fine, I hope.</p>
 <hr />
 <p>MUST:</p>
 <ul>
-<li>Review 2008A (20240903)</li>
+<li>Review 2008B</li>
 </ul>
 <p>TODO:</p>
 <ul>
-<li>Review 2008B</li>
 <li>Review 2008C</li>
 <li>Review 2008D</li>
 <li>Ask the house agent about utility bills</li>

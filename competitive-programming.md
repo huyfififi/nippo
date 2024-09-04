@@ -80,6 +80,8 @@
 
 ## Math
 
+- 2008A. Sakurako\'s Exam - 800
+	- [20240903](./2024/09/20240903.html)
 - 2004A. Closest Point - 800
 	- [20240823](./2024/08/20240823.html)
 - 1991A. Maximize the Last Element - 800
