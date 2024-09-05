@@ -1,5 +1,10 @@
 <head><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" /></head>
 
+[dashboard.huyfififi.com](https://dashboard.huyfififi.com)
+
+[competitive programming](competitive-programming.html)
+[research](research.html)
+
 # 202409
 
 - [20240904](./2024/09/20240904.html)
@@ -152,12 +157,3 @@
 - [20240425](./2024/04/20240425.html)
 - [20240424](./2024/04/20240424.html)
 - [20240423](./2024/04/20240423.html)
-
-[competitive programming](competitive-programming.html)
-[research](research.html)
-
----
-
-## Dashboard
-
-[dashboard.huyfififi.com](https://dashboard.huyfififi.com)
