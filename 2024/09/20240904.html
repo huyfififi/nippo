@@ -3,16 +3,116 @@
 <meta charset="UTF-8">
 </head>
 <h1 id="section">20240904</h1>
+<ul>
+<li>Ordered running vest/shorts/shirts on Amazon</li>
+<li>Checked the code of PyMuPDF
+<ul>
+<li>How they manage flags is interesting. They use an integer, and all
+different flags are assigned 1, 2, 4, 8, …, so the flags can be combined
+easily and managed effectively.</li>
+<li>If I were to design that, I might have created some kind of object.
+It was good to know.</li>
+</ul></li>
+</ul>
+<p>I hope I can wake up a bit early tomorrow to go for a jogging.</p>
+<h2 id="b.-square-or-not"><a
+href="https://codeforces.com/contest/2008/problem/B">2008B. Square or
+Not</a></h2>
+<p>My approach:</p>
+<ol type="1">
+<li>Check if it's possible to make a square with the given number of
+blocks</li>
+<li>If it's possible, create the expected string and compare it with the
+input</li>
+</ol>
+<p>It just worked, but I didn't use the constraint</p>
+<blockquote>
+<p>The second line of each test case contains the string <code>s</code>
+of length <code>n</code>. The string is always the result of writing out
+the strings of a beautiful matrix.</p>
+</blockquote>
+<pre><code>def root(n: int) -&gt; int:
+    li: int = 0
+    ri: int = n
+    while li &lt; ri - 1:
+        mi: int = (li + ri) // 2
+        sq: int = mi * mi
+        if sq == n:
+            return mi
+        elif sq &gt; n:
+            ri = mi
+        else:
+            li = mi
+
+    return li if li * li == n else -1
+
+
+for _ in range(int(input())):
+    n: int = int(input())
+    s: str = input()
+
+    r = c = root(n)
+    if r == -1:
+        print(&quot;No&quot;)
+        continue
+
+    sq: str = &quot;&quot;
+    sq += &quot;1&quot; * r
+    for i in range(r - 2):
+        sq += &quot;1&quot; + &quot;0&quot; * (r - 2) + &quot;1&quot;
+    sq += &quot;1&quot; * r
+
+    if s == sq:
+        print(&quot;Yes&quot;)
+    else:
+        print(&quot;No&quot;)</code></pre>
+<p><a href="https://codeforces.com/blog/entry/133509">Codeforces Round
+970 (Div. 3) Editorial</a></p>
+<blockquote>
+<p>Assume that string was created from the beautiful binary matrix with
+size <code>r * c</code>.</p>
+</blockquote>
+<blockquote>
+<p>If <code>r &lt;= 2</code> or <code>c &lt;= 2</code>, then the whole
+matrix consists of ‘1’. This means that the string will have only one
+character and this is the onlly case such happening. So, if the whole
+string is constructed out of ‘1’, we print “Yes” only if the size of the
+string is 4, since only <code>r = c = 2</code> is a good matrix for
+us.</p>
+</blockquote>
+<p>I can understand the solution so far.</p>
+<blockquote>
+<p>Otherwise, we have at least one ‘0’ in the string. Let's look at what
+is the index of the first ‘0’.</p>
+</blockquote>
+<blockquote>
+<p>If it has index <code>r + 1</code>, since the whole first line and
+first character of the first line equal to ‘1’, so now, we have a fixed
+value of <code>r</code> (index of the first ‘0’ minus 1) and the answer
+is “Yes” only if <code>r</code> is the square root of
+<code>n</code>.</p>
+</blockquote>
+<p>I see. Because it's guaranteed that the input string is already a
+beautiful one, calculating <code>r</code> is enough to solve the
+problem. Genius.</p>
+<p>My solution of 2008A and 2008B are different from the optimal, but I
+managed to pass the tests. It's interesting.</p>
+<p>I remember that someone said the flexibility of the solutions is an
+exciting point of competitive programming.</p>
 <hr />
-<p>Rice 700 Salad 400 Protein shake 200</p>
-<p>Total 1300 kcal</p>
+<p>Rice 700 Salad 400 Protein shake 200 Bagels 500 Protein shake 200
+Nori 100 Kombucha 100</p>
+<p>Total 2200 kcal</p>
+<p>pull-ups, push-ups</p>
 <hr />
 <p>MUST:</p>
 <ul>
-<li>Review 2008B</li>
+<li>Make notes on how flags of PyMuPDF is implemented.</li>
 </ul>
 <p>TODO:</p>
 <ul>
+<li>Retry 2008A with a mathematical approach</li>
+<li>Retry 2008B with a mathematical approach</li>
 <li>Review 2008C</li>
 <li>Review 2008D</li>
 <li>Ask the house agent about utility bills</li>

@@ -80,6 +80,8 @@
 
 ## Math
 
+- 2008B. Square or Not - 800
+	- [20240904](./2024/09/20240904.html)
 - 2008A. Sakurako\'s Exam - 800
 	- [20240903](./2024/09/20240903.html)
 - 2004A. Closest Point - 800
