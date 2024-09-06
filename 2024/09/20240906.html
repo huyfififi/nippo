@@ -1,0 +1,170 @@
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+<meta charset="UTF-8">
+</head>
+<h1 id="section">20240906</h1>
+<p>I want to run tomorrow, but will consult with my leg muscles.</p>
+<h2 id="very-simple-rag-implementation">Very Simple RAG
+Implementation</h2>
+<p>My friend asked me to teach him about Docker/Docker Compose and RAG,
+ended up implementing a simple RAG system with FastAPI and ChromaDB. I
+was surprised that it was very easy to configure and use ChromaDB to
+store embeddings and perform vector search.</p>
+<p>My initial thoughts was to use OpenAI embeddings API to generate
+embeddings and store them in ChromaDB, but it turned out that ChromaDB
+natively supports the flow within the library, and I could simply
+store/get similar documents without worrying about the underlying vector
+records. (Not sure it's good for me or not tho, missing the opportunity
+to deeply understand the actual embedding records)</p>
+<p><a href="https://github.com/gomyway1216/rag">gomyway1216/rag</a></p>
+<p>I have two separate containers; one is an API server, and the other
+is a vector database.</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode compose.yaml"><code class="sourceCode yaml"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">services</span><span class="kw">:</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">chromadb</span><span class="kw">:</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">image</span><span class="kw">:</span><span class="at"> chromadb/chroma:latest</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">volumes</span><span class="kw">:</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> chromadb_data:/chroma/chroma</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">environment</span><span class="kw">:</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> IS_PERSISTENT=TRUE</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> PERSIST_DIRECTORY=/chroma/chroma</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> ANONYMIZED_TELEMETRY=${ANONYMIZED_TELEMETRY:-TRUE}</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">ports</span><span class="kw">:</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> 8001:8000</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">fastapi</span><span class="kw">:</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">container_name</span><span class="kw">:</span><span class="at"> fastapi</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">build</span><span class="kw">:</span><span class="at"> .</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">restart</span><span class="kw">:</span><span class="at"> always</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">volumes</span><span class="kw">:</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> .:/app</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">ports</span><span class="kw">:</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> 8000:8000</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">env_file</span><span class="kw">:</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> .env</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">depends_on</span><span class="kw">:</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">chromadb</span><span class="kw">:</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">condition</span><span class="kw">:</span><span class="at"> service_started</span></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="fu">volumes</span><span class="kw">:</span></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">chromadb_data</span><span class="kw">:</span></span></code></pre></div>
+<p>And, I have two simple API endpoints</p>
+<pre><code>class ChatRequest(BaseModel):
+    message: str = Field(description=&quot;The message to be sent to the chatbot&quot;)
+
+
+class ChatResponse(BaseModel):
+    message: str = Field(description=&quot;The message to be sent to the chatbot&quot;)
+
+
+@app.post(&quot;/query&quot;, response_model=ChatResponse, status_code=200)
+def query(chat_request: ChatRequest):
+    # Perform similarity search and fetch relevant information
+    rag_result = collection.query(
+        query_texts=[chat_request.message],
+        n_results=1,
+    )[&quot;documents&quot;][0][0]
+
+    # Perform chat completion using the retrieved information
+    # TODO: Clean up the query text
+    # TODO: Add integration tests
+    query_text = f&quot;Use this information: {rag_result}\n&quot;
+    query_text += &quot;=&quot; * 80 + &quot;\n&quot;
+    query_text += &quot;Reply &#39;I don&#39;t know&#39; if you don&#39;t find the answer in the given context.\n&quot;
+    query_text += &quot;=&quot; * 80 + &quot;\n&quot;
+    query_text += chat_request.message
+
+    response = openai_client.chat.completions.create(
+        model=&quot;gpt-4o&quot;,
+        messages=[{&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: query_text}],
+    )
+    return ChatResponse(message=response.choices[0].message.content)
+
+
+class LearnRequest(BaseModel):
+    text: str = Field(description=&quot;The text to be learned by the chatbot&quot;)
+
+
+@app.post(&quot;/learn&quot;, status_code=204)
+def learn(learn_request: LearnRequest):
+    collection.add(
+        documents=[learn_request.text],
+        ids=[uuid.uuid4().hex],
+    )
+    return</code></pre>
+<p>Using <code>/learn</code> endpoint, I can add knowledge in the vector
+database.</p>
+<p>Using <code>/query</code> endpoint, I can ask for knowledge in the
+vector database. As my friend asked, there are strict safeguards.</p>
+<p>I might not follow the strict definition of RAG, but with these
+endpoints, I managed to consolidate Generation of LLM (GPT4o) by
+performing similarity search and provide it with relevant
+information.</p>
+<p>My understanding might be wrong. I'll correct if there are any
+flaws.</p>
+<h2 id="browsed-langchain">Browsed LangChain</h2>
+<p><a
+href="https://python.langchain.com/v0.2/docs/tutorials/chatbot/">Build a
+Chatbot | LangChain</a></p>
+<p>LangChain seems to be just a convenient tool to build LLM
+application, wrapping API and simplifying API interactions, and managin
+resouces without many configurations.</p>
+<p>I won't touch the library anytime soon, but its existence seems to be
+worth remembering.</p>
+<h2 id="running-chroma">Running Chroma</h2>
+<p>I know I can use ChromaDB as a database to store embeddings to do
+RAG, but I didn't know how to deploy it.</p>
+<p><a
+href="https://cookbook.chromadb.dev/running/running-chroma/">Running
+Chroma - ChromaDB</a></p>
+<h3 id="chroma-cli">Chroma CLI</h3>
+<p>As simple as</p>
+<pre><code>$ pip install chromadb
+$ chroma run --host localhost --port 8000 --path ./my_chroma_data</code></pre>
+<h3 id="docker-compose">Docker Compose</h3>
+<pre><code>version: &#39;3.9&#39;
+
+networks:
+  net:
+    driver: bridge
+services:
+  chromadb:
+    image: chromadb/chroma:latest
+    volumes:
+      - ./chromadb:/chroma/chroma
+    environment:
+      - IS_PERSISTENT=TRUE
+      - PERSIST_DIRECTORY=/chroma/chroma # this is the default path, change it as needed
+      - ANONYMIZED_TELEMETRY=${ANONYMIZED_TELEMETRY:-TRUE}
+    ports:
+      - 8000:8000
+    networks:
+      - net</code></pre>
+<p>It looks very easy to configure. I might want to use it for my
+personal project.</p>
+<hr />
+<p>Chipotle 1000 Bagels 600 Sushi bowl 800 Protein bar 200 Yogurt
+300</p>
+<p>Total 2900 kcal</p>
+<hr />
+<p>MUST:</p>
+<ul>
+<li>Check MIT/AGPL
+<ul>
+<li><a href="https://www.gnu.org/licenses/agpl-3.0.html">GNU AFFERO
+GENERAL PUBLIC LICENSE</a></li>
+</ul></li>
+<li>Review 2008C</li>
+</ul>
+<p>TODO:</p>
+<ul>
+<li>Retry 2008A with a mathematical approach</li>
+<li>Retry 2008B with a mathematical approach</li>
+<li>Review 2008D</li>
+<li>Ask the house agent about utility bills</li>
+<li>Self-guided tour, 20240914 3:00 pm</li>
+</ul>
+<hr />
+<p><a href="../../index.html">index</a> <a
+href="20240905.html">20240905</a> <a
+href="20240907.html">20240907</a></p>

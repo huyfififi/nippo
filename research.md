@@ -35,6 +35,7 @@
 
 # Machine-learning
 
+- [Running Chroma](./2024/09/20240906.html)
 - [torch.no\_grad()](./2024/07/20240712.html)
 - [RAG (20240516)](./2024/05/20240516.html)
 
@@ -72,6 +73,7 @@
 
 # Others
 
+- [Implemented a simple RAG system](./2024/09/20240906.html)
 - [Troubleshooting: `docker stats` of my Mastodon instance](./2024/08/20240829.html)
 - [STRIDE](./2024/07/20240721.html)
 - [`async` and `await` (haven\'t researched in details) / Cyclomatic Complexity](./2024/07/20240715.html)
