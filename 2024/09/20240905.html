@@ -1,0 +1,165 @@
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+<meta charset="UTF-8">
+</head>
+<h1 id="section">20240905</h1>
+<p>I don't know why, but the today's meeting was exhausting.</p>
+<h2 id="peeking-under-the-hood-of-pymupdf">Peeking (?) Under the Hood of
+PyMuPDF</h2>
+<p><a href="https://github.com/pymupdf/PyMuPDF">pymupdf/PyMuPDF</a></p>
+<p>There are several options such as <a
+href="https://github.com/jsvine/pdfplumber">jsvine/pdfplumber</a> when
+it comes to PDF management, and our team uses <code>PyMuPDF</code> for
+that purpose.</p>
+<h3 id="integer-as-a-flag">Integer as a Flag</h3>
+<p>Redaction is removing visible texts or graphics from a PDF document.
+It's used to hide sensitive information or reduce the entropy of PDF
+pages.</p>
+<p>To do redactions with PyMuPDF, we first need to use
+<code>Page.add_redact_annot()</code> to add redaction annotations, and
+they call <code>Page.apply_redactions()</code>.</p>
+<pre><code># document: fitz.Document
+# rectangles: list[tuple[int, int, int, int]]
+
+page: fitz.Page = document[0]  # first page
+for rect in rectangles:
+  page.add_redact_annot(rect)
+page.apply_redactions()</code></pre>
+<p><a
+href="https://pymupdf.readthedocs.io/en/latest/page.html#Page.apply_redactions">Page.apply_redactions</a></p>
+<p>What I stumbled upon today is the <code>text</code> option. The
+document says its default value is
+<code>text=PDF_REDACT_TEXT_REMOVE | 0</code> but the constant
+<code>PDF_REDACT_TEXT_REMOVE</code> does not exist in the code base. So,
+in the reality, I'm expected to pass <code>int</code> to the
+argument.</p>
+<p>It can be confirmed in the source code</p>
+<pre><code>def apply_redactions(
+    page: pymupdf.Page, images: int = 2, graphics: int = 1, text: int = 0
+) -&gt; bool:</code></pre>
+<p>I may be totally wrong, but I prefer not using <code>int</code> as a
+kind of flag.</p>
+<p>PyMongo has similar implementation.</p>
+<p><a
+href="https://pymongo.readthedocs.io/en/stable/api/pymongo/collection.html">PyMongo:
+<code>collection</code> - Collection level operations</a></p>
+<blockquote>
+<p>pymongo.ASCENDING = 1</p>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>Ascending sort order.</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<p>pymongo.DESCENDING = -1</p>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>Descending sort order.</p>
+</blockquote>
+</blockquote>
+<p>I remember that once I asked my colleague to use the constants
+<code>pymongo.ASCENDING</code> and <code>pymongo.DESCENDING</code>
+instead of integers <code>1</code> and <code>-1</code> because when
+seeing <code>1</code> and <code>-1</code> in the source code, it's not
+obvious what they mean. Whereas, the constants convey good amount of
+information.</p>
+<p>If I were to implement a similar method, I would define constants in
+the same way as PyMongo because integers hardly have
+information/readability.</p>
+<p>But I'm not sure. There may be some advantages of simply using
+integers. Please correct me if my understanding is stupid.</p>
+<h3 id="binary-expressions-as-flags">Binary Expressions as Flags</h3>
+<p><a
+href="https://github.com/pymupdf/PyMuPDF/blob/b68f183cddaa6ac7b715e1f68fa923cd680711e3/src_classic/helper-python.i">PyMuPDF/src_classic/helper-python.i</a></p>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>TEXT_PRESERVE_LIGATURES <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>TEXT_PRESERVE_WHITESPACE <span class="op">=</span> <span class="dv">2</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>TEXT_PRESERVE_IMAGES <span class="op">=</span> <span class="dv">4</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>TEXT_INHIBIT_SPACES <span class="op">=</span> <span class="dv">8</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>TEXT_DEHYPHENATE <span class="op">=</span> <span class="dv">16</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>TEXT_PRESERVE_SPANS <span class="op">=</span> <span class="dv">32</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>TEXT_MEDIABOX_CLIP <span class="op">=</span> <span class="dv">64</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>TEXT_CID_FOR_UNKNOWN_UNICODE <span class="op">=</span> <span class="dv">128</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>TEXTFLAGS_BLOCKS <span class="op">=</span> (<span class="dv">0</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>        <span class="op">|</span> TEXT_PRESERVE_LIGATURES</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>        <span class="op">|</span> TEXT_PRESERVE_WHITESPACE</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>        <span class="op">|</span> TEXT_MEDIABOX_CLIP</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>        <span class="op">|</span> TEXT_CID_FOR_UNKNOWN_UNICODE</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>        )</span></code></pre></div>
+<p><a
+href="https://github.com/pymupdf/PyMuPDF/blob/b68f183cddaa6ac7b715e1f68fa923cd680711e3/src_classic/utils.py#L789">PyMuPDF/src_classic/utils.py</a></p>
+<div class="sourceCode" id="cb4"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_text(</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    page: Page,</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    option: <span class="bu">str</span> <span class="op">=</span> <span class="st">&quot;text&quot;</span>,</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    clip: rect_like <span class="op">=</span> <span class="va">None</span>,</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    flags: OptInt <span class="op">=</span> <span class="va">None</span>,</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    textpage: TextPage <span class="op">=</span> <span class="va">None</span>,</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    sort: <span class="bu">bool</span> <span class="op">=</span> <span class="va">False</span>,</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    delimiters<span class="op">=</span><span class="va">None</span>,</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>):</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    formats <span class="op">=</span> {</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;text&quot;</span>: fitz.TEXTFLAGS_TEXT,</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;html&quot;</span>: fitz.TEXTFLAGS_HTML,</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;json&quot;</span>: fitz.TEXTFLAGS_DICT,</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;rawjson&quot;</span>: fitz.TEXTFLAGS_RAWDICT,</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;xml&quot;</span>: fitz.TEXTFLAGS_XML,</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;xhtml&quot;</span>: fitz.TEXTFLAGS_XHTML,</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;dict&quot;</span>: fitz.TEXTFLAGS_DICT,</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;rawdict&quot;</span>: fitz.TEXTFLAGS_RAWDICT,</span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;words&quot;</span>: fitz.TEXTFLAGS_WORDS,</span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;blocks&quot;</span>: fitz.TEXTFLAGS_BLOCKS,</span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>    <span class="co"># ...</span></span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> option <span class="op">==</span> <span class="st">&quot;blocks&quot;</span>:</span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> get_text_blocks(</span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>            page, clip<span class="op">=</span>clip, flags<span class="op">=</span>flags, textpage<span class="op">=</span>textpage, sort<span class="op">=</span>sort</span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>        )</span></code></pre></div>
+<p>My brain cells are dying due to fatigue, but I would like to note
+that the flags are managed with the power of 2.</p>
+<p>For example, <code>3 = b11</code> means
+<code>TEXT_PRESERVE_LIGATURES (= 1)</code> and
+<code>TEXT_PRESERVE_WHITESPACE (= 2)</code> are turned on.</p>
+<p>It is embarassing, but I have never seen this implementation before.
+I find it a great way of managing multiple flags; it's just easy to
+understand and manage.</p>
+<p>I hope I get a chance to do this someday, in some projects.</p>
+<hr />
+<p>Rice 800 Bagels 500 Yogurt 300 Protein shake 200</p>
+<p>Total 1800 kcal</p>
+<p>10k run</p>
+<p>I watched a YouTube video saying that 60~70% of the max heart rate is
+best for jogging.</p>
+<p>My max heart rate is around 200, maybe, and I tried to keep my heart
+rate around 120~140.</p>
+<p>It turned out that my heart rate bumped to 150 and ended up at 170,
+even though I tried to run at the slowest speed possible.</p>
+<p>How is it possible to keep a heart rate below 60% of max?
+Interesting.</p>
+<hr />
+<p>MUST:</p>
+<ul>
+<li>Check MIT/AGPL
+<ul>
+<li><a href="https://www.gnu.org/licenses/agpl-3.0.html">GNU AFFERO
+GENERAL PUBLIC LICENSE</a></li>
+</ul></li>
+<li>Review 2008C</li>
+</ul>
+<p>TODO:</p>
+<ul>
+<li>Retry 2008A with a mathematical approach</li>
+<li>Retry 2008B with a mathematical approach</li>
+<li>Review 2008D</li>
+<li>Ask the house agent about utility bills</li>
+<li>Self-guided tour, 20240914 3:00 pm</li>
+</ul>
+<hr />
+<p><a href="../../index.html">index</a> <a
+href="20240904.html">20240904</a> <a
+href="20240906.html">20240906</a></p>

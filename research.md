@@ -61,6 +61,10 @@
 - [Responsibility of Node.js (20240504)](./2024/05/20240504.html)
 - [== vs === in JavaScript (20240425)](./2024/04/20240425.html)
 
+# OSS
+
+- [Peeking Under the Hood of PyMuPDF - flags](./2024/09/20240905.html)
+
 # News
 
 - [Conguratulations: Tourist has reached a rating of 4000! by MikeMirzayanov](./2024/08/20240830.html)
