@@ -64,6 +64,8 @@
 
 # OSS
 
+- [Proprietary Software Definition](./2024/09/20240908.html)
+- [OSS License: MIT / AGPL](./2024/09/20240908.html)
 - [Peeking Under the Hood of PyMuPDF - flags](./2024/09/20240905.html)
 
 # News
