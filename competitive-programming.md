@@ -80,6 +80,8 @@
 
 ## Math
 
+- 2008C. Longest Good Array
+	- [20240909](./2024/09/20240909.html)
 - 2008B. Square or Not - 800
 	- [20240904](./2024/09/20240904.html)
 - 2008A. Sakurako\'s Exam - 800

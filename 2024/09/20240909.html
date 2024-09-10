@@ -1,0 +1,94 @@
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+<meta charset="UTF-8">
+</head>
+<h1 id="section">20240909</h1>
+<ul>
+<li>Got my hair cut.</li>
+<li>Bought bathroom tissue.</li>
+<li>Reviewed Dependabot PRs.</li>
+</ul>
+<p>missed to mention here, but my new DL finally arrived. The website
+was broken, and DMV offices were so crowded that they could not offer
+helpful information or assistance. My experience renewing my DL was
+terrible. Anyway, I got the new one and am relieved now.</p>
+<h2 id="c.-lngest-good-array"><a
+href="https://codeforces.com/contest/2008/problem/C">2008C. Lngest Good
+Array</a></h2>
+<p>To maximize the length of the result array, we can keep incrementing
+the difference between two elements. For example,</p>
+<pre><code>l = 10, r = 20
+
+[10]
+
+[10, 11], 11 - 10 = 1
+
+[10, 11, 13], 13 - 11 = 2, meeting the requirement ai - a(i-1) &lt; a(i+1) - ai for all 2 &lt;= i &lt; n.
+
+[10, 11, 13, 16], 16 - 13 = 3
+
+...</code></pre>
+<p>This algorithm results in the longest array.</p>
+<p>Because the differences between any two elements increase by 1, the
+sum of the increases is <code>1/2 * n * (n + 1)</code>, where
+<code>n</code> is the number of pairs of adjacent elements.</p>
+<p>The problem is to find the largest <code>n</code> where the sum is
+smaller or equals to <code>r - l</code>.</p>
+<pre><code># 1/2 * n * (n - 1) &lt;= r - l
+# n (n + 1) &lt;= 2(r - l), maximize n
+
+
+def binary_search(n: int) -&gt; int:
+    li: int = 0
+    ri: int = n
+    prev_mi: int = -1
+    while True:
+        mi = (li + ri) // 2
+        if mi == prev_mi:
+            return mi
+        val: int = mi * (mi + 1)
+        if val == n:
+            return mi
+        elif val &lt; n:
+            li = mi
+        else:
+            ri = mi
+        prev_mi = mi
+
+
+for _ in range(int(input())):
+    l, r = map(int, input().split())
+
+    n: int = binary_search(2 * (r - l))
+    print(n + 1)</code></pre>
+<p><a href="https://codeforces.com/blog/entry/133509">Codeforces Round
+970 (Div. 3) Editorial</a></p>
+<p>It seems my approach was correct. I was surprised that the problem
+can be solved as simple as</p>
+<pre><code>for _ in range(int(input())):
+    a, b = map(int, input().split())
+    i = 0
+    while a + i &lt;= b:
+        a += i
+        i += 1
+    print(i)</code></pre>
+<hr />
+<p>Yogurt 300 Rice 1400 Boba 500 Protein shake 200 Protein bar 200</p>
+<p>Total 2600 kcal</p>
+<hr />
+<p>MUST:</p>
+<ul>
+<li>None</li>
+</ul>
+<p>TODO:</p>
+<ul>
+<li>Retry 2008A with a mathematical approach</li>
+<li>Retry 2008B with a mathematical approach</li>
+<li>Review 2008D</li>
+<li>Ask the house agent about utility bills</li>
+<li>Self-guided tour, 20240914 3:00 pm</li>
+</ul>
+<hr />
+<p><a href="../../index.html">index</a> <a
+href="20240908.html">20240908</a> <a
+href="20240910.html">20240910</a></p>
