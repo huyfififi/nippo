@@ -62,6 +62,10 @@
 - [Responsibility of Node.js (20240504)](./2024/05/20240504.html)
 - [== vs === in JavaScript (20240425)](./2024/04/20240425.html)
 
+# Design Principles
+
+- [Separations of Concerns in Software Design | Loose Coupling and High Cohesion](./2024/09/20240911.html)
+
 # OSS
 
 - [Proprietary Software Definition](./2024/09/20240908.html)

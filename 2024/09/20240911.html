@@ -1,0 +1,118 @@
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+<meta charset="UTF-8">
+</head>
+<h1 id="section">20240911</h1>
+<ul>
+<li>Checked the editorial of 2008D and updated yesterday's daily
+report.</li>
+</ul>
+<h2 id="soc-separation-of-concerns-in-software-design">SoC (Separation
+of Concerns) in Software Design</h2>
+<p><a href="https://nalexn.github.io/separation-of-concerns/">Separation
+of Concerns in Software Design | Alexey Naumov</a></p>
+<blockquote>
+<p>It is so crucial that 2 out of 5 SOLID principles (Single
+Responsibility and Interface Segregation) are direct derivations from
+this concept.</p>
+</blockquote>
+<blockquote>
+<p>The principle is simple: don’t write your program as one solid block,
+instead, break up the code into chunks that are finalized tiny pieces of
+the system each able to complete a simple distinct job.</p>
+</blockquote>
+<blockquote>
+<p>If we take the lowest level (the actual programming code), SoC
+instructs us to avoid writing long complex functions. When the function
+starts to bloat up in size, this is the red flag that the method is
+possibly taking care of too many things at once.</p>
+</blockquote>
+<p>“Code That Fits in Your Head” mentions the similar thing. Basically,
+the blog suggests that the number of things going on in one function
+should be less than or equals to 7.</p>
+<blockquote>
+<p>The application of the Separation of Concerns involve two processes:
+reduction of coupling and increasing cohesion.</p>
+</blockquote>
+<blockquote>
+<p>Cohesion is the measure of similarity by the set of duties, level of
+details, and locality. For example, functions <code>drawCircle</code>
+and <code>drawTriangle</code> are cohesive enough to belong to the same
+module responsible for drawing, and it <em>feels</em> natural to put
+these two functions close to each other in the code (high similarity ~
+high cohesion).</p>
+</blockquote>
+<blockquote>
+<p>If we need to jump around between the functions or modules as we're
+following the logic of the algorithm, this means the code has low
+cohesion, which is often referred to as a Spaghetti code.</p>
+</blockquote>
+<p><strong>Loose Coupling and High Cohesion</strong> -&gt; I should
+remember this</p>
+<blockquote>
+<p>The primary goal of the system's design is to outline the boundaries
+for the module's awareness of each other.</p>
+</blockquote>
+<p>The example makes sense. Letting business logic directly access its
+database even though there is a database gateway will result in
+production issues.</p>
+<p>There are soem concepts I don't know now. I'll come back after doing
+some research.</p>
+<p><a
+href="https://en.wikipedia.org/wiki/Separation_of_concerns">Separation
+of concerns - Wikipedia</a></p>
+<blockquote>
+<p>In computer science, separation of concerns (sometimes abbreviated as
+SoC) is a design principle for separating a computer program into
+distinct sections. Each section addresses a separate concern, a set of
+information that affects the code of a computer program.</p>
+</blockquote>
+<blockquote>
+<p>Separation of concerns results in more degrees of freedom for some
+aspect of the program's design, deployment, or usage. Common among these
+is increased freedom for simplification and maintenance of code. When
+concerns are well-separated, there are more opportunities for module
+upgrade, reuse, and independent development. Hiding the implementation
+details of modules behind an interface enables improving or modifying a
+single concern's section of code without having to know the details of
+other sections and without having to make corresponding changes to those
+other sections. Modules can also expose different versions of an
+interface, which increases the freedom to upgrade a complex system in
+piecemeal fashion without interim loss of functionality.</p>
+</blockquote>
+<p>I had a mob programming session yesterday and guided on how separate
+applications in Django projects offers advantages, such as better
+reusability, portability, or maintainability.</p>
+<p>In hindsight, the design to have multiple Django applications in one
+project is related to SoC.</p>
+<hr />
+<p>Chicken wings 1200 Yogurt 300 Nori 100 Avocado 200 Protein shake
+200</p>
+<p>Total 2000 kcal</p>
+<hr />
+<p>MUST:</p>
+<ul>
+<li>None</li>
+</ul>
+<p>TODO:</p>
+<ul>
+<li>Study the Repository design pattern</li>
+<li>Investigate the bug in my dashboard</li>
+<li>Retry 2008A with a mathematical approach</li>
+<li>Retry 2008B with a mathematical approach</li>
+<li>Study Disjoint Set Union
+<ul>
+<li><a
+href="https://cp-algorithms.com/data_structures/disjoint_set_union.html">Disjoint
+Set Union - Algorithms for Competitive Programming</a></li>
+<li><a
+href="https://www.hackerearth.com/practice/notes/abhinav92003/disjoint-set-union/">Disjoing
+Set Union - HackerEarth</a></li>
+</ul></li>
+<li>Ask the house agent about utility bills</li>
+<li>Self-guided tour, 20240914 3:00 pm</li>
+</ul>
+<hr />
+<p><a href="../../index.html">index</a> <a
+href="20240910.html">20240910</a> <a
+href="20240912.html">20240912</a></p>
