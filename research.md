@@ -6,6 +6,7 @@
 
 # Network
 
+- [Representational State Transfer (REST) / Roy Fielding's dissertation](./2024/09/20240923.html)
 - [MIME types (20240716)](./2024/07/20240716.html)
 - [DNS server types (20240623)](./2024/06/20240623.html)
 - [SSH and Git hosting services (20240622)](./2024/06/20240622.html)

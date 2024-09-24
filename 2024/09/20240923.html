@@ -1,0 +1,229 @@
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+<meta charset="UTF-8">
+</head>
+<h1 id="section">20240923</h1>
+<ul>
+<li>Asked the dentist if my new insurance covers the next visit</li>
+</ul>
+<h2
+id="architectural-styles-and-the-design-of-network-based-software-architectures-by-roy-thomas-fielding">Architectural
+Styles and the Design of Network-based Software Architectures by Roy
+Thomas Fielding</h2>
+<p>From my understanding, there are no definitive definitions of RESTful
+API, though there are some guidelines proposed by Roy Fielding and
+accumulated best practices. (send me an email or create a pull request
+to crrect me)</p>
+<p>Reading Roy Fielding's dissertation offered me some insights, but
+it's been a long time already, and I completely forgot what I understood
+:sweat: This is a retry.</p>
+<blockquote>
+<p>CHAPTER 5: Representational State Transfer (REST)</p>
+</blockquote>
+<blockquote>
+<p>This chapter introduces and elaborates the Representational State
+Transfer (REST) architectural style for distributed hypermedia systems,
+describing the software engineering principles guiding REST and the
+interaction constraints chosen to retain those principles, while
+contrasting them to the constraints of other architectural styles.</p>
+</blockquote>
+<p>In this chapter, the author explains REST by adding constraints one
+by one.</p>
+<h3 id="client-server">Client-Server</h3>
+<blockquote>
+<p>The first constraints added to our hybrid style are those of the
+client-server architectural style…</p>
+</blockquote>
+<blockquote>
+<p>Separation of concerns is the principle behind the client-server
+constraints. By separating the user interface concerns from the data
+storage concerns, we improve the portability of the user interface
+across multiple platforms and improve scalability by simplifying the
+server components. Perhaps most significant to the Web, however, is that
+the separation allows the components to evolve independently…</p>
+</blockquote>
+<h3 id="stateless">Stateless</h3>
+<blockquote>
+<p>We next add a constraint to the client-server interaction:
+communication must be stateless in nature, as in the
+client-stateless-server (CSS) style…, such that each request from client
+to server must contain all of the information necessary to understand
+the request, and cannot take advantage of any stored context on the
+server. Session state is therefore kept entirely on the client.</p>
+</blockquote>
+<blockquote>
+<p>This constraint induces the properties of visibility, reliability,
+and scalability.</p>
+</blockquote>
+<blockquote>
+<p>Visibility is improved because a monitoring system does not have to
+look beyond a single request datum in order to determine the full nature
+of the request.</p>
+</blockquote>
+<blockquote>
+<p>Reliability is improved because it eases the task of recovering from
+partial failures.</p>
+</blockquote>
+<blockquote>
+<p>Scalability is improved because not having to store state between
+requests allow the server component to quickly free resources, and
+further simplifies implementation because the server doesn't have to
+manage resource usage across requests.</p>
+</blockquote>
+<blockquote>
+<p>Like most architectural choices, the stateless constraint reflects a
+design trade-off.</p>
+</blockquote>
+<blockquote>
+<p>The disadvantage is that it may decrease network performance by
+increasing the repetitive data (per-interaction overhead) sent in a
+series of requests, since that data cannot be left on the server in a
+shared context.</p>
+</blockquote>
+<blockquote>
+<p>In addition, placing the application state on the client-side reduces
+the server's control over consistent application behavior, since the
+application becomes dependent on the correct implementation of semantics
+across multiple client versions.</p>
+</blockquote>
+<h3 id="cache">Cache</h3>
+<blockquote>
+<p>In order to improve network efficiency, we add cache constraints to
+form the client-cache-stateless-server style… Cache constraints require
+that the data within a response to a request be implicitly or explicitly
+labeled as cacheable or non-cacheable. If a response if cacheable, then
+a client cache is given the right to reuse that response data for later,
+equivalent requests.</p>
+</blockquote>
+<p>I only have experience with Django and FastAPI, but I cannot think of
+any real-life implementations having a flag to indicate a response is
+cacheable or not. I guess I should do some research on it.</p>
+<h3 id="uniform-interface">Uniform Interface</h3>
+<blockquote>
+<p>The central feature that distinguishes the REST architectural style
+from other network-based styles is its emphasis on a uniform interface
+between components. By applying the software engineering principle of
+generality to the component interface, the overall system architecture
+is simplified and the visibility of interaction is improved.
+Implementations are decoupled from the services they provide, which
+encourages independent evolvability.</p>
+</blockquote>
+<blockquote>
+<p>The trade-off, though, is that a uniform interface degrades
+efficiency, since information is transferred in a standardized form
+rather than one which is specific to an application's needs. The REST
+interface is designed to be efficient for large-grain hypermedia data
+transfer, optimizing for the common case of the Web, but resulting in an
+interface that is not optimal for other forms of architectural
+interaction.</p>
+</blockquote>
+<blockquote>
+<p>In order to obtain a uniform interface, multiple architectural
+constraints are needed to guide the behavior of components. REST is
+defined by four interface constraints: identification of resources;
+manipulation of resources through representations; self-descriptive
+messages; and, hypermedia as the engine of application state.</p>
+</blockquote>
+<blockquote>
+<p>These constraints will be discussed in Section 5.2.</p>
+</blockquote>
+<p>I guess it derives the common RESTful API structure such as the
+common patterns of GET / or PUT /{id}, but I'm not totally sure.</p>
+<h3 id="layered-system">Layered System</h3>
+<blockquote>
+<p>In order to further improve behavior for Internet-scale requirements,
+we add layered system constraints… the layered system style allows an
+architecture to be composed of hierarchical layers by constraining
+component behavior such that each component cannot “see” beyond the
+immediate layer with which they are interacting. By restricting
+knowledge of the system to a single layer, we place a bound on the
+overall system complexity and promote substrate independence.</p>
+</blockquote>
+<blockquote>
+<p>Layers can be used to encapsulate legacy services and to protect new
+services from legacy clients, simplifying components by moving
+infrequently used functionality to a shared intermediary. Intermediaries
+can also be used to improve system scalability by enabling load
+balancing of services across multiple networks and processors.</p>
+</blockquote>
+<blockquote>
+<p>The primary disadvantage of layered systems is that they add overhead
+and latency to the processing of data, reducing user-perceived
+performance. For a network-based system that supports cache constraints,
+this can be offset by the benefits of shared caching at
+intermediaries…</p>
+</blockquote>
+<blockquote>
+<p>The combination of layered system and uniform interface constraints
+induces architectural properties similar to those of the uniform
+pipe-and-filter style (Section 3.2.2). Although REST interaction is
+two-way, the large-grain data flows of hypermedia interaction can each
+be processed like a data-flow network, with filter components
+selectively applied to the data stream in order to transform the content
+as it passes.</p>
+</blockquote>
+<p>I better check out pipe-and-filter style. I don't quite understand
+this part.</p>
+<blockquote>
+<p>Within REST, intermediary components can actively transform the
+content of messages because the messages are self-descriptive and their
+semantics are visible to intermediaries.</p>
+</blockquote>
+<h3 id="code-on-demand">Code-On-Demand</h3>
+<blockquote>
+<p>The final addition to our constraint set for REST comes from the
+code-on-demand style of Section 3.5.3… REST allows client functionality
+to be extended by downloading and executing code in the form of applets
+or scripts. This simplifies clients by reducing the number of features
+required to be pre-implemented. Allowing features to be downloaded after
+deployment improves system extensibility. However, it also reduces
+visibility, and thus is only an optional constraint within REST.</p>
+</blockquote>
+<blockquote>
+<p>… For example, if all of the client software within an organization
+is known to support Java applets, then services within that organization
+can be constructed such that they gain the benefit of enhanced
+functionality via downloadable Java classes. At the same time, however,
+the organization's firewall may prevent the transfer of Java applets
+from external sources, and thus to the rest of Web it will appear as if
+those clients do not support code-on-demand.</p>
+</blockquote>
+<blockquote>
+<p>An optional constraint allows us to design an architecture that
+supports the desired behavior in the general case, but with the
+understanding that it may be disabled within some contexts.</p>
+</blockquote>
+<p>I'm not very familiar with Java or applets right now, and don't
+understand this constraint quite well. I will skip this for now and come
+back here after some time. I hope I have relevant information in my
+brain and can understand this part.</p>
+<p>I feel tired. will go to bed early today.</p>
+<hr />
+<p>Protein shake 400 Teriyaki bowl 700 Yogurt 300 Fruits 300 Bagels
+600</p>
+<p>Total 2300 kcal (will go back to the diet mode tomorrow)</p>
+<hr />
+<p>MUST:</p>
+<ul>
+<li>do push-ups</li>
+</ul>
+<p>TODO:</p>
+<ul>
+<li>Study the Repository design pattern</li>
+<li>Retry 2008A with a mathematical approach</li>
+<li>Retry 2008B with a mathematical approach</li>
+<li>Study Disjoint Set Union
+<ul>
+<li><a
+href="https://cp-algorithms.com/data_structures/disjoint_set_union.html">Disjoint
+Set Union - Algorithms for Competitive Programming</a></li>
+<li><a
+href="https://www.hackerearth.com/practice/notes/abhinav92003/disjoint-set-union/">Disjoing
+Set Union - HackerEarth</a></li>
+</ul></li>
+<li>Study how embeddings and their similarity search work</li>
+</ul>
+<hr />
+<p><a href="../../index.html">index</a> <a
+href="20240913.html">20240913</a> <a
+href="20240924.html">20240924</a></p>
