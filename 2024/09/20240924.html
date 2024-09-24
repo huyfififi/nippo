@@ -1,0 +1,318 @@
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+<meta charset="UTF-8">
+</head>
+<h1 id="section">20240924</h1>
+<ul>
+<li>Confirmed my dentist is covered by my insurance provider</li>
+</ul>
+<h2 id="tokens-in-llm">Tokens in LLM</h2>
+<h3 id="understanding-tokens---.net-microsoft-learn"><a
+href="https://learn.microsoft.com/en-us/dotnet/ai/conceptual/understanding-tokens">Understanding
+tokens - .NET | Microsoft Learn</a></h3>
+<p>This article is super easy to understand how tokens work in the LLM
+context!</p>
+<blockquote>
+<p>Tokens are words, character sets, or combinations of words and
+punctuation that are used by large language models (LLMs) to decompose
+text into. Tokenization is the first step in training. The LLM analyzes
+the semantic relationships between tokens, such as how commonly they’re
+used together or whether they’re used in similar contexts. After
+training, the LLM uses those patterns and relationships to generate a
+sequence of output tokens based on the input sequence.</p>
+</blockquote>
+<blockquote>
+<p>The set of unique tokens that an LLM is trained on is known as its
+<em>vocabulary</em>.</p>
+</blockquote>
+<blockquote>
+<p>For example, consider the following sentence:</p>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>I heard a dog bark loudly at a cat</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<p>This text could be tokenized as:</p>
+</blockquote>
+<blockquote>
+<ul>
+<li>I</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li>heard</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li>a</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li>dog</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li>bark</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li>loudly</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li>at</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li>a</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li>cat</li>
+</ul>
+</blockquote>
+<blockquote>
+<p>By having a sufficiently large set of training text, tokenization can
+compile a vocabulary of many thousands of tokens.</p>
+</blockquote>
+<blockquote>
+<p>The specific tokenization method varies by LLM. Common Tokenization
+methods include:</p>
+</blockquote>
+<blockquote>
+<ul>
+<li><strong>Word</strong> tokenization (text is split into individual
+words based on a delimiter)</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li><strong>Character</strong> tokenization (text is split into
+individual characters)</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li><strong>Subword</strong> tokenization (text is split into partial
+words or character sets)</li>
+</ul>
+</blockquote>
+<blockquote>
+<p>For example, the GPT models, developed by OpenAI, use a type of
+subword tokenization that's known as Byte-Pair Encoding (BPE). OpenAI
+provides <a href="https://platform.openai.com/tokenizer">a tool to
+visualize how text will be tokenized</a>.</p>
+</blockquote>
+<blockquote>
+<p>After the LLM completes tokenization, it assigns an ID to each unique
+token. Consider our example sentence:</p>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>I heard a dog bark loudly at a cat</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<p>After the model uses a word tokenization method, it could assign
+token IDs as follows:</p>
+</blockquote>
+<blockquote>
+<ul>
+<li>I (1)</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li>heard (2)</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li>a (3)</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li>dog (4)</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li>bark (5)</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li>loudly (6)</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li>at (7)</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li>a (the “a” token is already assigned an ID of 3)</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li>cat (8)</li>
+</ul>
+</blockquote>
+<blockquote>
+<p>By assigning IDs, text can be represented as a sequence of token IDs.
+The example sentence would be represented as [1, 2, 3, 4, 5, 6, 7, 3,
+8]. The sentence “I heard a cat” would be represented as [1, 2, 3,
+8].</p>
+</blockquote>
+<blockquote>
+<p>As training continues, the model adds any new tokens in the training
+text to its vocabulary and assigns it an ID. For example:</p>
+</blockquote>
+<blockquote>
+<ul>
+<li>meow (9)</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li>run (10)</li>
+</ul>
+</blockquote>
+<blockquote>
+<p>The semantic relationships between the tokens can be analyzed by
+using these token ID sequences. Multi-valued numeric vectors, known as
+embeddings, are used to represent these relationships. An embedding is
+assigned to each token based on how commonly it’s used together with, or
+in similar contexts to, the other tokens.</p>
+</blockquote>
+<blockquote>
+<p>After it's trained, a model can calculate an embedding for text that
+contains multiple tokens. The model tokenizes the text, then calculates
+an overall embeddings value based on the learned embeddings of the
+individual tokens. This technique can be used for semantic document
+searches or adding memories to an AI.</p>
+</blockquote>
+<blockquote>
+<p>During output generation, the model predicts a vector value for the
+next token in the sequence. The model then selects the next token from
+it’s vocabulary based on this vector value. In practice, the model
+calculates multiple vectors by using various elements of the previous
+tokens' embeddings. The model then evaluates all potential tokens from
+these vectors and selects the most probable one to continue the
+sequence.</p>
+</blockquote>
+<blockquote>
+<p>Output generation is an iterative operation. The model appends the
+predicted token to the sequence so far and uses that as the input for
+the next iteration, building the final output one token at a time.</p>
+</blockquote>
+<p>I don't quite understand this generation part. I'll study about
+embeddings tomorrow, hoping it would provide me with more contexts.</p>
+<blockquote>
+<p>LLMs have limitations regarding the maximum number of tokens that can
+be used as input or generated as output. This limitation often causes
+the input and output tokens to be combined into a maximum context
+window.</p>
+</blockquote>
+<blockquote>
+<p>For example, GPT-4 supports up to 8,192 tokens of context. This
+combined size of the input and output tokens can't exceed 8,192.</p>
+</blockquote>
+<blockquote>
+<p>Taken together, a model's token limit and tokenization method
+determine the maximum length of text that can be provided as input or
+generated as output.</p>
+</blockquote>
+<blockquote>
+<p>For example, consider a model that has a maximum context window of
+100 tokens. The model processes our example sentences as input text:</p>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>I heard a dog bark loudly at a cat</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<p>By using a word-based tokenization method, the input is nine tokens.
+This leaves 91 words tokens available for the output.</p>
+</blockquote>
+<blockquote>
+<p>By using a character-based tokenization method, the input is 34
+tokens (including spaces). This leaves only 66 character tokens
+available for the output.</p>
+</blockquote>
+<p>It's interesting that the token limits are for the combination of
+input and output. I misunderstood that.</p>
+<blockquote>
+<p>Generative AI services often use token-based pricing. The cost of
+each request depends on the number of input and output tokens. The
+pricing might differ between input and output.</p>
+</blockquote>
+<h3 id="openaitiktoken"><a
+href="https://github.com/openai/tiktoken">openai/tiktoken</a></h3>
+<p>OpenAI provides a convenient Python package <code>tiktoken</code>
+that is a fast BPE (Byte Pair Encoding, mentioned in the Microsoft page)
+tokeniser.</p>
+<pre><code>In [1]: import tiktoken
+
+In [2]: encoding = tiktoken.get_encoding(&quot;cl100k_base&quot;)
+
+In [3]: text = &quot;This is a sample string that is converted to a set of tokens.&quot;
+
+In [4]: tokens = encoding.encode(text)
+
+In [5]: tokens
+Out[5]: [2028, 374, 264, 6205, 925, 430, 374, 16489, 311, 264, 743, 315, 11460, 13]
+
+In [6]: len(tokens)
+Out[6]: 14</code></pre>
+<p>I can see that “is” is assigned ID of <code>374</code> and “a” is
+assigned <code>264</code>, confirming the content of the Microsoft page.
+I can also count the number of tokens by checking the length of the
+returned list.</p>
+<p>I saw that some people checked the number of tokens before sending
+requests to OpenAI API to avoid rate limits, but I guess I can just send
+requests and get 429 Too Many Requests instead. This way, I don't have
+to write a long logic, but not 100% confident.</p>
+<hr />
+<p>Puchao 200 Yogurt 300 Mac'n cheese 300 Salad(?) 1000</p>
+<p>Total 1800 kcal</p>
+<p>push-ups</p>
+<hr />
+<p>MUST:</p>
+<ul>
+<li>Check the date of the next dentist appointment</li>
+<li>Study how embeddings and their similarity search work</li>
+</ul>
+<p>TODO:</p>
+<ul>
+<li>Study the Repository design pattern</li>
+<li>Retry 2008A with a mathematical approach</li>
+<li>Retry 2008B with a mathematical approach</li>
+<li>Study Disjoint Set Union
+<ul>
+<li><a
+href="https://cp-algorithms.com/data_structures/disjoint_set_union.html">Disjoint
+Set Union - Algorithms for Competitive Programming</a></li>
+<li><a
+href="https://www.hackerearth.com/practice/notes/abhinav92003/disjoint-set-union/">Disjoing
+Set Union - HackerEarth</a></li>
+</ul></li>
+</ul>
+<hr />
+<p><a href="../../index.html">index</a> <a
+href="20240923.html">20240923</a> <a
+href="20240925.html">20240925</a></p>
