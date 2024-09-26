@@ -1,0 +1,80 @@
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+<meta charset="UTF-8">
+</head>
+<h1 id="section">20240925</h1>
+<h2 id="how-embeddings-work-in-the-llm-context">How embeddings work in
+the LLM context</h2>
+<h3 id="how-embeddings-are-generated-in-the-learning-process">How
+embeddings are generated in the learning process</h3>
+<p><a
+href="https://learn.microsoft.com/en-us/dotnet/ai/conceptual/embeddings">How
+Embeddings Extend Your AI Model’s Reach - .NET | Microsoft Learn</a></p>
+<blockquote>
+<p>Embeddings are the way LLMs capture semantic meaning. They are
+numeric representations of non-numeric data that an LLM can use to
+determine relationships between concepts.</p>
+</blockquote>
+<blockquote>
+<p>You can use embeddings to help an AI model understand the meaning of
+inputs so that it can perform comparisons and transformations, such as
+summarizing text or creating images from text descriptions.</p>
+</blockquote>
+<blockquote>
+<p>LLMs can use embeddings immediately, and you can store embeddings in
+vector databases to provide semantic memory for LLMs as-needed.</p>
+</blockquote>
+<p>I'm getting the idea of embeddings.</p>
+<ol type="1">
+<li>Each token (a word or subword) is converted into a vector as token
+embedding during learning process.</li>
+<li>The model calculates embeddings (in multiple phases/layers) for the
+ipnut texts as a whole. Relationpships betweeen tokens are taken into
+account. The final contextual embeddings encode the relationships
+between tokens in the context of the entire input sequence.</li>
+</ol>
+<h3 id="how-embeddings-work-in-rag">How embeddings work in RAG</h3>
+<p>Now I think I understand the whole picture. As a web developer, it's
+hard to train a model myself, so it makes sense to use the third-party
+trained model.</p>
+<p>However, sometimes I want to add some knowledge to the trained model
+without training one by myself. For example, company internal Q&amp;A
+chatbot needs some company information that are not public.</p>
+<p>To achieve the needs, I generate embeddings in the same way as LLM
+training beforehand and store them somewhere. It seems I don't have to
+use the same model as my Generation part; there are more efficient
+models for embedding creation.</p>
+<p>Then, I retrieve relevant information and augment generation by
+adding the retrieved context/information to the input query.</p>
+<p>It looks like I can find a model on Hugging Face <a
+href="https://huggingface.co/spaces/mteb/leaderboard">huggingface.co/spaces/mteb/leaderboard</a>.</p>
+<p>The name “Hugging Face” is funny.</p>
+<hr />
+<p>Puchao 200 Sushi bowl 800 Chicken wings 400 Protein shake 200 Protein
+bar 200</p>
+<p>Total 1800 kcal</p>
+<hr />
+<p>MUST:</p>
+<ul>
+<li>Download Naturalization Interview Questions</li>
+</ul>
+<p>TODO:</p>
+<ul>
+<li>Study the Repository design pattern</li>
+<li>Retry 2008A with a mathematical approach</li>
+<li>Retry 2008B with a mathematical approach</li>
+<li>Study Disjoint Set Union
+<ul>
+<li><a
+href="https://cp-algorithms.com/data_structures/disjoint_set_union.html">Disjoint
+Set Union - Algorithms for Competitive Programming</a></li>
+<li><a
+href="https://www.hackerearth.com/practice/notes/abhinav92003/disjoint-set-union/">Disjoing
+Set Union - HackerEarth</a></li>
+</ul></li>
+<li>Postpone the dentist appointment (20241025)</li>
+</ul>
+<hr />
+<p><a href="../../index.html">index</a> <a
+href="20240924.html">20240924</a> <a
+href="20240926.html">20240926</a></p>

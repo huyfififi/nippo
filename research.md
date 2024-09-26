@@ -36,6 +36,7 @@
 
 # Machine-learning
 
+- [Embeddings in LLM](./2024/09/20240925.html)
 - [Tokens in LLM](./2024/09/20240924.html)
 - [Running Chroma](./2024/09/20240906.html)
 - [torch.no\_grad()](./2024/07/20240712.html)
