@@ -67,6 +67,7 @@
 
 # Design Principles
 
+- [Repository Design Pattern](./2024/09/20240926.html)
 - [Separations of Concerns in Software Design | Loose Coupling and High Cohesion](./2024/09/20240911.html)
 
 # OSS

@@ -1,0 +1,216 @@
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+<meta charset="UTF-8">
+</head>
+<h1 id="section">20240926</h1>
+<p>I got a weird error running a workflow in GitHub Actions</p>
+<pre><code>Error response from daemon: Head &quot;https://registry-1.docker.io/v2/library/postgres/manifests/16-alpine&quot;: unauthorized: incorrect username or password</code></pre>
+<p>I googled it, but could not find any relevant web pages. Somehow,
+retrying after 20 minutes worked. Very Strange.</p>
+<p>The other day, Dependabot would not perform actios such as
+rebasing.</p>
+<p>Those kinds of anomalies seem to happen from time to time.</p>
+<h2 id="repository-design-pattern">Repository Design Pattern</h2>
+<p>Unfortunately, I left GoF at my parents' house and cannot check it.
+Instead, I browsed some web pages.</p>
+<p>I'm forced to decode Java code and had some doubts on the design
+pattern. There are so many Repository classes that some of my brain
+cells were killed instantly.</p>
+<p>As a Python programmer, it's kind of rare to encounter this
+pattern.</p>
+<h3 id="repository-design-pattern---geeksforgeeks"><a
+href="https://www.geeksforgeeks.org/repository-design-pattern/">Repository
+Design Pattern - GeeksforGeeks</a></h3>
+<blockquote>
+<p>The Repository Design Pattern is a software design pattern that acts
+as an intermediary layer between an application's business logic and
+data storage.</p>
+</blockquote>
+<blockquote>
+<p>Its primary purpose is to provide a structured and standardized way
+to access, manage, and manipulate data while abstracting the underlying
+details of data storage technologies.</p>
+</blockquote>
+<blockquote>
+<p>This pattern promotes a clear separation of concerns, making software
+more maintainable, testable, and adaptable to changes in data sources,
+without entangling the core application logic with data access
+intricacies.</p>
+</blockquote>
+<blockquote>
+<p>In essence, the Repository Design Pattern is a blueprint for
+organizing and simplifying data access, enhancing the efficiency and
+flexibility of software systems.</p>
+</blockquote>
+<blockquote>
+<h3 id="advantages-of-repository-design-pattern">Advantages of
+Repository Design Pattern</h3>
+</blockquote>
+<blockquote>
+<ul>
+<li><strong>Centralized Data Access</strong>: The pattern centralizes
+and abstracts adata access logic, allowing the rest of application to
+interact with data through a consistent interface. This simplifies code
+maintenance by managing all data-related operations in one place.</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li><strong>Enhanced Testability</strong>: Separating data access logic
+from the business logic facilitates easier unit testing. With a clear
+interface for data operations, mocking or substituting the repository
+makes it simpler to test other parts of the application
+independently.</li>
+</ul>
+</blockquote>
+<p>It sounds familiar… I feel that Dependency Injection's advantage is
+the same.</p>
+<blockquote>
+<ul>
+<li><strong>Improve Code maintenability</strong>: The repository design
+pattern promotes clean code by isolating data access logic. This
+separation allows developers to make changes or optimize data access
+without affecting the rest of the application.</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li><strong>Reusability and Extensibility</strong>: By adhering to the
+repository contract, multiple parts of the application can reuse the
+same data access methods. It allows for easy addition of new data
+sources or technologies without having to change the main logic of the
+application.</li>
+</ul>
+</blockquote>
+<blockquote>
+<h3 id="disadvantages-of-repository-design-pattern">Disadvantages of
+Repository Design Pattern</h3>
+</blockquote>
+<blockquote>
+<ul>
+<li><strong>Overhead for Simple Applications</strong>: Implementing the
+repository design pattern might introduce unnecessary complexity in
+smaller or straightforward applications. In such cases, the added layers
+of abstraction might be more cumbersome than beneficial.</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li><strong>Learning Curve and Development Time</strong>: Adopting the
+repository design pattern might require additional time for development,
+as it involves creating interfaces, defining contracts, and implementing
+concrete repository classes. This learning curve could impact project
+timelines.</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li><strong>Potential Abstraction Leaks</strong>: In some cases, the
+repository design pattern might leak underlying implementation details
+to higher layers, making the abstraction less effective. This can happen
+if the repository needs to cater to complex queries or operations.</li>
+</ul>
+</blockquote>
+<blockquote>
+<h3 id="use-cases-for-repository-design-pattern">Use Cases for
+Repository Design Pattern</h3>
+</blockquote>
+<blockquote>
+<ul>
+<li><strong>Web Applications</strong>: Repositories are commonly used in
+web applications to manage data access to databases. They abstract the
+interaction with the database and make it easier to switch to a
+different database system.</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li><strong>APIs and Services</strong>: When building APIs or
+microservices, the Repository Pattern can help manage data access in a
+clean and organized way. It enables multiple services to interact with
+data consistently.</li>
+</ul>
+</blockquote>
+<p>It just makes sense. I now remember all the patterns with Python.</p>
+<h3 id="example-with-fastapi">Example with FastAPI</h3>
+<p>In FastAPI, it is a very common pattern to have intermediate
+functions whose responsibility is to read data from database.</p>
+<p><a
+href="https://github.com/fastapi/full-stack-fastapi-template/blob/master/backend/app/crud.py">fastapi/full-stack-fastapi-template</a></p>
+<p>For example, functions to CRUD user records are defined in
+<code>crud.py</code>.</p>
+<pre><code>def create_user(*, session: Session, user_create: UserCreate) -&gt; User:
+    db_obj = User.model_validate(
+        user_create, update={&quot;hashed_password&quot;: get_password_hash(user_create.password)}
+    )
+    session.add(db_obj)
+    session.commit()
+    session.refresh(db_obj)
+    return db_obj
+
+
+def get_user_by_email(*, session: Session, email: str) -&gt; User | None:
+    statement = select(User).where(User.email == email)
+    session_user = session.exec(statement).first()
+    return session_user</code></pre>
+<p>Now, the functions are used in creating API endpoints</p>
+<pre><code>@router.post(
+    &quot;/&quot;, dependencies=[Depends(get_current_active_superuser)], response_model=UserPublic
+)
+def create_user(*, session: SessionDep, user_in: UserCreate) -&gt; Any:
+    &quot;&quot;&quot;
+    Create new user.
+    &quot;&quot;&quot;
+    user = crud.get_user_by_email(session=session, email=user_in.email)
+    if user:
+        raise HTTPException(
+            status_code=400,
+            detail=&quot;The user with this email already exists in the system.&quot;,
+        )
+
+    user = crud.create_user(session=session, user_create=user_in)
+    if settings.emails_enabled and user_in.email:
+        email_data = generate_new_account_email(
+            email_to=user_in.email, username=user_in.email, password=user_in.password
+        )
+        send_email(
+            email_to=user_in.email,
+            subject=email_data.subject,
+            html_content=email_data.html_content,
+        )
+    return user</code></pre>
+<p>By doing this, it's easier to test the API endpoint because we only
+need to mock <code>crud.get_user_by_email()</code>. If we write db logic
+in the API endpint, it would be a nightmare to mock.</p>
+<p>Also, we can improve portability; now we only need to update the
+database operations in repositories when migrating to a new database. I
+don't think it often happens tho.</p>
+<hr />
+<p>Puchao 200 Chicken wings 600 Sushi bowl 800 Protein shake 200</p>
+<p>Total 1800 kcal</p>
+<hr />
+<p>MUST:</p>
+<ul>
+<li>Buy body soap for sensitive skin</li>
+<li>Study the first 10 questions of Naturalization Test</li>
+</ul>
+<p>TODO:</p>
+<ul>
+<li>Study the Repository design pattern</li>
+<li>Retry 2008A with a mathematical approach</li>
+<li>Retry 2008B with a mathematical approach</li>
+<li>Study Disjoint Set Union
+<ul>
+<li><a
+href="https://cp-algorithms.com/data_structures/disjoint_set_union.html">Disjoint
+Set Union - Algorithms for Competitive Programming</a></li>
+<li><a
+href="https://www.hackerearth.com/practice/notes/abhinav92003/disjoint-set-union/">Disjoing
+Set Union - HackerEarth</a></li>
+</ul></li>
+<li>Postpone the dentist appointment (20241025)</li>
+</ul>
+<hr />
+<p><a href="../../index.html">index</a> <a
+href="20240925.html">20240925</a> <a
+href="20240927.html">20240927</a></p>
