@@ -5,6 +5,10 @@
 [competitive programming](competitive-programming.html)
 [research](research.html)
 
+# 202410
+
+- [20241001](./2024/10/20241001.html)
+
 # 202409
 
 - [20240930](./2024/09/20240930.html)
