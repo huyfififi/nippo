@@ -84,6 +84,7 @@
 
 # Others
 
+- [Blog: Spam Attacks on Fediverse](./2024/10/20241008.html)
 - [Implemented a simple RAG system](./2024/09/20240906.html)
 - [Troubleshooting: `docker stats` of my Mastodon instance](./2024/08/20240829.html)
 - [STRIDE](./2024/07/20240721.html)
