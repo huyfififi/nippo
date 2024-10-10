@@ -1,0 +1,117 @@
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+<meta charset="UTF-8">
+</head>
+<h1 id="section">20241009</h1>
+<h2 id="understanding-mastodon-system-components">Understanding Mastodon
+System Components</h2>
+<p>This is <code>compose.yaml</code> I use to run my server, and it
+should not be so different from what others use.</p>
+<p>Please note that some values and services are omitted to save space.
+For example <code>es</code> (Elastic Search) service can be deployed to
+Mastodon, but I don't use it to make things simple.</p>
+<p>(The <code>compose.yaml</code> just makes sense… it's embarassing
+that I didn't understand when I first deployed the services…)</p>
+<pre><code>services:
+  db:
+    image: postgres:14-alpine
+
+  redis:
+    container_name: redis
+    image: redis:7-alpine
+
+  web:
+    build: .
+    image: ghcr.io/mastodon/mastodon:v4.3.0
+    depends_on:
+      - db
+      - redis
+
+  streaming:
+    build: .
+    image: ghcr.io/mastodon/mastodon:v4.3.0
+    depends_on:
+      - db
+      - redis
+
+  sidekiq:
+    build: .
+    image: ghcr.io/mastodon/mastodon:v4.3.0
+    depends_on:
+      - db
+      - redis
+
+  nginx:
+    image: nginx:1.25.3
+    depends_on:
+      - web
+      - streaming</code></pre>
+<h3 id="main-application">Main Application</h3>
+<ul>
+<li><code>db</code>
+<ul>
+<li>PostgreSQL</li>
+<li>stores all the application data</li>
+</ul></li>
+<li><code>web</code>
+<ul>
+<li>Ruby on Rails</li>
+<li>API to access the application data</li>
+</ul></li>
+<li><code>streaming</code>
+<ul>
+<li><a
+href="https://docs.joinmastodon.org/admin/scaling/#streaming">Streaming
+API</a>: “The streaming API handles long-lived HTTP and WebSocket
+connections, through which clients receive real-time updates.”</li>
+</ul></li>
+</ul>
+<h3 id="activitypub">ActivityPub</h3>
+<p>Servers that speak ActivityPub send requests back and forth. To
+handle those requests, background jobs are used.</p>
+<ul>
+<li><code>redis</code>
+<ul>
+<li>Redis</li>
+<li>Message queue to queue requests to/from other servers.</li>
+<li>also used as cache</li>
+</ul></li>
+<li><code>sidekiq</code>
+<ul>
+<li><a href="https://github.com/sidekiq/sidekiq">Sidekiq</a></li>
+<li>handles background jobs whose delays are not a big problem.</li>
+<li>queues background jobs in Redis</li>
+</ul></li>
+</ul>
+<p>As simple as it is. Still, it's hard for me to manage the
+infrastructure, but for those who have experience in web applications,
+its design should not be something that are very different from the
+industrial standard.</p>
+<hr />
+<p>Chips 350 m&amp;m's 250 Salad 400 Pasta 600 Nori 100 Berries 300</p>
+<p>Total 2000 kcal</p>
+<hr />
+<p>MUST:</p>
+<ul>
+<li>None</li>
+</ul>
+<p>TODO:</p>
+<ul>
+<li>Retry 2008B with a mathematical approach</li>
+<li>Study Disjoint Set Union
+<ul>
+<li><a
+href="https://cp-algorithms.com/data_structures/disjoint_set_union.html">Disjoint
+Set Union - Algorithms for Competitive Programming</a></li>
+<li><a
+href="https://www.hackerearth.com/practice/notes/abhinav92003/disjoint-set-union/">Disjoing
+Set Union - HackerEarth</a></li>
+</ul></li>
+<li>Dentist appointment (20241029)</li>
+<li>Check some YouTube videos about the Naturalization Test</li>
+<li>Consider how to show flashcards in command line</li>
+</ul>
+<hr />
+<p><a href="../../index.html">index</a> <a
+href="20241008.html">20241008</a> <a
+href="20241010.html">20241010</a></p>
