@@ -12,15 +12,102 @@ href="https://github.com/fastapi/full-stack-fastapi-template">fastapi/full-stack
 <li>It's super convenient to have a complete example… what a great
 project</li>
 </ul></li>
+<li>Closed a server that served a personal dashboard
+<ul>
+<li>Made the repositories for the project private</li>
+<li>Disabled all the GitHub Actions workflows</li>
+<li>Deleted a VPS in AWS</li>
+<li>Deleted a DNS record in Cloudflare
+<ul>
+<li>That pointed dashboard.huyfififi.com -&gt; the IP address of the
+VPS</li>
+</ul></li>
+</ul></li>
+<li>Cleaned <a
+href="https://github.com/huyfififi/mytree">huyfififi/mytree</a>
+<ul>
+<li>This is the only project that is meaningful.</li>
+</ul></li>
+<li>Did laundry</li>
 </ul>
+<p>I want to go jogging tomorrow.</p>
+<h2 id="ini-file">INI file</h2>
+<p>I was looking for options to store a configuration file, and while
+JSON or YAML are getting more tractions becaues they provide more
+flexibility, INI files still serve the purpose.</p>
+<blockquote>
+<p>An INI file is a plain text file commonly used in computing and
+programming to store configuration settings for software applications.
+It is a simple and widely supported format that organizes information
+into sections and key-value pairs[1].</p>
+</blockquote>
+<blockquote>
+<p>INI files are commonly used to store application-specific settings,
+such as database connection details, user preferences, interface
+configurations, and more. They provide an easy-to-read and editable
+format for storing and retrieving configuration data. Many programming
+languages have built-in functions or libraries to parse and manipulate
+INI files[1].</p>
+</blockquote>
+<p>[1] <a
+href="https://www.lenovo.com/us/en/glossary/initialization-file/?orgRef=https%253A%252F%252Fwww.google.com%252F&amp;srsltid=AfmBOoqyzCPAQsEOxZRVMCaIGXBNW2oD5OHdXb_CV_82sCQGDbX3L33m">Understanding
+the Basics of an Initialization File</a> [2] <a
+href="https://en.wikipedia.org/wiki/INI_file">INI file - Wikipedia</a>
+[3] <a
+href="https://www.advancedinstaller.com/what-is-ini-file.html">What is
+an INI file? Here's how to create, open and edit an INI file</a></p>
+<h3 id="php">PHP</h3>
+<p><a href="https://www.php.net/manual/en/configuration.file.php">PHP:
+The configuration file - Manual</a></p>
+<blockquote>
+<p>The configuration file (php.ini) is read when PHP starts up. For the
+server module versions of PHP, this happens only once when the web
+server is started. For the CGI and CLI versions, it happens on every
+invocation.</p>
+</blockquote>
+<blockquote>
+<p>Example #2 <em>php.ini</em> example</p>
+</blockquote>
+<pre><code>; any text on a line after an unquoted semicolon (;) is ignored
+[php] ; section markers (text within square brackets) are also ignored
+; Boolean values can be set to either:
+;    true, on, yes
+; or false, off, no, none
+register_globals = off
+track_errors = yes
+
+; you can enclose strings in double-quotes
+include_path = &quot;.:/usr/local/lib/php&quot;
+
+; backslashes are treated the same as any other character
+include_path = &quot;.;c:\php\lib&quot;</code></pre>
+<h3 id="python-configparser---configuration-file-parser">Python
+<code>configparser</code> - Configuration file parser</h3>
+<p><a
+href="https://docs.python.org/3/library/configparser.html">configparser
+- Configuration file parser</a></p>
+<blockquote>
+<p>This module provides the ConfigParser class which implements a basic
+configuration language which provides a structure similar to what’s
+found in Microsoft Windows INI files. You can use this to write Python
+programs which can be customized by end users easily.</p>
+</blockquote>
+<h3 id="my-conclusion">My Conclusion</h3>
+<p>I don't see many real-life examples these days, as it just stores
+key-value pairs. For example, if I want to set a list of values to a
+key, I need to add some logic on the program side. Thinking about
+supporting complex configuration, using JSON or YAML just feels
+right.</p>
 <hr />
-<p>Sushi 1000 Spaghetti 400 Pasta 600 Salad 400 Chips 350 m&amp;m's
-250</p>
-<p>Total 3000 kcal</p>
+<p>Total kcal</p>
+<p>push-ups</p>
 <hr />
 <p>MUST:</p>
 <ul>
-<li>None</li>
+<li>Check the NGINX configuration in my Mastodon instance
+<ul>
+<li>As I'm considering migrating it</li>
+</ul></li>
 </ul>
 <p>TODO:</p>
 <ul>
@@ -36,7 +123,6 @@ Set Union - HackerEarth</a></li>
 </ul></li>
 <li>Dentist appointment (20241029)</li>
 <li>Check some YouTube videos about the Naturalization Test</li>
-<li>Consider how to show flashcards in command line</li>
 </ul>
 <hr />
 <p><a href="../../index.html">index</a> <a
