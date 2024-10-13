@@ -84,6 +84,7 @@
 
 # Others
 
+- [INI file](./2024/10/20241013.html)
 - [Understanding Mastodon System Components](./2024/10/20241009.html)
 - [Blog: Spam Attacks on Fediverse](./2024/10/20241008.html)
 - [Implemented a simple RAG system](./2024/09/20240906.html)
@@ -93,3 +94,7 @@
 - [Red Green Refactor](./2024/07/20240714.html)
 - [Forking v.s. Branching (only have link to StackOverFlow)](./2024/07/20240713.html)
 - [Mob Programming / Pair Programming](./2024/05/20240520.html)
+
+# Life
+
+- [ゆうきゆう - 人生を好転させるシンプルな習慣術](./2024/10/20241013.html)
