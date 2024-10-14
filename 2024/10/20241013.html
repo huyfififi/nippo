@@ -3,16 +3,50 @@
 <meta charset="UTF-8">
 </head>
 <h1 id="section">20241013</h1>
+<ul>
+<li>Read “やりたいことを次々と実現する人の心理術”</li>
+<li>Created wallpapers and set them to remind of daily objectives.</li>
+</ul>
+<p>I review pull requests as soon as possible to unblock others' work,
+but I noticed that many people don't do it.</p>
+<p>When I worked with peple who reviewed code freqnently, the experience
+was very positive, and I was motivated to do more.</p>
+<p>However, I heard my friend say that engineers at PayPal don't review
+code unless they are asked to do so.</p>
+<p>I'm involved in some projects outside work, but they are inactive,
+and to be honest, it pisses me off. Maybe I should just leave the groups
+for everyone.</p>
+<h2 id="ゆうきゆう---やりたいことを次々と実現する人の心理術">ゆうきゆう
+- “やりたいことを次々と実現する人の心理術”</h2>
+<ul>
+<li><p>“幸せというのは、連続するものでも、長時間続くものでもないのです。本当の幸せは、もっと小さくて、瞬間のものであると思うのです。”</p></li>
+<li><p>“永遠に続く、完全な幸せ。そういうものを目指すことは無意味です。”</p></li>
+<li><p>“「幸せは、一瞬だけ感じることがあればいいもの」と思っておけば、普段、喜びを感じていなくても「それが普通」と考えることができます。”</p></li>
+<li><p>“幸福・不幸も伝染するのです。だからこそ、不幸は病気と同じで、「治さなければいけない」というわけです。”</p></li>
+</ul>
+<h2 id="checking-nginx-in-my-mastodon-instance">Checking NGINX in my
+Mastodon instance</h2>
+<p>I was wondering if I'm doing something stupid, especially running two
+different NGINX programs; one is in Docker Compose, and the other is in
+the host computer.</p>
+<p>It turned out that I'm running NGINX only in Docker Compose.</p>
+<pre><code>ubuntu@ip-172-26-9-206:~$ sudo systemctl status nginx
+○ nginx.service
+     Loaded: masked (Reason: Unit nginx.service is masked.)
+     Active: inactive (dead)</code></pre>
+<p>Now, I need to check the complicated NGINX configuration running in
+Docker Compose…</p>
 <hr />
-<p>Gummies 500 Yogurt 500 Mac &amp; Cheese 500</p>
-<p>Total 1500 kcal</p>
-<p>push-ups</p>
+<p>Gummies 700 Yogurt 500 Mac &amp; Cheese 500 Protein snacks 200
+m&amp;m's 100</p>
+<p>Total 2000 kcal</p>
+<p>10 mi jog</p>
 <hr />
 <p>MUST:</p>
 <ul>
-<li>Check the NGINX configuration in my Mastodon instance
+<li>Discuss port issues in my Mastodon instance with ChatGPT
 <ul>
-<li>As I'm considering migrating it</li>
+<li>Renewing certificates with Let's Encrypt is failing.</li>
 </ul></li>
 </ul>
 <p>TODO:</p>
