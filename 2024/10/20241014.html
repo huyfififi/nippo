@@ -2,7 +2,106 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <meta charset="UTF-8">
 </head>
-<h1 id="section">20241014</h1>
+<h1 id="section">20241014 ◎</h1>
+<ul>
+<li>Read “反応しない練習” by 草薙龍瞬
+<ul>
+<li>It was not impressive to my current self.</li>
+</ul></li>
+</ul>
+<h2 id="getting-a-certificate-from-lets-encrypt">Getting a certificate
+from Let's Encrypt</h2>
+<h3 id="challenge-types---lets-encrypt"><a
+href="https://letsencrypt.org/docs/challenge-types/">Challenge Types -
+Let's Encrypt</a></h3>
+<blockquote>
+<p>When you get a certificate from Let’s Encrypt, our servers validate
+that you control the domain names in that certificate using
+“challenges,” as defined by the ACME standard.</p>
+</blockquote>
+<blockquote>
+<h3 id="http-01-challenge">HTTP-01 challenge</h3>
+</blockquote>
+<blockquote>
+<p>This is the most common challenge type today.</p>
+</blockquote>
+<blockquote>
+<p>Let’s Encrypt gives a token to your ACME client, and your ACME client
+puts a file on your web server at
+<code>http://&lt;YOUR_DOMAIN&gt;/.well-known/acme-challenge/&lt;TOKEN&gt;</code>.
+That file contains the token, plus a thumbprint of your account key.</p>
+</blockquote>
+<blockquote>
+<p>Once your ACME client tells Let’s Encrypt that the file is ready,
+Let’s Encrypt tries retrieving it (potentially multiple times from
+multiple vantage points).</p>
+</blockquote>
+<blockquote>
+<p>If our validation checks get the right responses from your web
+server, the validation is considered successful and you can go on to
+issue your certificate. If the validation checks fail, you’ll have to
+try again with a new certificate.</p>
+</blockquote>
+<blockquote>
+<p>The HTTP-01 challenge can only be done on port 80. Allowing clients
+to specify arbitrary ports would make the challenge less secure, and so
+it is not allowed by the ACME standard.</p>
+</blockquote>
+<h3 id="what-happend-when-i-ran-certbot-renew">What happend when I ran
+<code>certbot renew</code>?</h3>
+<pre><code>$ pwd
+/etc/letsencrypt/renewal
+$ cat domain.conf
+# renew_before_expiry = 30 days
+version = 1.21.0
+archive_dir = /etc/letsencrypt/archive/{domain}
+cert = /etc/letsencrypt/live/{domain}/cert.pem
+privkey = /etc/letsencrypt/live/{domain}/privkey.pem
+chain = /etc/letsencrypt/live/{domain}/chain.pem
+fullchain = /etc/letsencrypt/live/{domain}/fullchain.pem
+
+# Options used in the renewal process
+[renewalparams]
+account = 
+pref_challs = http-01,
+authenticator = standalone
+server = https://acme-v02.api.letsencrypt.org/directory</code></pre>
+<p>As I can see <code>authenticator = standalone</code>, I did not use
+NGINX or other server softwares.</p>
+<p><a
+href="https://eff-certbot.readthedocs.io/en/stable/using.html#standalone">User
+Guide - Certbot 2.11.0 documentation | Standalone</a></p>
+<blockquote>
+<p>Use standalone mode to obtain a certificate if you don’t want to use
+(or don’t currently have) existing server software. The standalone
+plugin does not rely on any other server software running on the machine
+where you obtain the certificate.</p>
+</blockquote>
+<blockquote>
+<p>To obtain a certificate using a “standalone” webserver, you can use
+the standalone plugin by including <code>certonly</code> and
+<code>--standalone</code> on the command line. This plugin needs to bind
+to port 80 in order to perform domain validation, so you may need to
+stop your existing webserver.</p>
+</blockquote>
+<p>This is why I could get a certificate from Let's Encrypt without
+running NGINX :upside_down_face:</p>
+<h3 id="struggles-with-nginx-configuration">Struggles with NGINX
+configuration</h3>
+<pre><code>server {
+  listen 80;
+  listen [::]:80;
+  server_name example.com;
+  root /home/mastodon/live/public;
+  location /.well-known/acme-challenge/ { allow all; }
+  location / { return 301 https://$host$request_uri; }
+}</code></pre>
+<p>I have this <code>nginx.conf</code>. A file should be created at
+/home/mastodon/live/.well-known/acme-challenge, and the challenge to
+download this file should succeed, but it does not.</p>
+<p>I consulted with ChatGPT, but could not find out what Imissing. I
+don't have any friends who are familiar with these sort of network
+configurations… shoot!</p>
 <hr />
 <p>I suddenly remember the days when my mother said family members
 should help each other, then demanding too much from me while not
@@ -18,16 +117,13 @@ out my life.</p>
 else did my life, they couldn't have done better than me.</p>
 <hr />
 <p>Mac and Cheese 900 Chips 300 Protein snacks 150 Yogurt 150 M&amp;M's
-300</p>
-<p>Total 1800 kcal</p>
-<p>push-ups</p>
+300 Tajin 200</p>
+<p>Total 2000 kcal</p>
+<p>push-ups, 30 minutes walk, pull-ups</p>
 <hr />
 <p>MUST:</p>
 <ul>
-<li>Discuss port issues in my Mastodon instance with ChatGPT
-<ul>
-<li>Renewing certificates with Let's Encrypt is failing.</li>
-</ul></li>
+<li>None</li>
 </ul>
 <p>TODO:</p>
 <ul>
