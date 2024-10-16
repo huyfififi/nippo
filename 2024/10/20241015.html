@@ -2,7 +2,80 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <meta charset="UTF-8">
 </head>
-<h1 id="section">20241015</h1>
+<h1 id="section">20241015 ◎</h1>
+<ul>
+<li>Read “瞬時にやる気を燃やす31の心理学技術” by ゆうきゆう</li>
+</ul>
+<h2
+id="瞬時にやる気を燃やす31の心理技術-by-ゆうきゆう">瞬時にやる気を燃やす31の心理技術
+by ゆうきゆう</h2>
+<ul>
+<li>“「この目標はどうやって分割したらいいのだろう？」と迷いそうなときは、一つ試していただきたいコツがあります。「今から10分の間にできること」は何か、と質問してみることです。”
+<ul>
+<li>I think I'm good at breaking tasks down, but I will keep this tip in
+mind</li>
+</ul></li>
+<li>“グダグダ悩んでしまうのは、「暇」なことが大きな要因です。何かを始めれば、気持ちはその作業に向かっていくため自然と落ち込んでいたことから気持ちが離れていきます。日々の中に自動回復プログラムを取り入れてみましょう”
+<ul>
+<li>will try this technique</li>
+</ul></li>
+<li>“「一分だけ」でハードルを下げると、自分の心も他人の心も動かしやすくなります。”
+“「一分だけ、お話したいことがあります」「一分だけ、軽くミーティングしてもよろしいでしょうか」など言ってみましょう。”</li>
+<li>“息を止めたら、ゲーム開始の合図です。息を止めるというのは、簡単にきっかけを作り、軽く自分を追い込むことができます。止めている間の緊張感を活かして行動しましょう。”</li>
+<li>“座っての作業中に眠くなりそうなときは、まず立ち上がりましょう。立つことで姿勢が良くなり、胸も開かれるため、気持ちにも良い影響があります。さらに体を動かすことによって脳も働いてきます。”</li>
+<li>“理想の人をイメージすることで、自分の自信を高めることも可能です。ピンチを乗り越えたいときにも、理想の人の視点を借りてみましょう。”</li>
+<li>“人は鏡を見ることで理想的に振る舞おうとします。鏡を見たり、Skypeなどで自分や人を意識したりすることで、集中する方向へ気持ちを持っていきましょう。”</li>
+</ul>
+<h2 id="retried-2008b.-square-or-not">Retried <a
+href="https://codeforces.com/contest/2008/problem/B">2008B. Square or
+Not</a></h2>
+<p>I could not think of the optimal answer :cry:</p>
+<p><a href="https://codeforces.com/blog/entry/133509">2008B. Square or
+Not</a></p>
+<blockquote>
+<p>Assume that string was created from the beautiful binary matrix with
+size <code>r * c</code>.</p>
+</blockquote>
+<blockquote>
+<p>If <code>r &lt;= 2</code> or <code>c &lt;= 2</code>, then the whole
+matrix consists of ‘1’. THis means that the string will have only one
+character and this is the only case such happening. So, If the whole
+string is constructed out of ‘1’, we print “Yes” only if the size of the
+string is 4, since only <code>r = c = 2</code> is a good matrix for
+us.</p>
+</blockquote>
+<p>It makese sense so far.</p>
+<blockquote>
+<p>Otherwise, we have at least one ‘0’ in the string.</p>
+</blockquote>
+<blockquote>
+<p>Let's look at what is the index of the first ‘0’.</p>
+</blockquote>
+<blockquote>
+<p>If it has index <code>r + 1</code>, since the whole first line and
+the first character of the first line equal to ‘1’, so now, we have a
+fixed value of <code>r</code> (index of the first ‘0’ minus 1) and the
+answer is “Yes” only if <code>r</code> is the square root of n.</p>
+</blockquote>
+<p>I think I now understand the solution.</p>
+<pre><code>for _ in range(int(input())):
+    n: int = int(input())
+    s = input()
+
+    if len(s) &lt; 4:
+        print(&quot;No&quot;)
+        continue
+
+    if len(s) == 4:
+        print(&quot;Yes&quot;)
+        continue
+
+    edge: int = s.find(&quot;0&quot;) - 1
+    if edge * edge == n:
+        print(&quot;Yes&quot;)
+    else:
+        print(&quot;No&quot;)</code></pre>
+<p>O(n)</p>
 <hr />
 <p>Protein snacks 200 Yogurt 300 Tajin gummies 800 Chips 600 M&amp;M's
 100</p>
@@ -14,7 +87,6 @@
 </ul>
 <p>TODO:</p>
 <ul>
-<li>Retry 2008B with a mathematical approach</li>
 <li>Study Disjoint Set Union
 <ul>
 <li><a
@@ -25,6 +97,7 @@ href="https://www.hackerearth.com/practice/notes/abhinav92003/disjoint-set-union
 Set Union - HackerEarth</a></li>
 </ul></li>
 <li>Dentist appointment (20241029)</li>
+<li>Doctor appointment (20241017)</li>
 <li>Check some YouTube videos about the Naturalization Test</li>
 </ul>
 <hr />
