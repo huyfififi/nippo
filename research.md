@@ -2,6 +2,7 @@
 
 # Data Structure & Algorithms
 
+- [Disjoint Set Union](./2024/10/20241016.html)
 - [Memoization / Tabulation (20240530)](./2024/05/20240530.html)
 
 # Network

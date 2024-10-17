@@ -2,14 +2,101 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <meta charset="UTF-8">
 </head>
-<h1 id="section">20241016</h1>
+<h1 id="section">20241016 ◎</h1>
+<h2 id="disjoint-set-union">Disjoint Set Union</h2>
+<p><a
+href="https://www.hackerearth.com/practice/notes/abhinav92003/disjoint-set-union/">Disjoint
+Set Union | HackerEarth</a></p>
+<blockquote>
+<p>Disjoint Set Union (DSU) or Union-Find is a graph algorithmm that is
+very useful in situations when you have to determine the connected
+components in a graph.</p>
+</blockquote>
+<blockquote>
+<p>The basic idea behind DSU is the following:</p>
+</blockquote>
+<blockquote>
+<p>Initially, all nodes are isolated i.e. there are no edges in the
+graph. We add edges to the graph one by one.</p>
+</blockquote>
+<blockquote>
+<p>While adding an edge, check if the two nodes that the edge connects
+are already present in the same connected component.</p>
+</blockquote>
+<blockquote>
+<ul>
+<li>if they are, then do nothing.</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li>if they aren’t, then make the smaller of the two connected
+components a part of the larger one.</li>
+</ul>
+</blockquote>
+<p>Here's my Python version of the sample code.</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> find_parent(i: <span class="bu">int</span>, parent: <span class="bu">list</span>[<span class="bu">int</span>]) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> parent[parent[i]] <span class="op">!=</span> parent[i]:</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>        pareit[i] <span class="op">=</span> find_parent(parent[i], parent)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> parent[i]</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> union_nodes(a: <span class="bu">int</span>, b: <span class="bu">int</span>, parent: <span class="bu">list</span>[<span class="bu">int</span>], size: <span class="bu">list</span>[<span class="bu">int</span>]) <span class="op">-&gt;</span> <span class="va">None</span>:</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    parent_a: <span class="bu">int</span> <span class="op">=</span> find_parent(a, parent)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    parent_b: <span class="bu">int</span> <span class="op">=</span> find_parent(b, parent)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> parent_a <span class="op">==</span> parent_b:</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> size[parent_a] <span class="op">&gt;=</span> size[parent_b]:</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>        size[parent_a] <span class="op">+=</span> size[parent_b]</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>        parent[parent_b] <span class="op">=</span> parent_a</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>        size[parent_b] <span class="op">+=</span> size[parent_a]</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>        parent[parent_a] <span class="op">=</span> parent_b</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">&quot;__main__&quot;</span>:</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>    n <span class="op">=</span> <span class="dv">10</span>  <span class="co"># num of nodes</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>    m <span class="op">=</span> <span class="dv">7</span>  <span class="co"># num of edges</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>    edges <span class="op">=</span> [</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>        (<span class="dv">0</span>, <span class="dv">1</span>),</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>        (<span class="dv">0</span>, <span class="dv">2</span>),</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>        (<span class="dv">1</span>, <span class="dv">2</span>),</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>        (<span class="dv">3</span>, <span class="dv">4</span>),</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>        (<span class="dv">5</span>, <span class="dv">2</span>),</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>        (<span class="dv">6</span>, <span class="dv">7</span>),</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>        (<span class="dv">7</span>, <span class="dv">8</span>),</span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>    ]</span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>    parent: <span class="bu">list</span>[<span class="bu">int</span>] <span class="op">=</span> <span class="bu">list</span>(<span class="bu">range</span>(n))</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>    size: <span class="bu">list</span>[<span class="bu">int</span>] <span class="op">=</span> [<span class="dv">1</span>] <span class="op">*</span> n</span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> a, b <span class="kw">in</span> edges:</span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>        union_nodes(a, b, parent, size)</span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>    <span class="co"># some finding parents are postponed to save calculations</span></span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n):</span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>        find_parent(i, parent)</span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>    <span class="co"># count the leaders</span></span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>    num_components: <span class="bu">int</span> <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n):</span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> find_parent(i, parent) <span class="op">==</span> i:</span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>            num_components <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f&quot;</span><span class="sc">{</span>parent<span class="op">=</span><span class="sc">}</span><span class="ss">&quot;</span>)  <span class="co"># [0, 0, 0, 3, 3, 0, 6, 6, 6, 9]</span></span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f&quot;</span><span class="sc">{</span>size<span class="op">=</span><span class="sc">}</span><span class="ss">&quot;</span>)  <span class="co"># [4, 1, 1, 2, 1, 1, 3, 1, 1, 1]</span></span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f&quot;</span><span class="sc">{</span>num_components<span class="op">=</span><span class="sc">}</span><span class="ss">&quot;</span>)  <span class="co"># 4</span></span></code></pre></div>
 <hr />
 <p>Sushi bowl 800 Berries 200 Spaghetti 700 Tajin 200 Chips 100</p>
 <p>Total 2000 kcal</p>
 <hr />
 <p>MUST:</p>
 <ul>
-<li>None</li>
+<li>Retry Disjoint Set Union</li>
+<li>Doctor appointment (20241017)</li>
 </ul>
 <p>TODO:</p>
 <ul>
@@ -18,12 +105,8 @@
 <li><a
 href="https://cp-algorithms.com/data_structures/disjoint_set_union.html">Disjoint
 Set Union - Algorithms for Competitive Programming</a></li>
-<li><a
-href="https://www.hackerearth.com/practice/notes/abhinav92003/disjoint-set-union/">Disjoing
-Set Union - HackerEarth</a></li>
 </ul></li>
 <li>Dentist appointment (20241029)</li>
-<li>Doctor appointment (20241017)</li>
 <li>Check some YouTube videos about the Naturalization Test</li>
 </ul>
 <hr />
