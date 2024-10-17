@@ -2,31 +2,96 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <meta charset="UTF-8">
 </head>
-<h1 id="section">20241017</h1>
+<h1 id="section">20241017 ◎</h1>
 <ul>
 <li>Went to a hospital to see a doctor
 <ul>
 <li>My skin condition is getting worse :weep:</li>
+<li>I got a higher dose of steroids, and it put me in sort of a manic
+mode and made me work so hard today, completing several huge tasks.</li>
+</ul></li>
+<li>Created a new wallpaper with a new goal</li>
+<li>Browsed <a
+href="https://cp-algorithms.com/data_structures/disjoint_set_union.html">Disjoint
+Set Union - Algorithm for Competitive Programming</a>
+<ul>
+<li>It contains very detailed explanation. I skipped the applications
+part but might want to check it later.</li>
 </ul></li>
 </ul>
+<p>My back has hurt since I last did pull-ups.</p>
+<h2 id="change-aws-lightsail-plan">Change AWS Lightsail plan</h2>
+<h3 id="motivation">Motivation</h3>
+<p>I'm using an AWS Lightsail instance with Ubuntu, 2 GB RAM, 2 vCPUs,
+and 60 GB SSD. The problem is that, 2 GB RAM seem to be a bit too weak
+to run a Mastodon server.</p>
+<p>When I build Docker images, the machine often runs out of memory.
+When I get many interactions with other servers, the machine sometimes
+stops working.</p>
+<p>I can see that other people run an instance with the specification
+same as mine and have multiple people signed up for their instances, but
+I'm not sure how stable their instances are. They may not be using
+Docker Compose, but I would love to continue using Docker Compose to
+avoid configuration headaches.</p>
+<ul>
+<li><a
+href="https://www.reddit.com/r/selfhosted/comments/shbf6v/how_heavy_is_a_singleuser_mastodon_instance/">How
+heavy is a single-user Mastodon instance?</a></li>
+<li><a
+href="https://www.reddit.com/r/Mastodon/comments/yzp1qz/mastodon_server_hardware_requirements/">Mastodon
+Server Hardware Requirements</a></li>
+</ul>
+<p>Official documentation does not have any guides on the machine
+specification required <a
+href="https://docs.joinmastodon.org/user/run-your-own/">Running your own
+server - Mastodon documentation</a></p>
+<h3 id="upgrade-aws-lightsail-plan">Upgrade AWS Lightsail plan</h3>
+<p><a
+href="https://repost.aws/knowledge-center/change-lightsail-plan">Change
+your Lightsail plan | AWS re:Post</a></p>
+<blockquote>
+<p>To upgrade your Lightsail plan to a larger instance, take a snapshot,
+and then create a larger instance from the snapshot.</p>
+</blockquote>
+<p><a
+href="https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/how-to-create-larger-instance-from-snapshot-using-console.html">Upsize
+a Lightsail instance, storage, or database from snapshots</a></p>
+<p>Upgrading a Lightsail instance looks straightforward. I think I
+better dump the PostgreSQL data and send it to an external computer
+using the scp command, though it should be in the snapshots.</p>
+<p>It's been a while since I used <code>scp</code> command last time
+:sweat_smile:</p>
+<h3 id="securely-copy-database">Securely Copy database</h3>
+<ol type="1">
+<li><code>$ docker exec -it db pg_dump mydb &gt; mydb.sql</code></li>
+<li>Download the SSH key (.pem) from the Lightsail dashboard</li>
+<li><code>scp -i /path/to/your/private-key.pem ubuntu@&lt;instance-public-IP&gt;:/remote/path/to/file /local/path</code>
+<ul>
+<li>As I'm using Ubuntu <a
+href="https://docs.aws.amazon.com/lightsail/latest/userguide/amazon-lightsail-ssh-using-terminal.html">Connect
+to Lightsail Linux or Unix instances with the SSH command | AWS
+documentation</a></li>
+</ul></li>
+</ol>
+<h3 id="if-something-break">If something break</h3>
+<p>I will return 410 Gone to let other Fediverse servers know that my
+Mastodon server is gone.</p>
+<p>AWS Route 53 seems to have a bit different configuration for DNS
+record management. It seems that I need to create a <strong>Hosted
+zone</strong> first, and then I will be able to add DNS records.</p>
 <hr />
-<p>Tajin 450 Pasta 400 Chips 450 M&amp;M's 350</p>
-<p>Total 1650 kcal</p>
+<p>Tajin 450 Pasta 400 Chips 450 M&amp;M's 350 Yogurt 350</p>
+<p>Total 2000 kcal</p>
+<p>4 mi run, push-ups</p>
 <hr />
 <p>MUST:</p>
 <ul>
-<li>Retry Disjoint Set Union</li>
+<li>Configure Docker logs for my Mastodon instance</li>
 </ul>
 <p>TODO:</p>
 <ul>
-<li>Study Disjoint Set Union
-<ul>
-<li><a
-href="https://cp-algorithms.com/data_structures/disjoint_set_union.html">Disjoint
-Set Union - Algorithms for Competitive Programming</a></li>
-</ul></li>
+<li>Implement Disjoint Set Union again</li>
 <li>Dentist appointment (20241029)</li>
-<li>Doctor appointment (20241017)</li>
 <li>Check some YouTube videos about the Naturalization Test</li>
 </ul>
 <hr />

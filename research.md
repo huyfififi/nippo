@@ -46,6 +46,7 @@
 
 # Services
 
+- [Upgrading AWS Lightsail instance](./2024/10/20241017.html)
 - [Amazon S3 and GitHub Actions](./2024/08/20240828.html)
 - [GitHub Actions to perform operations only for changes](./2024/08/20240822.html)
 - [`dependabot` and `poetry`](./2024/07/20240718.html)
