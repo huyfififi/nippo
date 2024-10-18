@@ -1,0 +1,135 @@
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+<meta charset="UTF-8">
+</head>
+<h1 id="section">20241018 ◎</h1>
+<p>The higher dose of steroids prevents me from sleeping. I feel
+strange…</p>
+<ul>
+<li>completed multiple heavy tasks</li>
+<li>met my friends</li>
+<li>met new people, but I did not find them interesting or
+attractive</li>
+</ul>
+<h2 id="logs-in-docker">Logs in Docker</h2>
+<h3 id="docker-logs"><code>docker logs</code></h3>
+<p><a
+href="https://docs.docker.com/reference/cli/docker/container/logs/">docker
+container logs | Docker Docs</a></p>
+<p>I can use the <code>docker logs</code> comamnd to fetch logs from a
+container. As I recall, the <code>--follow, -f</code> option and the
+<code>--timestamps, -t</code> option are frequently used together (by my
+colleagues).</p>
+<p>For example, this command starts putting logs with timestamps to
+stdout.</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode zsh"><code class="sourceCode zsh"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> logs <span class="at">--follow</span> <span class="at">--timestamps</span> container_name</span></code></pre></div>
+<p>I tried that with my Mastodon instance, but I got too many logs
+running through the display. It looks promising to get a specific number
+of logs instead.</p>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode zsh"><code class="sourceCode zsh"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">~/mastodon$</span> docker logs <span class="at">--tail</span> 5 sidekiq</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">2024-10-19T05:06:16.265Z</span> pid=7 tid=2pdr INFO: queueing Scheduler::IndexingScheduler <span class="op">(indexing_scheduler)</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="ex">2024-10-19T05:06:16.267Z</span> pid=7 tid=kf2r class=Scheduler::IndexingScheduler jid=69d8e310d759d0de7eeee6d4 INFO: start</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="ex">2024-10-19T05:06:16.270Z</span> pid=7 tid=kf2r class=Scheduler::IndexingScheduler jid=69d8e310d759d0de7eeee6d4 elapsed=0.003 INFO: done</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="ex">2024-10-19T05:06:49.638Z</span> pid=7 tid=j30f class=ActivityPub::ProcessingWorker jid=24ef37eaf59d4b36cb798998 INFO: start</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="ex">2024-10-19T05:06:49.645Z</span> pid=7 tid=j30f class=ActivityPub::ProcessingWorker jid=24ef37eaf59d4b36cb798998 elapsed=0.007 INFO: done</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="ex">~/mastodon$</span> docker logs <span class="at">-n</span> 5 web</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="ex">I,</span> <span class="pp">[</span><span class="st">2024</span><span class="op">-</span><span class="st">10</span><span class="op">-</span><span class="st">19T05:05:58.181290 #20</span><span class="pp">]</span>  INFO <span class="at">--</span> : <span class="pp">[</span><span class="st">22b68e66</span><span class="op">-</span><span class="st">55ac</span><span class="op">-</span><span class="st">4090</span><span class="op">-</span><span class="st">a468</span><span class="op">-</span><span class="st">a143b7fd4e2a</span><span class="pp">]</span> method=POST path=/inbox format=html control</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="va">ler</span><span class="op">=</span>ActivityPub::InboxesController <span class="va">action</span><span class="op">=</span>create <span class="va">status</span><span class="op">=</span>202 <span class="va">allocations</span><span class="op">=</span>10643 <span class="va">duration</span><span class="op">=</span>14.30 <span class="va">view</span><span class="op">=</span>0.00 <span class="va">db</span><span class="op">=</span>1.06 <span class="va">key</span><span class="op">=</span>https://bgme.m</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="ex">e/users/smilemonkey#main-key</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="ex">I,</span> <span class="pp">[</span><span class="st">2024</span><span class="op">-</span><span class="st">10</span><span class="op">-</span><span class="st">19T05:06:11.645354 #12</span><span class="pp">]</span>  INFO <span class="at">--</span> : <span class="pp">[</span><span class="st">d42fc1e8</span><span class="op">-</span><span class="st">6e65</span><span class="op">-</span><span class="st">42d7</span><span class="op">-</span><span class="st">9a68</span><span class="op">-</span><span class="st">e19a8fc595d0</span><span class="pp">]</span> method=HEAD path=/health format=<span class="pp">*</span>/<span class="pp">*</span> control</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="va">ler</span><span class="op">=</span>HealthController <span class="va">action</span><span class="op">=</span>show <span class="va">status</span><span class="op">=</span>200 <span class="va">allocations</span><span class="op">=</span>96 <span class="va">duration</span><span class="op">=</span>0.97 <span class="va">view</span><span class="op">=</span>0.80 <span class="va">db</span><span class="op">=</span>0.00</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="ex">I,</span> <span class="pp">[</span><span class="st">2024</span><span class="op">-</span><span class="st">10</span><span class="op">-</span><span class="st">19T05:06:41.781214 #20</span><span class="pp">]</span>  INFO <span class="at">--</span> : <span class="pp">[</span><span class="st">0c4c1830</span><span class="op">-</span><span class="st">8c23</span><span class="op">-</span><span class="st">468c</span><span class="op">-</span><span class="st">916a</span><span class="op">-</span><span class="st">861919fec301</span><span class="pp">]</span> method=HEAD path=/health format=<span class="pp">*</span>/<span class="pp">*</span> control</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="va">ler</span><span class="op">=</span>HealthController <span class="va">action</span><span class="op">=</span>show <span class="va">status</span><span class="op">=</span>200 <span class="va">allocations</span><span class="op">=</span>95 <span class="va">duration</span><span class="op">=</span>0.42 <span class="va">view</span><span class="op">=</span>0.28 <span class="va">db</span><span class="op">=</span>0.00</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="ex">I,</span> <span class="pp">[</span><span class="st">2024</span><span class="op">-</span><span class="st">10</span><span class="op">-</span><span class="st">19T05:06:49.640489 #12</span><span class="pp">]</span>  INFO <span class="at">--</span> : <span class="pp">[</span><span class="st">67b7012a</span><span class="op">-</span><span class="st">7fa3</span><span class="op">-</span><span class="st">44e2</span><span class="op">-</span><span class="st">9c2f</span><span class="op">-</span><span class="st">cc5af62ae457</span><span class="pp">]</span> method=POST path=/inbox format=<span class="pp">*</span>/<span class="pp">*</span> controll</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="va">er</span><span class="op">=</span>ActivityPub::InboxesController <span class="va">action</span><span class="op">=</span>create <span class="va">status</span><span class="op">=</span>202 <span class="va">allocations</span><span class="op">=</span>17592 <span class="va">duration</span><span class="op">=</span>32.14 <span class="va">view</span><span class="op">=</span>0.00 <span class="va">db</span><span class="op">=</span>2.75 <span class="va">key</span><span class="op">=</span>https://onsen-m</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="ex">usume.fun/users/8l6kpzosrf#main-key</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="ex">I,</span> <span class="pp">[</span><span class="st">2024</span><span class="op">-</span><span class="st">10</span><span class="op">-</span><span class="st">19T05:07:11.906894 #12</span><span class="pp">]</span>  INFO <span class="at">--</span> : <span class="pp">[</span><span class="st">865b3dc9</span><span class="op">-</span><span class="st">b120</span><span class="op">-</span><span class="st">439d</span><span class="op">-</span><span class="st">b609</span><span class="op">-</span><span class="st">38a24d359c79</span><span class="pp">]</span> method=HEAD path=/health format=<span class="pp">*</span>/<span class="pp">*</span> control</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="va">ler</span><span class="op">=</span>HealthController <span class="va">action</span><span class="op">=</span>show <span class="va">status</span><span class="op">=</span>200 <span class="va">allocations</span><span class="op">=</span>95 <span class="va">duration</span><span class="op">=</span>0.33 <span class="va">view</span><span class="op">=</span>0.19 <span class="va">db</span><span class="op">=</span>0.00</span></code></pre></div>
+<p>The problem with this approach is that when containers stop
+accidentally, and I want to troubleshoot, logs cannot be retrieved from
+the containers with this command because it is designed to show
+information logged by a <strong>running</strong> container.</p>
+<h3 id="json-file-and-its-store-location"><code>json-file</code> and its
+store location</h3>
+<p>I got this in my MacBook.</p>
+<pre><code>$ docker inspect --format=&#39;{{.HostConfig.LogConfig.Type}}&#39; cbd206ed09ca  # container id
+json-file</code></pre>
+<p><a href="https://docs.docker.com/engine/logging/configure/">Configure
+logging drivers | Docker Docs</a></p>
+<blockquote>
+<p>As a default, Docker uses the json-file logging driver, which caches
+container logs as JSON internally.</p>
+</blockquote>
+<p><a
+href="https://docs.docker.com/engine/logging/drivers/json-file/">JSON
+file logging driver | Docker Docs</a></p>
+<blockquote>
+<p>By default, Docker captures the standard output (and standard error)
+of all your containers, and writes them in files using the JSON format.
+The JSON format annotates each line with its origin (stdout or stderr)
+and its timestamp. Each log file contains information about only one
+container.</p>
+</blockquote>
+<p>However, it seems the log file is not directly accessible when using
+Docker Desktop</p>
+<p><a href="https://signoz.io/guides/docker-logs-location/">Where are
+Docker Logs Stored? - Docker Logs Location | SigNoz</a></p>
+<blockquote>
+<p>Direct Docker Engine installation is not supported on MacOS. However,
+you can use Docker on macOS through Docker Desktop.</p>
+</blockquote>
+<blockquote>
+<p>To access individual Docker container logs on Docker Desktop, from
+the Docker Desktop UI, select the container of choice and click on the
+Logs section:</p>
+</blockquote>
+<p>As I browsed some web pages (and some interactions with LLM)… When
+I'm using Docker Desktop, Docker is running inside a virtual machine,
+and the host filesystem does not have direct access to the container
+logs. The only options I have is the Docker Desktop itself, or
+<code>docker logs &lt;container-name&gt;</code>.</p>
+<h3 id="possible-solutions-with-other-logging-drivers">Possible
+solutions with other logging drivers</h3>
+<p>There are many kinds of logging drivers, and from my understanding,
+they are designed to route logs to external services, so that logs can
+be checked independently.</p>
+<p>Some are</p>
+<p><a
+href="https://docs.docker.com/engine/logging/drivers/gcplogs/">Google
+Cloud Logging driver</a></p>
+<blockquote>
+<p>The Google Cloud Logging driver sends container logs to Google Cloud
+Logging Logging.</p>
+</blockquote>
+<p><a
+href="https://docs.docker.com/engine/logging/drivers/awslogs/">Amazon
+CloudWatch Logs logging driver</a></p>
+<blockquote>
+<p>The awslogs logging driver sends container logs to Amazon CloudWatch
+Logs. Log entries can be retrieved through the AWS Management Console or
+the AWS SDKs and Command Line Tools.</p>
+</blockquote>
+<p>Because I don't want to complicate the system components of my
+Mastodon server, I'll skip leveraging these options.</p>
+<hr />
+<p>Sushi bowl 800 Lemonade 200 Chips 200 Pocky 200 Yogurt 150 Mashed
+potatoes 150</p>
+<p>Total 1700 kcal</p>
+<hr />
+<p>MUST:</p>
+<ul>
+<li>None</li>
+</ul>
+<p>TODO:</p>
+<ul>
+<li>Implement Disjoint Set Union again</li>
+<li>Dentist appointment (20241029)</li>
+<li>Check some YouTube videos about the Naturalization Test</li>
+</ul>
+<hr />
+<p><a href="../../index.html">index</a> <a
+href="20241017.html">20241017</a> <a
+href="20241019.html">20241019</a></p>

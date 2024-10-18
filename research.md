@@ -27,6 +27,7 @@
 
 # Infrastructures
 
+- [Logs in Docker](./2024/10/20241018.html)
 - [Jenkins and GitHub Actions](./2024/08/20240820.html)
 - [Should microservices share a cache and message queue?](./2024/08/20240803.html)
 - [Amazon S3 Miscellaneous](./2024/08/20240801.html)
