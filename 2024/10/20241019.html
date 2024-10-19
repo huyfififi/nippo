@@ -1,0 +1,160 @@
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+<meta charset="UTF-8">
+</head>
+<h1 id="section">20241019 ◎</h1>
+<ul>
+<li>Went to a Japanese grocery store, bought some ingredients, and
+meal-prepped some salads for a few days.</li>
+</ul>
+<p>I suddenly felt happiness with no specific reason when I drove home.
+(maybe a side effect of the high-dose steroids)</p>
+<p>I did not feel like doing anything, but I managed to go jogging, work
+out, and do some research. Congrats!</p>
+<h2 id="issubclassbool-int-is-true">issubclass(bool, int) is True</h2>
+<p>I was writing tests and noticed an interesting behavior (at least to
+me) regarding Python's <code>bool</code> and <code>int</code>
+classes.</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>In [<span class="dv">1</span>]: <span class="bu">isinstance</span>(<span class="va">True</span>, <span class="bu">int</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>Out[<span class="dv">1</span>]: <span class="va">True</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>In [<span class="dv">2</span>]: <span class="bu">isinstance</span>(<span class="va">False</span>, <span class="bu">int</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>Out[<span class="dv">2</span>]: <span class="va">True</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>In [<span class="dv">3</span>]: <span class="bu">issubclass</span>(<span class="bu">bool</span>, <span class="bu">int</span>)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>Out[<span class="dv">3</span>]: <span class="va">True</span></span></code></pre></div>
+<p><a
+href="https://docs.python.org/3/reference/datamodel.html#numbers-integral">3.
+Data model: numbers.Integral - Python 3.13.0 documentation</a></p>
+<blockquote>
+<p>There are two types of integers:</p>
+</blockquote>
+<blockquote>
+<p>Integers (int)</p>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>These represent numbers in an unlimited range, subject to available
+(virtual) memory only. For the purpose of shift and mask operations, a
+binary representation is assumed, and negative numbers are represented
+in a variant of 2’s complement which gives the illusion of an infinite
+string of sign bits extending to the left.</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<p>Booleans (bool)</p>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>These represent the truth values False and True. The two objects
+representing the values False and True are the only Boolean objects. The
+Boolean type is a subtype of the integer type, and Boolean values behave
+like the values 0 and 1, respectively, in almost all contexts, the
+exception being that when converted to a string, the strings “False” or
+“True” are returned, respectively.</p>
+</blockquote>
+</blockquote>
+<p>So basically, <code>False</code> is <code>0</code> and
+<code>True</code> is <code>1</code> internally, and they are just
+converted to the strings <code>"False"</code> and <code>"True"</code>
+when they are represented to users.</p>
+<p>I will keep this in my brain just in case.</p>
+<h2 id="retry-disjoint-set-union">Retry: Disjoint Set Union</h2>
+<p>I did not understand the details, but it should be helpful to
+remember the code to get familiar with the logic gradually.</p>
+<pre><code>def find_parent(i: int, parent: list[int]) -&gt; int:
+    if parent[parent[i]] == parent[i]:
+        return parent[i]
+    return find_parent(parent[i], parent)
+
+
+def union_sets(i: int, j: int, parent: list[int], size: list[int]) -&gt; None:
+    parent_i: int = find_parent(i, parent)
+    parent_j: int = find_parent(j, parent)
+
+    if parent_i == parent_j:
+        return
+
+    if size[i] &lt; size[j]:
+        size[parent_j] += size[parent_i]
+        parent[parent_i] = parent_j
+    else:
+        size[parent_i] += size[parent_j]
+        parent[parent_j] = parent_i
+
+    return
+
+
+def count_disjoint_set(n_node: int, edges: list[tuple[int, int]]) -&gt; int:
+    parent: list[int] = list(range(n_node))
+    size: list[int] = [1] * n_node
+
+    for i, j in edges:
+        union_sets(i, j, parent, size)
+
+    for i in range(n_node):
+        find_parent(i, parent)
+
+    count: int = 0
+    for i in range(n_node):
+        if parent[i] == i:  # count the leader
+            count += 1
+
+    print(&quot;result&quot; + &quot;-&quot; * 40)
+    print(f&quot;{edges=}&quot;)
+    print(f&quot;{parent=}&quot;)
+    print(f&quot;{size=}&quot;)
+    print(f&quot;{count=}&quot;)
+
+    return count
+
+
+if __name__ == &quot;__main__&quot;:
+    # (0, 2, 3, 4), (1, 5), (6, 9), (7), (8)
+    n_node: int = 10
+    edges: list[tuple[int, int]] = [
+        (0, 2),
+        (2, 3),
+        (4, 3),
+        (4, 0),
+        (5, 1),
+        (6, 9),
+    ]
+    count_disjoint_set(n_node, edges)
+
+    # (0, 1, 2, 5), (3, 4), (6, 7, 8), (9)
+    n_node: int = 10
+    edges: list[tuple[int, int]] = [
+        (0, 1),
+        (0, 2),
+        (1, 2),
+        (3, 4),
+        (5, 2),
+        (6, 7),
+        (7, 8),
+    ]
+    count_disjoint_set(n_node, edges)</code></pre>
+<hr />
+<p>Seafood Salad 300 Tuna salad 300 Yogurt 500 Tajin 400 Protein shake
+100 Mashed potatoes 200</p>
+<p>Total 1800 kcal</p>
+<p>4 mi run, pull-ups, push-ups</p>
+<hr />
+<p>MUST:</p>
+<ul>
+<li>Revisit <a
+href="https://www.hackerearth.com/practice/notes/abhinav92003/disjoint-set-union/">Disjoint
+Set Union | Hacker Earth</a></li>
+<li>Implement JSON configuration for <code>mytree</code></li>
+</ul>
+<p>TODO:</p>
+<ul>
+<li>Upgrade the Mastodon version to v4.3.0</li>
+<li>Dentist appointment (20241029)</li>
+<li>Check some YouTube videos about the Naturalization Test</li>
+</ul>
+<hr />
+<p><a href="../../index.html">index</a> <a
+href="20241018.html">20241018</a> <a
+href="20241020.html">20241020</a></p>

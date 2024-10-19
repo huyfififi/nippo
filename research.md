@@ -3,6 +3,7 @@
 # Data Structure & Algorithms
 
 - [Disjoint Set Union](./2024/10/20241016.html)
+	- [Retry](./2024/10/20241019.html)
 - [Memoization / Tabulation (20240530)](./2024/05/20240530.html)
 
 # Network
@@ -60,6 +61,7 @@
 
 # Programming Languages
 
+- [issubclass(bool, int) is True - Python](./2024/10/20241019.html)
 - [Decorator - Python](./2024/07/20240720.html)
 - [Rye - Python (20240718)](./2024/07/20240718.html)
 - [gc - Garbage Collector Interface - Python (20240717)](./2024/07/20240717.html)
