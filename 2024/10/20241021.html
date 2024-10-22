@@ -1,0 +1,116 @@
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+<meta charset="UTF-8">
+</head>
+<h1 id="section">20241021 ◎</h1>
+<p>I think I better resume working on the competitive-programming… If I
+have a nice, kind, and smart friend who can share time with me and study
+algorithms, it would be super helpful for me. Though, I think it's one
+in a million to have someone like Steve Wozniak. Steve Jobs is so lucky
+to have him in his life.</p>
+<h2 id="mastodon-version-upgrade">Mastodon Version Upgrade</h2>
+<p>I tried to update my Mastodon instance with the latest version, but
+there are 66 (!) files that have conflicts. I don't want to deal with
+them. Why are there so many conflicts though I didn't touch them
+:angry:</p>
+<pre><code>$ git merge v4.3.0
+$ git status --short | grep -E -c &#39;^(UU|AA)&#39;
+66</code></pre>
+<p>It's been a year since I (as a moron) deployed the Mastodon server,
+and it seems many tech debts accumulated along the way.</p>
+<p>It would be much easier to create a new instance and move my account
+to it. Still, on second thought, account migration is also a headache,
+and I want to maintain the domain if possible, as I built some
+friendships on it.</p>
+<p>And now, my Mastodon server is running with v4.3.0! Yay!</p>
+<h2
+id="git-checkout---theirs-."><code>git checkout --theirs .</code></h2>
+<p><a href="https://nitaym.github.io/ourstheirs/">git - ours &amp;
+theirs</a></p>
+<p>Today I learned that I can use <code>git checkout --theirs .</code>
+to accept all incoming changes when resolving merge conflicts. Git is a
+very genius tool, but sometimes it shows me too many diffs even though I
+didn't touch the code. This option is convenient in that case.</p>
+<pre><code>$ git merge v4.3.0
+(shows a bunch of conflicts)
+$ git checkout --theirs .
+$ git add .
+$ git commit</code></pre>
+<p><a href="https://nitaym.github.io/ourstheirs/">Git - git-checkout
+Documentation</a></p>
+<blockquote>
+<p>When checking out paths from the index, check out stage #2 (ours) or
+#3 (theirs) for unmerged paths.</p>
+</blockquote>
+<blockquote>
+<p>Note that during <code>git rebase</code> and
+<code>git pull --rebase</code>, ours and theirs may appear swapped;
+<code>--ours</code> gives the version from the branch the changes are
+rebased onto, while <code>--theirs</code> gives the version from the
+branch that holds your work that is being rebased.</p>
+</blockquote>
+<p>I think I should remember this, as I frequently use
+<code>git rebase</code>.</p>
+<h2 id="unix-time">Unix time</h2>
+<p>I failed to explain the Unix epoch to my friend the other day.</p>
+<p><a
+href="https://www.wired.com/2001/09/unix-tick-tocks-to-a-billion/">Unix
+Tick Tocks to a Billion | WIRED</a></p>
+<p><a href="https://en.wikipedia.org/wiki/Unix_time">Unix time -
+Wikipedia</a> (I know it's not right to cite Wikipedia, but I would make
+an excuse that this page is not something academic or official.)</p>
+<blockquote>
+<p><strong>Unix time</strong> is a date and time representation widely
+used in computing. It measures time by the number of non-leap seconds
+that have elapsed since 00:00:00 UTC on 1 January 1970, the Unix epoch.
+In modern computing, values are sometimes stored with higher
+granularity, such as microseconds or nanoseconds.</p>
+</blockquote>
+<blockquote>
+<p>Unix time originated as the system time of Unix operation systems. It
+has come to be widely used in other computer operating systems, file
+systems, programming languages, and databases.</p>
+</blockquote>
+<p><a
+href="https://learn.microsoft.com/en-us/windows/win32/sysinfo/file-times">File
+Times - Win32 apps | Microsoft Learn</a></p>
+<blockquote>
+<p>A file time is a 64-bit value that represents the number of
+100-nanosecond intervals that have elapsed since 12:00 A.M. January 1,
+1601 Coordinated Universal Time (UTC). The system records file times
+when applications create, access, and write to files.</p>
+</blockquote>
+<p>It seems the Windows NTFS file system uses a different time
+representation than Unix time, and there are also some that don't use
+it.</p>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> datetime <span class="im">import</span> datetime</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>now <span class="op">=</span> datetime.now()</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>iso_string <span class="op">=</span> now.isoformat()</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>unix_time <span class="op">=</span> datetime.timestamp(now)</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;datetime.now(): </span><span class="sc">{</span>now<span class="sc">}</span><span class="ss">&quot;</span>)</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;ISO 8601 string: </span><span class="sc">{</span>iso_string<span class="sc">}</span><span class="ss">&quot;</span>)</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;Unix timestamp: </span><span class="sc">{</span>unix_time<span class="sc">}</span><span class="ss">&quot;</span>)</span></code></pre></div>
+<pre><code>datetime.now(): 2024-10-21 19:36:24.755281
+ISO 8601 string: 2024-10-21T19:36:24.755281
+Unix timestamp: 1729564584.755281</code></pre>
+<hr />
+<p>Sprouts salad 300 Protein shake 300 Pasta 600 Mashed potatos 300 Rice
+300</p>
+<p>Total 1800 kcal</p>
+<p>push-ups</p>
+<hr />
+<p>MUST:</p>
+<ul>
+<li>Update the git history of the Amazon Lightsail instance.</li>
+</ul>
+<p>TODO:</p>
+<ul>
+<li>Dentist appointment (20241029)</li>
+</ul>
+<hr />
+<p><a href="../../index.html">index</a> <a
+href="20241020.html">20241020</a> <a
+href="20241022.html">20241022</a></p>

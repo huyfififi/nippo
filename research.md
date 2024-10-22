@@ -88,8 +88,14 @@
 - [Conguratulations: Tourist has reached a rating of 4000! by MikeMirzayanov](./2024/08/20240830.html)
 - [Tim Peters has been suspended from Python Software Foundation](./2024/08/20240826.html)
 
+# Git
+
+- [`git checkout --theirs .`](./2024/10/20241021.html)
+- [Forking v.s. Branching (only have link to StackOverFlow)](./2024/07/20240713.html)
+
 # Others
 
+- [Unix time](./2024/10/20241021.html)
 - [Checking NGINX status](./2024/10/20241013.html)
 - [INI file](./2024/10/20241012.html)
 - [Understanding Mastodon System Components](./2024/10/20241009.html)
@@ -99,7 +105,6 @@
 - [STRIDE](./2024/07/20240721.html)
 - [`async` and `await` (haven\'t researched in details) / Cyclomatic Complexity](./2024/07/20240715.html)
 - [Red Green Refactor](./2024/07/20240714.html)
-- [Forking v.s. Branching (only have link to StackOverFlow)](./2024/07/20240713.html)
 - [Mob Programming / Pair Programming](./2024/05/20240520.html)
 
 # Life
