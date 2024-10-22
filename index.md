@@ -1,9 +1,7 @@
 <head><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" /></head>
 
-[dashboard.huyfififi.com](https://dashboard.huyfififi.com)
-
-[competitive programming](competitive-programming.html)
-[research](research.html)
+- [competitive programming](competitive-programming.html)
+- [research](research.html)
 
 # 202410
 
