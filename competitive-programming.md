@@ -119,8 +119,19 @@
 
 ## Graphs
 
+### DFS/BFS
+
+- 1829E. The Lakes - 1100
+	- [20241023](./2024/10/20241023.html)
+
 ### Disjoint Set Union
 
+- 1829E. The Lakes - 1100
+	- [20241023](./2024/10/20241023.html)
+- 501B. Misha and Changing Handles - 1100
+	- [20241023](./2024/10/20241023.html)
+- 1249B1. Books Exchange (easy version) - 1000
+	- [20241023](./2024/10/20241023.html)
 - 1620A. Equal or Not Equal - 800
 	- [20241022](./2024/10/20241022.html)
 - 2008D. Sakurako's Hobby - 1100
