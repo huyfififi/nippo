@@ -8,6 +8,7 @@
 
 # Network
 
+- [Mastodon streaming API: persistent HTTP connetions and WebSocket](./2024/10/20241023.html)
 - [HTTP-01 challenge and `certbot`](./2024/10/20241014.html)
 - [Representational State Transfer (REST) / Roy Fielding's dissertation](./2024/09/20240923.html)
 - [MIME types (20240716)](./2024/07/20240716.html)
