@@ -2,7 +2,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <meta charset="UTF-8">
 </head>
-<h1 id="section">20241022</h1>
+<h1 id="section">20241022 ◎</h1>
 <ul>
 <li>Upgraded my Mastodon server to <a
 href="https://github.com/mastodon/mastodon/releases/tag/v4.3.1">v4.3.1</a>
@@ -18,18 +18,227 @@ href="https://github.com/huyfififi/mytree">huyfififi/mytree</a>
 <li>At least, it should work in most cases.</li>
 </ul></li>
 </ul>
+<h2 id="retry-disjoint-set-union">Retry: Disjoint Set Union</h2>
+<p>My brain is getting engraved with the algorithm.</p>
+<pre><code>def find_parent(i: int, parent: list[int]) -&gt; int:
+    if parent[parent[i]] == parent[i]:
+        return parent[i]
+    return find_parent(parent[i], parent)
+
+
+def union_set(i: int, j: int, parent: list[int], size: list[int]) -&gt; None:
+    parent_i: int = find_parent(i, parent)
+    parent_j: int = find_parent(j, parent)
+
+    if parent_i == parent_j:
+        return None
+
+    if size[parent_i] &gt; size[parent_j]:
+        size[parent_i] += size[parent_j]
+        parent[parent_j] = parent_i
+    else:
+        size[parent_j] += size[parent_i]
+        parent[parent_i] = parent_j
+    return
+
+
+n_nodes: int = 10
+# (0, 5, 8, 9), (1, 2, 3), (4, 7), (6)
+edges: list[tuple[int, int]] = [
+    (0, 9),
+    (9, 8),
+    (5, 8),
+    (1, 2),
+    (3, 2),
+    (4, 7),
+]
+
+parent = list(range(n_nodes))
+size = [1] * n_nodes
+
+for s, t in edges:
+    union_set(s, t, parent, size)
+
+count: int = 0
+for i in range(n_nodes):
+    parent[i] = find_parent(i, parent)
+    if i == parent[i]:  # leader
+        count += 1
+
+print(f&quot;{parent=}&quot;)  # [9, 2, 2, 2, 7, 9, 6, 7, 9, 9]
+print(f&quot;{count=}&quot;)  # 4</code></pre>
+<h2 id="d.-sakurakos-hobby---1100"><a
+href="https://codeforces.com/contest/2008/problem/D">2008D. Sakurako’s
+Hobby - 1100</a></h2>
+<p>With the knowledge about Disjoint Set Union, the problem can be
+solved in a straightforward way.</p>
+<pre><code>def find_parent(i: int, parent: list[int]) -&gt; int:
+    if parent[parent[i]] == parent[i]:
+        return parent[i]
+    return find_parent(parent[i], parent)
+
+
+def union_set(i: int, j: int, parent: list[int], size: list[int]) -&gt; None:
+    parent_i = find_parent(i, parent)
+    parent_j = find_parent(j, parent)
+
+    if parent_i == parent_j:
+        return
+
+    if size[parent_i] &gt; size[parent_j]:
+        size[parent_i] += size[parent_j]
+        parent[parent_j] = parent_i
+    else:
+        size[parent_j] += size[parent_i]
+        parent[parent_i] = parent_j
+    return
+
+
+for _ in range(int(input())):
+    n: int = int(input())
+    p: list[int] = list(map(int, input().split()))
+    c: list[str] = list(input())
+
+    size: list[int] = [1 if x == &quot;0&quot; else 0 for x in c]
+    parent: list[int] = list(range(n))
+
+    for i, pi in enumerate(p):
+        union_set(i, pi - 1, parent, size)
+
+    for i in range(n):
+        parent[i] = find_parent(i, parent)
+
+    result: list[int] = []
+    for i in range(n):
+        result.append(size[parent[i]])
+
+    print(&quot; &quot;.join([str(x) for x in result]))</code></pre>
+<p>The only difference with the basic Disjoint Set Union algorithm is
+that I populated a size as the problem requested. Then, BOOM! The
+problem is solved.</p>
+<p>This solution took 671 ms and used 32000 KB memory whereas <a
+href="../09/20240910.html">my first solution</a> took 811 ms and used
+43900 KB memory, though the difference might be negligible.</p>
+<h2 id="a.-equal-or-not-equal---800"><a
+href="https://codeforces.com/contest/1620/problem/A">1620A. Equal or Not
+Equal - 800</a></h2>
+<h3 id="constructive-algorithms">Constructive algorithms</h3>
+<pre><code>&quot;&quot;&quot;
+EEE
+
+EEN =&gt; X
+a1 == a2, a2 == a3, a3 != a1
+
+NEN
+a1 != a2, a2 == a3, a3 != a1
+
+NNN
+a1 != a2, a2 != a3, a3 != a1
+
+EENN
+a1 == a2, a2 == a3, a3 != a4, a4 != a1
+
+ENEN
+a1 == a2, a2 != a3, a3 == a4, a4 != a1
+
+ENENEN
+a1 == a2, a2 != a3, a3 == a4, a4 != a5, a5 == a6, a6 != a1
+a1 = a2 = 1
+a3 = a4 = 2
+a5 = a6 = 3
+
+Observation: NO if (num of `N`) == 1 ?
+
+When Ns appear in a row
+EN..NE =&gt; It&#39;s possible to make the each size of E equals to each other
+
+When Ns appear in different chunks
+ENE..(E)NE.. =&gt; It&#39;s possible to make a1 == a2, a2 != a3, ..., ai != a(i+1), a(i+1) == a(i+2)
+Each section that is surrounded by N can just have a different number from others
+&quot;&quot;&quot;
+
+for _ in range(int(input())):
+    s: list[str] = list(input())
+    n_num: int = sum(1 if x == &quot;N&quot; else 0 for x in s)
+    if n_num == 1:
+        print(&quot;NO&quot;)
+    else:
+        print(&quot;YES&quot;)</code></pre>
+<h3 id="disjoint-set-union">Disjoint Set Union</h3>
+<pre><code>def find_parent(i: int, parent: list[int]) -&gt; int:
+    # print(f&quot;{i=}, {parent=}&quot;)
+    if parent[parent[i]] == parent[i]:
+        return parent[i]
+    return find_parent(parent[i], parent)
+
+
+def union_set(i: int, j: int, parent: list[int], size: list[int]) -&gt; None:
+    parent_i = find_parent(i, parent)
+    parent_j = find_parent(j, parent)
+
+    if parent_i == parent_j:
+        return
+
+    if size[parent_i] &gt; size[parent_j]:
+        parent[parent_j] = parent_i
+    else:
+        parent[parent_i] = parent_j
+
+
+for _ in range(int(input())):
+    s: list[str] = list(input())
+    n = len(s)
+
+    parent: list[int] = list(range(n))
+    size: list[int] = [1] * n
+
+    # 1. Grouping equal values
+    for i in range(n):
+        if s[i] == &quot;N&quot;:
+            continue
+        j, k = (i, i + 1) if i != n - 1 else (0, n - 1)
+        union_set(j, k, parent, size)
+
+    # 2. Update parent information
+    for i in range(n):
+        parent[i] = find_parent(i, parent)
+
+    # 3. Check all `N`; if adjacent numbers that surround N belongs to the same group
+    # ( &lt;=&gt; the numbers should be the same value), the input array is inconsistent
+    for i in range(n):
+        if s[i] != &quot;N&quot;:
+            continue
+        j, k = (i, i + 1) if i != n - 1 else (0, n - 1)
+        if parent[j] == parent[k]:
+            print(&quot;NO&quot;)
+            break
+    else:
+        print(&quot;YES&quot;)</code></pre>
+<p>How convenient Disjoint Set Union is!</p>
+<p>I feel that I can apply this algorithm to any problems.</p>
+<p><a
+href="https://books.google.com/books?id=qitgAAAAMAAJ&amp;q=%22hammer%22">The
+Psychology of Science - Abraham Harold Maslow</a></p>
+<blockquote>
+<p>“If the only tool you have is a hammer, it is tempting to treat
+everything as if it were a nail.”</p>
+</blockquote>
 <hr />
-<p>Wakame salad 200 Berries 200 Protein shake 150 Seafood salad 400</p>
-<p>Total 950 kcal</p>
-<p>4 mi run</p>
+<p>Wakame salad 200 Berries 200 Protein shake 400 Seafood salad 400 Rice
+200 Mashed potatoes 200</p>
+<p>Total 1600 kcal</p>
+<p>4 mi run, push-ups</p>
 <hr />
 <p>MUST:</p>
 <ul>
-<li>Solve one dsu problem on Codeforces</li>
+<li>Codeforces Round 981 (Div. 3) (20241024 7:35 am)</li>
 </ul>
 <p>TODO:</p>
 <ul>
 <li>Dentist appointment (20241029)</li>
+<li>Solve a DSU problem on Codeforces</li>
+<li>Upgrade the Amazon Lightsail plan (take a snapshot, create a new
+instance, and migrate)</li>
 </ul>
 <hr />
 <p><a href="../../index.html">index</a> <a

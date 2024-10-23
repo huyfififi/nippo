@@ -3,7 +3,7 @@
 # Data Structure & Algorithms
 
 - [Disjoint Set Union](./2024/10/20241016.html)
-	- [Retry](./2024/10/20241019.html)
+	- [Applications to Codeforces problems](./2024/10/20241022.html)
 - [Memoization / Tabulation (20240530)](./2024/05/20240530.html)
 
 # Network
