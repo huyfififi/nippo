@@ -1,0 +1,83 @@
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+<meta charset="UTF-8">
+</head>
+<h1 id="section">20241025 ◎</h1>
+<p>I thought my performance in the last Codeforces round was bad, but my
+rating did not hurt much (it's still very low though). I guess the
+problems were a bit difficult.</p>
+<p>Writing tests is super helpful. I’ve been working on test coverage
+this week and have noticed many bugs (including mine :sweat:)
+already.</p>
+<p>Because could not get enough sleep in the last few days, I feel tired
+and sleepy. It might be better to go to bed now…</p>
+<h2 id="counting-insertionsdeletions-in-a-git-repository">Counting
+insertions/deletions in a Git repository</h2>
+<h3 id="git-diff---stat"><a
+href="https://git-scm.com/docs/git-diff#Documentation/git-diff.txt---statltwidthgtltname-widthgtltcountgt"><code>git diff --stat</code></a></h3>
+<p>Motivation: I got curious about how many files I changed, how many
+insertions I made, and how many lines I deleted.</p>
+<pre><code>rag$ git diff HEAD~5 --stat
+ README.md                           |  6 +++---
+ app/api/main.py                     |  2 ++
+ app/api/routes/health.py            | 14 ++++++++++++++
+ app/models.py                       | 11 +++++++++++
+ app/tests/api/routes/test_health.py | 14 ++++++++++++++
+ poetry.lock                         | 14 +++++++-------
+ pyproject.toml                      |  4 ++--
+ 7 files changed, 53 insertions(+), 12 deletions(-)</code></pre>
+<pre><code>rag$ git diff HEAD~5 --stat --stat-count=0 --stat-width=40 --stat-name-width=5
+ ...md |  6 +++---
+ ...py |  2 ++
+ ...py | 14 ++++++++++++++
+ ...py | 11 +++++++++++
+ ...py | 14 ++++++++++++++
+ ...ck | 14 +++++++-------
+ ...ml |  4 ++--
+ 7 files changed, 53 insertions(+), 12 deletions(-)</code></pre>
+<p>The three options <code>width</code>, <code>name-width</code>, and
+<code>count</code> seem to be the only options available for
+<code>--stat</code>.</p>
+<h3 id="git-diff---shortstat"><a
+href="https://git-scm.com/docs/git-diff#Documentation/git-diff.txt---shortstat"><code>git diff --shortstat</code></a></h3>
+<p>I was browsing the documentation and noticed that there is a compact
+version of <code>--stat</code>.</p>
+<pre><code>rag$ git diff HEAD~5 --shortstat
+ 7 files changed, 53 insertions(+), 12 deletions(-)</code></pre>
+<p>They look useful, but as I skimmed the documentation page and googled
+some, my goal cannot be achieved with <code>git diff</code>. Actually,
+there seem not to be the specific one to get the metrics of the entire
+commit history. I might want to do some programming with
+<code>awk</code>.</p>
+<h3
+id="git-log---authorauthor-name---shortstat-awk"><code>git log --author="Author Name" --shortstat | awk</code></h3>
+<p>I got that! Tada!</p>
+<pre><code>rag$ git log --author=&quot;huyfififi&quot; --shortstat | awk &#39;/files changed/ {files += $1} /insertion/ {insertions += $4} /deletion/ {deletions += $6} END {print files changed, &quot;files changed,&quot; insertions, &quot;insertions(+),&quot;, deletions, &quot;deletions(-)&quot;}&#39;
+18 files changed,597 insertions(+), 492 deletions(-)</code></pre>
+<p>This will be one of my favorite command (program? since awk is a
+programming language).</p>
+<p>I tried with a project with a huge commit history, but the command
+returned my metrics instantly. How efficient the Git algorithm is! I
+still can't believe Linus Torvalds managed to invent Linux and Git.</p>
+<hr />
+<p>Kombucha 100 Protein bar 200 Chicken parmesan with linguine 700
+Berries 200 Chicken salad 300 Protein shake 150 Yogurt 150</p>
+<p>Total 1800 kcal</p>
+<hr />
+<p>MUST:</p>
+<ul>
+<li>Codeforces 981A</li>
+</ul>
+<p>TODO:</p>
+<ul>
+<li>Retry: Topological Sort</li>
+<li>Retry 1829E with BFS</li>
+<li>Review Codeforces Round 981</li>
+<li>Dentist appointment (20241029)</li>
+<li>Upgrade the Amazon Lightsail plan (take a snapshot, create a new
+instance, and migrate)</li>
+</ul>
+<hr />
+<p><a href="../../index.html">index</a> <a
+href="20241024.html">20241024</a> <a
+href="20241026.html">20241026</a></p>

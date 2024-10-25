@@ -91,6 +91,7 @@
 
 # Git
 
+- [Counting insertions/deletions in a Git repository](./2024/10/20241025.html)
 - [`git checkout --theirs .`](./2024/10/20241021.html)
 - [Forking v.s. Branching (only have link to StackOverFlow)](./2024/07/20240713.html)
 
