@@ -1,0 +1,44 @@
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+<meta charset="UTF-8">
+</head>
+<h1 id="section">20241026 ◎</h1>
+<h2 id="a.-sakurako-and-kosuke"><a
+href="https://codeforces.com/contest/2033/problem/A">2033A. Sakurako and
+Kosuke</a></h2>
+<p>Observation: The absolute value of the positions is increasing by 1
+(1, 2, 3, …)</p>
+<p><code>Sum(i=1, n): 2(i - 1) * (-1) ^ i</code></p>
+<p><code>Sum(n): n (if n is even)</code></p>
+<p><code>Sum(n): -n (if n is even)</code></p>
+<p>We just need to check if <code>i</code> is even or odd when it
+reaches <code>n</code>.</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">int</span>(<span class="bu">input</span>())):</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    n: <span class="bu">int</span> <span class="op">=</span> <span class="bu">int</span>(<span class="bu">input</span>())</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> n <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">1</span>:</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">&quot;Kosuke&quot;</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">&quot;Sakurako&quot;</span>)</span></code></pre></div>
+<hr />
+<p>Salad 500 Rice 500 Protein shake 300 Mashed potatoes 150 Sandwich
+300</p>
+<p>Total 1750 kcal</p>
+<hr />
+<p>MUST:</p>
+<ul>
+<li>Codeforces 2033B</li>
+</ul>
+<p>TODO:</p>
+<ul>
+<li>Retry: Topological Sort</li>
+<li>Retry 1829E with BFS</li>
+<li>Codeforces 2033C</li>
+<li>Dentist appointment (20241029)</li>
+<li>Upgrade the Amazon Lightsail plan (take a snapshot, create a new
+instance, and migrate)</li>
+</ul>
+<hr />
+<p><a href="../../index.html">index</a> <a
+href="20241025.html">20241025</a> <a
+href="20241027.html">20241027</a></p>
