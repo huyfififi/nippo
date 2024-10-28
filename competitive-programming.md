@@ -72,6 +72,8 @@
 
 ## Greedy
 
+- 2033B. Sakurako and Water - 900
+	- [20241027](./2024/10/20241027.html)
 - 1995B1. Bouquet (Easy Version) - 1000
 	- [20240803](./2024/08/20240803.html)
 	- [20240831](./2024/08/20240831.html)
@@ -80,6 +82,8 @@
 
 ## Math
 
+- 2033A. Sakurako and Kosuke - 800
+	- [20241026](./2024/10/20241026.html)
 - 2008C. Longest Good Array - 900
 	- [20240909](./2024/09/20240909.html)
 - 2008B. Square or Not - 800

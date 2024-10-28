@@ -1,0 +1,60 @@
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+<meta charset="UTF-8">
+</head>
+<h1 id="section">20241027 ◎</h1>
+<h2 id="b.-sakurako-and-water---900"><a
+href="https://codeforces.com/contest/2033/problem/B">2033B. Sakurako and
+Water - 900</a></h2>
+<blockquote>
+<p>With her magic, she can select a square area of mountains and
+increase the height of each mountain on the main diagonal of that area
+by exactly one.</p>
+</blockquote>
+<p>To mazimize the effect her magic, she can pick one diagonal whose
+<code>i - j = l (-n &lt;= l &lt;= n)</code> in one action. When two
+diagonals have differnt <code>i - j</code>, then they cannot be modified
+in the same operation.</p>
+<p>Therefore, we can iterate over the diagonals and sum up the minimum
+value for each diagonal.</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> collections <span class="im">import</span> defaultdict</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">int</span>(<span class="bu">input</span>())):</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    n: <span class="bu">int</span> <span class="op">=</span> <span class="bu">int</span>(<span class="bu">input</span>())</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    a: <span class="bu">list</span>[<span class="bu">list</span>[<span class="bu">int</span>]] <span class="op">=</span> []</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(n):</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>        a.append(<span class="bu">list</span>(<span class="bu">map</span>(<span class="bu">int</span>, <span class="bu">input</span>().split())))</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    min_in_diagonal <span class="op">=</span> defaultdict(<span class="bu">int</span>)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> row_i <span class="kw">in</span> <span class="bu">range</span>(n):</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> col_i <span class="kw">in</span> <span class="bu">range</span>(n):</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>            diff: <span class="bu">int</span> <span class="op">=</span> row_i <span class="op">-</span> col_i</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>            min_in_diagonal[diff] <span class="op">=</span> <span class="bu">min</span>(min_in_diagonal[diff], a[row_i][col_i])</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="op">-</span><span class="bu">sum</span>(min_in_diagonal.values()))</span></code></pre></div>
+<hr />
+<p>Fruits 400 Pork 400 Pasta 500 Mashed potatoes 150 Protein shake
+300</p>
+<p>Total 1750 kcal</p>
+<hr />
+<p>MUST:</p>
+<ul>
+<li>None, I don't feel well. If this continues, I will take sick
+leave</li>
+</ul>
+<p>TODO:</p>
+<ul>
+<li>Retry: Topological Sort</li>
+<li>Retry 1829E with BFS</li>
+<li>Codeforces 2033C</li>
+<li>Dentist appointment (20241029)</li>
+<li>Upgrade the Amazon Lightsail plan (take a snapshot, create a new
+instance, and migrate)</li>
+</ul>
+<hr />
+<p><a href="../../index.html">index</a> <a
+href="20241026.html">20241026</a> <a
+href="20241028.html">20241028</a></p>
