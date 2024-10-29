@@ -72,6 +72,8 @@
 
 ## Greedy
 
+- 2033C. Sakurako\'s Field Trip - 1400
+	- [20241028](./2024/10/20241028.html)
 - 2033B. Sakurako and Water - 900
 	- [20241027](./2024/10/20241027.html)
 - 1995B1. Bouquet (Easy Version) - 1000
