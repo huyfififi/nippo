@@ -2,19 +2,105 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <meta charset="UTF-8">
 </head>
-<h1 id="section">20241029</h1>
+<h1 id="section">20241029 ◎</h1>
+<ul>
+<li>Went to see a dentist</li>
+<li>communicated with the doctor
+<ul>
+<li>He said that I would not need another prescription for steriods</li>
+</ul></li>
+<li>Read <a
+href="https://flutterfoundation.dev/blog/posts/we-are-forking-flutter-this-is-why/">We're
+forking Flutter. This is why.</a>
+<ul>
+<li>TIL: Flutter was created by Google</li>
+<li>I wish I could contribute to OSS so bad</li>
+</ul></li>
+</ul>
+<h2 id="retry-topological-sort">Retry: Topological Sort</h2>
+<p>I completely forgot about the algorithm, so this is just my attempt
+to make it work.</p>
+<p><a
+href="https://en.wikipedia.org/wiki/Topological_sorting">Topological
+sorting - Wikipedia</a></p>
+<blockquote>
+<h3 id="kahns-algorithm">Kahn’s algorithm</h3>
+</blockquote>
+<blockquote>
+<p>One of these algorithms, first described by Kahn (1962), works by
+choosing vertices in the same order as the eventual topological sort.
+First, find a list of “start nodes” that have no incoming edges and
+insert them into a set S; at least one such node must exist in a
+non-empty (finite) acyclic graph. Then:</p>
+</blockquote>
+<pre><code>L ← Empty list that will contain the sorted elements
+S ← Set of all nodes with no incoming edge
+
+while S is not empty do
+    remove a node n from S
+    add n to L
+    for each node m with an edge e from n to m do
+        remove edge e from the graph
+        if m has no other incoming edges then
+            insert m into S
+
+if graph has edges then
+    return error   (graph has at least one cycle)
+else
+    return L   (a topologically sorted order)</code></pre>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> collections <span class="im">import</span> deque</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> <span class="dv">6</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>edges: <span class="bu">list</span>[<span class="bu">tuple</span>[<span class="bu">int</span>, <span class="bu">int</span>]] <span class="op">=</span> [</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    (<span class="dv">5</span>, <span class="dv">0</span>),</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    (<span class="dv">5</span>, <span class="dv">2</span>),</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    (<span class="dv">3</span>, <span class="dv">1</span>),</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    (<span class="dv">4</span>, <span class="dv">0</span>),</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    (<span class="dv">4</span>, <span class="dv">1</span>),</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    (<span class="dv">2</span>, <span class="dv">3</span>),</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>result: <span class="bu">list</span>[<span class="bu">int</span>] <span class="op">=</span> []</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>incoming: <span class="bu">list</span>[<span class="bu">int</span>] <span class="op">=</span> [<span class="dv">0</span>] <span class="op">*</span> n</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> s, t <span class="kw">in</span> edges:</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>    incoming[t] <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>q <span class="op">=</span> deque()</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> node_i <span class="kw">in</span> <span class="bu">range</span>(n):</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> incoming[node_i] <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>        q.append(node_i)</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> q:</span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>    node_to_remove <span class="op">=</span> q.popleft()</span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> s, t <span class="kw">in</span> edges:</span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> s <span class="op">==</span> node_to_remove:</span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>            incoming[t] <span class="op">-=</span> <span class="dv">1</span></span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> incoming[t] <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>                q.append(t)</span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>    result.append(node_to_remove)</span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(result)</span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a><span class="co"># [4, 5, 0, 2, 3, 1]</span></span></code></pre></div>
+<p>I didn't optimize the code, but now I remember the algorithm (to some
+extent).</p>
+<p>We count the number of incoming edges, remove node with no incoming
+edges from the graph, update the incoming edge counts, and repeat these
+steps.</p>
 <hr />
-<p>Udon 800 Sandwitch 300</p>
-<p>Total 1100 kcal</p>
+<p>Udon 800 Sandwitch 300 m&amp;m's 300 Kombucha 200</p>
+<p>Total 1600 kcal</p>
+<p>6 mi run, push-ups</p>
 <hr />
 <p>MUST:</p>
 <ul>
-<li>Dentist appointment (20241029)</li>
-<li>Ask doctor for another prescription</li>
+<li>Check <code>uv</code></li>
+<li>Withdraw the rent</li>
 </ul>
 <p>TODO:</p>
 <ul>
-<li>Retry: Topological Sort</li>
+<li>Review: Topological Sort</li>
 <li>Retry 1829E with BFS</li>
 <li>Upgrade the Amazon Lightsail plan (take a snapshot, create a new
 instance, and migrate)</li>
