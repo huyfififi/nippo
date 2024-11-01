@@ -2,15 +2,108 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <meta charset="UTF-8">
 </head>
-<h1 id="section">20241031</h1>
+<h1 id="section">20241031 ◎</h1>
+<p>I talked with my friends for a long time. I'm tired.</p>
+<h2 id="chromadb-and-sqlite">ChromaDB and SQLite</h2>
+<p>Motivation: I got curious how ChromaDB stores embeddings or other
+data.</p>
+<p><a
+href="https://docs.trychroma.com/troubleshooting#sqlite">Troubleshooting
+| ChromaDB Docs</a></p>
+<blockquote>
+<p>Chroma requires SQLite &gt; 3.35</p>
+</blockquote>
+<p>ChromaDB simply uses SQL to store its data.</p>
+<p>It's interesting that it uses SQLite. SQLite is not designed to
+handle large amount of requests. Therefore, ChromaDB may not be the
+option when developing Web API that need to handle multiple requests at
+the same time.</p>
+<p><a
+href="https://www.sqlite.org/cgi/src/doc/begin-concurrent/doc/begin_concurrent.md">SQLite:
+Begin Concurrent</a></p>
+<blockquote>
+<p>Usually, SQLite allows at most one writer to proceed
+concurrently.</p>
+</blockquote>
+<p>I thought ChromaDB was the go-to option, but because its
+documentation is not very helpful, and the write throughput is limited,
+I'm inclined to explore other options.</p>
+<ul>
+<li>Copying data from the ChromaDB container to my local machine</li>
+</ul>
+<pre><code>$ docker cp rag-chromadb-1:chroma/chroma/chroma.sqlite3 .
+Successfully copied 169kB to /Users/username/rag/.</code></pre>
+<ul>
+<li>Loading data</li>
+</ul>
+<pre><code>$ sqlite3 chroma.sqlite3
+SQLite version 3.43.2 2023-10-10 13:08:14
+Enter &quot;.help&quot; for usage hints.
+sqlite&gt;</code></pre>
+<ul>
+<li>Showing tables</li>
+</ul>
+<pre><code>sqlite&gt; .tables
+collection_metadata                embeddings
+collections                        embeddings_queue
+databases                          embeddings_queue_config
+embedding_fulltext_search          maintenance_log
+embedding_fulltext_search_config   max_seq_id
+embedding_fulltext_search_content  migrations
+embedding_fulltext_search_data     segment_metadata
+embedding_fulltext_search_docsize  segments
+embedding_fulltext_search_idx      tenants
+embedding_metadata</code></pre>
+<ul>
+<li>Adding headers to the result of SELECT</li>
+</ul>
+<pre><code>sqlite&gt; .headers ON</code></pre>
+<ul>
+<li>Checking the collection I created</li>
+</ul>
+<pre><code>sqlite&gt; SELECT * FROM collections;
+id|name|dimension|database_id|config_json_str
+fa8b28c4-2e56-4bd9-aaf5-53ae438f1423|learn|384|00000000-0000-0000-0000-000000000000|{&quot;hnsw_configuration&quot;: {&quot;space&quot;: &quot;l2&quot;, &quot;ef_construction&quot;: 100, &quot;ef_search&quot;: 10, &quot;num_threads&quot;: 8, &quot;M&quot;: 16, &quot;resize_factor&quot;: 1.2, &quot;batch_size&quot;: 100, &quot;sync_threshold&quot;: 1000, &quot;_type&quot;: &quot;HNSWConfigurationInternal&quot;}, &quot;_type&quot;: &quot;CollectionConfigurationInternal&quot;}</code></pre>
+<ul>
+<li>Checking the embedding record (I happened to have only one
+record)</li>
+</ul>
+<pre><code>sqlite&gt; SELECT * FROM embeddings;
+id|segment_id|embedding_id|seq_id|created_at
+1|f425325a-7d10-4faa-873a-e86495072384|9527d8eb60f04fa7b109891f396ea1a0||2024-10-12 12:16:25</code></pre>
+<ul>
+<li>Checking the tables that have text data</li>
+</ul>
+<pre><code>sqlite&gt; SELECT * FROM embedding_fulltext_search;
+string_value
+Yudai Yaguchi is 9 feet tall
+sqlite&gt; SELECT * FROM embedding_fulltext_search_content;
+id|c0
+1|Yudai Yaguchi is 9 feet tall
+sqlite&gt; SELECT * FROM embedding_fulltext_search_data;
+id|block
+1|
+10|
+137438953473|</code></pre>
+<p>However, as I browsed the tables, vectors seem not to be stored in
+the SQL database. SQLite is just to store other data than actual
+embeddings.</p>
+<p>I browsed the GitHub repository and some web pages, but I could not
+find the exact answer, but my guesstimate is that, ChromaDB stores
+vectors in memory for fast access, and the reason the data persists in
+my Docker Compose is that the memory is configured as Docker Volume.</p>
+<p>But I'm not sure. I'll correct my understanding later, or I would
+appreciate it if you could fork and create a pull request toward this
+page.</p>
 <hr />
-<p>Rice Roni 400 Mashed potatoes 400 Protein shake 200</p>
-<p>Total 1000 kcal</p>
+<p>Rice Roni 400 Mashed potatoes 400 Protein shake 200 Japanese Matcha
+Soy 600 Vietnamese Cafe 200</p>
+<p>Total 1800 kcal</p>
+<p>4 mi run</p>
 <hr />
 <p>MUST:</p>
 <ul>
 <li>Check <code>uv</code></li>
-<li>Withdraw the rent</li>
 <li>Order a birthday present for my wife</li>
 </ul>
 <p>TODO:</p>

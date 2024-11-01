@@ -43,6 +43,7 @@
 
 # Machine-learning
 
+- [ChromaDB and SQLite](./2024/10/20241031.html)
 - [Embeddings in LLM](./2024/09/20240925.html)
 - [Tokens in LLM](./2024/09/20240924.html)
 - [Running Chroma](./2024/09/20240906.html)
