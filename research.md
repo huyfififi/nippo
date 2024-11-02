@@ -2,6 +2,8 @@
 
 # Data Structure & Algorithms
 
+- [Topological sorting - Kahn's algorithm](./2024/10/20241029.html)
+	- [Topological sorting - recursive approach](./2024/10/20241030.html)
 - [Disjoint Set Union](./2024/10/20241016.html)
 	- [Applications to Codeforces problems](./2024/10/20241022.html)
 - [Memoization / Tabulation (20240530)](./2024/05/20240530.html)
