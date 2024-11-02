@@ -2,19 +2,121 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <meta charset="UTF-8">
 </head>
-<h1 id="section">20241101</h1>
+<h1 id="section">20241101 ◎</h1>
+<p>I finished the tasks I decided to do today, as always.</p>
+<h2
+id="okta-adldap-delegated-authentication---username-above-52-characters-security-advisory"><a
+href="https://trust.okta.com/security-advisories/okta-ad-ldap-delegated-authentication-username/">Okta
+AD/LDAP Delegated Authentication - Username Above 52 Characters Security
+Advisory</a></h2>
+<blockquote>
+<p>On October 30, 2024, a vulnerability was internally identified in
+generating the cache key for AD/LDAP DelAuth. The Bcrypt algorithm was
+used to generate the cache key where we hash a combined string of userId
++ username + password. During specific conditions, this could allow
+users to authenticate by only providing the username with the stored
+cache key of a previous successful authentication.</p>
+</blockquote>
+<blockquote>
+<p>Note: A precondition for this vulnerability is that the username must
+be or exceed 52 characters any time a cache key is generated for the
+user.</p>
+</blockquote>
+<p>The precondition to have 52 or more characters for a username looks
+super simple, especially in a famous security company like Okta, but
+that kind of thing happens sometimes. I think disclosing mistakes is key
+to getting customers to believe in the business (or anything).</p>
+<h2 id="is-uv-supported-by-github-dependabot-as-of-nov-2-2024">Is
+<code>uv</code> supported by GitHub Dependabot? (as of Nov 2 2024)</h2>
+<p>Motivation: There is a discussion to migrate <code>poetry</code>
+-&gt; <code>uv</code> as <code>uv</code> is getting tractions from the
+industry, providing super-fast implementation of Python package (or say,
+project) management. Last time I checked, there is no native support by
+Dependabot, and because Dependagot is so useful to keep packages
+up-to-date and patch security issues, I prefer not to switch to
+<code>uv</code> if it still lacks support by Dependabot.</p>
+<p><a
+href="https://docs.astral.sh/uv/guides/integration/dependency-bots/#dependabot">Dependency
+bots | uv</a></p>
+<blockquote>
+<p>Support for uv is not yet available. Progress can be tracked at:</p>
+</blockquote>
+<blockquote>
+<ul>
+<li><a
+href="https://github.com/dependabot/dependabot-core/issues/10478">dependabot/dependabot-core#10478</a>
+for <code>uv.lock</code> output</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li><a
+href="https://github.com/dependabot/dependabot-core/issues/10039">dependabot/dependabot-core#10039</a>
+for <code>uv pip compile</code> outputs</li>
+</ul>
+</blockquote>
+<p><a href="https://docs.astral.sh/uv/guides/projects/#uvlock">Working
+on projects | uv</a></p>
+<blockquote>
+<p>uv.lock is a cross-platform lockfile that contains exact information
+about your project's dependencies. Unlike the pyproject.toml which is
+used to specify the broad requirements of your project, the lockfile
+contains the exact resolved versions that are installed in the project
+environment. This file should be checked into version control, allowing
+for consistent and reproducible installations across machines.</p>
+</blockquote>
+<blockquote>
+<p>uv.lock is a human-readable TOML file but is managed by uv and should
+not be edited manually.</p>
+</blockquote>
+<p>Similar to <code>poetry.lock</code> in <code>poetry</code>,
+<code>uv.lock</code> is the lock file of all the dependencies in a
+project. As I see this issue in the GitHub repository of Dependabot</p>
+<p><a
+href="https://github.com/dependabot/dependabot-core/issues/10478">Support
+updating <code>uv.lock</code> #10478</a></p>
+<p>It's still open, and I don't see any related pull request, so I can
+say it's not supported by Dependabot at the moment.</p>
+<p>There seem to be another way to lock dependencies with
+<code>uv</code>, <code>uv pip compile</code>.</p>
+<p><a href="https://docs.astral.sh/uv/pip/compile/">Locking environments
+| uv</a></p>
+<blockquote>
+<p>uv allows dependencies to be locked in the requirements.txt
+format.</p>
+</blockquote>
+<p>And, as I see the issue and pull request in the Dependabot
+repository</p>
+<p><a
+href="https://github.com/dependabot/dependabot-core/issues/10039">Support
+python uv as pip-compile compatible replacement #10039</a></p>
+<p><a
+href="https://github.com/dependabot/dependabot-core/pull/10040">Support
+uv compiled requirements files #10040</a></p>
+<p>They are still in review. It is interesting that the pull request was
+created around five months ago and have been staled.</p>
+<p>Maybe the Dependabot team does not have enough resources? Do they
+just don't like the idea to support <code>uv</code>? I browsed the
+thread but could not figure out.</p>
+<p>The author communicated in a polite manner even though he has been
+(sort of) ignored. I respect the his attitude… I cannot guarantee that I
+wouldn’t go mad if I were in his shoes.</p>
+<p>TODO: I know <code>uv</code> is super-fast, but is it important?
+:thinking_face:</p>
 <hr />
-<p>Fruits 200 Protein bars 300 Pocky 200</p>
-<p>Total 700 kcal</p>
+<p>Fruits 200 Protein bars 300 Pocky 200 Biriyani 1000 Herbal tea
+100</p>
+<p>Total 1800 kcal</p>
 <hr />
 <p>MUST:</p>
 <ul>
-<li>Check <code>uv</code></li>
+<li>Participate in Codeforces Round 984 (Div. 3)</li>
 <li>Order a birthday present for my wife</li>
 </ul>
 <p>TODO:</p>
 <ul>
-<li>Review: Topological Sort</li>
+<li>Check what “<code>uv</code> is fast” means and if it's
+important</li>
 <li>Retry 1829E with BFS</li>
 <li>Upgrade the Amazon Lightsail plan (take a snapshot, create a new
 instance, and migrate)</li>
