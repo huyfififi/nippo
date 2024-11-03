@@ -180,6 +180,8 @@
 
 ## Implementation
 
+- 2036A. Quintomania - 800
+	- [20241103](./2024/11/20241103.html)
 - 1999B. Card Game - 1000
 	- [20240831](./2024/08/20240831.html)
 - 1974B. Symmetric Encoding - 800
@@ -235,6 +237,8 @@
 
 ## Too Difficult For Me (Help Wanted)
 
+- 2036B. Startup - 800
+	- [20241103](./2024/11/20241103.html)
 - 1996D. Fun - 1200
 	- [20240801](./2024/08/20240801.html)
 
