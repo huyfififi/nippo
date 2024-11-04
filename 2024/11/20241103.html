@@ -2,7 +2,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <meta charset="UTF-8">
 </head>
-<h1 id="section">20241103</h1>
+<h1 id="section">20241103 ◎</h1>
 <h2 id="a.-quintomania---800"><a
 href="https://codeforces.com/contest/2036/problem/A#">2036A. Quintomania
 - 800</a></h2>
@@ -45,22 +45,77 @@ Python is not a good language for competitive programming, but it may
 not be that important for me right now. I want to focus on data
 structures &amp; algorithms, not useful techniques for competitive
 programming.</p>
+<h2 id="d.-i-love-1543---900"><a
+href="https://codeforces.com/contest/2036/problem/D">2036D. I Love 1543
+- 900</a></h2>
+<p>The approach to breaking down the problem and thinking about
+functions I would want to use worked this time. I feel that I broke a
+wall with this problem.</p>
+<p>Just the same as everyday programming (and all other matters in
+life), breaking down a big problem into smaller ones and dealing with
+them one by one worked.</p>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> count_occurrance(a: <span class="bu">list</span>[<span class="bu">str</span>], t) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    count: <span class="bu">int</span> <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(a) <span class="op">-</span> <span class="dv">3</span>):</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="st">&quot;&quot;</span>.join(a[i : i <span class="op">+</span> <span class="dv">4</span>]) <span class="op">==</span> t:</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>            count <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> count</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> flatten_layer(mat: <span class="bu">list</span>[<span class="bu">list</span>[<span class="bu">str</span>]], n: <span class="bu">int</span>, m: <span class="bu">int</span>, layer: <span class="bu">int</span>) <span class="op">-&gt;</span> <span class="bu">list</span>[<span class="bu">str</span>]:</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">assert</span> layer <span class="op">&gt;=</span> <span class="dv">0</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    result: <span class="bu">list</span>[<span class="bu">str</span>] <span class="op">=</span> []</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    <span class="co"># up, excluding two edges</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> col_i <span class="kw">in</span> <span class="bu">range</span>(layer <span class="op">+</span> <span class="dv">1</span>, m <span class="op">-</span> layer <span class="op">-</span> <span class="dv">1</span>):</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>        result.append(mat[layer][col_i])</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>    <span class="co"># right</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> row_i <span class="kw">in</span> <span class="bu">range</span>(layer, n <span class="op">-</span> layer):</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>        result.append(mat[row_i][m <span class="op">-</span> layer <span class="op">-</span> <span class="dv">1</span>])</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>    <span class="co"># bottom, excluding two edges</span></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> col_i <span class="kw">in</span> <span class="bu">range</span>(m <span class="op">-</span> layer <span class="op">-</span> <span class="dv">2</span>, layer, <span class="op">-</span><span class="dv">1</span>):</span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>        result.append(mat[n <span class="op">-</span> layer <span class="op">-</span> <span class="dv">1</span>][col_i])</span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>    <span class="co"># left</span></span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> row_i <span class="kw">in</span> <span class="bu">range</span>(n <span class="op">-</span> layer <span class="op">-</span> <span class="dv">1</span>, layer <span class="op">-</span> <span class="dv">1</span>, <span class="op">-</span><span class="dv">1</span>):</span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>        result.append(mat[row_i][layer])</span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>    <span class="co"># circulate</span></span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>    result.extend(result[:<span class="dv">3</span>])</span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> result</span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">int</span>(<span class="bu">input</span>())):</span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>    n, m <span class="op">=</span> <span class="bu">map</span>(<span class="bu">int</span>, <span class="bu">input</span>().split())</span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a>    mat <span class="op">=</span> []</span>
+<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(n):</span>
+<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a>        mat.append(<span class="bu">list</span>(<span class="bu">input</span>()))</span>
+<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a>    res: <span class="bu">int</span> <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">min</span>(n <span class="op">//</span> <span class="dv">2</span>, m <span class="op">//</span> <span class="dv">2</span>)):</span>
+<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a>        flat_layer: <span class="bu">list</span>[<span class="bu">str</span>] <span class="op">=</span> flatten_layer(mat, n, m, i)</span>
+<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a>        res <span class="op">+=</span> count_occurrance(flat_layer, <span class="st">&quot;1543&quot;</span>)</span>
+<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(res)</span></code></pre></div>
 <hr />
-<p>Protein bars 150 Protein chips 150 Sushi bowl 800 Salad 200 Pocky
+<p>Protein bars 450 Protein chips 150 Sushi bowl 800 Salad 200 Pocky
 200</p>
-<p>Total 1500 kcal</p>
+<p>Total 1800 kcal</p>
 <hr />
 <p>MUST:</p>
 <ul>
-<li>Consider a birthday present for my wife</li>
+<li>Browse the flashcard project</li>
+<li>Browse anti-aging merchandises</li>
+<li>Browse track-balls</li>
+<li>Check what “<code>uv</code> is fast” means and if it's
+important</li>
 </ul>
 <p>TODO:</p>
 <ul>
-<li>Check what “<code>uv</code> is fast” means and if it's
-important</li>
 <li>Retry 1829E with BFS</li>
 <li>Review 2036C</li>
-<li>Review 2036D</li>
 <li>Enroll in <a href="https://codeforces.com/edu/courses">Codeforces
 Community Course</a></li>
 <li>Upgrade the Amazon Lightsail plan (take a snapshot, create a new
