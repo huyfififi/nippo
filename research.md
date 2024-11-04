@@ -52,6 +52,7 @@
 
 # Services
 
+- [Check how fast `uv` is](./2024/11/20241104.html)
 - [Is `uv` supported by Dependabot? - No (as of Nov 2 2024)](./2024/11/20241101.html)
 - [Upgrading AWS Lightsail instance](./2024/10/20241017.html)
 - [Amazon S3 and GitHub Actions](./2024/08/20240828.html)

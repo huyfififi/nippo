@@ -1,0 +1,54 @@
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+<meta charset="UTF-8">
+</head>
+<h1 id="section">20241104</h1>
+<h2 id="check-how-fast-uv-is">Check how fast <code>uv</code> is</h2>
+<p><a
+href="https://github.com/astral-sh/uv/blob/main/BENCHMARKS.md">uv/BENCHMARKS.md
+at main - astral-sh/uv</a></p>
+<p>Four scenarios are mentioned on the page: Warm Installation, Cold
+Installation, Warm Resolution, and Cold Resolution. In essence, what is
+“10-100x faster than <code>pip</code>” is that dependency resolution and
+package installation are much faster than any other package
+managers.</p>
+<p>Although its performance is quite impressive, it does not look very
+appealing because dependency resolution and package installation do not
+happen frequently, and even with other package managers, they don't take
+much time.</p>
+<p>Adding a new package to add a new functionality is rare unless I just
+start a new project.</p>
+<p>Updating packages is usually handled by Dependabot, and because it's
+a background job, some time lag should be tolerated. Updating packages
+in a hurry is very rare, and shortening package installation steps in
+GitHub Actions does not move the needle.</p>
+<p>Packages are cached in GitHub Actions, so dependency resolution and
+package installation won't be a problem when running tests on pull
+requests.</p>
+<p>For me, the fact that <a href="20241101.html"><code>uv</code> is not
+supported by Dependabot</a> is more concerning to me, considering the
+skills and resources of my collaborators.</p>
+<p>Conclusion: I should stick to <code>poetry</code>.</p>
+<hr />
+<p>Pancakes &amp; Sausage 500 Protein shake 300 Rice 800</p>
+<p>Total 1600 kcal</p>
+<hr />
+<p>MUST:</p>
+<ul>
+<li>Browse the flashcard project</li>
+<li>Browse anti-aging merchandises</li>
+<li>Browse track-balls</li>
+</ul>
+<p>TODO:</p>
+<ul>
+<li>Retry 1829E with BFS</li>
+<li>Review 2036C</li>
+<li>Enroll in <a href="https://codeforces.com/edu/courses">Codeforces
+Community Course</a></li>
+<li>Upgrade the Amazon Lightsail plan (take a snapshot, create a new
+instance, and migrate)</li>
+</ul>
+<hr />
+<p><a href="../../index.html">index</a> <a
+href="20241103.html">20241103</a> <a
+href="20241105.html">20241105</a></p>
