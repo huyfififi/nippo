@@ -159,6 +159,11 @@
 
 - [1972A-800 (20240613)](./2024/06/20240613.html)
 
+## Pruning
+
+- 2036C. Anya and 1100 - 900
+	- [20241105](./2024/11/20241105.html)
+
 ## Constructive Algorithms
 
 - 1620A. Equal or Not Equal - 800

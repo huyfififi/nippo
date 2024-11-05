@@ -2,20 +2,105 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <meta charset="UTF-8">
 </head>
-<h1 id="section">20241105</h1>
+<h1 id="section">20241105 ◎</h1>
+<h2 id="c.-anya-and-1100---900"><a
+href="https://codeforces.com/contest/2036/problem/C">2036C. Anya and
+1100 - 900</a></h2>
+<p><a href="https://codeforces.com/blog/entry/135849">Codeforces Round
+984 (Div.3) Editorial</a></p>
+<blockquote>
+<p>Hint</p>
+</blockquote>
+<blockquote>
+<p>With each query, to track the change in the presence of “1100” in a
+row, you don't have to go through the entire row — you can check just a
+few neighboring cells.</p>
+</blockquote>
+<p>That makes sense, and I took time to come up with a solution, but it
+was too hard for me.</p>
+<blockquote>
+<p>Tutorial</p>
+</blockquote>
+<blockquote>
+<p>First, in a naive way, let's count <code>count</code> - the number of
+times “1100” occurs in <code>s</code>.</p>
+</blockquote>
+<blockquote>
+<p>Then, for each of <code>q</code> queries we will update
+<code>count</code>: consider the substring
+<code>s[max(1, i - 3);min(i + 3, n)] before changing</code>s_i<code>and find</code>before<code>- the number of times that "1100" occurs in it. Then update</code>s_i
+=
+v<code>and simiilarly find</code>after<code>- the number of times that "1100" occurs in</code>s[max(1,
+i - 3);min(i + 3, n)]` after applying the query.</p>
+</blockquote>
+<blockquote>
+<p>Thus, by doing <code>count = count + (after - before)</code>, we get
+the number of times that “1100” occurs in <code>s</code> after the query
+is applied. If <code>count &gt; 0</code>, the answer to the query is
+“YES”, otherwise it is “NO”.</p>
+</blockquote>
+<p>It just makese sense!!</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>TARGET_STRING <span class="op">=</span> <span class="st">&quot;1100&quot;</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>TARGET_LENGTH <span class="op">=</span> <span class="bu">len</span>(TARGET_STRING)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">int</span>(<span class="bu">input</span>())):</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    s: <span class="bu">list</span>[<span class="bu">str</span>] <span class="op">=</span> <span class="bu">list</span>(<span class="bu">input</span>())</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    q: <span class="bu">int</span> <span class="op">=</span> <span class="bu">int</span>(<span class="bu">input</span>())</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    count: <span class="bu">int</span> <span class="op">=</span> <span class="st">&quot;&quot;</span>.join(s).count(TARGET_STRING)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(q):</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>        i, v <span class="op">=</span> <span class="bu">input</span>().split()</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>        i <span class="op">=</span> <span class="bu">int</span>(i) <span class="op">-</span> <span class="dv">1</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>        before: <span class="bu">int</span> <span class="op">=</span> <span class="st">&quot;&quot;</span>.join(</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>            s[<span class="bu">max</span>(i <span class="op">-</span> TARGET_LENGTH <span class="op">+</span> <span class="dv">1</span>, <span class="dv">0</span>) : i <span class="op">+</span> TARGET_LENGTH]</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>        ).count(TARGET_STRING)</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>        s[i] <span class="op">=</span> v</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>        after: <span class="bu">int</span> <span class="op">=</span> <span class="st">&quot;&quot;</span>.join(</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>            s[<span class="bu">max</span>(i <span class="op">-</span> TARGET_LENGTH <span class="op">+</span> <span class="dv">1</span>, <span class="dv">0</span>) : i <span class="op">+</span> TARGET_LENGTH]</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>        ).count(TARGET_STRING)</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>        count <span class="op">+=</span> after <span class="op">-</span> before</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> count <span class="op">&gt;</span> <span class="dv">0</span>:</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="st">&quot;YES&quot;</span>)</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="st">&quot;NO&quot;</span>)</span></code></pre></div>
+<h2
+id="mozilla-foundation-lays-off-about-third-of-staff---the-register"><a
+href="https://www.theregister.com/2024/11/06/mozilla_foundation_layoffs/">Mozilla
+Foundation lays off about third of staff - The Register</a></h2>
+<blockquote>
+<p>While Mozilla Foundation declined to quantify the number of people
+being let go, it reported 60 employees on its 2022 Form 990 disclosure,
+which was filed November 15, 2023. <em>The Register</em> understands the
+current headcount is closer to 120, so presumably around 36 people stand
+to lose their jobs.</p>
+</blockquote>
+<p><a href="https://en.wikipedia.org/wiki/Mozilla_Corporation">Mozilla
+Corporation - Wikipedia</a></p>
+<blockquote>
+<p>Number of employees: ~750 (2020)</p>
+</blockquote>
+<p>I found it interesting that the Mozilla Foundation operates with a
+very limited number of employees, though its subsidiary has a moderate
+number of people.</p>
+<p>Layoffs…</p>
 <hr />
-<p>Pancakes &amp; Sausage 500 Sandwitches 300</p>
-<p>Total 800 kcal</p>
+<p>Pancakes &amp; Sausage 500 Sandwitches 300 Protein shake 300 Rice 400
+Protein bars 300</p>
+<p>Total 1800 kcal</p>
 <hr />
 <p>MUST:</p>
 <ul>
-<li>Browse the flashcard project</li>
-<li>Browse anti-aging merchandises</li>
+<li>Review one prolem I solved in the past</li>
 </ul>
 <p>TODO:</p>
 <ul>
+<li>Browse the flashcard project</li>
 <li>Retry 1829E with BFS</li>
-<li>Review 2036C</li>
 <li>Enroll in <a href="https://codeforces.com/edu/courses">Codeforces
 Community Course</a></li>
 <li>Upgrade the Amazon Lightsail plan (take a snapshot, create a new
