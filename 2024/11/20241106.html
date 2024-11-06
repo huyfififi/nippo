@@ -3,18 +3,158 @@
 <meta charset="UTF-8">
 </head>
 <h1 id="section">20241106</h1>
+<p>I'm hungry… I've been with 1800kcal but I'm considering increasing my
+calorie intake for better sustainability, but let's see.</p>
+<h2 id="pgp-and-pep-761">PGP and PEP 761</h2>
+<h3 id="pgp">PGP</h3>
+<p><a
+href="https://www.fortinet.com/resources/cyberglossary/pgp-encryption">What
+is PGP Encryption? Pretty Good Privacy Explained | Fortinet</a></p>
+<blockquote>
+<p>Pretty Good Privacy (PGP) is a security program used to decrypt and
+encrypt email and authenticate email messages through digital signatures
+and file encryption.</p>
+</blockquote>
+<blockquote>
+<p>PGP works through a combination of cryptography, data compression,
+and hashing techniques.</p>
+</blockquote>
+<blockquote>
+<p>PGP uses the public key system in which every user has a unique
+encryption key known publicly and a private key that only they know. A
+message is encrypted when a user sends it to someone using their public
+key, then decrypted when the recipient opens it with their private key.
+It combines private-key and public-key cryptography and the use of
+symmetric and asymmetric key technology to encrypt data as it travels
+across networks.</p>
+</blockquote>
+<blockquote>
+<p>The algorithm that PGP uses, which is typically the RSA algorithm, is
+largely considered unbreakable, which makes it ideal for encrypting
+files. It is particularly effective when used with a threat detection
+and response tool. File encryption software enables users to encrypt all
+of their files while removing the complexity of the
+encryption-decryption process.</p>
+</blockquote>
+<p>So, PGP is a program that uses an asymmetric key algorithm (and a
+symmetric key algorithm after sharing a symmetric key) to encrypt files,
+transfer them securely, and decrypt the files.</p>
+<p><a
+href="https://www.linuxjournal.com/content/pretty-good-privacy-pgp-and-digital-signatures">Pretty
+Good Privacy (PGP) and Digital Signatures</a></p>
+<blockquote>
+<p>In 1991 Phil Zimmermann, a free speech activist, and anti-nuclear
+pacifist developed Pretty Good Privacy (PGP), the first software
+available to the general public that utilized RSA (a public key
+cryptosystem, will discuss it later) for email encryption and
+signing.</p>
+</blockquote>
+<p>It seems PGP can be also used for signing in addition to email
+encryption.</p>
+<h3 id="im-giving-up-on-pgp"><a
+href="https://words.filippo.io/giving-up-on-long-term-pgp/">I’m giving
+up on PGP</a></h3>
+<blockquote>
+<p>A long term key is as secure as the minimum common denominator of
+your security practices over its lifetime. <em>It’s the weak
+link.</em></p>
+</blockquote>
+<blockquote>
+<p>Worse, long term keys patterns like collecting signatures and
+printing fingerprints on business cards discourage practices that would
+otherwise be obvious hygiene: rotating keys often, having different keys
+for different devices, compartmentalization. It actually encourages
+expanding the attack surface by making backups of the key.</p>
+</blockquote>
+<blockquote>
+<p>Are you sure you can protect that long-term key forever? Because when
+an attacker decides to target you and succeeds, it won’t have access
+from that point forwards, but to all your past communications, too. And
+that’s ever more relevant.</p>
+</blockquote>
+<p>I don’t fully understand how PGP works, but as I read the blog, it
+seems a long-lived encryption key is required for PGP to work.</p>
+<h3 id="pep-761---deprecating-pgp-signatures-for-cpython-artifacts"><a
+href="https://peps.python.org/pep-0761/">PEP 761 - Deprecating PGP
+signatures for CPython artifacts</a></h3>
+<blockquote>
+<p>Abstract</p>
+</blockquote>
+<blockquote>
+<p>Since Python 3.11.0, CPython has provided two verifiable digital
+signatures for all CPython artifacts: PGP and Sigstore.</p>
+</blockquote>
+<blockquote>
+<p>PGP’s design requires the maintenance and protection of long-lived
+private keys by trusted parties. PGP’s security and ergonomics have been
+criticized by security practitioners for many years now, with the
+biggest issue being that there were few alternatives for “artifact
+signing” being proposed or adopted.</p>
+</blockquote>
+<blockquote>
+<p>Sigstore’s design philosophy has focused on the ergonomics of signing
+and verifying and uses short-lived keys with strongly-bound
+human-readable identities via OpenID Connect. Sigstore has both
+development and adoption momentum, seeing adoption by PyPI, NPM,
+Homebrew, and GitHub, among other ecosystems.</p>
+</blockquote>
+<blockquote>
+<p>This PEP proposes to move CPython to using Sigstore exclusively for
+signing artifacts through a deprecation and eventual discontinuance of
+providing PGP signatures with new release managers.</p>
+</blockquote>
+<h2 id="c.-mr.-perfectly-fine---800"><a
+href="https://codeforces.com/problemset/problem/1829/C">1829C.
+Mr. Perfectly Fine - 800</a></h2>
+<p>The first dirty solution I could come up with.</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> math</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">int</span>(<span class="bu">input</span>())):</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    n: <span class="bu">int</span> <span class="op">=</span> <span class="bu">int</span>(<span class="bu">input</span>())</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    first_skill_min: <span class="bu">int</span> <span class="op">=</span> math.inf</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    second_skill_min: <span class="bu">int</span> <span class="op">=</span> math.inf</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    both_skill_min: <span class="bu">int</span> <span class="op">=</span> math.inf</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(n):</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>        mins, skills <span class="op">=</span> <span class="bu">input</span>().split()</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>        mins <span class="op">=</span> <span class="bu">int</span>(mins)</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">match</span> skills:</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>            <span class="cf">case</span> <span class="st">&quot;10&quot;</span>:</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>                first_skill_min <span class="op">=</span> <span class="bu">min</span>(first_skill_min, mins)</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>            <span class="cf">case</span> <span class="st">&quot;01&quot;</span>:</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>                second_skill_min <span class="op">=</span> <span class="bu">min</span>(second_skill_min, mins)</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>            <span class="cf">case</span> <span class="st">&quot;11&quot;</span>:</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>                both_skill_min <span class="op">=</span> <span class="bu">min</span>(both_skill_min, mins)</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>            <span class="cf">case</span> _:</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>                <span class="cf">continue</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> both_skill_min <span class="op">!=</span> math.inf:</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> first_skill_min <span class="op">!=</span> math.inf <span class="kw">and</span> second_skill_min <span class="op">!=</span> math.inf:</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="bu">min</span>(both_skill_min, first_skill_min <span class="op">+</span> second_skill_min))</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(both_skill_min)</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> first_skill_min <span class="op">!=</span> math.inf <span class="kw">and</span> second_skill_min <span class="op">!=</span> math.inf:</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(first_skill_min <span class="op">+</span> second_skill_min)</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="op">-</span><span class="dv">1</span>)</span></code></pre></div>
+<p>Since the solution does not look beautiful (super subjective), and
+the problem is tagged as <code>bitmask</code>, I took time to explore
+more sophisticated approaches.</p>
+<p><a href="https://codeforces.com/blog/entry/116108">Codeforces Round
+871 (Div. 4) Editorial</a></p>
+<p>It seems that is the expected solution.</p>
 <hr />
-<p>Sushi bowl 800 Pasta 600</p>
-<p>Total 1400 kcal</p>
+<p>Sushi bowl 800 Pasta 500 Protein bars 500</p>
+<p>Total 1800 kcal</p>
 <hr />
 <p>MUST:</p>
 <ul>
-<li>Review one problem I solved in the past</li>
+<li>Retry 1829E with BFS</li>
 </ul>
 <p>TODO:</p>
 <ul>
-<li>Retry 1829E with BFS</li>
-<li>Review 2036C</li>
 <li>Enroll in <a href="https://codeforces.com/edu/courses">Codeforces
 Community Course</a></li>
 <li>Upgrade the Amazon Lightsail plan (take a snapshot, create a new

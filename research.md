@@ -10,6 +10,7 @@
 
 # Network
 
+- [PGP and PEP 761 - Deprecating PGP signatures for CPython artifacts](./2024/11/20241106.html)
 - [Mastodon streaming API: persistent HTTP connetions and WebSocket](./2024/10/20241023.html)
 - [HTTP-01 challenge and `certbot`](./2024/10/20241014.html)
 - [Representational State Transfer (REST) / Roy Fielding's dissertation](./2024/09/20240923.html)

@@ -185,6 +185,8 @@
 
 ## Implementation
 
+- 1829C. Mr. Perfectly Fine - 800
+	- [20241106](./2024/11/20241106.html)
 - 2036D. I Love 1543 - 900
 	- [20241103](./2024/11/20241103.html)
 - 2036A. Quintomania - 800
