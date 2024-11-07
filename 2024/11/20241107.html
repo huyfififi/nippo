@@ -1,0 +1,224 @@
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+<meta charset="UTF-8">
+</head>
+<h1 id="section">20241107 ◎</h1>
+<ul>
+<li><a
+href="https://gensouyugi.com/topics/858">対戦カードゲームから考えるコンテンツの拡張性と寿命について
+| トピックス</a>
+<ul>
+<li>It's been a while since I played TCG last time, but the blog is
+interesting, mentioning different kinds of card games and their
+longevity.</li>
+</ul></li>
+</ul>
+<hr />
+<p>I tried to enroll in ITMO Academy: pilot course on Codeforces,
+but</p>
+<blockquote>
+<p>By registering for this course, you confirm that you will not in any
+way distribute solutions to the original problems of the course or other
+original course materials (video, etc.).</p>
+</blockquote>
+<p>Does it mean I cannot write a solution here? I remember that it is
+advised not to share solutions online for non-temporary CTF contests,
+and it is also the case for this course? Interesting…</p>
+<h2 id="suffix-array">Suffix Array</h2>
+<p><a
+href="https://www.scholarhat.com/tutorial/datastructures/suffix-array-and-suffix-tree-in-data-structures">Suffix
+Array and Suffix Tree in Data Structures &amp; Applications</a></p>
+<blockquote>
+<p>Q1. What are some of the applications of Suffix Arrays?</p>
+</blockquote>
+<blockquote>
+<p>Pattern Searching, Longest Common Substring, Data Compression, Data
+Mining, Bioinformatics, etc.</p>
+</blockquote>
+<p>A suffix array is a sorted array of all suffixes of a given string.
+The sophisticated versions of the algorithms to build a suffix array are
+too diffcult to understand for me right now, so I will stick to an easy
+implementation.</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> build_suffix_array(s: <span class="bu">str</span>) <span class="op">-&gt;</span> <span class="bu">list</span>[<span class="bu">int</span>]:</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    suffixes: <span class="bu">list</span>[<span class="bu">tuple</span>[<span class="bu">str</span>, <span class="bu">int</span>]] <span class="op">=</span> []</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(s)):</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>        suffixes.append((s[i:], i))</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># O(n^2logn): O(nlogn) sorting and O(n) string comparision</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    sorted_suffixes: <span class="bu">list</span>[<span class="bu">tuple</span>[<span class="bu">str</span>, <span class="bu">int</span>]] <span class="op">=</span> <span class="bu">sorted</span>(suffixes, key<span class="op">=</span><span class="kw">lambda</span> x: x[<span class="dv">0</span>])</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    suffix_array: <span class="bu">list</span>[<span class="bu">int</span>] <span class="op">=</span> [suffix[<span class="dv">1</span>] <span class="cf">for</span> suffix <span class="kw">in</span> sorted_suffixes]</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> suffix_array</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>s <span class="op">=</span> <span class="st">&quot;ababba&quot;</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="co">&quot;&quot;&quot;</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="co">5: a</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="co">0: ababba</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="co">2: abba</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="co">4: ba</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="co">1: babba</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="co">3: bba</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="co">&quot;&quot;&quot;</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(build_suffix_array(s))  <span class="co"># [5, 0, 2, 4, 1, 3]</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>s <span class="op">=</span> <span class="st">&quot;banana&quot;</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="co">&quot;&quot;&quot;</span></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="co">5: a</span></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="co">3: ana</span></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="co">1: anana</span></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="co">0: banana</span></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="co">4: na</span></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a><span class="co">2: nana</span></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a><span class="co">&quot;&quot;&quot;</span></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(build_suffix_array(s))  <span class="co"># [5, 3, 1, 0, 4, 2]</span></span></code></pre></div>
+<p>I gradually got the concept of the suffix array, but this simple
+approach is not what the competitive programming world accepts. I need
+to understand the better way to build a suffix array.</p>
+<p>There seem to be Manber-Myers algorith whose time complexity is
+O(nlogn) but I could not find helpful resources online except for this
+<a
+href="https://github.com/benfulton/Algorithmic-Alley/blob/master/AlgorithmicAlley/SuffixArrays/sa.py">https://github.com/benfulton/Algorithmic-Alley/blob/master/AlgorithmicAlley/SuffixArrays/sa.py</a></p>
+<p>It seems the Prefix doubling algorithms are the ones I should check
+out.</p>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> build_suffix_array(s: <span class="bu">str</span>) <span class="op">-&gt;</span> <span class="bu">list</span>[<span class="bu">int</span>]:</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Append the special character</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    s <span class="op">+=</span> <span class="st">&quot;$&quot;</span>  <span class="co"># $ is smaller than any other characters</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    n <span class="op">=</span> <span class="bu">len</span>(s)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Initial setup</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    suffix_array: <span class="bu">list</span>[<span class="bu">int</span>] <span class="op">=</span> <span class="bu">list</span>(<span class="bu">range</span>(n))</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Initial ranking based on single characters</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Rank based on ASCII values</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Values don&#39;t matter as long as they give a unique ordering</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>    rank <span class="op">=</span> [<span class="bu">ord</span>(c) <span class="cf">for</span> c <span class="kw">in</span> s]</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>    temp_rank <span class="op">=</span> [<span class="dv">0</span>] <span class="op">*</span> n</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>    k <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">while</span> (<span class="dv">1</span> <span class="op">&lt;&lt;</span> k) <span class="op">&lt;</span> n:  <span class="co"># While 2^k &lt; n</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Sort based on pairs (rank[i], rank[i + 2^k])</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>        <span class="co"># to increment `k` and get the result of 2^(k + 1),</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>        <span class="co"># we split 2 ^ (k + 1) into two groups of 2^k</span></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Because we already know the ordering of 2 ^ k in the previous iteration</span></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Comparing the strings with 2^k length can be done in O(1)</span></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>        <span class="co"># rank[i]: the rank of the suffix starting at `i` (left half)</span></span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>        <span class="co"># rank[i + 2 ^ k]: the rank of the suffix starting at `i + 2^k` (right half)</span></span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>        <span class="co"># rank[(i + 2 ^ k) % n]: Cycling does not break the order, so</span></span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>        <span class="co"># to make things simple, we make all the suffix the same length</span></span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>        <span class="co"># 0: &quot;abbab$&quot;</span></span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>        <span class="co"># 3: &quot;ab$abb&quot;</span></span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>        suffix_array.sort(key<span class="op">=</span><span class="kw">lambda</span> i: (rank[i], rank[(i <span class="op">+</span> (<span class="dv">1</span> <span class="op">&lt;&lt;</span> k)) <span class="op">%</span> n]))</span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Reassign ranks based on sorted order</span></span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>        temp_rank[suffix_array[<span class="dv">0</span>]] <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, n):</span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>            prev <span class="op">=</span> suffix_array[i <span class="op">-</span> <span class="dv">1</span>]</span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>            curr <span class="op">=</span> suffix_array[i]</span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Compare pairs (rank[prev], rank[prev + 2^k]) and (rank[curr], rank[curr + 2^k])</span></span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> (rank[prev], rank[(prev <span class="op">+</span> (<span class="dv">1</span> <span class="op">&lt;&lt;</span> k)) <span class="op">%</span> n]) <span class="op">==</span> (</span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a>                rank[curr],</span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a>                rank[(curr <span class="op">+</span> (<span class="dv">1</span> <span class="op">&lt;&lt;</span> k)) <span class="op">%</span> n],</span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a>            ):</span>
+<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a>                temp_rank[curr] <span class="op">=</span> temp_rank[prev]</span>
+<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a>            <span class="cf">else</span>:</span>
+<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a>                temp_rank[curr] <span class="op">=</span> temp_rank[prev] <span class="op">+</span> <span class="dv">1</span></span>
+<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a>        rank <span class="op">=</span> temp_rank[:]  <span class="co"># Update rank array for next iteration</span></span>
+<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a>        k <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> suffix_array</span>
+<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-49"><a href="#cb2-49" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot; &quot;</span>.join([<span class="bu">str</span>(x) <span class="cf">for</span> x <span class="kw">in</span> build_suffix_array(<span class="bu">input</span>())]))</span></code></pre></div>
+<p>This seems to be the one I'm looking for (This is very basic and
+should not violate the course rule not to share a solution). I left
+comments as I decoded the code, and I think I understand the algorithm
+to some extent. Though, I don’t think I can memorize all the details.
+Let's try implementing it by myself later.</p>
+<p>I tried to implement it without any references, but I missed the fact
+that in Python, shift operators (<code>&gt;&gt;</code> and
+<code>&lt;&lt;</code>) have lower precedence than arithmetic operators.
+Also I missed to access rank[suffix_array[i]] in some places. I can't
+say I completely understand the algorithm, but I'm getting there.</p>
+<p>I'll take a look at a problem that can be solved with a suffix array
+(if I'm not exhausted)</p>
+<hr />
+<h2 id="e.-the-lakes---1100-bfs"><a
+href="https://codeforces.com/problemset/problem/1829/E">1829E. The Lakes
+- 1100 (BFS)</a></h2>
+<p>This is a classic problem using DFS/BFS, as I remember this problem
+was on a famous Japanese book about competitive programming. Since
+recursive approach exceeds the maximum stack size limit when using
+Python, BFS is the most straightforward approach.</p>
+<p>I accidentally updated <code>row_i</code> and <code>col_i</code> in
+the for-loop, and it resulted in some weird bugs. I could not find how
+that bug had happened, but it was a good experience to fall into the
+pitfall.</p>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> collections <span class="im">import</span> deque</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">int</span>(<span class="bu">input</span>())):</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    n, m <span class="op">=</span> <span class="bu">map</span>(<span class="bu">int</span>, <span class="bu">input</span>().split())</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    a: <span class="bu">list</span>[<span class="bu">list</span>[<span class="bu">int</span>]] <span class="op">=</span> []</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(n):</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>        a.append(<span class="bu">list</span>(<span class="bu">map</span>(<span class="bu">int</span>, <span class="bu">input</span>().split())))</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    visited: <span class="bu">list</span>[<span class="bu">list</span>[<span class="bu">bool</span>]] <span class="op">=</span> []</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(n):</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>        visited.append([<span class="va">False</span>] <span class="op">*</span> m)</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>    max_volume: <span class="bu">int</span> <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>    queue <span class="op">=</span> deque()</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> row_i <span class="kw">in</span> <span class="bu">range</span>(n):</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> col_i <span class="kw">in</span> <span class="bu">range</span>(m):</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> a[row_i][col_i] <span class="op">==</span> <span class="dv">0</span> <span class="kw">or</span> visited[row_i][col_i]:</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>                <span class="cf">continue</span></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>            lake_volume: <span class="bu">int</span> <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>            visited[row_i][col_i] <span class="op">=</span> <span class="va">True</span></span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>            queue.append((row_i, col_i))</span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>            <span class="cf">while</span> queue:</span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>                ri, ci <span class="op">=</span> queue.popleft()</span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>                lake_volume <span class="op">+=</span> a[ri][ci]</span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>                <span class="co"># up</span></span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>                <span class="cf">if</span> ri <span class="op">&gt;</span> <span class="dv">0</span> <span class="kw">and</span> a[ri <span class="op">-</span> <span class="dv">1</span>][ci] <span class="op">&gt;</span> <span class="dv">0</span> <span class="kw">and</span> <span class="kw">not</span> visited[ri <span class="op">-</span> <span class="dv">1</span>][ci]:</span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>                    visited[ri <span class="op">-</span> <span class="dv">1</span>][ci] <span class="op">=</span> <span class="va">True</span></span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>                    queue.append((ri <span class="op">-</span> <span class="dv">1</span>, ci))</span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>                <span class="co"># down</span></span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>                <span class="cf">if</span> ri <span class="op">&lt;</span> n <span class="op">-</span> <span class="dv">1</span> <span class="kw">and</span> a[ri <span class="op">+</span> <span class="dv">1</span>][ci] <span class="op">&gt;</span> <span class="dv">0</span> <span class="kw">and</span> <span class="kw">not</span> visited[ri <span class="op">+</span> <span class="dv">1</span>][ci]:</span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>                    visited[ri <span class="op">+</span> <span class="dv">1</span>][ci] <span class="op">=</span> <span class="va">True</span></span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a>                    queue.append((ri <span class="op">+</span> <span class="dv">1</span>, ci))</span>
+<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a>                <span class="co"># right</span></span>
+<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a>                <span class="cf">if</span> ci <span class="op">&lt;</span> m <span class="op">-</span> <span class="dv">1</span> <span class="kw">and</span> a[ri][ci <span class="op">+</span> <span class="dv">1</span>] <span class="op">&gt;</span> <span class="dv">0</span> <span class="kw">and</span> <span class="kw">not</span> visited[ri][ci <span class="op">+</span> <span class="dv">1</span>]:</span>
+<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a>                    visited[ri][ci <span class="op">+</span> <span class="dv">1</span>] <span class="op">=</span> <span class="va">True</span></span>
+<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a>                    queue.append((ri, ci <span class="op">+</span> <span class="dv">1</span>))</span>
+<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a>                <span class="co"># left</span></span>
+<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a>                <span class="cf">if</span> ci <span class="op">&gt;</span> <span class="dv">0</span> <span class="kw">and</span> a[ri][ci <span class="op">-</span> <span class="dv">1</span>] <span class="op">&gt;</span> <span class="dv">0</span> <span class="kw">and</span> <span class="kw">not</span> visited[ri][ci <span class="op">-</span> <span class="dv">1</span>]:</span>
+<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a>                    visited[ri][ci <span class="op">-</span> <span class="dv">1</span>] <span class="op">=</span> <span class="va">True</span></span>
+<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a>                    queue.append((ri, ci <span class="op">-</span> <span class="dv">1</span>))</span>
+<span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a>            max_volume <span class="op">=</span> <span class="bu">max</span>(lake_volume, max_volume)</span>
+<span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-47"><a href="#cb3-47" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(max_volume)</span></code></pre></div>
+<hr />
+<p>Protein bar 150 Sandwich 150 Yogurt 300 Pancake &amp; sausage 300
+Yakisoba 500 Rice 400</p>
+<p>Total 1800 kcal</p>
+<hr />
+<p>MUST:</p>
+<ul>
+<li>None</li>
+</ul>
+<p>TODO:</p>
+<ul>
+<li>Upgrade the Amazon Lightsail plan (take a snapshot, create a new
+instance, and migrate)</li>
+</ul>
+<hr />
+<p><a href="../../index.html">index</a> <a
+href="20241106.html">20241106</a> <a
+href="20241108.html">20241108</a></p>
