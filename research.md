@@ -2,6 +2,7 @@
 
 # Data Structure & Algorithms
 
+- [Counting sort](./2024/11/20241108.html)
 - [Suffix array](./2024/11/20241107.html)
 - [Topological sorting - Kahn's algorithm](./2024/10/20241029.html)
 	- [Topological sorting - recursive approach](./2024/10/20241030.html)

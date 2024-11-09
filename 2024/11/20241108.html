@@ -2,20 +2,66 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <meta charset="UTF-8">
 </head>
-<h1 id="section">20241108</h1>
+<h1 id="section">20241108 ◎</h1>
+<p>My housemate is highly sensitive, and I'm considering moving out. I
+wish the U.S. housing is more affordable…</p>
+<p>I was too hungry. I'm thinking about increasing my calorie intake a
+bit for a few days.</p>
+<ul>
+<li>Guided my friend on GitHub Actions and Django</li>
+</ul>
+<h2 id="counting-sort">Counting sort</h2>
+<p>It's embarassing, but I don't remember much about the counting sort,
+so I took some time to recall it.</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> counting_sort(arr: <span class="bu">list</span>[<span class="bu">int</span>]):</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    mi <span class="op">=</span> <span class="bu">min</span>(arr)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    ma <span class="op">=</span> <span class="bu">max</span>(arr)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    count: <span class="bu">list</span>[<span class="bu">int</span>] <span class="op">=</span> [<span class="dv">0</span>] <span class="op">*</span> (ma <span class="op">-</span> mi <span class="op">+</span> <span class="dv">1</span>)  <span class="co"># value range</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> x <span class="kw">in</span> arr:</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>        count[x <span class="op">-</span> mi] <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    result: <span class="bu">list</span>[<span class="bu">int</span>] <span class="op">=</span> []</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(mi, ma <span class="op">+</span> <span class="dv">1</span>):</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(count[i <span class="op">-</span> mi]):</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>            result.append(i <span class="op">+</span> mi)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> result</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;</span><span class="sc">{</span>counting_sort([<span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">5</span>])<span class="op">=</span><span class="sc">}</span><span class="ss">&quot;</span>)  <span class="co"># [2, 3, 4, 5, 6]</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;</span><span class="sc">{</span>counting_sort([<span class="op">-</span><span class="dv">1</span>, <span class="op">-</span><span class="dv">3</span>, <span class="op">-</span><span class="dv">2</span>, <span class="dv">5</span>, <span class="dv">6</span>])<span class="op">=</span><span class="sc">}</span><span class="ss">&quot;</span>)  <span class="co"># [-6, -5, -4, 2, 3]</span></span></code></pre></div>
+<p>Now, the memory is coming back.</p>
+<p><a
+href="https://www.quora.com/What-is-the-intuitive-explanation-for-counting-sort">What
+is the intuitive explanation for counting sort? - Quora</a></p>
+<blockquote>
+<p><strong>Intuition:</strong></p>
+</blockquote>
+<blockquote>
+<p>Counting sort works because we limit the range of possible input
+values. By interating over the range of possible values in sorted order,
+we ensure that the values we add to our output array are always added in
+sorted order.</p>
+</blockquote>
+<p>TODO: Study Radix Sort</p>
 <hr />
 <p>Protein bars 450 Protein shake 150 Sushi bowl 800 Sausage &amp;
-pancake 250 Sandwich 150</p>
-<p>Total 1800 kcal</p>
+pancake 250 Sandwich 150 Boba 400</p>
+<p>Total 2200 kcal</p>
 <hr />
 <p>MUST:</p>
 <ul>
-<li>None</li>
+<li>Visit the houses my wife suggested</li>
 </ul>
 <p>TODO:</p>
 <ul>
+<li>Radix Sort</li>
+<li>Improved suffix array</li>
 <li>Upgrade the Amazon Lightsail plan (take a snapshot, create a new
 instance, and migrate)</li>
+<li>Research Strategy Pattern</li>
+<li>Research a design pattern to have interchangeable classes</li>
 </ul>
 <hr />
 <p><a href="../../index.html">index</a> <a
