@@ -2,14 +2,76 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <meta charset="UTF-8">
 </head>
-<h1 id="section">20241109</h1>
+<h1 id="section">20241109 ◎</h1>
+<ul>
+<li>Room tours
+<ul>
+<li>I found a good place to move in.</li>
+</ul></li>
+</ul>
+<h2 id="radix-sort">Radix sort</h2>
+<p>Explaining an algorithm with words is very challenging… sometimes
+code itself is much easier to understand.</p>
+<p>Peeking the algorithm procedure was enough for me to implement the
+algorithm this time.</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> radix_sort(arr: <span class="bu">list</span>[<span class="bu">int</span>]) <span class="op">-&gt;</span> <span class="bu">list</span>[<span class="bu">int</span>]:</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    max_val <span class="op">=</span> <span class="bu">max</span>(arr)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># O(d) where d is the nuber of digits in the largest number</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    digit: <span class="bu">int</span> <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">while</span> digit <span class="op">&lt;</span> max_val:</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>        <span class="co"># O(1)</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>        bucket: <span class="bu">list</span>[<span class="bu">list</span>[<span class="bu">int</span>]] <span class="op">=</span> []</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>):</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>            bucket.append([])</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>        <span class="co"># O(n) where n is the number of elements in the input array</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> x <span class="kw">in</span> arr:</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>            bucket[x <span class="op">//</span> digit <span class="op">%</span> <span class="dv">10</span>].append(x)</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>        <span class="co"># O(n)</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>        arr: <span class="bu">list</span>[<span class="bu">int</span>] <span class="op">=</span> []</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>):</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>            arr.extend(bucket[i])</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>        digit <span class="op">*=</span> <span class="dv">10</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> arr</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>arr <span class="op">=</span> [<span class="dv">431</span>, <span class="dv">256</span>, <span class="dv">257</span>, <span class="dv">843</span>, <span class="dv">900</span>, <span class="dv">23</span>, <span class="dv">76</span>, <span class="dv">0</span>, <span class="dv">45</span>]</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;</span><span class="sc">{</span>arr<span class="op">=</span><span class="sc">}</span><span class="ss">&quot;</span>)</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;</span><span class="sc">{</span>radix_sort(arr)<span class="op">=</span><span class="sc">}</span><span class="ss">&quot;</span>)  <span class="co"># [0, 23, 45, 76, 256, 257, 431, 843, 900]</span></span></code></pre></div>
+<p>Counting sort has a problem in its space complexity; we need an array
+with the size of the range of possible values to achive the super
+efficient time complexity <code>O(n)</code>, where n is the number of
+elements in the input array.</p>
+<p>Radix sort uses the counting sort in a limited way, only having a
+array with the size <code>10</code>, while maintaining the order in each
+inner array.</p>
+<p>Radix sort's time complexity is <code>O(nd)</code>, where
+<code>n</code> is the number of elements in the input array to be
+sorted, and <code>d</code> is the digit of the largest number in the
+input array. And, the space complexity of the radix sort is
+<code>O(n)</code> because unlike the counting sort, we only need a
+limited size to leverage the counting/hashing logic.</p>
+<p>Radix sort is stable, meaning it preserves the relative order of
+elements with equal keys (x quick sort o merge sort).</p>
+<p>I better understand that the main advantage of radix sort is its
+<strong>non-comparision-based</strong> logic, making it very efficient
+when <code>d</code>, a fixed number of digits, is small, it can
+outperform O(nlogn). (When <code>d</code> is so small, can't we just use
+counting sort, then? It seems I need some experience…)</p>
 <hr />
-<p>Sushi bowl 800 Yogurt 500 m&amp;m's 300 Pasta 400</p>
-<p>Total 2000 kcal</p>
+<p>Sushi bowl 800 Yogurt 500 m&amp;m's 300 Pasta 400 Sushi 700 Berries
+300 Chips 400 Oats 200 Yogurt 500</p>
+<p>Total 4100 kcal</p>
+<p>7 mi run, push-ups</p>
 <hr />
 <p>MUST:</p>
 <ul>
-<li>Visit the houses my wife suggested</li>
+<li>Do some research on the Strategy pattern</li>
 </ul>
 <p>TODO:</p>
 <ul>
@@ -17,7 +79,6 @@
 <li>Improved suffix array</li>
 <li>Upgrade the Amazon Lightsail plan (take a snapshot, create a new
 instance, and migrate)</li>
-<li>Research Strategy Pattern</li>
 <li>Research a design pattern to have interchangeable classes</li>
 </ul>
 <hr />
