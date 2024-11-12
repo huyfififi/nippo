@@ -47,6 +47,7 @@
 
 # Machine-learning
 
+- [The history of YOLO (You Only Look Once) and improvements in YOLO11](./2024/11/20241111.html)
 - [ChromaDB and SQLite](./2024/10/20241031.html)
 - [Embeddings in LLM](./2024/09/20240925.html)
 - [Tokens in LLM](./2024/09/20240924.html)
@@ -107,6 +108,7 @@
 
 # Others
 
+- [Django REST framework - built-in pagination](./2024/11/20241111.html)
 - [Unix time](./2024/10/20241021.html)
 - [Checking NGINX status](./2024/10/20241013.html)
 - [INI file](./2024/10/20241012.html)
