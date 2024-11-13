@@ -1,0 +1,139 @@
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+<meta charset="UTF-8">
+</head>
+<h1 id="section">20241113 ◎</h1>
+<ul>
+<li>Finished some miscellaneous tasks</li>
+</ul>
+<h2 id="why-is-authorization-header-used-for-authentication">Why is
+<code>Authorization</code> Header Used for Authentication?</h2>
+<p>TL;DR: There seem to be no reason behind that.</p>
+<p>I was confused why the “Authorization” header is used when performing
+Basic Authentication or API Authentication. Shouldnhey be different
+concepts?</p>
+<p><a
+href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Authorization">Authorization
+- HTTP | MDN</a></p>
+<blockquote>
+<p>The HTTP <code>Authorization</code> request header can be used to
+provide credentials that authenticate a user agent with a server,
+allowing access to protected resources.</p>
+</blockquote>
+<h3 id="authentication-vs-authorization">Authentication vs
+Authorization</h3>
+<p><a
+href="https://auth0.com/docs/get-started/identity-fundamentals/authentication-and-authorization">Authentication
+vs Authorization | Auth0</a></p>
+<p><a
+href="https://www.okta.com/identity-101/authentication-vs-authorization/">Authentication
+vs Authorization | Okta</a></p>
+<p>Authentication</p>
+<ul>
+<li>Determines whether users are who they claim to be
+<ul>
+<li>I.e., Proving who the users are</li>
+</ul></li>
+<li>Challenges the user to validate credentials (API key,
+username/password(BASIC), or token to verify the user's identity)</li>
+<li><strong>Usually done before authorization</strong></li>
+</ul>
+<p>Authorization</p>
+<ul>
+<li>Determines what users can and cannot access
+<ul>
+<li>I.e., Proving what users are allowed to do</li>
+</ul></li>
+<li>Verifies whether access is allowed through policies and rules
+<ul>
+<li>I.e., Authorization usually involves checking roles, permissions, or
+scopes.</li>
+</ul></li>
+</ul>
+<h3 id="permissions-authorization-in-django-rest-framework">Permissions
+(Authorization) in Django REST framework</h3>
+<p>I usually work with the Django REST framework, which provides a
+feature that allows permissions (authorization) to run after
+authentication.</p>
+<p><a
+href="https://www.django-rest-framework.org/api-guide/permissions/">Permissiosn
+- Django REST framework</a></p>
+<blockquote>
+<p>Together with authentication and throttling, permissions determine
+whether a request should be granted or denied access.</p>
+</blockquote>
+<p>It is common to have a role check along with a normal
+authentication.</p>
+<p>(I haven't checked if this code block works. This is just for
+reference)</p>
+<p>settings.py</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>REST_FRAMEWORK <span class="op">=</span> {</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">&#39;DEFAULT_AUTHENTICATION_CLASSES&#39;</span>: [</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>        <span class="st">&#39;rest_framework.authentication.BasicAuthentication&#39;</span>,</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    ]</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> rest_framework.permissions <span class="im">import</span> BasePermission</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> IsSuperUser(BasePermission):</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> has_permission(<span class="va">self</span>, request, view):</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> request.user <span class="kw">and</span> request.user.is_superuser</span></code></pre></div>
+<p>Usually, the flow looks like this: credentials are validated
+(authentication) first, and then additional checks (such as role checks)
+work as authorization.</p>
+<p>Authentication and authorization may be intertwined in custom
+permissions, but the basic flow is like the example.</p>
+<h3
+id="is-it-ok-to-use-authorization-header-for-authentication-what-is-the-history-behind-that">Is
+it OK to use “Authorization” header for authentication? What is the
+history behind that?</h3>
+<p>I could not find any (trustworthy) resources that explain the
+reason.</p>
+<p><a href="https://stackoverflow.com/q/30062024/16193058">Why is the
+HTTP header for Authentication called Authorization? |
+Stackoverflow</a></p>
+<p>:thinking_face:</p>
+<p><a
+href="https://stackoverflow.com/questions/42097902/why-is-the-header-for-http-authentication-called-authorization-and-not-authen">Why
+is the header for HTTP Authentication called “Authorization” and not
+“Authentication” - Stackoverflow</a></p>
+<blockquote>
+<p>I assume it's a historic mistake. That’s the best answer I have (note
+that I’m one of the authors of the newer RFC)</p>
+</blockquote>
+<p><a
+href="https://security.stackexchange.com/questions/134113/http-authentication-the-http-header-name-is-authorization-why">HTTP
+authentication - the HTTP header name is Authorization - why? -
+StackExchange</a></p>
+<p>This answer just makes sense, pointing out that the HTTP
+specification for headers were specified January 1997, but the first
+security standards were codified in 1999-2000, and the order made the
+inconsistency.</p>
+<p>But, it is just one rationale, and we cannot deny that there is no
+direct evidence/resource.</p>
+<hr />
+<p>157.0 lb</p>
+<p>Rice 400 Oatmeal 300 Mashed potatoes 500 Sushi bowl 800</p>
+<p>Total 2000 kcal</p>
+<p>push-ups</p>
+<hr />
+<p>MUST:</p>
+<ul>
+<li>Start a contract with AT&amp;T</li>
+<li>Prepare a checkbook</li>
+<li>Get a temporary number for electricity (20241115)</li>
+</ul>
+<p>TODO:</p>
+<ul>
+<li>Browse “You Only Look Once: Unified, Real-Time Object Detection” by
+Joseph Redmon</li>
+<li>Improved suffix array</li>
+<li>Upgrade the Amazon Lightsail plan (take a snapshot, create a new
+instance, and migrate)</li>
+</ul>
+<hr />
+<p><a href="../../index.html">index</a> <a
+href="20241112.html">20241112</a> <a
+href="20241114.html">20241114</a></p>

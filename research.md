@@ -1,5 +1,7 @@
 <head><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" /></head>
 
+- [index](index.html)
+
 # Data Structure & Algorithms
 
 - [Radix sort](./2024/11/20241109.html)
@@ -13,6 +15,7 @@
 
 # Network
 
+- [Why is `Authorization` Header Used for Authentication? (Authentication vs Authorization)](./2024/11/20241113.html)
 - [PGP and PEP 761 - Deprecating PGP signatures for CPython artifacts](./2024/11/20241106.html)
 - [Mastodon streaming API: persistent HTTP connetions and WebSocket](./2024/10/20241023.html)
 - [HTTP-01 challenge and `certbot`](./2024/10/20241014.html)

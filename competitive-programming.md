@@ -1,5 +1,7 @@
 <head><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" /></head>
 
+- [index](index.html)
+
 ## Parity
 
 - [1983B. Corner Twist - 1200](./2024/07/20240710.html)
