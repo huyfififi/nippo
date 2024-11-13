@@ -84,6 +84,7 @@
 
 # Design Principles
 
+- [Simple Factory Pattern and Strategy + Factory combo](./2024/11/20241112.html)
 - [Strategy Pattern](./2024/11/20241110.html)
 - [Porposes of `assert`](./2024/10/20241002.html)
 - [Repository Design Pattern](./2024/09/20240926.html)

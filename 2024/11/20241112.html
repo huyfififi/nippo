@@ -1,0 +1,90 @@
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+<meta charset="UTF-8">
+</head>
+<h1 id="section">20241112 ◎</h1>
+<p>My willpower to endure hunger for weight loss is deteriorating as I
+get older. Sad.</p>
+<ul>
+<li>Requested utility services (electricity and gas)</li>
+<li>Applied for an insurance</li>
+<li>Verizon does not support the new appartment, but AT&amp;T and
+Xfinity do. I'm thinking about using AT&amp;T right now.</li>
+</ul>
+<h2 id="simple-factory-pattern">Simple Factory Pattern</h2>
+<p><a
+href="https://refactoring.guru/design-patterns/factory-comparison">Factory
+Comparision - refactoring.guru</a></p>
+<blockquote>
+<p>The simple factory pattern describes a class that has one creation
+method with a large conditional that based on method parameters chooses
+which product class to instantiate and then return.</p>
+</blockquote>
+<blockquote>
+<p>People usually confuse <em>simple factories</em> with a general
+<em>factories</em> or with one of the creational design patterns. In
+most cases, a simple factory is an intermetiate step of introducing
+<strong>Factory Method</strong> or <strong>Abstract Factory</strong>
+patterns.</p>
+</blockquote>
+<blockquote>
+<p>A simple factory is usually represented by a single method in a
+single class. Over time, this method might become too big, so you may
+decide to extract parts of the method to subclasses. Once you do it
+several times, you migth discover that the whole thing turned into the
+class <em>factory method</em> pattern.</p>
+</blockquote>
+<p>So basically, it is a class with a method that instantiates an object
+depending on the given parameter.</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> PaymentFactory:</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">@staticmethod</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> get_strategy(provider: <span class="bu">str</span>, <span class="op">**</span>kwargs) <span class="op">-&gt;</span> PaymentStrategy:</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">match</span> provider:</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>            <span class="cf">case</span> <span class="st">&quot;paypal&quot;</span>:</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>                <span class="cf">return</span> PayPalPayment(<span class="op">**</span>kwargs)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>            <span class="cf">case</span> <span class="st">&quot;credit_card&quot;</span>:</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>                <span class="cf">return</span> CreditCardPayment(<span class="op">**</span>kwargs)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>            <span class="cf">case</span> _:</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>                <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="ss">f&quot;Unknown provider: </span><span class="sc">{</span>provider<span class="sc">}</span><span class="ss">&quot;</span>)</span></code></pre></div>
+<h2 id="strategy-factory-pattern">Strategy + Factory Pattern</h2>
+<p><a href="https://youtu.be/aBOrVRKK3fA?si=fxlyC5gxDzeZgrQp">Strategy
+and Factory Pattern, The Best Software Design Pattern Combo (Jono
+Williams on YouTube)</a></p>
+<p>This is super helpful to understand the combination, clear and
+concise.</p>
+<p><a
+href="https://dzone.com/articles/design-patterns-the-strategy-and-factory-patterns">Design
+Patterns: The Strategy and Factory Patterns - DZone</a></p>
+<blockquote>
+<p>We addressed this by creating a factory to encapsulate the logic
+concerned with selecting appropriate strategies for various
+conditions.</p>
+</blockquote>
+<p>It seems that using factory patterns to extract and encapsulate
+strategy selection is an useful pattern.</p>
+<p>The code I listed above removes the need to specify a strategy by the
+client code, listed here <a href="20241110.html">20241110</a>.</p>
+<hr />
+<p>160.8 lb :cry:</p>
+<p>Rice 800 Pancake &amp; Sausage 750 Protein shake 300 Oatmeal 150</p>
+<p>Total 2000 kcal</p>
+<hr />
+<p>MUST:</p>
+<ul>
+<li>Talk to my house owner</li>
+<li>Prepare a checkbook</li>
+<li>Check the status of electricity</li>
+</ul>
+<p>TODO:</p>
+<ul>
+<li>Browse “You Only Look Once: Unified, Real-Time Object Detection” by
+Joseph Redmon</li>
+<li>Improved suffix array</li>
+<li>Upgrade the Amazon Lightsail plan (take a snapshot, create a new
+instance, and migrate)</li>
+</ul>
+<hr />
+<p><a href="../../index.html">index</a> <a
+href="20241111.html">20241111</a> <a
+href="20241113.html">20241113</a></p>
