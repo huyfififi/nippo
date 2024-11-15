@@ -49,8 +49,9 @@
 - [Docker Image: slim/alpine/bookworm (20240521)](./2024/05/20240521.html)
 - [Apache (20240501)](./2024/05/20240501.html)
 
-# Machine-learning
+# Machine-learning / LLM
 
+- [Amazon Bedrock](./2024/11/20241115.html)
 - [The history of YOLO (You Only Look Once) and improvements in YOLO11](./2024/11/20241111.html)
 - [ChromaDB and SQLite](./2024/10/20241031.html)
 - [Embeddings in LLM](./2024/09/20240925.html)
