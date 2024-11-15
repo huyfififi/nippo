@@ -1,0 +1,121 @@
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+<meta charset="UTF-8">
+</head>
+<h1 id="section">20241114 ◎</h1>
+<ul>
+<li>Ordered a home WiFi</li>
+<li>Prepared a checkbook</li>
+<li>Sent an inquiry to my new apartment</li>
+</ul>
+<h2 id="wsl">WSL</h2>
+<p>People (around me) were talking about WSL, but I had no idea.</p>
+<p><a href="https://learn.microsoft.com/en-us/windows/wsl/about">What is
+Windows Subsystem for Linux?</a></p>
+<blockquote>
+<p>Windows Subsystem for Linux (WSL) is a feature of Windows that allows
+you to run a Linux environment on your Windows machine, without the need
+for a separate virtual machine or dual booting. WSL is designed to
+provide a seamless and productive experience for developers who want to
+use both Windows and Linux at the same time. - Use WSL to install and
+run various Linux distributions, such as Ubuntu, Debian, Kali, and more.
+- Store files in an isolated Linux file system, specific to the
+installed distribution. - Run command-line tools, such as BASH. - …</p>
+</blockquote>
+<blockquote>
+<h3 id="what-is-wsl-2">What is WSL 2?</h3>
+<p>WSL 2 is the default distro type when installing a Linux
+distribution. WSL 2 uses virtualization technology to run a Linux kernel
+inside of a lightweight utility virtual machine (VM). Linux
+distributions run as isolated containers inside of the WSL 2 managed
+VM.</p>
+</blockquote>
+<p>So, basically, WSL is a feature of Windows that allows Linux to run
+in a virtual environment (machine) conveniently.</p>
+<p>I haven’t used Windows in the last 10 years or more, especialy not
+for work, so I haven’t come across WSL in my life.</p>
+<h2 id="move-between-spaces-macbook">Move between spaces (MacBook)</h2>
+<p>My friend taught me about this feature when I was a sophomore, and
+since then, the MacBook spaces have been one of my faborite
+features.</p>
+<p><a
+href="https://support.apple.com/guide/mac-help/work-in-multiple-spaces-mh14112/">Work
+in multiple spaces on Mac - Apple Support</a></p>
+<blockquote>
+<p>Move between spaces - Press the Control key and the Right or Left
+arrow key.</p>
+</blockquote>
+<p>Apple’s trackpad is super convenient, and shortcuts are not portable
+knowledge, so I usually don’t remember shortcuts, but this one seems to
+be useful.</p>
+<h2 id="radix-sort-string">Radix Sort (String)</h2>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> string</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> radix_sort(arr: <span class="bu">list</span>[<span class="bu">str</span>]) <span class="op">-&gt;</span> <span class="bu">list</span>[<span class="bu">str</span>]:</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># n = len(arr), d = max length of input strings</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    chars <span class="op">=</span> <span class="st">&quot;@&quot;</span> <span class="op">+</span> string.ascii_lowercase</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    <span class="co"># padding</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># O(nd)</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    max_len: <span class="bu">int</span> <span class="op">=</span> <span class="bu">max</span>([<span class="bu">len</span>(s) <span class="cf">for</span> s <span class="kw">in</span> arr])</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(arr)):</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>        arr[i] <span class="op">=</span> arr[i] <span class="op">+</span> <span class="st">&quot;@&quot;</span> <span class="op">*</span> (max_len <span class="op">-</span> <span class="bu">len</span>(arr[i]))</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    <span class="co"># counting sort</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    <span class="co"># O(nd)</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, max_len <span class="op">+</span> <span class="dv">1</span>):</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>        bucket <span class="op">=</span> []</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(chars)):</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>            bucket.append([])</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> s <span class="kw">in</span> arr:</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>            bucket[chars.find(s[<span class="op">-</span>i])].append(s)</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>        tmp <span class="op">=</span> []</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(chars)):</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>            tmp.extend(bucket[i])</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>        arr <span class="op">=</span> tmp</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>    <span class="co"># remove padding</span></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>    <span class="co"># O(nd)</span></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(arr)):</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>        arr[i] <span class="op">=</span> arr[i].replace(<span class="st">&quot;@&quot;</span>, <span class="st">&quot;&quot;</span>)</span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> arr</span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>arr: <span class="bu">list</span>[<span class="bu">str</span>] <span class="op">=</span> [<span class="st">&quot;abc&quot;</span>, <span class="st">&quot;cca&quot;</span>, <span class="st">&quot;efg&quot;</span>, <span class="st">&quot;oie&quot;</span>, <span class="st">&quot;oac&quot;</span>, <span class="st">&quot;aa&quot;</span>, <span class="st">&quot;c&quot;</span>]</span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;</span><span class="sc">{</span>arr<span class="op">=</span><span class="sc">}</span><span class="ss">&quot;</span>)</span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;</span><span class="sc">{</span>radix_sort(arr)<span class="op">=</span><span class="sc">}</span><span class="ss">&quot;</span>)  <span class="co"># [&#39;aa&#39;, &#39;abc&#39;, &#39;c&#39;, &#39;cca&#39;, &#39;efg&#39;, &#39;oac&#39;, &#39;oie&#39;]</span></span></code></pre></div>
+<p>I didn’t refer to any resources, so I wouldn’t say that the code is
+optimal/clean.</p>
+<p>Same as the radix sort for integers, we just need to repeat running
+counting sort for the number of maximum length.</p>
+<p>The only difference is the bucket size: when dealing with decimal
+numbers, we only need a bucket with a length of 10, but we need a bucket
+with a length of 26 (+1) to deal with lowercase alphabets.</p>
+<hr />
+<p>158.6 lb (The scale’s behavior is unstable. I’m considering buying a
+new one)</p>
+<p>Berries 300 Protein shake 300 Oatmeals 450 Salad 300 Mac&amp;cheese
+400 Kombucha 50</p>
+<p>Total 1800 kcal</p>
+<hr />
+<p>MUST:</p>
+<ul>
+<li>Get a temporary number for electricity</li>
+</ul>
+<p>TODO:</p>
+<ul>
+<li>Browse “You Only Look Once: Unified, Real-Time Object Detection” by
+Joseph Redmon</li>
+<li>Improved suffix array</li>
+<li>Upgrade the Amazon Lightsail plan (take a snapshot, create a new
+instance, and migrate)</li>
+</ul>
+<hr />
+<p><a href="../../index.html">index</a> <a
+href="20241113.html">20241113</a> <a
+href="20241115.html">20241115</a></p>
