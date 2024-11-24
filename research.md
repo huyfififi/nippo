@@ -113,6 +113,10 @@
 - [`git checkout --theirs .`](./2024/10/20241021.html)
 - [Forking v.s. Branching (only have link to StackOverFlow)](./2024/07/20240713.html)
 
+# IMO
+
+- [A Benefit of Django - Batteries Included](./2024/11/20241124.html)
+
 # Others
 
 - [Django REST framework - built-in pagination](./2024/11/20241111.html)
