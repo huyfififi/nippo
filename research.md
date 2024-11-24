@@ -128,6 +128,10 @@
 - [Red Green Refactor](./2024/07/20240714.html)
 - [Mob Programming / Pair Programming](./2024/05/20240520.html)
 
+# Psychology
+
+- [Room Color and Agression in A Criminal Detention Holding Cell... Robert J. Pellegrini](./2024/11/20241122.html)
+
 # Life
 
 - [ゆうきゆう - 瞬時にやる気を燃やす31の心理学技術](./2024/10/20241015.html)

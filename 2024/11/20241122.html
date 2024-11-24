@@ -1,0 +1,65 @@
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+<meta charset="UTF-8">
+</head>
+<h1 id="section">20241122</h1>
+<ul>
+<li>Went to an Izakaya with my friend</li>
+</ul>
+<h2 id="retry-radix-sort">Retry: Radix Sort</h2>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> radix_sort(arr: <span class="bu">list</span>[<span class="bu">int</span>]) <span class="op">-&gt;</span> <span class="bu">list</span>[<span class="bu">int</span>]:</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    max_element: <span class="bu">int</span> <span class="op">=</span> <span class="bu">max</span>(arr)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    i: <span class="bu">int</span> <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">while</span> i <span class="op">&lt;=</span> max_element:</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>        bucket <span class="op">=</span> []</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>):  <span class="co"># decimal</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>            bucket.append([])</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> e <span class="kw">in</span> arr:</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>            bucket[e <span class="op">//</span> i <span class="op">%</span> <span class="dv">10</span>].append(e)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>        arr: <span class="bu">list</span>[<span class="bu">int</span>] <span class="op">=</span> []</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>):</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>            arr.extend(bucket[j])</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>        i <span class="op">*=</span> <span class="dv">10</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> arr</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>arr: <span class="bu">list</span>[<span class="bu">int</span>] <span class="op">=</span> [<span class="dv">123</span>, <span class="dv">45</span>, <span class="dv">67</span>, <span class="dv">890</span>, <span class="dv">10000</span>, <span class="dv">20</span>, <span class="dv">30</span>, <span class="dv">44</span>, <span class="dv">1</span>, <span class="dv">55</span>]</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(arr)</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(radix_sort(arr))</span></code></pre></div>
+<p>I think I now understand how Radix Sort works, and I should be able
+to replicate it for a while.</p>
+<h2
+id="read-room-color-and-agression-in-a-criminal-detention-holding-cell-a-test-of-the-tranquilizing-pink-hypothesis-by-robert-j.-pellegrini-and-others">Read
+<em>Room Color and Agression in A Criminal Detention Holding Cell: A
+Test of the “Tranquilizing Pink” Hypothesis</em> by Robert J. Pellegrini
+(and others)</h2>
+<p>It is known that the color pink may calm humans. Still, the paper
+suggests that the effect is very limited or may not exist, as the
+methodologies of other research are doubtful (to some extent). The
+result reported in the paper does not indicate any effects of the
+tranquilizing pink.</p>
+<hr />
+<p>Kombucha 200 Lunchable 700 Tofu 100 Yakitori 1000 Yogurt 1000</p>
+<p>Total 3000 kcal</p>
+<hr />
+<p>MUST:</p>
+<ul>
+<li>Get medicine (20241125)</li>
+<li>Resume measuring my weight (20241201)</li>
+</ul>
+<p>TODO:</p>
+<ul>
+<li>Improved suffix array</li>
+<li>Upgrade the Amazon Lightsail plan (take a snapshot, create a new
+instance, and migrate)</li>
+</ul>
+<hr />
+<p><a href="../../index.html">index</a> <a
+href="20241121.html">20241121</a> <a
+href="20241123.html">20241123</a></p>
