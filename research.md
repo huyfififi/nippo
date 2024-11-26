@@ -51,6 +51,7 @@
 
 # Machine-learning / LLM
 
+- [A First Look at GraphRAG and LightRAG (not in detail)](./2024/11/20241125.html)
 - [Amazon Bedrock](./2024/11/20241115.html)
 - [The history of YOLO (You Only Look Once) and improvements in YOLO11](./2024/11/20241111.html)
 - [ChromaDB and SQLite](./2024/10/20241031.html)
