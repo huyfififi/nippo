@@ -51,6 +51,7 @@
 
 # Machine-learning / LLM
 
+- [andrewng/aisuite](./2024/11/20241126.html)
 - [A First Look at GraphRAG and LightRAG (not in detail)](./2024/11/20241125.html)
 - [Amazon Bedrock](./2024/11/20241115.html)
 - [The history of YOLO (You Only Look Once) and improvements in YOLO11](./2024/11/20241111.html)
@@ -120,6 +121,7 @@
 
 # Others
 
+- [Troubleshooting: Checking Logs In My Mastodon Server](./2024/11/20241126.html)
 - [Django REST framework - built-in pagination](./2024/11/20241111.html)
 - [Unix time](./2024/10/20241021.html)
 - [Checking NGINX status](./2024/10/20241013.html)
@@ -137,8 +139,14 @@
 
 - [Room Color and Agression in A Criminal Detention Holding Cell... Robert J. Pellegrini](./2024/11/20241122.html)
 
+# Other Papers
+
+- [Total-Ionizing-Dose Effects on 3D Sequentially Integrated, Fully Depleted Silicon-on-Insulator MOSFETs](./2024/11/20241126.html)
+- [Measuring the Effects of Autonomous Mobile Robot on Pedestrian Behavior](./2024/11/20241125.html)
+
 # Life
 
+- [connecting dots](./2024/11/20241126.html)
 - [ゆうきゆう - 瞬時にやる気を燃やす31の心理学技術](./2024/10/20241015.html)
 - [ゆうきゆう - やりたいことを次々と実現する人の心理術](./2024/10/20241013.html)
 - [ゆうきゆう - 人生を好転させるシンプルな習慣術](./2024/10/20241012.html)

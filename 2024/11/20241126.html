@@ -2,15 +2,124 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <meta charset="UTF-8">
 </head>
-<h1 id="section">20241126</h1>
+<h1 id="section">20241126 ○</h1>
+<p>I’m sleepy… and hungry… someone… save me…</p>
+<p>I’m good at understanding characters, but mathematics isn’t exactly
+my strong suit. I enjoy reading books in my free time, but as a
+programmer, I feel I should dedicate more time to data structures and
+algorithms. I want to be better at competitive programming…</p>
+<p>I feel like some dots in my brain about computer science and software
+engineering are finally connecting. I wasted a lot of time pursuing
+goals that were too difficult, but I’m glad I made it to this point.
+Keep going!</p>
+<ul>
+<li>Made progress in reading “Desining Data-Intensive Applications”
+<ul>
+<li>This book is mesmerizing, but if I would find it awfully tedious. To
+enjoy something, experience or knowledge is required.</li>
+</ul></li>
+</ul>
+<h2
+id="total-ionizing-dose-effects-on-3d-sequentially-integrated-fully-depleted-silicon-on-insulator-mosfets">Total-Ionizing-Dose
+Effects on 3D Sequentially Integrated, Fully-Depleted
+Silicon-on-Insulator MOSFETs</h2>
+<p><a
+href="https://www.electronicsforu.com/technology-trends/learn-electronics/mosfet-basics-working-applications">MOSFET
+Types, Working, Structure, and Applications -
+electronicsforu.com</a></p>
+<blockquote>
+<p>A Metal Oxide Semiconductor Field-effect Transistor (MOSFET, MOS-FET,
+or MOS FET) is a field-effect transistor (FET with an insulated gate)
+where the voltage determines the conductivity of the device.</p>
+</blockquote>
+<blockquote>
+<p>It is used for switching or amplifying signals.</p>
+</blockquote>
+<p><a
+href="https://www.researchgate.net/profile/Shintaro-Toguchi/publication/339110152_Total-Ionizing-Dose_Effects_on_3D_Sequentially_Integrated_Fully-Depleted_Silicon-on-Insulator_MOSFETs/links/5fa2d8e4458515157be97353/Total-Ionizing-Dose-Effects-on-3D-Sequentially-Integrated-Fully-Depleted-Silicon-on-Insulator-MOSFETs.pdf">Total-Ionizing-Dose
+Effects on 3D Sequentially Integrated, Fully-Depleted
+Silicon-on-Insulator MOSFETs</a></p>
+<blockquote>
+<p>3D SEQUENTIAL integration (3DSI) enables an active device to be
+stacked on another device in a sequential way to exxtend the
+capabilities of traditional plannar technology.</p>
+</blockquote>
+<blockquote>
+<p>In this letter, we evaluate whether the additional process steps
+required to fabricate the upper-layer transistor affects the radiation
+response of already-built transistors in the bottom layers of 3DSI
+FD-SOI (fully-depleted silicon-on-insulator) MOSFETs.</p>
+</blockquote>
+<blockquote>
+<p>These results strongly suggest that the additional processing steps
+required to achieve 3D integration have little effect on the resulting
+charge trapping and border-trap densities in the gate and/or buried
+oxides of these devices.</p>
+</blockquote>
+<blockquote>
+<p>These results are quite promising for the future development of
+highly-integrated, 3D technologies for space applications.</p>
+</blockquote>
+<p>As the authors reported, 3D stacking has little effect on radiation
+response, suggesting that this technique can be utilized for chips used
+in space, offering more options for space applications.</p>
+<h2 id="andrewyngaisuite"><a
+href="https://github.com/andrewyng/aisuite">andrewyng/aisuite</a></h2>
+<blockquote>
+<p>Simple, unified interface to multiple Generative AI providers.</p>
+</blockquote>
+<blockquote>
+<p><code>aisuite</code> makes it easy for developers to use multiple LLM
+through a standardized interface. Using an interface similar to
+OpenAI’s, <code>aisuite</code> makes it easy to interact with the most
+popular LLMs and compare the results.</p>
+</blockquote>
+<blockquote>
+<p>Currently supported providers are - OpenAI, Anthropic, Azure, Google,
+AWS, Groq, Mistral, HuggingFace and Ollama.</p>
+</blockquote>
+<p>The project is impressive, but there are some considerations for
+production use.</p>
+<ul>
+<li>The author is a very famous researcher, but it’s unclear that the
+package continues to be actively maintained.
+<ul>
+<li>He seems not to maintain his other projects actively.</li>
+<li>The <code>aisuite</code> package has only one release yet, lacking
+track records.</li>
+</ul></li>
+<li>The library is primarily focused on chat completions and lacks other
+functionalities.
+<ul>
+<li>It says “Today, the library is primarily focussed on chat
+completions.”</li>
+</ul></li>
+</ul>
+<h2 id="checking-logs-in-my-mastodon-server">Checking Logs in My
+Mastodon Server</h2>
+<pre><code>docker container logs sidekiq | grep [eE]rror &gt; logs  # in VPS</code></pre>
+<pre><code>chmod 400 LightsailKey.pem
+scp -i LightsailKey.pem ubuntu@{ipaddress}:mastodon/logs .</code></pre>
+<p>One of my follower reported an issue that he does not receive my
+posts. He is on onsen-musume.fun, so I searched the string in logs.</p>
+<pre><code>I, [2024-11-12T13:00:24.983756 #7]  INFO -- : Rejected Announce activity https://onsen-musume.fun/notes/a0i0y3ay6aow2vnb/activity from https://onsen-musume.fun/users/8l6kpzosrf</code></pre>
+<p>I googled it and also browsed GitHub Issues/Discussions in
+mastodon/mastodon, but I didn’t see any relevant ones. The error is
+reported when setting up relays, but I don’t use relays.</p>
+<p>I checked whether I blocked or muted the user</p>
+<pre><code>docker exec -it db psql --user mastodon
+\dt  # list tables
+select a.username, a.domain from accounts a, blocks b where b.target_account_id=a.id;
+select a.username, a.domain from accounts a, mutes m where m.target_account_id=a.id;</code></pre>
+<p>but I don’t see any anomalies. I think I have to rely on other users
+to help me out.</p>
 <hr />
-<p>Muffin 300 Udon 700 Yogurt 500 Cocoa 100</p>
-<p>Total 1600 kcal</p>
+<p>Muffin 300 Udon 700 Yogurt 500 Cocoa 400 Lean Cuisine 300 Oatmeal
+200</p>
+<p>Total 2400 kcal</p>
 <hr />
 <p>MUST:</p>
 <ul>
-<li>Browse <a
-href="https://github.com/andrewyng/aisuite">andrewyng/aisuite</a></li>
 <li>Rayan Programming Contest 2024 (20241130)</li>
 <li>Resume measuring my weight (20241201)</li>
 </ul>
