@@ -1,0 +1,140 @@
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+<meta charset="UTF-8">
+</head>
+<h1 id="section">20241127 ○</h1>
+<ul>
+<li>Created a pull request on a random project</li>
+</ul>
+<p>Document Databases</p>
+<ul>
+<li>Schema flexibility in the document model</li>
+<li>Data locality for queries</li>
+</ul>
+<h2
+id="visual-discomfort-and-glare-assessment-in-office-environments-a-review-of-light-induced-physiological-and-perceptual-responses">Visual
+discomfort and glare assessment in office environments: A review of
+light-induced physiological and perceptual responses</h2>
+<p>This survey paper analyzes existing research on discomfort glare,
+evaluating the reliability of conventional measurements and metrics.
+Additionally, it suggests future directions for research in this
+field.</p>
+<blockquote>
+<p><em>5.1 Very promising (established factors)</em></p>
+</blockquote>
+<blockquote>
+<ul>
+<li>Relative Pupil size: Inversely correlated with visual discomfort
+ratings, correlated with vertical illuminance at the eye and glare
+indices.</li>
+</ul>
+</blockquote>
+<blockquote>
+<p><em>5.2 Just statistically significant (require further
+investigation)</em></p>
+</blockquote>
+<blockquote>
+<ul>
+<li>Pupillary unrest (hippus): Affected by the luminance intensity</li>
+<li>Eye Movements: Compared favourably with subjective assessment</li>
+<li>Spontaneous eye Blink Rate: Affected by glare while the subject is
+looking slightly upwards</li>
+<li>Degree of eye-opening: Applicable in the presence of direct
+sunlight; correlated highly with vertical eye illuminance, DGP and PGSV;
+exhibited better diagnostic performance than DGI, DGP, or vertical
+illuminance at the eye</li>
+</ul>
+</blockquote>
+<blockquote>
+<p><em>5.3 Irrelevant</em></p>
+</blockquote>
+<blockquote>
+<ul>
+<li>Absolute pupil diameter: Correlated with overall background
+luminance.</li>
+<li>Gaze position/direction: Heavily depends on the cognitive demand and
+complexity of the task, unsuitable as a predictor for discomfort
+glare.</li>
+</ul>
+</blockquote>
+<h2 id="why-you-shouldnt-create-indexes-for-all-sql-columns">Why You
+Shouldn’t Create Indexes For All SQL Columns</h2>
+<p>Whey my friend asked me why we could not create indexes for all the
+columns in our SQL database, I could not answer that question clearly. I
+mulled over, and here is the answer I would say now.</p>
+<p>Although indexes can make queries faster, they also may have negative
+impacts on our database.</p>
+<ul>
+<li>Indexes consume disk space, and creating unnecessary indexes can
+lead to signficant storage overhead.</li>
+<li>Every time a row is inserted, updated, or deleted, the associated
+indexes must also be updated. Therefore, having many indexes can slow
+those operations down unnecessarily.</li>
+<li>Having indexes in rarely-used columns can confuse collaborators that
+those columns are frequently used to perform searches.</li>
+</ul>
+<p>By the way, the friend dislikes dynamic typing programing languages
+but loves NoSQL, saying that NoSQL is easier to use.</p>
+<p>I find it very inconsistent.</p>
+<p>For programming languages, he seeks some sort of validation or
+safeguards, but he does not want it for databases. I will write more
+about this, but from my experience, business-related data is not (or
+should not) dynamic in most cases. I have suffered from how easily data
+in NoSQL is out of structure and malformed.</p>
+<h2 id="b.-shohag-loves-strings"><a
+href="https://codeforces.com/problemset/problem/2039/B">2039B. Shohag
+Loves Strings</a></h2>
+<p><a href="https://codeforces.com/blog/entry/136523">Editorial of
+CodeTON Round 9 (Div. 1 + Div. 2)</a></p>
+<p>The editorial explains the approach in detail. I love it.</p>
+<p>I had similar thoughts and observations, but failed to reach the
+answer. It is somewhat frustrating, but gaining EXP is a good thing.</p>
+<blockquote>
+<p>THOUGHT: The condition seems hard to track. So a good way is to play
+around with smaller cases and see if we can make some observations.</p>
+</blockquote>
+<blockquote>
+<p>ACTION: Let’s start with the smallest string… (len(s’) = 1)</p>
+</blockquote>
+<blockquote>
+<p>ACTION: Let’s try the next smallest strings… (len(s’) = 2) I
+overlooked this part somehow!</p>
+</blockquote>
+<blockquote>
+<p>ACTION: Let’s try the next smallest strings with adjacent different
+characters… (len(s’) = 3)</p>
+</blockquote>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">int</span>(<span class="bu">input</span>())):</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    s: <span class="bu">str</span> <span class="op">=</span> <span class="bu">input</span>()</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    sl: <span class="bu">list</span>[<span class="bu">str</span>] <span class="op">=</span> <span class="bu">list</span>(s)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(sl) <span class="op">-</span> <span class="dv">1</span>):</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="bu">len</span>(<span class="bu">set</span>(sl[i : i <span class="op">+</span> <span class="dv">2</span>])) <span class="op">==</span> <span class="dv">1</span>:</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(s[i : i <span class="op">+</span> <span class="dv">2</span>])</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>            <span class="cf">break</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="bu">len</span>(<span class="bu">set</span>(sl[i : i <span class="op">+</span> <span class="dv">3</span>])) <span class="op">==</span> <span class="dv">3</span>:</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(s[i : i <span class="op">+</span> <span class="dv">3</span>])</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>            <span class="cf">break</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="op">-</span><span class="dv">1</span>)</span></code></pre></div>
+<hr />
+<p>Udon 700 Lean Cuisine 700 Cocoa 200 Gummies 600 Yogurt 500 Lean
+Cuisine 300 Protein shake 200</p>
+<p>Total 3200 kcal (just kill me at this point)</p>
+<hr />
+<p>MUST:</p>
+<ul>
+<li>Check the manual of my vehicle for which octane to select</li>
+<li>Bring books from my parents’ house (20241128)</li>
+<li>Rayan Programming Contest 2024 (20241130)</li>
+<li>Resume measuring my weight (20241201)</li>
+</ul>
+<p>TODO:</p>
+<ul>
+<li>Upgrade the Amazon Lightsail plan (take a snapshot, create a new
+instance, and migrate)</li>
+</ul>
+<hr />
+<p><a href="../../index.html">index</a> <a
+href="20241126.html">20241126</a> <a
+href="20241128.html">20241128</a></p>

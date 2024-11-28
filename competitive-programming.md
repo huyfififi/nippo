@@ -52,6 +52,8 @@
 
 ## Constructive Algorithms
 
+- 2039B. Shohag Loves Strings - 1000
+	- [20241127](./2024/11/20241127.html)
 - 1951A. Dual Trigger - 900
 	- [20240818](./2024/08/20240818.html)
 - 1984A. Strainge Splitting - 800

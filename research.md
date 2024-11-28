@@ -117,6 +117,7 @@
 
 # IMO
 
+- [Why You Shouldn't Create Indexes For All SQL Columns](./2024/11/20241127.html)
 - [A Benefit of Django - Batteries Included](./2024/11/20241124.html)
 
 # Others
@@ -141,6 +142,7 @@
 
 # Other Papers
 
+- [Visual discomfort and glare assessment in office environments: A review of light-induced physiological and perceptual responses](./2024/11/20241127.html)
 - [Total-Ionizing-Dose Effects on 3D Sequentially Integrated, Fully Depleted Silicon-on-Insulator MOSFETs](./2024/11/20241126.html)
 - [Measuring the Effects of Autonomous Mobile Robot on Pedestrian Behavior](./2024/11/20241125.html)
 
