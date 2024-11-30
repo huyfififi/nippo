@@ -136,11 +136,18 @@
 - [Red Green Refactor](./2024/07/20240714.html)
 - [Mob Programming / Pair Programming](./2024/05/20240520.html)
 
-# Psychology
+# Books
+
+- [Designing Data-Intensive Applications - Chapter 2](./2024/11/20241128.html)
+- [Designing Data-Intensive Applications - Chapter 1](./2024/11/20241124.html)
+
+# Papers
+
+## Psychology
 
 - [Room Color and Agression in A Criminal Detention Holding Cell... Robert J. Pellegrini](./2024/11/20241122.html)
 
-# Other Papers
+# Others
 
 - [Visual discomfort and glare assessment in office environments: A review of light-induced physiological and perceptual responses](./2024/11/20241127.html)
 - [Total-Ionizing-Dose Effects on 3D Sequentially Integrated, Fully Depleted Silicon-on-Insulator MOSFETs](./2024/11/20241126.html)

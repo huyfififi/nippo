@@ -1,0 +1,82 @@
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+<meta charset="UTF-8">
+</head>
+<h1 id="section">20241128 ○</h1>
+<ul>
+<li>had dinner with my family</li>
+<li>checked the manual of my vehicle for which octane to select -&gt;
+87</li>
+<li>brought books (heavy!) from my parents’ house</li>
+<li>finished reading the chapter 2 of “Designing Data-Intensive
+Applications”</li>
+</ul>
+<p>I was initially concerned about having strategy classes with
+different constructor signatures. However, after reviewing GoF’s
+<em>Design Patterns</em> and other resources, I realized it’s common
+practice to accommodate varying configurations. A factory class can
+handle this by instantiating the correct strategy with the appropriate
+parameters.</p>
+<h2 id="memo-desining-data-intensive-applications-chapter-2">MEMO:
+Desining Data-Intensive Applications Chapter 2</h2>
+<p>Disclaimer: This is not a summary of the chapter</p>
+<p>In this chapter, overviews of data models and query languages that
+exist in the industry are provided.</p>
+<p>SQL is the most popular data model in the industry, and it is based
+on the relational data model, which organizes data into relations
+(tables in SQL).</p>
+<p>One of the issues with the relational model is <em>impedance
+mismatch</em> which means the disconnect between the structure of
+relation data and applications’ expression, which is object-oriented
+programming in most cases. When data is self-contained <em>document</em>
+and do not involve many-to-one/many-to-many relationships, the document
+model reduces the mismatch between the data expression and the
+application code. However, as the application evolves, it’s more likely
+that data will be interrelated. The document model can perform well when
+large parts of the document are fetched/used at the same time
+(self-contained).</p>
+<p>One of the other most significant differences between the relational
+model and the document model is schema flexibility. The document model
+is often referred to as “schema-less,” thoguh “schema-on-read” is more
+appropriate because the code to read data expects some specific
+structure of data. (In my experience, having no validations/enforcement
+at the database level is full of potential bugs, but) its
+“schema-on-read” nature can benefit when</p>
+<blockquote>
+<ul>
+<li><em>There are many different types of objects, and it is not
+practicable to put each type of object in its own table.</em></li>
+<li><em>The structure of the data is determined by external systems over
+which you have no control and which may change at any time.</em></li>
+</ul>
+</blockquote>
+<p>Also, the author points out</p>
+<blockquote>
+<p>The moral of the story is that a NoSQL system may find itself
+accidentally reinventing SQL, albeit in disguise.</p>
+</blockquote>
+<p>The author proceeds with the graph-like data model, whose paradigm
+was new to me. They provide some examples of Cypher, SPARQL, and
+Datalog. It is said that “If you can express a problem as a graph, you
+can solve the problem in no time,” but at the moment, I cannot come up
+with real-life examples. I will put the knowledge (?) in some parts of
+my brain.</p>
+<p>I forgot to mention that the author touches the advantages of
+declarative languages such as SQL.</p>
+<hr />
+<p>Udon 700 Yogurt 1000 Rice 300 Sushi 1500</p>
+<p>Total 3500 kcal</p>
+<hr />
+<p>MUST:</p>
+<ul>
+<li>Resume measuring my weight (20241201)</li>
+</ul>
+<p>TODO:</p>
+<ul>
+<li>Upgrade the Amazon Lightsail plan (take a snapshot, create a new
+instance, and migrate)</li>
+</ul>
+<hr />
+<p><a href="../../index.html">index</a> <a
+href="20241127.html">20241127</a> <a
+href="20241129.html">20241129</a></p>
