@@ -2,10 +2,27 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <meta charset="UTF-8">
 </head>
-<h1 id="section">20241129</h1>
+<h1 id="section">20241129 ○</h1>
+<h2 id="a.-shohag-loves-mod---800"><a
+href="https://codeforces.com/problemset/problem/2039/A">2039A. Shohag
+Loves Mod - 800</a></h2>
+<p>Is the difficulty really 800? The problem felt very difficult…</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">int</span>(<span class="bu">input</span>())):</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    n: <span class="bu">int</span> <span class="op">=</span> <span class="bu">int</span>(<span class="bu">input</span>())</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    res: <span class="bu">list</span>[<span class="bu">int</span>] <span class="op">=</span> []</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, n <span class="op">+</span> <span class="dv">1</span>):</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>        res.append(<span class="dv">2</span> <span class="op">*</span> i <span class="op">-</span> <span class="dv">1</span>)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">&quot; &quot;</span>.join(<span class="bu">str</span>(x) <span class="cf">for</span> x <span class="kw">in</span> res))</span></code></pre></div>
+<p>By looking at the constraint, my idea is to simply construct an array
+with mod values [1, 2, 3, …] (except the first element for
+simplicity).</p>
 <hr />
-<p>Udon 700 Yogurt 1000 Rice 300</p>
-<p>Total 2000 kcal</p>
+<p>Udon 700 Yogurt 1000 Rice 300 Spaghetti 1000</p>
+<p>Total 3000 kcal</p>
+<p>I think the problem with my diet is a lack of protein. After eating
+things in the shelf, I will increase the proportion of protein
+gradually.</p>
 <hr />
 <p>MUST:</p>
 <ul>
