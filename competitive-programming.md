@@ -88,6 +88,8 @@
 
 ## Math
 
+- 2034A. King Keykhosrow's Mystery - 800
+	- [20241202](./2024/12/20241202.html)
 - 2033A. Sakurako and Kosuke - 800
 	- [20241026](./2024/10/20241026.html)
 - 2008C. Longest Good Array - 900
@@ -162,6 +164,8 @@
 
 ### Two Pointers
 
+- 2034B. Rakhsh's Revival - 1000
+	- [20241202](./2024/12/20241202.html)
 - [1972A-800 (20240613)](./2024/06/20240613.html)
 
 ## Pruning

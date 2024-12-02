@@ -51,6 +51,8 @@
 
 # Machine-learning / LLM
 
+- [Quick Tryout with Ollama](./2024/12/20241202.html)
+- [AWS Trainium / AWS Inferentia / AWS Neuron / Amazon SageMakder / Amazon Titan](./2024/12/20241202.html)
 - [andrewng/aisuite](./2024/11/20241126.html)
 - [A First Look at GraphRAG and LightRAG (not in detail)](./2024/11/20241125.html)
 - [Amazon Bedrock](./2024/11/20241115.html)

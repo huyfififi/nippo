@@ -1,0 +1,254 @@
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+<meta charset="UTF-8">
+</head>
+<h1 id="section">20241202 ◎</h1>
+<ul>
+<li>sent an email to the property manager</li>
+<li>Educational Codeforces Round 172</li>
+<li>got my hair cut</li>
+<li>did not sleep well</li>
+</ul>
+<pre><code>$ curl ascii.live/rick
+tfffffttffffffLLffffttttttttttt1tffffffffffttttttt11111tfffffffLfttfff
+fttfffttfffffffffttfftttttt11ttt1ttfffffftttttt11tt111111ttffffLLLfttf
+LfttttffLLLfftttttfLftttttttfffft1tffffftttffftt11t111tt111ttfffLLfftt
+LLffttfLLLfttfffftfLfttttttffffffttttftttffffffftt1111tftt1111tffLLftt
+LLLLftffttttfLLffftfftttttftttttttffttttffffffffftt111tftttttttttfLLft
+LLLfttttffffffffftffttttttiii,::::i1ttttffffffffftt1111t11tttttttttttt
+LLLftffftfLfttfffLLLfttt11:,,,,,,,:::itttttfffffft11111tft1ttt1tffttt1
+LLfftfLLftttfLfffLLLLfttt1i::::,,::,,,itt11tfffft111111ffft1tt11tt1tt1
+fttttfffffttLLLLfLLLftttttiiiiii1i,:,,:ttt111ttt11tt111tffttfftt1ttfft
+ttttttttttttfLLLffLLftttti,iiii111i,:,iftftt11ttt11111tffftffffttttttt
+ffffffffttfttfLLfffLfttt1,,,ii,iiii,::1ffttt1tffft11111ffttfffttt11ttt
+fffffffftfffttffftfftttt1,,i1i,,iii,:itft11tttttfttt111tt1tffttffttfff
+fffffffttttttttttffftttt1,,iiii111iii1t111tfft1tttt111111t1ttttfftttff
+fffffftt1ttt111ttffftttti,,iiiiiiiii1111ttfffft11111111tffttttttt11tff
+fttttt1ttfft1111ttfftttt1,,,iiii,,itt11tffffffft1111111tttt111tftt11tt
+tttt11tfffftttt11tfftttt1i,,,,ii,,it1111tftfffft11t1111ttt111t1tfftt11
+fffftttffftttfft11tft111i,,,,,ii,,i111111tttft111tt1111ttt11tt1tffffft
+ftfft11tfffttfttt11i,,:ii,,,,iiiii1,11tt111t11111tt1111tt111tft1tfffft
+ffft1111tfttftii,:,....,1i,,,,ii111,,:,i1tt11tt11111111111t11tt1tffft1
+tt11ttt1111i,:,.......,i1tiiii,,11i,,,..,:,i1t1t111t1111111111t1tffttt
+111ttttt1i:...........,ii111iii11i:.,,......,:,1t111111111tttt111ttfLf
+11tttt11t,..............,::,,i1ti:,............,1t1111111tttffttttffLf
+11tttttt1,...............:,:,,,,,:..............,tt111111tttffftttffff
+11tttttt1................,,,,,,,,:..............:t11111111ttffttttffLL
+11tttttti............... .:,,,,,:,..............:1111111111tttttttffLL
+11tttttt,............. .:,,,,,,:::..............:111tt11tt111ttt1tfffL
+11ttttt1,..............:,i,,i,::::..............:1ttt1111tt11tff1tffff
+11ttttt,..............:,,,,,i:::::..............,1111111111111tt11tttt
+1tttttt:..............:,,,::,:::::..............,t1111111111111t11tttt
+1ttttt1,........... .,,:,...,:::::..............,11i,,i111tttt1111tttt
+11tttt,............,..... ...,::::...............:i,:,,i1ttttt11111ttt
+111111,............,.........,::::,..............,:::,ii1tt11111111111
+111111,............ .........,,,::,..............::::,i11tt11111111111
+1111111:.......  .............,,:,,..............,::::i111t11111111111
+11111111:....,,,,.............,:::,,..................,1t1111111111111
+111111111iiii11t, .............,:,..,........       ..:1tttttt11111111</code></pre>
+<h2 id="a.-king-keykhosrows-mystery---800"><a
+href="https://codeforces.com/contest/2034/problem/A">2034A. King
+Keykhosrow’s Mystery - 800</a></h2>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> math</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">int</span>(<span class="bu">input</span>())):</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    a, b <span class="op">=</span> <span class="bu">map</span>(<span class="bu">int</span>, <span class="bu">input</span>().split())</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(math.lcm(a, b))</span></code></pre></div>
+<p>As I looked at the examples, I noticed</p>
+<p><code>lcm(a, b) % a == lcm(a, b) % b == 0</code></p>
+<p>but I cannot think of why this is guaranteed to be the answer.</p>
+<p><a href="https://codeforces.com/blog/entry/136579">Rayan 2024
+Selection Round Editorial</a></p>
+<p><code>m % a == m % b == x</code> then
+<code>(m - 1) % a == (m - 1) % b == (x - 1)</code></p>
+<p>===</p>
+<pre><code>If m % a = 1, this means when m is divided by a, the remainder is 1. Mathematically:
+    m = k * a + 1
+for some integer k.
+
+Subtracting 1 from m:
+    m - 1 = k * a
+
+Now, (m - 1) % a:
+    (k * a) % a = 0
+because k * a is a multiple of a.
+
+Thus, if m % a = 1, then (m - 1) % a = 0.</code></pre>
+<p>===</p>
+<p>Therefore, <code>m % a == m % b == 0</code> is the optimal, and
+because m must be divisible by both <code>a</code> and <code>b</code>,
+<code>lcm(a, b)</code> is the answer.</p>
+<h2 id="b.-rakhshs-revival---1000"><a
+href="https://codeforces.com/contest/2034/problem/B">2034B. Rakhsh’s
+Revival - 1000</a></h2>
+<p>Two pointers!</p>
+<div class="sourceCode" id="cb4"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">int</span>(<span class="bu">input</span>())):</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    n, m, k <span class="op">=</span> <span class="bu">map</span>(<span class="bu">int</span>, <span class="bu">input</span>().split())</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    s: <span class="bu">list</span>[<span class="bu">str</span>] <span class="op">=</span> <span class="bu">list</span>(<span class="bu">input</span>())</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    li: <span class="bu">int</span> <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    ri: <span class="bu">int</span> <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    cnt: <span class="bu">int</span> <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    res: <span class="bu">int</span> <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">while</span> ri <span class="op">&lt;</span> n:</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> s[ri] <span class="op">==</span> <span class="st">&quot;1&quot;</span>:</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>            li <span class="op">=</span> ri</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>            ri <span class="op">=</span> ri <span class="op">+</span> <span class="dv">1</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>            cnt <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>            cnt <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> cnt <span class="op">==</span> m:</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>                res <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>                li <span class="op">=</span> ri</span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>                ri <span class="op">=</span> ri <span class="op">+</span> k</span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>                cnt <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>            <span class="cf">else</span>:</span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>                ri <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(res)</span></code></pre></div>
+<h2 id="aws-ai-chips-amazon-sagemaker-amazon-titan">AWS AI Chips, Amazon
+SageMaker, Amazon Titan</h2>
+<h3 id="aws-ai-chips">AWS AI Chips</h3>
+<p>AWS developed several chips optimized for training/inference in
+Amazon EC2.</p>
+<h4 id="aws-trainium">AWS Trainium</h4>
+<p><a href="https://aws.amazon.com/ai/machine-learning/trainium/">AI
+Accelerator - AWS Trainium - AWS</a></p>
+<blockquote>
+<p>AWS Trainium is the machine learning (ML) chip that AWS purpose built
+for deep learning (DL) training of 100B+ parameter models.</p>
+</blockquote>
+<blockquote>
+<p>Trainium-based Amazon EC2 Trn1 instances solve this challenge by
+delivering faster time to train while offering up to 50% cost-to-train
+savings over comparable EC2 instances.</p>
+</blockquote>
+<p>Amazon EC2 Trn1 Instance must be created/used to leverage the
+chip.</p>
+<h4 id="aws-inferentia">AWS Inferentia</h4>
+<p><a href="https://aws.amazon.com/ai/machine-learning/inferentia/">AI
+Chip - AWS Inferentia - AWS</a></p>
+<blockquote>
+<p>AWS Inferentia accelerators are designed by AWS to deliver high
+performance at the lowest cost in Amazon EC2 for your deep learning (DL)
+and generative AI inference applications.</p>
+</blockquote>
+<p>EC2 Inf1 Instance must be used.</p>
+<p>AWS Trainium is for training, and AWS Inferentia is for inference
+tasks.</p>
+<h4 id="aws-neuron">AWS neuron</h4>
+<p><a
+href="https://aws.amazon.com/ai/machine-learning/neuron/">Inference Sdk
+- AWS Neuron - AWS</a></p>
+<blockquote>
+<p>SDK to optimize machine learning on AWS Trainium and AWS Inferentia
+accelerators.</p>
+</blockquote>
+<p>Amazon SageMaker: as I browsed the website <a
+href="https://aws.amazon.com/sagemaker/getting-started/">Getting Started
+with Machine Learning on Amazon SageMaker - AWS</a>, it is a
+fully-managed service that provides Low/NoCode platform for the full
+cycle of machine-learning.</p>
+<h4 id="amazon-titan">Amazon Titan</h4>
+<p>Amazon Titan is a family of AI models that are developed by AWS and
+only available on <a href="../11/20241115.html">Amazon Bedrock</a></p>
+<p><a href="https://aws.amazon.com/bedrock/amazon-models/">Foundation
+Model for Generative AI - Amazon Titan - AWS</a></p>
+<p>Amazon Titan covers most of the Generative AI use cases except vision
+capabilities. They offer models for text/image generation, and they also
+have embedding models that can convert text into vector expressions so
+that the vectors (embeddings) can be used to retrieve relevant
+information by semantic/similarity search.</p>
+<h2 id="ollama">Ollama</h2>
+<p>Ollama is an application that can run a variety of large language
+models.</p>
+<p><a href="https://github.com/ollama/ollama">ollama/ollama</a></p>
+<p><a href="https://ollama.com/library/llama3.2">llama3.2 -
+Ollama</a></p>
+<p>To run Llama 3.2:</p>
+<pre><code>ollama run llama3.2</code></pre>
+<p>It will download the model, host the LLM to make it available in
+localhost, and start an interactive prompt. Even after exiting the
+interactive prompt, the LLM will be hosted until the Ollama application
+is closed.</p>
+<p>As default, it uses port 11434</p>
+<pre><code>$ curl http://localhost:11434/v1/chat/completions \
+-d &#39;{
+    &quot;model&quot;: &quot;llama3.2&quot;,
+    &quot;messages&quot;: [
+        {
+            &quot;role&quot;: &quot;user&quot;,
+            &quot;content&quot;: &quot;Hello!&quot;
+        }
+    ]
+}&#39;
+
+{
+    &quot;id&quot;: &quot;chatcmpl-363&quot;,
+    &quot;object&quot;: &quot;chat.completion&quot;,
+    &quot;created&quot;: 1733205517,
+    &quot;model&quot;: &quot;llama3.2&quot;,
+    &quot;system_fingerprint&quot;: &quot;fp_ollama&quot;,
+    &quot;choices&quot;: [
+        {
+            &quot;index&quot;: 0,
+            &quot;message&quot;: {
+                &quot;role&quot;: &quot;assistant&quot;,
+                &quot;content&quot;: &quot;Hello! It&#39;s nice to meet you. Is there something I can help you with, or would you like to chat?&quot;
+            },
+            &quot;finish_reason&quot;: &quot;stop&quot;
+        }
+    ],
+    &quot;usage&quot;: {
+        &quot;prompt_tokens&quot;: 27,
+        &quot;completion_tokens&quot;: 26,
+        &quot;total_tokens&quot;: 53
+    }
+}</code></pre>
+<p>It’s also possible to host an embedding model.</p>
+<p><a
+href="https://ollama.com/library/mxbai-embed-large">mxbai-embed-large -
+Ollama</a></p>
+<pre><code>$ ollama pull mxbai-embed-large
+$ curl http://localhost:11434/api/embeddings \
+-d &#39;{
+    &quot;model&quot;: &quot;mxbai-embed-large&quot;,
+    &quot;prompt&quot;: &quot;Llamas are members of the camelid family&quot;
+}&#39;
+
+{
+    &quot;embedding&quot;: [
+        0.5835007429122925,
+        1.1735061407089233,
+        0.6405693888664246,
+    ...
+    ]
+}</code></pre>
+<p>Docker image is available</p>
+<pre><code>services:
+  ollama:
+    container_name: ollama
+    image: ollama/ollama:0.4.7
+    ports:
+      - 11434:11434
+    volumes:
+      - ollama_data:/root/.ollama
+
+volumes:
+  ollama_data:</code></pre>
+<hr />
+<p>164.0 lb</p>
+<p>Tofu 35g Lunchly 10g Protein bar 15g Vegetable sticks 0g Bagels 0g
+Protein shake 50g Egg 70g</p>
+<p>total protein -&gt; 180 g (&gt;= 140)</p>
+<hr />
+<p>MUST:</p>
+<ul>
+<li>Request a card replacement</li>
+</ul>
+<hr />
+<p><a href="../../index.html">index</a> <a
+href="20241201.html">20241201</a> <a
+href="20241203.html">20241203</a></p>
