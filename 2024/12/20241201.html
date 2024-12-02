@@ -1,0 +1,173 @@
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+<meta charset="UTF-8">
+</head>
+<h1 id="section">20241201 ◎</h1>
+<ul>
+<li>did the laundry</li>
+<li>finished reading (skimming) the chapter 3 of “Desining
+Data-Intensive Applications”</li>
+<li>troubleshooted a problem that my posts in my Mastodon server are not
+published to some of other servers
+<ul>
+<li>No clue</li>
+</ul></li>
+</ul>
+<h2 id="memo-designing-data-intensive-applications-chapter-3">MEMO:
+Designing Data-Intensive Applications Chapter 3</h2>
+<p>This chapter covers the implementation of databases’ read-and-write
+operations. Although the content is quite interesting, I don’t find much
+content relatable to my everyday work as an application engineer.
+Therefore, I will write down some clluttered memos for myself.</p>
+<p><strong>The use of the word “log”</strong></p>
+<blockquote>
+<p>The word log is often used to refer to application logs, where an
+application outputs text that describes what’s happening. In this book,
+<em>log</em> is used in the more general sense: an append-only sequence
+of records. It doesn’t have to be human-readable; it might be binary and
+intended only for other programs to read.</p>
+</blockquote>
+<h3 id="oltp-and-olap">OLTP and OLAP</h3>
+<p>OLTP: online transaction processing</p>
+<p>OLAP: online analytic processing</p>
+<p>It is a common practice among big companies to have a read-only and
+separated copy of application data (from the main OLTP systems) for data
+analysis. The separated database is called <em>data warehouse</em>.</p>
+<p>This way, we can ensure that the queries for data analysis run by
+non-engineers do not affect the central OLTP database, and by separating
+databases for different uses, we can optimize a data warehouse, in which
+we run OLAP-type (analytic-type) queries.</p>
+<p>The process to populate a data warehouse with application data is
+called <em>Extract-Transform-Load</em> (ETL).</p>
+<p>A data warehouse is commonly designed as <em>column-oriented
+storage</em>.</p>
+<blockquote>
+<p>The idea behind <em>column-oriented storage</em> is simple: don’t
+store all the values from one row together, but store all the values
+from each <em>column</em> together instead.</p>
+</blockquote>
+<p>A normal relational database is <em>row-oriented</em>, in a way that
+the entire row will be fetched from the database, and its columsn are
+tightly coupled (cannot extract some of them effectively).</p>
+<p>I will skip the explanation of the <em>column-oriented</em> or
+<em>materialized views</em> (which cache the results of queries that are
+frequently used) for now.</p>
+<h3 id="indexes">Indexes</h3>
+<p>This chapter also covers a wide range of the implementations of
+indexes. Starting from hash indexes, they show extensive forms or
+improvements of it.</p>
+<blockquote>
+<p>Any kind of index usually slows down writes, because the index also
+needs to be updated every time data is written.</p>
+</blockquote>
+<blockquote>
+<p>This is an important trade-off in storage systems: well-chosen
+indexes speed up read queries, but every index slows down writes.</p>
+</blockquote>
+<p>Around two years ago, my colleague tried to add a bunch of indexes
+that seemed to be rarely used, and I left a comment on his pull request
+opposing the addition, but most of the collaborators did not think it
+was problematic, and the pull request was merged.</p>
+<p>I don’t blame them at all as we did our best, but I wish I had read
+this book at that time so that I could have been more helpful to the
+team.</p>
+<h4 id="hash-indexes">Hash Indexes</h4>
+<blockquote>
+<p>Then the simplest possible indexing strategy is this: keep an
+in-memory hash map where every key is mapped to a byte offset in the
+data file (the location at which the value can be found).</p>
+</blockquote>
+<p>This approach is adopted by Bitcask.</p>
+<p>Although this approach works efficiently both for reads and writes,
+but there are some limitations.</p>
+<ul>
+<li>The entire hash table must fit in memory because a key-value data
+structure is used.</li>
+<li>Range queries are not efficient because a simple key-value pair only
+has access to a single record, and we need to iterate through each key
+to perform range queries.</li>
+</ul>
+<h4 id="sorted-string-table-sstable">Sorted String Table (SSTable)</h4>
+<p>On top of the hash indexes approach, keys are sorted. This constraint
+does not directly address the problems of the hash indexes, but it
+provides several improvements.</p>
+<ul>
+<li>Indexes are implemented to break data down into segments, and
+SStable is more efficient in terms of segment mergers because we can do
+something like mergesort to merge sorted segments.</li>
+<li>We can reduce the number of keys in memory compared to the hash
+indexes approach by leveraging the fact that we can instantly pick a
+segment by specifying a range.
+<ul>
+<li>I know I should provide more explanations, but let me skip that for
+today.</li>
+</ul></li>
+<li>Compression is also efficient, grouping records in a range into a
+block.</li>
+</ul>
+<h4 id="log-structured-merge-tree-lsm-tree">Log-Structured Merge-Tree
+(LSM-Tree)</h4>
+<p>I repeated reading the section, but I could not get the definition of
+LSM-Tree. I will research this later (maybe).</p>
+<p>LSM-Tree seems to be a principle/strategy of data management, using
+SSTable as building blocks, but I’m not confident.</p>
+<p>LSM-Tree seems not to be a tree structure in the conventional sense
+such as Binary Tree.</p>
+<p><strong>Bloom Filter</strong></p>
+<blockquote>
+<p>A Bloom filter is a memory-efficient data structure for approximating
+the contents of a set. It can tell you if a key does not appear in the
+database, and thus saves many unnecessary disk reads for nonexistent
+keys.</p>
+</blockquote>
+<h4 id="b-trees">B-Trees</h4>
+<blockquote>
+<p>The most widely used indexing structure</p>
+</blockquote>
+<blockquote>
+<p>B-trees break the database down into fixeed-size blocks or pages,
+traditionally 4KB in size (sometimes bigger), and read or write one page
+at a time (whereas the log-structured indexes break the database down
+into variable-sized segments). This design corresponds more closely to
+the underlying hardware, as disks are also arranged in fixed-size
+blocks.</p>
+</blockquote>
+<p>The implementation of B-trees is quite impressive, but without
+illustrations, it’s very hard to explain. Ask me to buy this book for
+you.</p>
+<p>This section ends with the comparision of B-Trees and LSM-Trees</p>
+<h2 id="upgrading-amazon-lightsail-vps-plan">Upgrading Amazon Lightsail
+(VPS) Plan</h2>
+<p>2 GB RAM, 2 vCPUs, 60 GB SSD -&gt; 4 GB RAM, 2 vCPUs, 80 GB SSD</p>
+<ol type="1">
+<li>Stop the Docker containers in the old VPS instance</li>
+<li>Stop the VPS</li>
+<li>Create a snapshot</li>
+<li>Select the snapshot -&gt; Create an instance from a snapshot -&gt;
+Select an upgraded plan</li>
+<li>Delete the domain assignment in the old instance</li>
+<li>Assign the domain to the new instance and add rules for HTTPS</li>
+<li>Connect to the new instance</li>
+<li><code>sudo certbot delete</code> to delete the old certificate</li>
+<li><code>sudo certbot certonly --standalone</code> to get the new
+cerficate</li>
+<li><code>docker compose up -d</code></li>
+</ol>
+<p>Now, it costs $24/month to run the server. Yikes!</p>
+<p>but it is a good experience running a server on my own.</p>
+<hr />
+<p>162.6 lb</p>
+<p>Protein shake 50g Tapioca 0g Tuna salad 60g Beef eye of round 70g</p>
+<p>total protein -&gt; 180 g (&gt;= 140)</p>
+<p>bench press, jogging (1 hour), lat pull down</p>
+<hr />
+<p>MUST:</p>
+<ul>
+<li>Consider the problem with embedding models</li>
+<li>Ask the property manager about the rent payment</li>
+<li>Get my hair cut</li>
+</ul>
+<hr />
+<p><a href="../../index.html">index</a> <a
+href="../11/20241130.html">20241130</a> <a
+href="20241202.html">20241202</a></p>

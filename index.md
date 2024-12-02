@@ -3,6 +3,10 @@
 - [competitive programming](competitive-programming.html)
 - [research](research.html)
 
+# 202412
+
+- [20241201](./2024/12/20241201.html)
+
 # 202411
 
 - [20241130](./2024/11/20241130.html)

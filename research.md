@@ -122,6 +122,7 @@
 
 # Others
 
+- [Upgrading Amazon Lightsail Plan](./2024/12/20241201.html)
 - [Troubleshooting: Checking Logs In My Mastodon Server](./2024/11/20241126.html)
 - [Django REST framework - built-in pagination](./2024/11/20241111.html)
 - [Unix time](./2024/10/20241021.html)
@@ -138,6 +139,7 @@
 
 # Books
 
+- [Designing Data-Intensive Applications - Chapter 3](./2024/12/20241201.html)
 - [Designing Data-Intensive Applications - Chapter 2](./2024/11/20241128.html)
 - [Designing Data-Intensive Applications - Chapter 1](./2024/11/20241124.html)
 
@@ -147,7 +149,7 @@
 
 - [Room Color and Agression in A Criminal Detention Holding Cell... Robert J. Pellegrini](./2024/11/20241122.html)
 
-# Others
+## Others
 
 - [Visual discomfort and glare assessment in office environments: A review of light-induced physiological and perceptual responses](./2024/11/20241127.html)
 - [Total-Ionizing-Dose Effects on 3D Sequentially Integrated, Fully Depleted Silicon-on-Insulator MOSFETs](./2024/11/20241126.html)
