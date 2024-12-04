@@ -42,6 +42,8 @@
 
 ## Games
 
+- 2042B. Game with Colored Marbles - 1000
+	- [20241203](./2024/12/20241203.html)
 - 2003B. Turtle and Piggy Are Playing a Game 2 - 800
 	- [20240830](./2024/08/20240830.html)
 - 1990A. Submission Bait - 900
@@ -76,7 +78,11 @@
 
 ## Greedy
 
-- 2033C. Sakurako\'s Field Trip - 1400
+- 2042C. Competitive Fishing - 1100
+	- [20241203](./2024/12/20241203.html)
+- 2042A. Greedy Monocarp - 800
+	- [20241203](./2024/12/20241203.html)
+- 2033C. Sakurako's Field Trip - 1400
 	- [20241028](./2024/10/20241028.html)
 - 2033B. Sakurako and Water - 900
 	- [20241027](./2024/10/20241027.html)
