@@ -1,0 +1,76 @@
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+<meta charset="UTF-8">
+</head>
+<h1 id="section">20241205 ◎</h1>
+<ul>
+<li>Codeforces Round 991 (Div. 3)
+<ul>
+<li>I managed to solve 4 problems (A to D). If they are not hacked, it
+will be my best record.</li>
+<li>I had felt like I was facing an impossible hurdle, but I finally
+sensed that my efforts were beginning to create tiny cracks in the
+obstacles.</li>
+</ul></li>
+<li>made progress on reading “Desining Data-Intensive Applications”
+<ul>
+<li>I think I misunderstood the advantages of schemaless
+(schema-on-read) database. I have worked mainly on web applications, but
+when I think about supporting multiple clients, such as Android
+applications, users may use old versions of user clients and send
+requests with the non-latest strucure bodies. In that case, it makes
+sense to allow some flexibility for database schema.</li>
+</ul></li>
+</ul>
+<h2
+id="cloudflares-bot-fight-mode-rejected-requests-from-mastodon">Cloudflare’s
+Bot Fight Mode Rejected Requests From Mastodon</h2>
+<p>I had trouble connecting to a Misskey server. More specifically,
+their requests to my Mastodon server were delivered correctly, but
+requests from my server did not reach the Misskey server.</p>
+<p>As we troubleshoot together (that was sort of fun), it turned out
+that their Cloudflare rejected requests with
+<code>User-Agent: Mastodon/*</code>. That was why he could not receive
+my posts on their side.</p>
+<p>He used <a
+href="https://developers.cloudflare.com/bots/get-started/free/">Cloudflare’s
+Bot Fight Mode</a></p>
+<p>It automatically identifies bot traffic on a registered domain and
+rejects bot-like traffic.</p>
+<p>Mastodon servers (or other Fediverse servers) send requests through
+background jobs, and the Fediverse has also experienced <a
+href="../10/20241008.html">attacks from bots</a>. Because of this, it
+makes sense that Cloudflare might interpret traffic from Mastodon as bot
+traffic.</p>
+<h3 id="how-we-solved-the-problem">How We Solved The Problem</h3>
+<blockquote>
+<p>You cannot bypass or skip Bot Fight Mode using the Skip action in WAF
+custom rules or using Page Rules. <em>Skip</em>, <em>Bypass</em>, and
+<em>Allow</em> actions apply to rules or rulesets running on the Ruleset
+Engine. While Super Bot Fight Mode rules are implemented in the Ruleset
+Engine, Bot Fight Mode checks are not. This is why you can skip Super
+Bot Fight Mode, but not Bot Fight Mode. If you need to skip Bot Fight
+Mode, consider using Super Bot Fight Mode.</p>
+</blockquote>
+<blockquote>
+<p>Bot Fight Mode can still trigger if you have IP Access rules, but it
+cannot trigger if an IP Access rule matches the request. For example,
+the IP Access rule matches the connecting IP.</p>
+</blockquote>
+<p>We have three options available. The first is to pay extra for “Super
+Bot Fight Mode,” the paid version of “Bot Fight Mode,” which allows
+setting nuanced rules. The second option is to manually whitelist the IP
+addreses of Mastodon servers, but it isn’t scalable for handling every
+Mastodon server we need to communicate with.</p>
+<p>The option we chose? Just turn off Bot Fight Mode! Whilte this might
+allow some bot traffic, it saves money and avoids the hassle of setting
+complex rules.</p>
+<hr />
+<p>162.4 lb</p>
+<p>Fujitas 35 g Protein bar 15 g Seafood salad 30 g Chicken nuggets 20 g
+Protein shake 40 g Protein mocha latte 20 g Donut 0 g</p>
+<p>total protein -&gt; 160 g (&gt;= 140)</p>
+<hr />
+<p><a href="../../index.html">index</a> <a
+href="20241204.html">20241204</a> <a
+href="20241206.html">20241206</a></p>
