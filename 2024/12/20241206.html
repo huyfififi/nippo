@@ -2,11 +2,56 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <meta charset="UTF-8">
 </head>
-<h1 id="section">20241206</h1>
+<h1 id="section">20241206 ○</h1>
+<ul>
+<li>did laundry</li>
+<li>processed some documents</li>
+<li>made progress on reading “Desining Data-Intensive Applications”</li>
+<li>made progress on reading “あっという間に人は死ぬから”</li>
+</ul>
+<h2 id="json-schema">JSON Schema</h2>
+<p><a
+href="https://github.com/json-schema-org/json-schema-spec">json-schema-org/json-schema-spec</a></p>
+<p>Although I don’t see many examples in real life, there is an attempt
+to let users define a schema for JSON documents.</p>
+<blockquote>
+<p>The current version is 2020-12! The previous version was 2019-09.</p>
+</blockquote>
+<p>They don’t update the specification for 4 years :thinking_face: I
+cannot tell if the specification is mature or the community is just not
+active.</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode json"><code class="sourceCode json"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;$schema&quot;</span><span class="fu">:</span> <span class="st">&quot;https://json-schema.org/draft/2020-12/schema&quot;</span><span class="fu">,</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;type&quot;</span><span class="fu">:</span> <span class="st">&quot;object&quot;</span><span class="fu">,</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;properties&quot;</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;username&quot;</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&quot;type&quot;</span><span class="fu">:</span> <span class="st">&quot;string&quot;</span><span class="fu">,</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&quot;minLength&quot;</span><span class="fu">:</span> <span class="dv">2</span><span class="fu">,</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&quot;maxLength&quot;</span><span class="fu">:</span> <span class="dv">100</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">},</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;age&quot;</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&quot;type&quot;</span><span class="fu">:</span> <span class="st">&quot;integer&quot;</span><span class="fu">,</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&quot;minimum&quot;</span><span class="fu">:</span> <span class="dv">0</span><span class="fu">,</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&quot;maximum&quot;</span><span class="fu">:</span> <span class="dv">120</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">},</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;role&quot;</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&quot;type&quot;</span><span class="fu">:</span> <span class="st">&quot;string&quot;</span><span class="fu">,</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&quot;enum&quot;</span><span class="fu">:</span> <span class="ot">[</span><span class="st">&quot;user&quot;</span><span class="ot">,</span> <span class="st">&quot;admin&quot;</span><span class="ot">,</span> <span class="st">&quot;superadmin&quot;</span><span class="ot">]</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">},</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;required&quot;</span><span class="fu">:</span> <span class="ot">[</span><span class="st">&quot;name&quot;</span><span class="ot">,</span> <span class="st">&quot;age&quot;</span><span class="ot">]</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div>
+<p>By defining this kind of schema, valdiations can be run with tools
+available.</p>
+<p>Hmm… :thinking_face: as I browsed the <a
+href="https://json-schema.org/tools">available validators</a>, the
+community seems to be inactive.</p>
 <hr />
-<p>_ lb</p>
-<p>Scramble eggs 40 g Yogurt 20 g</p>
-<p>total protein -&gt; 60 g (&gt;= 140)</p>
+<p>163.0 lb</p>
+<p>Scramble eggs 40 g Yogurt 20 g Gummies 0 g Protein chips 20 g
+Sausages 60 g Salad 10 g Protein shake 40 g Milk 20 g</p>
+<p>total protein -&gt; 210 g (&gt;= 140)</p>
 <hr />
 <p><a href="../../index.html">index</a> <a
 href="20241205.html">20241205</a> <a
