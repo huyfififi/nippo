@@ -94,6 +94,12 @@
 
 ## Math
 
+- 2050D. Digital string maximization - 1200
+	- [20241207](./2024/12/20241207.html)
+- 2050C. Uninteresting Number - 1100
+	- [20241207](./2024/12/20241207.html)
+- 2050B. Transfusion - 900
+	- [20241207](./2024/12/20241207.html)
 - 2034A. King Keykhosrow's Mystery - 800
 	- [20241202](./2024/12/20241202.html)
 - 2033A. Sakurako and Kosuke - 800
@@ -200,6 +206,8 @@
 
 ## Implementation
 
+- 2050A. Line Breaks - 800
+	- [20241207](./2024/12/20241207.html)
 - 1829C. Mr. Perfectly Fine - 800
 	- [20241106](./2024/11/20241106.html)
 - 2036D. I Love 1543 - 900

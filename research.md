@@ -4,6 +4,7 @@
 
 # Data Structure & Algorithms
 
+- [Takeaways from Codeforces Round 991](./2024/12/20241207.html)
 - [Radix sort](./2024/11/20241109.html)
 	- [Radix sort (string)](./2024/11/20241114.html)
 - [Counting sort](./2024/11/20241108.html)

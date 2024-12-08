@@ -1,0 +1,212 @@
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+<meta charset="UTF-8">
+</head>
+<h1 id="section">20241207 ◎</h1>
+<p>I don’t feel very well today…</p>
+<h2 id="a.-line-breaks---800"><a
+href="https://codeforces.com/contest/2050/problem/A">2050A. Line Breaks
+- 800</a></h2>
+<p>Although the problem is pretty simple, it was a bit hard to
+understand what was asked.</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> tc <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">int</span>(<span class="bu">input</span>())):</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    n, m <span class="op">=</span> <span class="bu">map</span>(<span class="bu">int</span>, <span class="bu">input</span>().split())</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    sl: <span class="bu">list</span>[<span class="bu">int</span>] <span class="op">=</span> []</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> nc <span class="kw">in</span> <span class="bu">range</span>(n):</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>        sl.append(<span class="bu">len</span>(<span class="bu">input</span>()))</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    ans: <span class="bu">int</span> <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    tmp: <span class="bu">int</span> <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> length <span class="kw">in</span> sl:</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> tmp <span class="op">+</span> length <span class="op">&gt;</span> m:</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>            <span class="cf">break</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>        tmp <span class="op">+=</span> length</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>        ans <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(ans)</span></code></pre></div>
+<h2 id="b.-transfusion---900"><a
+href="https://codeforces.com/contest/2050/problem/B">2050B. Transfusion
+- 900</a></h2>
+<p>It seems there isn’t an editorial on the internet yet, so I’m not
+confident if my approach is optimal or does not have any corner
+cases.</p>
+<p>First, to be able to make all the elements equal, the sum of all
+elements must be divisible by the number of elements.</p>
+<p>Second, when we look at the leftmost (or the rightmost) element, it
+can be updated only from one direction. The same goes for i = 1
+(0-index) or i = n - 2.</p>
+<p>Now, i = 2 (0-index) must be updated from the right side not to break
+i = 0. Recursively (?), i = 4, 6, … must be updated from the right side
+to meet the condition.</p>
+<p>In my approach, I make ends meet from the left side and see if all
+elements can be the average of the input.</p>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> can_flatten(n: <span class="bu">int</span>, a: <span class="bu">list</span>[<span class="bu">int</span>]) <span class="op">-&gt;</span> <span class="bu">bool</span>:</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">sum</span>(a) <span class="op">%</span> n <span class="op">!=</span> <span class="dv">0</span>:</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">False</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    eq_val: <span class="bu">int</span> <span class="op">=</span> <span class="bu">sum</span>(a) <span class="op">//</span> n</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n <span class="op">-</span> <span class="dv">2</span>):</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>        a[i <span class="op">+</span> <span class="dv">2</span>] <span class="op">+=</span> a[i] <span class="op">-</span> eq_val</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> a[<span class="op">-</span><span class="dv">1</span>] <span class="op">==</span> a[<span class="op">-</span><span class="dv">2</span>] <span class="op">==</span> eq_val</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">int</span>(<span class="bu">input</span>())):</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>    n: <span class="bu">int</span> <span class="op">=</span> <span class="bu">int</span>(<span class="bu">input</span>())</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>    a: <span class="bu">list</span>[<span class="bu">int</span>] <span class="op">=</span> <span class="bu">list</span>(<span class="bu">map</span>(<span class="bu">int</span>, <span class="bu">input</span>().split()))</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>    ans: <span class="bu">bool</span> <span class="op">=</span> can_flatten(n, a)</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> ans:</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">&quot;YES&quot;</span>)</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">&quot;NO&quot;</span>)</span></code></pre></div>
+<h2 id="c.-uninteresting-number---1100"><a
+href="https://codeforces.com/contest/2050/problem/C">2050C.
+Uninteresting Number - 1100</a></h2>
+<p>A number is divisible by 3 &lt;=&gt; The sum of all digits is
+divisible by 3.</p>
+<p>A number is divisible by 9 &lt;=&gt; The sum of all digits is
+divisible by 9.</p>
+<p>&lt;=&gt; (The sum of all digits) mod 9 = 0</p>
+<blockquote>
+<p>…choose one of its digits, square it, and replace the original digit
+with the result. The result must be a digit</p>
+</blockquote>
+<p>So, we cannot square a digit &gt;= 4 because its square exceeds 10.
+On the other hand, a square of <code>1</code> is <code>1</code>, so
+performing the operation on a digit with <code>1</code> has no
+effect.</p>
+<p><code>2 ** 2 = 4</code> -&gt; doubling a digit with <code>2</code>
+increases the sum of (digit mod 9) by <code>2 mod 9</code>.</p>
+<p><code>3 ** 2 = 9</code> -&gt; doubling a digit with <code>3</code>
+increases the sum of (digit mod 9) by <code>6 mod 9</code>.</p>
+<p>Applying the operation to double <code>3</code> for one digit -&gt;
+increase 6 mod 9</p>
+<p>Applying the operation to double <code>3</code> for two digits -&gt;
+increase (6 + 6) mod 9 = 3 mod 9</p>
+<p>Applying the operation to double <code>3</code> for three digits
+-&gt; increase (6 * 3) mod 9 = 0 mod 9</p>
+<p>Applying the operation to double <code>3</code> for four digits -&gt;
+increase 6 mod 9 (same as performing only one operation on
+<code>3</code>)</p>
+<p>As we can see, it’s not meaningful to perform the operation on
+<code>3</code> more than four times since it just repeats the same
+result that appeared before. &lt;=&gt; The maximum number of the
+operations for <code>3</code> we need to consider is
+<strong><em>3</em></strong>.</p>
+<p>The same goes for digits with <code>2</code>.</p>
+<pre><code>[(count, increased mod 9)] = [
+    (9, 0 mod 9), (1, 2 mod 9), (2, 4 mod 9), (3, 6 mod 9), (4, 8 mod 9),
+    (5, 1 mod 9), (6, 3 mod 9), (7, 5 mod 9), (8, 7 mod 9), (9, 0 mod 9),
+    ... (and repeat)
+]</code></pre>
+<p>So, for digits with <code>2</code>, the maximum number of the given
+operations that is meaningful and we must consider is
+<strong><em>8</em></strong>.</p>
+<div class="sourceCode" id="cb4"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> can_obtain(mod9, cnt2, cnt3) <span class="op">-&gt;</span> <span class="bu">bool</span>:</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    cnt2 <span class="op">=</span> <span class="bu">min</span>(cnt2, <span class="dv">8</span>)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    cnt3 <span class="op">=</span> <span class="bu">min</span>(cnt3, <span class="dv">2</span>)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(cnt2 <span class="op">+</span> <span class="dv">1</span>):</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>        sum2 <span class="op">=</span> <span class="dv">2</span> <span class="op">*</span> i</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(cnt3 <span class="op">+</span> <span class="dv">1</span>):</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>            sum3 <span class="op">=</span> <span class="dv">6</span> <span class="op">*</span> j</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> (mod9 <span class="op">+</span> sum2 <span class="op">+</span> sum3) <span class="op">%</span> <span class="dv">9</span> <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>                <span class="cf">return</span> <span class="va">True</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="va">False</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">int</span>(<span class="bu">input</span>())):</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>    n: <span class="bu">str</span> <span class="op">=</span> <span class="bu">input</span>()</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>    mod9: <span class="bu">int</span> <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>    cnt2: <span class="bu">int</span> <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>    cnt3: <span class="bu">int</span> <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> c <span class="kw">in</span> n:</span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>        mod9 <span class="op">=</span> (mod9 <span class="op">+</span> <span class="bu">int</span>(c)) <span class="op">%</span> <span class="dv">9</span></span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> c <span class="op">==</span> <span class="st">&quot;3&quot;</span>:</span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>            cnt3 <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> c <span class="op">==</span> <span class="st">&quot;2&quot;</span>:</span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>            cnt2 <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>    ans: <span class="bu">bool</span> <span class="op">=</span> can_obtain(mod9, cnt2, cnt3)</span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> ans:</span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">&quot;YES&quot;</span>)</span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">&quot;NO&quot;</span>)</span></code></pre></div>
+<h2 id="d.-digital-string-maximization---1200"><a
+href="https://codeforces.com/contest/2050/problem/D#">2050D. Digital
+string maximization - 1200</a></h2>
+<p>My approach still doesn’t quite make sense to me, but I’ll write it
+down for reference.</p>
+<p>It costs <code>1</code> to move a number one index to the left.</p>
+<p>Let’s say we have this input</p>
+<pre><code>1 1 5 6 9</code></pre>
+<p>The i = 4 (0-index) element can be moved one index to the left with
+one decrement.</p>
+<pre><code>1 1 5 6 9
+-&gt;
+1 1 5 8 6</code></pre>
+<p>In the same way, the i = 4 element can be moved two indexes to the
+left with two decrement, by applying the operation mentioned above
+twice.</p>
+<pre><code>1 1 5 6 9
+(
+-&gt;
+1 1 5 8 6
+)
+-&gt; 1 1 7 5 6</code></pre>
+<p>Let’s make this generic. For an index <code>i</code>, the maximum
+number it can be is</p>
+<div class="sourceCode" id="cb8"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>s[i] <span class="op">=</span> <span class="bu">max</span>(</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  [</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    s[i], s[i <span class="op">+</span> <span class="dv">1</span>] <span class="op">-</span> <span class="dv">1</span>, s[i <span class="op">+</span> <span class="dv">2</span>], <span class="op">-</span> <span class="dv">2</span>, s[i <span class="op">+</span> <span class="dv">3</span>] <span class="op">-</span> <span class="dv">3</span>, s[i <span class="op">+</span> <span class="dv">4</span>] <span class="op">-</span> <span class="dv">4</span>,</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    s[i <span class="op">+</span> <span class="dv">5</span>] <span class="op">-</span> <span class="dv">5</span>, s[i <span class="op">+</span> <span class="dv">6</span>] <span class="op">-</span> <span class="dv">6</span>, s[i <span class="op">+</span> <span class="dv">7</span>] <span class="op">-</span> <span class="dv">7</span>, s[i <span class="op">+</span> <span class="dv">8</span>] <span class="op">-</span> <span class="dv">8</span>,</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># s[i + 9] - 9 &lt;= 0, so i + 9, i + 10, ... won&#39;t be the options</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>  ]</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<p>To make the lexicographically maximum string, we start from the
+leftmost index to the right, and pick the maximum value for each
+index.</p>
+<div class="sourceCode" id="cb9"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">int</span>(<span class="bu">input</span>())):</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    s: <span class="bu">list</span>[<span class="bu">int</span>] <span class="op">=</span> <span class="bu">list</span>(<span class="bu">map</span>(<span class="bu">int</span>, <span class="bu">list</span>(<span class="bu">input</span>())))</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(s) <span class="op">-</span> <span class="dv">1</span>):</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>        max_i: <span class="bu">int</span> <span class="op">=</span> i</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>        max_val: <span class="bu">int</span> <span class="op">=</span> s[i]</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">9</span>):</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> i <span class="op">+</span> j <span class="op">&gt;=</span> <span class="bu">len</span>(s):</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>                <span class="cf">continue</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> s[i <span class="op">+</span> j] <span class="op">-</span> j <span class="op">&gt;</span> max_val:</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>                max_i <span class="op">=</span> i <span class="op">+</span> j</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>                max_val <span class="op">=</span> s[i <span class="op">+</span> j] <span class="op">-</span> j</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(max_i, i, <span class="op">-</span><span class="dv">1</span>):</span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>            s[j] <span class="op">=</span> s[j <span class="op">-</span> <span class="dv">1</span>]</span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>        s[i] <span class="op">=</span> max_val</span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">&quot;&quot;</span>.join([<span class="bu">str</span>(x) <span class="cf">for</span> x <span class="kw">in</span> s]))</span></code></pre></div>
+<h2 id="takeaways-from-codeforces-round-991">Takeaways from Codeforces
+Round 991</h2>
+<p>What the solutions to the C problem and the D problem have in common
+is that they both rely on leveraging hidden (?) conditions to reduce
+time complexity. A naive brute-force implementation would have a time
+complexity of O(n^2). However, for the D problem, we only need to check
+eight adjacent elements for each position, which simplifies the time
+complexity to O(8n) = O(n). The same principle applies to the C
+problem.</p>
+<p>This type of optimization comes up frequently. For instance, if we
+know the input consists only of lowercase alphabets, we can either
+prepare a fixed-length array as a counter or iterate over 26 loops. Both
+approaches maintain constant time complexity and avoid unnecessary
+overhead.</p>
+<hr />
+<p>_ lb</p>
+<p>Taco Bell 30 g Egg Rice 20 g Gummies 0 g Protein shake 90 g Boba 0 g
+McDonald’s 20 g</p>
+<p>total protein -&gt; 160 g (&gt;= 140)</p>
+<p>60 minutes jog, lat pull down, bench press</p>
+<hr />
+<p><a href="../../index.html">index</a> <a
+href="20241206.html">20241206</a> <a
+href="20241208.html">20241208</a></p>
