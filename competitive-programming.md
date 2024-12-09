@@ -94,6 +94,8 @@
 
 ## Math
 
+- 2040A. Game of Division - 800
+	- [20241208](./2024/12/20241208.html)
 - 2050D. Digital string maximization - 1200
 	- [20241207](./2024/12/20241207.html)
 - 2050C. Uninteresting Number - 1100
