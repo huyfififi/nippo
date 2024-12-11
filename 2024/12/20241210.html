@@ -1,0 +1,71 @@
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+<meta charset="UTF-8">
+</head>
+<h1 id="section">20241210</h1>
+<ul>
+<li>made progress on reading “Designing Data-Intensive
+Applications”</li>
+</ul>
+<blockquote>
+<p>…The translation from the in-memory representation to a byte sequence
+is called <em>encoding</em> (also known as <em>serialization</em> or
+<em>marshallig</em>)</p>
+</blockquote>
+<p>JSON is one type of encoding format. For example, consider an API
+endpoint that reads data from a database and returns it in JSON format.
+In this case, the web server <em>encodes</em> (or <em>serializes</em>)
+the in-memory data into JSON before sending it to the client.</p>
+<p>Although <em>serialization</em> is more commonly used in general,
+depending on the context, <em>encoding</em> might be more precise
+term.</p>
+<h2 id="b.-paint-a-strip---1000"><a
+href="https://codeforces.com/contest/2040/problem/B">2040B. Paint a
+Strip - 1000</a></h2>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> solve(n: <span class="bu">int</span>) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    count: <span class="bu">int</span> <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    ones: <span class="bu">int</span> <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">while</span> ones <span class="op">&lt;</span> n:</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>        count <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>        ones <span class="op">=</span> (ones <span class="op">+</span> <span class="dv">1</span>) <span class="op">*</span> <span class="dv">2</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> count</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">int</span>(<span class="bu">input</span>())):</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    n: <span class="bu">int</span> <span class="op">=</span> <span class="bu">int</span>(<span class="bu">input</span>())</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(solve(n))</span></code></pre></div>
+<p>Apparently, we must leverage the second type of operation as much as
+possible to minimize the count of the first type of operation.</p>
+<p>To think about maximizing the effect of the second type of operation,
+doubling the painted area was the first thing that came to my brain.</p>
+<pre><code>1 1 1 1 0 0 0 0 0 0
+
+operation 1 -&gt;
+
+1 1 1 1 0 0 0 0 0 1
+
+operation 2 -&gt;
+
+1 1 1 1 1 1 1 1 1 1</code></pre>
+<p>Verbalizing the approach might have failed to convey my idea
+correctly. For competitive programming, I find it much easier to
+understand by reading code instead of its explanation.</p>
+<p><a href="https://codeforces.com/blog/entry/137074">Codeforces Round
+#992 (Div.2) Editorial</a></p>
+<p>That… makese sense…</p>
+<p>The operation 2 can be performed only between two groups of 1s, and
+when performed optimally filling 0s in-between, the count of the
+operation 2 does not exceed the count of the operation 1.</p>
+<p>And, maximizing the number of elements the operation 2 can conver
+ends with the same solution as mine (or mine ended up with the optimal
+solution).</p>
+<hr />
+<p>_ lb</p>
+<p>increasing protein intake did not work out. I’ll consider a different
+approach</p>
+<hr />
+<p><a href="../../index.html">index</a> <a
+href="20241209.html">20241209</a> <a
+href="20241211.html">20241211</a></p>

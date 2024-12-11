@@ -126,6 +126,7 @@
 
 # Others
 
+- [Encoding and Serialization](./2024/12/20241210.html)
 - [Upgrading Amazon Lightsail Plan](./2024/12/20241201.html)
 - [Troubleshooting: Checking Logs In My Mastodon Server](./2024/11/20241126.html)
 - [Django REST framework - built-in pagination](./2024/11/20241111.html)
