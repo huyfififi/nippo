@@ -102,6 +102,10 @@
 - [Repository Design Pattern](./2024/09/20240926.html)
 - [Separations of Concerns in Software Design | Loose Coupling and High Cohesion](./2024/09/20240911.html)
 
+# Web Development
+
+- [Node.js](./2024/12/20241211.html)
+
 # OSS
 
 - [Proprietary Software Definition](./2024/09/20240908.html)

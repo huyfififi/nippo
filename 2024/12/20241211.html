@@ -1,0 +1,63 @@
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+<meta charset="UTF-8">
+</head>
+<h1 id="section">20241211</h1>
+<ul>
+<li>worked from my friend’s house
+<ul>
+<li>My new apartment is getting too comfortable to work.</li>
+</ul></li>
+<li>had dinner with my friends</li>
+<li>OpenAI’s servers went down, and my work got paused. That was not
+because I heavily rely on OpenAI for coding :smile:. I was working on
+some integration parts with OpenAI API.</li>
+</ul>
+<h2 id="node.js">Node.js</h2>
+<p>I misunderstood the purpose of <code>Node.js</code>.</p>
+<p><a
+href="https://nodejs.org/en/learn/getting-started/introduction-to-nodejs">Node.js
+- Introduction to Node.js</a></p>
+<blockquote>
+<p>Node.js is an open-source and cross-platform JavaScript runtime
+environment.</p>
+</blockquote>
+<blockquote>
+<p>Node.js has a unique advantage because millions of frontend
+developers that write JavaScript for the browser are now able to write
+the server-side code in addition to the client-side code without the
+need to learn a completely different language.</p>
+</blockquote>
+<p>(copied from the documentation)</p>
+<pre><code>const { createServer } = require(&#39;node:http&#39;);
+
+const hostname = &#39;127.0.0.1&#39;;
+const port = 3000;
+
+const server = createServer((req, res) =&gt; {
+  res.statusCode = 200;
+  res.setHeader(&#39;Content-Type&#39;, &#39;text/plain&#39;);
+  res.end(&#39;Hello World&#39;);
+});
+
+server.listen(port, hostname, () =&gt; {
+  console.log(`Server running at http://${hostname}:${port}/`);
+});</code></pre>
+<p>I have seen that Node.js is used as a development server that serves
+static files like HTML, CSS, and JavaScript directly to the browser.</p>
+<p>When deploying the frontend client, I thought Node.js was not
+required because once static files are built, they can be hosted
+anywhere such as CDN.</p>
+<p>However, as outlined in the documentation, Node.js provides the
+capability to create API endpoints, whch can be deployed on a Node.js
+server. This functionality is crucial for modern frameworks like
+Next.js, enabling them to deliver pure static files while leveraging a
+separate server for performance optimization. I’ve also heard that many
+frontend developers are using TypeScript for building backend APIs
+because of its shallow learning curve (for frontend developers).</p>
+<hr />
+<p>_ lb</p>
+<hr />
+<p><a href="../../index.html">index</a> <a
+href="20241210.html">20241210</a> <a
+href="20241212.html">20241212</a></p>
