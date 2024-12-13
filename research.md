@@ -130,6 +130,7 @@
 
 # Others
 
+- [The reason why Meta's Llama models and LlamaIndex use the word "Llama"](./2024/12/20241213.html)
 - [Encoding and Serialization](./2024/12/20241210.html)
 - [Upgrading Amazon Lightsail Plan](./2024/12/20241201.html)
 - [Troubleshooting: Checking Logs In My Mastodon Server](./2024/11/20241126.html)
