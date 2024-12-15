@@ -149,6 +149,7 @@
 
 # Books
 
+- [Designing Data-Intensive Applications - Chapter 4](./2024/12/20241214.html)
 - [Designing Data-Intensive Applications - Chapter 3](./2024/12/20241201.html)
 - [Designing Data-Intensive Applications - Chapter 2](./2024/11/20241128.html)
 - [Designing Data-Intensive Applications - Chapter 1](./2024/11/20241124.html)

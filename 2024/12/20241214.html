@@ -1,0 +1,115 @@
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+<meta charset="UTF-8">
+</head>
+<h1 id="section">20241214 ◎</h1>
+<ul>
+<li>finished skimming the chapter 4 of “Designing Data-Intensive
+Applications”</li>
+<li>My friend’s birthday party
+<ul>
+<li>I spoke a lot of English today. My English is getting improved!</li>
+<li>It was fun, but now I’m tired from socializing for more than 6
+hours.</li>
+</ul></li>
+</ul>
+<h2 id="designing-data-intensive-applications-chapter-4">Designing
+Data-Intensive Applications: Chapter 4</h2>
+<h4
+id="misc-rpc-and-rest-communication-paradigm-architectural-style">Misc:
+RPC and REST: Communication Paradigm / Architectural Style</h4>
+<p><a
+href="https://aws.amazon.com/compare/the-difference-between-rpc-and-rest/">RPC
+vs REST - Difference Between API Architectures - AWS</a></p>
+<blockquote>
+<p>Remote Procedure Call (RPC) and REST are two architectural styles in
+API design… RPC APIs allow developers to call remote functions in
+external servers as if they were local to their software… In contrast,
+REST APIs allow you to perform specific data operations on a remote
+server…</p>
+</blockquote>
+<p>In this book, Martin points out that communication over the internet
+is fundamentally different from making function calls, and treating a
+remote service as if it were a local object in a programming language
+introduces various problems, restricting the focus to requests between
+services owned by the same organization.</p>
+<p>RESTful API, which means API developed with REST guidelines, is much
+easier to work with. Developers can easily send requests to the API with
+<code>curl</code> or <code>Postman</code>, while they need to write some
+code to work with RPC.</p>
+<h4 id="misc-soap-and-rest-protocol-specification">Misc: SOAP and REST:
+Protocol Specification</h4>
+<p>Technically, I cannot directly compare SOAP and REST because SOAP is
+a protocol specification standardized by the W3C while REST provides
+guidelines to design a service conceptually. (I’m gettting confused and
+not very sure!)</p>
+<p><a
+href="https://aws.amazon.com/compare/the-difference-between-soap-rest/">SOAP
+vs REST - Difference Between API Technologies - AWS</a></p>
+<blockquote>
+<p>SOAP and REST are two different approaches to API design. The SOAP
+approach is highly structured and uses XML data format. REST is more
+flexible and allows applications to exchange data in multiple
+formats.</p>
+</blockquote>
+<p><a href="https://www.w3schools.com/xml/xml_wsdl.asp">w3shools.com -
+XML WSDL</a></p>
+<p>The API of a SOAP web service follows WSDL, which stands for Web
+Services Description Language, and because its structure is too
+complicated for humans to craft requests or read responses manually,
+users of SOAP are forced to use some tools to cope with the API. When
+using programming languages that don’t have good support for SOAP, it
+will be very difficult to integrate with the SOAL API.</p>
+<p>My only experience with SOAP is Salesforce API, and it was pretty
+tricky to work with. As I browsed blogs and web pages, it seems to be
+safe to consider SOAP as a sort of dead technology, though some large
+enterprises still use it to leverage its strict standards.</p>
+<h2 id="encoding">Encoding</h2>
+<p>It is common practice to perform rolling upgrades, where a new
+version of a service is deployed to a subset of nodes and eventually
+replaces all nodes. With this approach, we can release a new version of
+a service without downtime, and it’s easier to detect issues and revert
+the release.</p>
+<p>However, it introduces a problem that needs careful handling: the
+presence of pods running both older and newer versions simultaneously.
+This issue is not limited to rolling upgrades: it can also occur when
+exposing API endpoints to third-party clients that may be using outdated
+versions.</p>
+<p>To address this problem, it is crucial to select a data encoding
+format that supports both backward compatibility (allowing new code to
+read old data) and forward compatibility (enabling old code to read new
+data).</p>
+<p>Programming language-specific encodings are not recommended because
+they are tightly coupled with specific programming languages. Also, they
+tend to fail to provide backward/forward compatibility.</p>
+<p><a href="https://docs.python.org/3/library/pickle.html">pickle -
+Python object serialization</a></p>
+<blockquote>
+<p>The pickle serialization format is guaranteed to be backwards
+compatible across Python releases provided a compatible pickle protocol
+is chosen and pickling and unpickling code deals with Python 2 to Python
+3 type differences if your data is crossing that unique breaking change
+language boundary.</p>
+</blockquote>
+<p>I browsed some web pages, and Python’s encoding library
+<code>pickle</code> seems not to be forward compatible as the
+documentation does not mention it.</p>
+<p>There are binary encodings that are backward compatible and forward
+compatible. One of them is Apache Avro, which achieves backward/forward
+compatibility under some conditions.</p>
+<p>The most popular encoding is textual formats like JSON, XML, and CSV,
+where JSON is widespread due to its readability. Their backward
+compatibility and forward compatibility are achieved by how they are
+used in implementation.</p>
+<hr />
+<p>162.6 lb</p>
+<hr />
+<p>TODO:</p>
+<ul>
+<li>Codeforces Round 993 (Div. 4) (20241215)</li>
+<li>Codeforces 2040C</li>
+</ul>
+<hr />
+<p><a href="../../index.html">index</a> <a
+href="20241213.html">20241213</a> <a
+href="20241215.html">20241215</a></p>
