@@ -270,6 +270,8 @@
 
 ## Too Difficult For Me (Help Wanted)
 
+- 2040C. Ordered Permutations - 1200
+	- [20241215](./2024/12/20241215.html)
 - 2036B. Startup - 800
 	- [20241103](./2024/11/20241103.html)
 - 1996D. Fun - 1200
