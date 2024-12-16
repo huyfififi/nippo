@@ -3,19 +3,61 @@
 <meta charset="UTF-8">
 </head>
 <h1 id="section">20241215 ◎</h1>
+<p>McDonald’s seasonal menu McRib was not very tasty.</p>
 <ul>
-<li>participated in Codeforces Round 993 (Div. 4)</li>
+<li>participated in Codeforces Round 993 (Div. 4)
+<ul>
+<li>The math problems are too difficult for me</li>
+</ul></li>
+<li>household chores</li>
 </ul>
 <h2 id="c.-ordered-permutations---1200"><a
 href="https://codeforces.com/contest/2040/problem/C">2040C. Ordered
 Permutations - 1200</a></h2>
+<p><a href="https://codeforces.com/blog/entry/137074">Codeforces Round
+#992 (Div.2) Editorial</a></p>
+<p>:thinking_face:</p>
+<p>I can’t understand or replicate the solution, but the way they
+construct a permutation might be worth remembering.</p>
+<p>Instead of generating all permutations <code>n!</code>, the solution
+picks two positions (the leftmost/rightmost blank spaces) for each
+number so that only <code>2^n</code> permutations need to be
+checked.</p>
+<h2 id="a.-easy-problem---800"><a
+href="https://codeforces.com/contest/2044/problem/A">2044A. Easy Problem
+- 800</a></h2>
+<p>The problem can be rephrased as counting how many different ways we
+can insert a partition between <code>n</code> identical blocks.</p>
+<p>For example, consider the number 5 expressed as:</p>
+<p>5 = 1 + 1 + 1 + 1 + 1</p>
+<p>Some of possible ways to place a single partition are:</p>
+<ul>
+<li>1 + 1 | 1 + 1 + 1 (a = 2, b = 3)</li>
+<li>1 + 1 + 1 + 1 | 1 (a = 4, b = 1)</li>
+</ul>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">int</span>(<span class="bu">input</span>())):</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="bu">int</span>(<span class="bu">input</span>()) <span class="op">-</span> <span class="dv">1</span>)</span></code></pre></div>
+<h2 id="b.-normal-problem---800"><a
+href="https://codeforces.com/contest/2044/problem/B">2044B. Normal
+Problem - 800</a></h2>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">int</span>(<span class="bu">input</span>())):</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    s: <span class="bu">list</span>[<span class="bu">str</span>] <span class="op">=</span> <span class="bu">list</span>(<span class="bu">input</span>())</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    srev: <span class="bu">list</span>[<span class="bu">str</span>] <span class="op">=</span> s[::<span class="op">-</span><span class="dv">1</span>]</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(s)):</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> srev[i] <span class="op">==</span> <span class="st">&quot;p&quot;</span>:</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>            srev[i] <span class="op">=</span> <span class="st">&quot;q&quot;</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">elif</span> srev[i] <span class="op">==</span> <span class="st">&quot;q&quot;</span>:</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>            srev[i] <span class="op">=</span> <span class="st">&quot;p&quot;</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">&quot;&quot;</span>.join(srev))</span></code></pre></div>
 <hr />
-<p>162.6 lb</p>
+<p>_ lb</p>
 <hr />
 <p>TODO:</p>
 <ul>
+<li>Register for Codeforces Global Round 28</li>
 <li>Review Codeforces Round 993 (Div. 4)</li>
-<li>Codeforces 2040C</li>
 </ul>
 <hr />
 <p><a href="../../index.html">index</a> <a

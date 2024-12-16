@@ -102,6 +102,8 @@
 
 ## Math
 
+- 2044A. Easy Problem - 800
+	- [20241215](./2024/12/20241215.html)
 - 2040A. Game of Division - 800
 	- [20241208](./2024/12/20241208.html)
 - 2050D. Digital string maximization - 1200
@@ -281,6 +283,8 @@
 
 ## Trivial Problems
 
+- 2044B. Normal Problem - 800
+	- [20241215](./2024/12/20241215.html)
 - 1915A. Odd One Out - 800
 - 1926A. Vlad and the Best of Five - 800
 - 1927A. Make it White - 800
