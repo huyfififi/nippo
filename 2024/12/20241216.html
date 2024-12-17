@@ -1,0 +1,35 @@
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+<meta charset="UTF-8">
+</head>
+<h1 id="section">20241216</h1>
+<ul>
+<li>household chores</li>
+<li>I was not very productive :cry:</li>
+</ul>
+<h2 id="c.-hard-problem"><a
+href="https://codeforces.com/contest/2044/problem/C">2044C. Hard
+Problem</a></h2>
+<p>If we put type-c monkeys first, type-a monkeys or type-b monkeys may
+not be able to have seats.</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">int</span>(<span class="bu">input</span>())):</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    m, a, b, c <span class="op">=</span> <span class="bu">map</span>(<span class="bu">int</span>, <span class="bu">input</span>().split())</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    a_seated: <span class="bu">int</span> <span class="op">=</span> <span class="bu">min</span>(a, m)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    b_seated: <span class="bu">int</span> <span class="op">=</span> <span class="bu">min</span>(b, m)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    ans: <span class="bu">int</span> <span class="op">=</span> a_seated <span class="op">+</span> b_seated <span class="op">+</span> <span class="bu">min</span>(c, <span class="dv">2</span> <span class="op">*</span> m <span class="op">-</span> a_seated <span class="op">-</span> b_seated)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(ans)</span></code></pre></div>
+<hr />
+<p>_ lb</p>
+<hr />
+<p>TODO:</p>
+<ul>
+<li>Codeforces Global Round 28 (20241219)</li>
+<li>2044D, E, F</li>
+</ul>
+<hr />
+<p><a href="../../index.html">index</a> <a
+href="20241215.html">20241215</a> <a
+href="20241217.html">20241217</a></p>

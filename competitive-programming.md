@@ -102,6 +102,8 @@
 
 ## Math
 
+- 2044C. Hard Problem - 800
+	- [20241216](./2024/12/20241216.html)
 - 2044A. Easy Problem - 800
 	- [20241215](./2024/12/20241215.html)
 - 2040A. Game of Division - 800
