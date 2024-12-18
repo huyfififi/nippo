@@ -1,0 +1,56 @@
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+<meta charset="UTF-8">
+</head>
+<h1 id="section">20241217 ◎</h1>
+<ul>
+<li>went to a nearby cafe, Big Mug Coffee, for the first time.
+<ul>
+<li>They serve good coffee and have WiFi, but the desks and chairs are
+not comfortable. Also, the ambient music was too loud.</li>
+</ul></li>
+<li>made progress on reading “Desining Data-Intensive Applications”</li>
+</ul>
+<h2 id="review-2044d.-harder-problem---1000">Review: <a
+href="https://codeforces.com/contest/2044/problem/D">2044D. Harder
+Problem - 1000</a></h2>
+<p><a href="https://codeforces.com/blog/entry/137306">Codeforces Round
+993 (Div. 4) Editorial</a></p>
+<blockquote>
+<p>Observe that if you have an array where all elements are unique, they
+will all have frequency 1, therefore they can all be classified as the
+mode.</p>
+</blockquote>
+<p>!!!(･⊿･)!!!</p>
+<p>Here is my solution.</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">int</span>(<span class="bu">input</span>())):</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    n: <span class="bu">int</span> <span class="op">=</span> <span class="bu">int</span>(<span class="bu">input</span>())</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    a: <span class="bu">list</span>[<span class="bu">int</span>] <span class="op">=</span> <span class="bu">list</span>(<span class="bu">map</span>(<span class="bu">int</span>, <span class="bu">input</span>().split()))</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    s: <span class="bu">set</span>[<span class="bu">int</span>] <span class="op">=</span> <span class="bu">set</span>()</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    j: <span class="bu">int</span> <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    b: <span class="bu">list</span>[<span class="bu">int</span>] <span class="op">=</span> []</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n):</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> a[i] <span class="kw">not</span> <span class="kw">in</span> s:</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>            b.append(a[i])</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>            s.add(a[i])</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>            <span class="cf">while</span> j <span class="kw">in</span> s:</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>                j <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>            b.append(j)</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>            s.add(j)</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">&quot; &quot;</span>.join([<span class="bu">str</span>(x) <span class="cf">for</span> x <span class="kw">in</span> b]))</span></code></pre></div>
+<hr />
+<p>_ lb</p>
+<p>bench press, lat pull down, 60 minutes jog</p>
+<hr />
+<p>TODO:</p>
+<ul>
+<li>Codeforces Global Round 28 (20241219)</li>
+<li>2044E, F</li>
+</ul>
+<hr />
+<p><a href="../../index.html">index</a> <a
+href="20241216.html">20241216</a> <a
+href="20241218.html">20241218</a></p>

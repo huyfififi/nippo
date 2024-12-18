@@ -102,6 +102,8 @@
 
 ## Math
 
+- 2044D. Harder Problem - 1000
+	- [20241217](./2024/12/20241217.html)
 - 2044C. Hard Problem - 800
 	- [20241216](./2024/12/20241216.html)
 - 2044A. Easy Problem - 800
