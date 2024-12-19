@@ -130,6 +130,7 @@
 
 # Others
 
+- [Fire And Motion by Joel Spolsky](https://www.joelonsoftware.com/2002/01/06/fire-and-motion/)
 - [The reason why Meta's Llama models and LlamaIndex use the word "Llama"](./2024/12/20241213.html)
 - [Encoding and Serialization](./2024/12/20241210.html)
 - [Upgrading Amazon Lightsail Plan](./2024/12/20241201.html)
