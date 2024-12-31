@@ -1,0 +1,43 @@
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+<meta charset="UTF-8">
+</head>
+<h1 id="section">20241230</h1>
+<ul>
+<li><p>made progress on reading “Designing Data-Intensive
+Applications”</p>
+<ul>
+<li><em>Eventual Consistency</em>
+<ul>
+<li>When using a leader-based replication setup, the read replica might
+not always have the latest data from the leader. However, eventual
+consistency ensures that the read replica will catch up over time.</li>
+</ul></li>
+<li><em>Read-After-Write Consistency</em>
+<ul>
+<li>“This guarantee that if the user reloads the page, they will always
+see any updates they submitted themselves.”</li>
+</ul></li>
+<li><em>Monotonic Reads</em>
+<ul>
+<li>“…monotonic reads only means that if one user makes several reads in
+sequence, they will not see time go backward.”</li>
+<li>It can be achieved to make reads from a user go to the same read
+replica.</li>
+<li><em>Failover</em> needs to be handled carefully otherwise the user
+cannot read data when its replica is down.</li>
+</ul></li>
+</ul></li>
+</ul>
+<hr />
+<p>_ lb</p>
+<hr />
+<p>TODO:</p>
+<ul>
+<li>2044E, F</li>
+<li>Review 2048A, B, C, D</li>
+</ul>
+<hr />
+<p><a href="../../index.html">index</a> <a
+href="20241220.html">20241220-20241229</a> <a
+href="20241231.html">20241231</a></p>
