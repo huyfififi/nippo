@@ -1,0 +1,26 @@
+[index](index.html)
+
+- work around
+- dichotomy
+- mire
+- impedance
+- philanthropist
+- obscurity
+- contentious
+- maelstrom
+- dizzy
+- plethora
+	- a plethora of
+- predate
+- subtlety
+- jumble
+- contender
+- snag
+- misnomer
+- ostensible
+- contention
+- foolproof
+- fraught
+	- fraught with
+- contravene
+- retrofit
