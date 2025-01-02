@@ -1,5 +1,6 @@
 [index](index.html)
 
+- convergent
 - work around
 - dichotomy
 - mire
