@@ -1,0 +1,60 @@
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+<meta charset="UTF-8">
+</head>
+<h1 id="section">20250102</h1>
+<ul>
+<li>Designing Data-Intensive Applications
+<ul>
+<li>A <em>replication topology</em> in multi-leader replication depicts
+how writes are propagated from one node to another.
+<ul>
+<li>There are several types of such topologies, including circular
+topology, star topology, and all-to-all topology. all-to-all topology
+seems to be the most popular one.</li>
+</ul></li>
+<li>In addition to single-leader and multi-leader replication, there is
+an approach to have no leaders at all. The leaderless replication is
+called <em>Dynamo-style</em>.
+<ul>
+<li>I cannot find many resources about the origin of <em>Dynamo</em> and
+<em>Dynamo-style</em> online.</li>
+<li>Let’s say we configure <code>n</code> replicas, <code>w</code> nodes
+to confirm a write operation, and <code>r</code> nodes to confirm a read
+operation.
+<ul>
+<li>When writing a record, success responses from <code>w</code> nodes
+will be considered as success as a whole system</li>
+<li>When reading a record, success responses from <code>r</code> nodes
+will be considered as success as a whole and the node with the latest
+data will be used.</li>
+<li>As long as <code>w + r &gt; n</code>, the system can tolerate
+unavailable nodes
+<ul>
+<li><code>r &gt; n - w</code> &lt;=&gt; <code>r</code> is at least
+<code>n - w + 1</code>. Because at least <code>w</code> nodes have the
+latest data, <code>r &gt;= n - w + 1</code> always contain at least one
+node with the latest data.</li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
+<hr />
+<p>_ lb</p>
+<hr />
+<p>TODO:</p>
+<ul>
+<li>2044E, F</li>
+<li>Review 2048A, B, C, D</li>
+<li>Call Santa Clara County (20250104)</li>
+<li>Smog test
+<ul>
+<li>Ask my parents about my car insurance</li>
+</ul></li>
+<li>Naturalization Interview (20250207)</li>
+</ul>
+<hr />
+<p><a href="../../index.html">index</a> <a
+href="20250101.html">20250101</a> <a
+href="20250103.html">20250103</a></p>

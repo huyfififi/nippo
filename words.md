@@ -1,5 +1,6 @@
 [index](index.html)
 
+- quorum
 - convergent
 - work around
 - dichotomy
