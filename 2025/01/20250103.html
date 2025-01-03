@@ -1,0 +1,97 @@
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+<meta charset="UTF-8">
+</head>
+<h1 id="section">20250103</h1>
+<ul>
+<li>Called the utility billing customer service
+<ul>
+<li>They say it usually takes two months to get the first bill for
+electricity (TIL)</li>
+<li>00045046-17</li>
+</ul></li>
+</ul>
+<h2
+id="designing-data-intensive-applications-chapter-5---replication">Designing
+Data-Intensive Applications: Chapter 5 - Replication</h2>
+<p>(It’s a bit embarrassing that I don’t have any experience managing
+big (large amount of) data. Because of the lack of hands-on exposure,
+the content of this book feels unfamiliar to me. Still, skimming it
+should be helpful in the future, providing me with some starting points
+for tackling data storage challenges.)</p>
+<p>Replication is a technique to replicate data across multiple machines
+to place data closer to users geographically, have some tolerance for
+server down, and scale out the number of machines that serve for read
+requests.</p>
+<p>These are the main approaches for replication that the author
+mentions in this chapter.</p>
+<ul>
+<li>Single-leader replication
+<ul>
+<li>Only the leader accepts write requests and propagates the latest
+data to the read replicas (followers). If the leader becomes
+unavailable, a failover occurs, and one of the followers is promoted to
+leader.</li>
+</ul></li>
+<li>Multi-leader replication
+<ul>
+<li>By extending the single-leader replication by having multiple
+leaders, performance and availability can be improved. The major
+downside of this approach is the necessity of handling conflicts of
+write requests.</li>
+<li>“It rarely makes sense to use a multi-leader setup within a single
+datacenter, because the benefits rarely outweigh the added
+complexity.”</li>
+</ul></li>
+<li>Leaderless replication (Dynamo-style)
+<ul>
+<li>Some approach data replication without the concepts of leaders,
+letting clients send write/read requests to multiple nodes.</li>
+<li>However, as I googled the replication approach, I noticed that it
+seems unpopular in this industry.</li>
+</ul></li>
+</ul>
+<p>When replication happens asynchronously, a client may read outdated
+data from an asynchronous follower. However, asynchronous followers
+should catch up with their leader at some point, and the effect is
+called eventual consistency.</p>
+<p>Guarantees in leader-based replication</p>
+<ul>
+<li>Read-after-write consistency (also known as read-your-writes
+consistency)
+<ul>
+<li>This guarantee ensures that users can immediately read the updates
+they make rather than seeing outdated data after submitting those
+updates.</li>
+<li>One way to achieve this is to always read from the leader when
+reading data that users may update.</li>
+</ul></li>
+<li>Monotonic Reads
+<ul>
+<li>This guarantee ensures that read results don’t go backward
+chronographically when a user makes multiple reads.</li>
+</ul></li>
+<li>Consistent Prefix Reads
+<ul>
+<li>This guarantee ensures that users read data in the same order as
+writes occur.</li>
+</ul></li>
+</ul>
+<hr />
+<p>_ lb</p>
+<p>lat pulldown, bench press, 30 minutes run</p>
+<hr />
+<p>TODO:</p>
+<ul>
+<li>2044E, F</li>
+<li>Review 2048A, B, C, D</li>
+<li>Smog test
+<ul>
+<li>Ask my parents about my car insurance</li>
+</ul></li>
+<li>Naturalization Interview (20250207)</li>
+</ul>
+<hr />
+<p><a href="../../index.html">index</a> <a
+href="20250102.html">20250102</a> <a
+href="20250104.html">20250104</a></p>

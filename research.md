@@ -150,9 +150,10 @@
 
 # Books
 
-- [Designing Data-Intensive Applications - Chapter 4](./2024/12/20241214.html)
-- [Designing Data-Intensive Applications - Chapter 3](./2024/12/20241201.html)
-- [Designing Data-Intensive Applications - Chapter 2](./2024/11/20241128.html)
+- [Designing Data-Intensive Applications - Chapter 5 - Replication](./2025/01/20250103.html)
+- [Designing Data-Intensive Applications - Chapter 4 - Encoding](./2024/12/20241214.html)
+- [Designing Data-Intensive Applications - Chapter 3 - Implementation of Data Storage](./2024/12/20241201.html)
+- [Designing Data-Intensive Applications - Chapter 2 - Data Models and Query Languages](./2024/11/20241128.html)
 - [Designing Data-Intensive Applications - Chapter 1](./2024/11/20241124.html)
 
 # Papers
