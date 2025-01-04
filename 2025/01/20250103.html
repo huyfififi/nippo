@@ -3,13 +3,17 @@
 <meta charset="UTF-8">
 </head>
 <h1 id="section">20250103</h1>
+<p>Today is too productive. I wonder if I will burn out soon (though I
+have no idea how to rest).</p>
 <ul>
-<li>Called the utility billing customer service
+<li>called the utility billing customer service
 <ul>
 <li>They say it usually takes two months to get the first bill for
 electricity (TIL)</li>
 <li>00045046-17</li>
 </ul></li>
+<li>asked my father about the car insurance</li>
+<li>worked on some tasks</li>
 </ul>
 <h2
 id="designing-data-intensive-applications-chapter-5---replication">Designing
@@ -77,18 +81,102 @@ chronographically when a user makes multiple reads.</li>
 writes occur.</li>
 </ul></li>
 </ul>
+<h2 id="a.-kevin-and-combination-lock---800"><a
+href="https://codeforces.com/contest/2048/problem/A">2048A. Kevin and
+Combination Lock - 800</a></h2>
+<p>If <code>x</code> is divisible by 33, it can be reduced to 0 by
+repeating <code>x = x - 33</code>.</p>
+<p>If <code>x</code> is not divisible by 33, we can simply iterate
+<code>str(x)</code>, remove <code>33</code>, and recursively apply the
+check. At first, we have 8 positions to check for <code>33</code>, and
+in the next iteration, we have 6 positions as we removed <code>33</code>
+somewhere. Roughly speaking, we will check
+<code>8 * 6 * 4 * 2 = 384</code> positions at most, and its time
+complexity is not a problem here.</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> solve(x: <span class="bu">int</span>) <span class="op">-&gt;</span> <span class="bu">bool</span>:</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> x <span class="op">%</span> <span class="dv">33</span> <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">True</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    x_str: <span class="bu">str</span> <span class="op">=</span> <span class="bu">str</span>(x)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(x_str) <span class="op">-</span> <span class="dv">1</span>):</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> x_str[i : i <span class="op">+</span> <span class="dv">2</span>] <span class="op">==</span> <span class="st">&quot;33&quot;</span> <span class="kw">and</span> solve(<span class="bu">int</span>(x_str[:i] <span class="op">+</span> x_str[i <span class="op">+</span> <span class="dv">2</span> :])):</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> <span class="va">True</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="va">False</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">int</span>(<span class="bu">input</span>())):</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    x: <span class="bu">int</span> <span class="op">=</span> <span class="bu">int</span>(<span class="bu">input</span>())</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> solve(x):</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">&quot;YES&quot;</span>)</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">&quot;NO&quot;</span>)</span></code></pre></div>
+<h2 id="b.-kevin-and-permutation---900"><a
+href="https://codeforces.com/contest/2048/problem/B">2048B. Kevin and
+Permutation - 900</a></h2>
+<p>The idea is to distribute minimum values evenly with k intervals. We
+put <code>1</code> in the middle instead of the beginning to maximize
+the number of subarrays that have <code>1</code> as their minimum
+value.</p>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">int</span>(<span class="bu">input</span>())):</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    n, k <span class="op">=</span> <span class="bu">map</span>(<span class="bu">int</span>, <span class="bu">input</span>().split())</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    ans: <span class="bu">list</span>[<span class="bu">int</span>] <span class="op">=</span> []</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    cnt: <span class="bu">int</span> <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n):</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> (i <span class="op">+</span> <span class="dv">1</span>) <span class="op">%</span> k <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>            ans.append((i <span class="op">+</span> <span class="dv">1</span>) <span class="op">//</span> k)</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>            ans.append(cnt <span class="op">+</span> n <span class="op">//</span> k)</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>            cnt <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">&quot; &quot;</span>.join([<span class="bu">str</span>(x) <span class="cf">for</span> x <span class="kw">in</span> ans]))</span></code></pre></div>
+<h2 id="c.-kevin-and-binary-strings---1200"><a
+href="https://codeforces.com/contest/2048/problem/C">2048C. Kevin and
+Binary Strings - 1200</a></h2>
+<p>Let’s call the larger substring of <code>s</code> <code>a</code> and
+the smaller one <code>b</code>. When <code>s</code> consists of only 1s,
+XOR of any <code>(a, b)</code> is smaller than <code>a</code>.</p>
+<pre><code>111 xor 001 = 110 &lt; 111</code></pre>
+<p>if <code>0</code> in <code>s</code>, there is at least one pair of
+<code>(a, b)</code> whose XOR is larger than <code>a</code>.</p>
+<pre><code>100 xor 010 = 110 &gt; 100</code></pre>
+<p>To maximize the XOR, we should pick <code>s</code> as <code>a</code>
+and <code>b</code> to turn the leftmost <code>0</code> in <code>a</code>
+into <code>1</code>. There may be several subarrays to achieve it, and
+we just need to check all possibilities.</p>
+<div class="sourceCode" id="cb5"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">int</span>(<span class="bu">input</span>())):</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    s: <span class="bu">str</span> <span class="op">=</span> <span class="bu">input</span>()</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    sb: <span class="bu">int</span> <span class="op">=</span> <span class="bu">int</span>(s, <span class="dv">2</span>)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    i0: <span class="bu">int</span> <span class="op">=</span> s.find(<span class="st">&quot;0&quot;</span>)</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> i0 <span class="op">==</span> <span class="op">-</span><span class="dv">1</span>:</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f&quot;1 </span><span class="sc">{</span><span class="bu">len</span>(s)<span class="sc">}</span><span class="ss"> 1 1&quot;</span>)</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">continue</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>    sublen: <span class="bu">int</span> <span class="op">=</span> <span class="bu">len</span>(s) <span class="op">-</span> i0</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>    max_res: <span class="bu">int</span> <span class="op">=</span> <span class="op">-</span><span class="dv">1</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>    max_i: <span class="op">-</span><span class="dv">1</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(i0):</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>        subs: <span class="bu">int</span> <span class="op">=</span> <span class="bu">int</span>(s[i : i <span class="op">+</span> sublen], <span class="dv">2</span>)</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> sb <span class="op">^</span> subs <span class="op">&gt;</span> max_res:</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>            max_res <span class="op">=</span> sb <span class="op">^</span> subs</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>            max_i <span class="op">=</span> i</span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f&quot;1 </span><span class="sc">{</span><span class="bu">len</span>(s)<span class="sc">}</span><span class="ss"> </span><span class="sc">{</span>max_i <span class="op">+</span> <span class="dv">1</span><span class="sc">}</span><span class="ss"> </span><span class="sc">{</span>max_i <span class="op">+</span> sublen<span class="sc">}</span><span class="ss">&quot;</span>)</span></code></pre></div>
 <hr />
 <p>_ lb</p>
-<p>lat pulldown, bench press, 30 minutes run</p>
+<p>lat pulldown, bench press, 30 minutes run, 60 minutes walk</p>
 <hr />
 <p>TODO:</p>
 <ul>
 <li>2044E, F</li>
-<li>Review 2048A, B, C, D</li>
-<li>Smog test
-<ul>
-<li>Ask my parents about my car insurance</li>
-</ul></li>
+<li>Browse 2048D</li>
+<li>Smog test</li>
 <li>Naturalization Interview (20250207)</li>
 </ul>
 <hr />

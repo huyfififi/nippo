@@ -54,6 +54,8 @@
 
 ## Constructive Algorithms
 
+- 2048B. Kevin and Permutation - 900
+	- [20250103](./2025/01/20250103.html)
 - 2040B. Paint a Strip - 1000
 	- [20241210](./2024/12/20241210.html)
 - 2039B. Shohag Loves Strings - 1000
@@ -77,6 +79,8 @@
 
 ## Bitmasks
 
+- 2048C. Kevin and Binary Strings - 1200
+	- [20250103](./2025/01/20250103.html)
 - 1979B. XOR Sequence - 1000
 	- [20240809](./2024/08/20240809.html)
 
@@ -102,6 +106,8 @@
 
 ## Math
 
+- 2048A. Kevin and Combination Lock - 800
+	- [20250103](./2025/01/20250103.html)
 - 2044D. Harder Problem - 1000
 	- [20241217](./2024/12/20241217.html)
 - 2044C. Hard Problem - 800
