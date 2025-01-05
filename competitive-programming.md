@@ -23,6 +23,8 @@
 
 ## Binary Search
 
+- 2048D. Kevin and Competition Memories - 1600
+	- [20250104](./2025/01/20250104.html)
 - 1956A. Nene\'s Game - 800
 	- [20240616](./2024/06/20240616.html)
 - 1915C. Can I Square? - 800

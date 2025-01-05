@@ -1,5 +1,6 @@
 [index](index.html)
 
+- raison d'être
 - quorum
 - convergent
 - work around
