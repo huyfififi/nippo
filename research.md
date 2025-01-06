@@ -150,6 +150,7 @@
 
 # Books
 
+- [Designing Data-Intensive Applications - Chapter 6 - Partitioning](./2025/01/20250105.html)
 - [Designing Data-Intensive Applications - Chapter 5 - Replication](./2025/01/20250103.html)
 - [Designing Data-Intensive Applications - Chapter 4 - Encoding](./2024/12/20241214.html)
 - [Designing Data-Intensive Applications - Chapter 3 - Implementation of Data Storage](./2024/12/20241201.html)
