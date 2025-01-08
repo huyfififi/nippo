@@ -1,5 +1,9 @@
 [index](index.html)
 
+- transient
+- intricacy
+- antithesis
+- slippery
 - raison d'être
 - quorum
 - convergent

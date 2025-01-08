@@ -38,6 +38,10 @@
 - [DOM (20240513)](./2024/05/20240513.html)
 - [WebRTC (20240503)](./2024/05/20240503.html)
 
+# Database
+
+- [Denormalization](./2025/01/20250107.html)
+
 # Infrastructures
 
 - [Troubleshooting: Cloudflare's Bot Fight Mode Rejected Requests From Mastodon](./2024/12/20241205.html)

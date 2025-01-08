@@ -1,0 +1,166 @@
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+<meta charset="UTF-8">
+</head>
+<h1 id="section">20250107</h1>
+<ul>
+<li>SSD (Solid-State Drive): generally faster and more reliable than HDD
+(Hard Disk Drive), but is more expensive than HDD.</li>
+<li>Designing Data-Intensive Applications
+<ul>
+<li>“The safety guarantees provided by transactions are often described
+by the well-known acryonym ACID…”</li>
+<li>Atomicity: database ensures that if a transaction fails, it does not
+change anything</li>
+<li>Consistency: transactions don’t change invariants (states that must
+be fixed)
+<ul>
+<li>Unlike other components of ACID, the consistency needs to be
+achieved on the application side, not on the database-end.</li>
+</ul></li>
+<li>Isolation: each transaction can be treated without caring about
+other transactions that may happen concurrently
+<ul>
+<li>Because the guarantee deteriorates the performance of the database
+(if you think about having a lock implementation), it’s said to be
+rarely used.</li>
+</ul></li>
+<li>Durability: this is a guarantee that once a transaction has
+committed successfully, the data won’t be lost.
+<ul>
+<li>Though, it’s impossible to achieve this guarantee perfectly.</li>
+</ul></li>
+</ul></li>
+<li>Civics Questions</li>
+</ul>
+<h2 id="denormalization">Denormalization</h2>
+<p>There are two major types of databases: relational databases such as
+PostgreSQL and document databases such as MongoDB.</p>
+<p>When working with relational databases, normalization is usually
+recommended to reduce redundancy and make it easier to handle data.</p>
+<p>Let’s say we have these records in <code>Employees</code> table</p>
+<h3 id="employees">Employees</h3>
+<table>
+<thead>
+<tr class="header">
+<th>id</th>
+<th>name</th>
+<th>email</th>
+<th>department</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>Kazuki Kijima</td>
+<td>kk@example.com</td>
+<td>R&amp;D</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>Huy Nguyen</td>
+<td>hn@example.com</td>
+<td>Sales</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>Gilbert Blythe</td>
+<td>gb@example.com</td>
+<td>R&amp;D</td>
+</tr>
+</tbody>
+</table>
+<p>The common example I see in books/lectures is to consider a scenario
+to update the department fields R&amp;D -&gt; Engineering. If we keep
+data in this way, we need to iterate through all records and apply the
+update. In this example, we need to update records with id = 1 and id =
+3.</p>
+<p>Normalization comes in play here to extract the shared information
+and transfer it to another table.</p>
+<h3 id="employees-1">Employees</h3>
+<table>
+<thead>
+<tr class="header">
+<th>id</th>
+<th>name</th>
+<th>email</th>
+<th>department_id</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>Kazuki Kijima</td>
+<td>kk@example.com</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>Huy Nguyen</td>
+<td>hn@example.com</td>
+<td>2</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>Gilbert Blythe</td>
+<td>gb@example.com</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<h3 id="departments">Departments</h3>
+<table>
+<thead>
+<tr class="header">
+<th>id</th>
+<th>name</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>R&amp;D</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>Sales</td>
+</tr>
+</tbody>
+</table>
+<p>Now, if we think about updating R&amp;D -&gt; Engineering, we just
+need to update one record in <code>Departments</code> table, leaving
+<code>Employees</code> records untouched.</p>
+<p>One piece of information resides in one place. It’s neat, right?</p>
+<p>Document databases tend to be used with a very different perspective
+on this; they encourage redundancy.</p>
+<p>The problem with normalized relational data is that we need to query
+multiple tables to gather information (using multiple JOIN). This can be
+mitigated by having some redundancy and not avoiding storing the same
+data in multiple places.</p>
+<p>To think about the example above, combining <code>Employees</code>
+table and <code>Departments</code> table into one can remove the need to
+join two different tables when reading. This can improve performance,
+and because we do the opposite operation to normalization, it’s called
+denormalization.</p>
+<p>It’s beneficial under some scenarios, e.g., the entire document is
+used every time you render a web page, but write operations will cost
+much more.</p>
+<p>(I didn’t provide much details, and the explanation may be incorrect,
+strictly speaking)</p>
+<hr />
+<p>30 minutes walk</p>
+<hr />
+<p>TODO:</p>
+<ul>
+<li>2044E, F</li>
+<li>2048D</li>
+<li>Smog test
+<ul>
+<li>Ask my parents to transfer the ownership of my car</li>
+</ul></li>
+<li>Naturalization Interview (20250207)</li>
+</ul>
+<hr />
+<p><a href="../../index.html">index</a> <a
+href="20250106.html">20250106</a> <a
+href="20250108.html">20250108</a></p>
