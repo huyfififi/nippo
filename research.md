@@ -44,6 +44,7 @@
 
 # Infrastructures
 
+- [Cloudflare Tunnels](./2025/01/20250108.html)
 - [Troubleshooting: Cloudflare's Bot Fight Mode Rejected Requests From Mastodon](./2024/12/20241205.html)
 - [Logs in Docker](./2024/10/20241018.html)
 - [Jenkins and GitHub Actions](./2024/08/20240820.html)
