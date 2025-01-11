@@ -1,5 +1,9 @@
 [index](index.html)
 
+- whodunit
+- come into play
+- reason about
+- knock-on effect
 - transient
 - intricacy
 - antithesis
