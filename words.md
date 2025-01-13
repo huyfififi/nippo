@@ -1,5 +1,7 @@
 [index](index.html)
 
+- at odds with
+- glosse over
 - whodunit
 - come into play
 - reason about
