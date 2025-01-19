@@ -1,7 +1,8 @@
 [index](index.html)
 
+- twentieth
 - at odds with
-- glosse over
+- gloss over
 - whodunit
 - come into play
 - reason about

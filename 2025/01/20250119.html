@@ -1,0 +1,80 @@
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+<meta charset="UTF-8">
+</head>
+<h1 id="section">20250119</h1>
+<ul>
+<li>Zero Second Thinking</li>
+<li>did some household chores</li>
+</ul>
+<p>This week will be busy. I hope I can make it through.</p>
+<h2
+id="designing-data-intensive-applications---chapter-7---transactions">Designing
+Data-Intensive Applications - Chapter 7 - Transactions</h2>
+<p>Transactions are a database feature that helps prevent anomalies
+caused by read/write conflicts, allowing the application layer to avoid
+handling these situations.</p>
+<p>An example of a conflict is when two clients increment the same
+counter. Both clients read the counter (almost) simultaneously, seeing
+the value as <code>3</code>, and each writes <code>4</code> to the
+database. Ideally, the counter should be <code>5</code> because the
+increment occurs twice, but concurrent reads lead to this conflict. This
+is called <em>lost updates</em>.</p>
+<p>In addition to lost updates, the following are examples of race
+conditions caused by concurrency:</p>
+<ul>
+<li>Dirty reads: A client reads data that includes another client’s
+uncommitted writes.</li>
+<li>Dirty writes: A client overwrites data that includes another
+client’s uncommitted writes.</li>
+</ul>
+<p>This chapter also covers other concurrency issues such as <em>read
+skew</em>, <em>write skew</em>, and <em>phantom reads</em>.</p>
+<p>To prevent concurrency issues, three widely used isolation levels
+are:</p>
+<ul>
+<li>Read Committed: Prevent dirty reads and dirty writes.</li>
+<li>Snapshot Isolation: Builds on read committed by also preventing read
+skew. (implemented with MVCC - multi-version concurrency control)</li>
+<li>Serializable: Prevents all conflicts mentioned above by virtually
+ordering requests to the database, ensuring full isolation.</li>
+</ul>
+<p>There are three main approaches to implementing serializable
+transactions.</p>
+<ul>
+<li>Literal Serial Execution: Transactions are executed one at a time in
+a strict serial order. While it is a quite simple approach, this
+significantly limits concurrency and is rarely used in practice.</li>
+<li>Two-Phase Locking (2PL): This approach ensures serializability by
+requiring transactions to require locks on all the records they access
+(there are specific rules on handling two-phase locking). Locks are held
+until the transaction is completed, preventing conflicts but potentially
+causing performance bottlenecks due to contention and deadlocks. It has
+been widely used, but SSI is taking over its popularity.</li>
+<li>Serializable Snapshot Isolation (SSI): Unlike locking-based methods,
+SSI does not lock records in advance. Instead, It detects conflicts at
+the time of committing a transaction. If a conflict is found, the
+transaction is aborted. By postponing conflict checks until the end, SSI
+improves concurrency and performance, making it promising candidate for
+future standards. Both SI and SSI use version-based isolation (MVCC:
+multi-version concurrency control)</li>
+</ul>
+<p><a
+href="https://www.postgresql.org/docs/current/transaction-iso.html#XACT-SERIALIZABLE">PostgreSQL:
+Documentation: 17:13.2. Transaction Isolation</a></p>
+<blockquote>
+<p>The Serializable isolation level is implemented using a technique
+known in academic database literature as Serializable Snapshot
+Isolation…</p>
+</blockquote>
+<hr />
+<p>TODO:</p>
+<ul>
+<li>2044E, F</li>
+<li>2048D</li>
+<li>Naturalization Interview (20250207)</li>
+</ul>
+<hr />
+<p><a href="../../index.html">index</a> <a
+href="20250117.html">20250117</a> <a
+href="20250120.html">20250120</a></p>
