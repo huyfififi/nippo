@@ -40,6 +40,7 @@
 
 # Database
 
+- [Default Isolation Level in PostgreSQL](./2025/01/20250121.html)
 - [Denormalization](./2025/01/20250107.html)
 
 # Infrastructures
