@@ -108,6 +108,8 @@
 
 ## Math
 
+- 2063A. Minimal Coprime - 800
+	- [20250122](./2025/01/20250122.html)
 - 2048A. Kevin and Combination Lock - 800
 	- [20250103](./2025/01/20250103.html)
 - 2044D. Harder Problem - 1000

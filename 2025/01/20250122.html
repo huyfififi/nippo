@@ -1,0 +1,55 @@
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+<meta charset="UTF-8">
+</head>
+<h1 id="section">20250122</h1>
+<p>20250122 already? Time flies</p>
+<ul>
+<li>Zero Second Thinking</li>
+<li>100 Civics Questions
+<ul>
+<li>I think I can pass the test now and direct my spare time to
+programming again.</li>
+</ul></li>
+<li>The vocabulary list</li>
+</ul>
+<h2 id="rehabilitation-2063a.-minimal-coprime---800">Rehabilitation: <a
+href="https://codeforces.com/problemset/problem/2063/A">2063A. Minimal
+Coprime - 800</a></h2>
+<p>The problem description is too difficult for me to digest, but
+looking at the samples provided me with the solution.</p>
+<p><code>[n, n + 1] (n &gt;= 2)</code> is <em>coprime</em>.</p>
+<blockquote>
+<p>if <code>n</code> and <code>n + 1</code> are not coprime,
+<code>n = km</code>, <code>n + 1 = lm</code> (l and m are integers, m
+&gt;= 2), but <code>(n + 1) - n = 1 = (l - k)m</code> =&gt;
+contradiction.</p>
+</blockquote>
+<p><code>[1, 1]</code> is <em>coprime</em> because they share only one
+positive common divisor <code>1</code>. (That makes [1, 2] not
+coprime).</p>
+<p>When <code>l &gt;= 2</code>, coprimes in <code>[l, r]</code> are
+<code>[l, l + 1]</code>, <code>[l + 1, l + 2]</code>, …,
+<code>[r - 1, r]</code>, and the count is <code>r - l</code>.</p>
+<p>When <code>l == 1</code>, coprimes in <code>[l, r]</code> are
+<code>[1, 1]</code>, [2, 3]<code>,</code>[3, 4]<code>, ...,</code>[r -
+1, r]<code>, and the count is also</code>r - l (r &gt;= 2)` .</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">int</span>(<span class="bu">input</span>())):</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    l, r <span class="op">=</span> <span class="bu">map</span>(<span class="bu">int</span>, <span class="bu">input</span>().split())</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> l <span class="op">==</span> r <span class="op">==</span> <span class="dv">1</span>:</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="dv">1</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">continue</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(r <span class="op">-</span> l)</span></code></pre></div>
+<hr />
+<p>TODO:</p>
+<ul>
+<li>2044E, F</li>
+<li>2048D</li>
+<li>Lunar New Year Party (20250201)</li>
+<li>Naturalization Interview (20250207)</li>
+</ul>
+<hr />
+<p><a href="../../index.html">index</a> <a
+href="20250121.html">20250121</a> <a
+href="20250123.html">20250123</a></p>
