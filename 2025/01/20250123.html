@@ -1,0 +1,89 @@
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+<meta charset="UTF-8">
+</head>
+<h1 id="section">20250123</h1>
+<ul>
+<li>Zero Second Thinking
+<ul>
+<li>I reconfirmed that I mostly care about my goals or feelings and
+don’t pay much attention to what others think about me (as long as it is
+not important to my social/professional life). The only reason I want
+social status (to some extent) is to help people who helpmed me along
+the way, and if it were not for them, I would be happy setting my own
+goals and pursuing them without much recognition from others. I’m a
+human, so I need <em>some</em> appreciation or recognition, though.</li>
+</ul></li>
+<li>// 100 Civics Questions</li>
+<li>// The vocabulary list</li>
+</ul>
+<h2 id="whois"><code>whois</code></h2>
+<p>My friend faced an issue with domain registrar and he used
+<code>whois</code> command to diagnose the issue. Let’s check
+<code>DomainStatus</code>.</p>
+<pre><code>$ whois zlxa.xyz
+% IANA WHOIS server
+% for more information on IANA, visit http://www.iana.org
+% This query returned 1 object
+
+refer:        whois.nic.xyz
+
+... (abbreviated) ...
+
+# whois.nic.xyz
+
+Domain Name: ZLXA.XYZ
+Registrar URL: http://www.onamae.com
+Updated Date: 2025-01-22T12:50:59.0Z
+Creation Date: 2025-01-08T12:48:25.0Z
+Registry Expiry Date: 2026-01-08T23:59:59.0Z
+Registrar: GMO Internet Group, Inc. d/b/a Onamae.com
+Registrar IANA ID: 49
+Domain Status: serverTransferProhibited https://icann.org/epp#serverTransferProhibited
+Domain Status: clientHold https://icann.org/epp#clientHold
+Registrant Organization: Whois Privacy Protection Service by onamae.com
+Registrant State/Province: Tokyo
+Registrant Country: JP
+
+... (abbreviated) ...
+
+&gt;&gt;&gt; Last update of WHOIS database: 2025-01-24T01:34:51.0Z &lt;&lt;&lt;</code></pre>
+<p>It says</p>
+<pre><code>Domain Status: serverTransferProhibited https://icann.org/epp#serverTransferProhibited
+Domain Status: clientHold https://icann.org/epp#clientHold</code></pre>
+<p><a
+href="https://www.icann.org/resources/pages/epp-status-codes-2014-06-16-en#clientHold">EPP
+Status Codes | What Do They Mean, and Why Should I Know? - ICANN</a></p>
+<blockquote>
+<p>clientHold</p>
+</blockquote>
+<blockquote>
+<p>This status code prevents your domain from being transferred from
+your current registrar to another. It is an uncommon status that is
+usually enacted during legal or other disputes, at your request, or when
+a redemptionPeriod status is in place.</p>
+</blockquote>
+<blockquote>
+<p>serverTransferProhibited</p>
+</blockquote>
+<blockquote>
+<p>This status code tells your domain’s registry to not activate your
+domain in the DNS and as a consequence, it will not resolve. It is an
+uncommon status that is usually enacted during legal disputes,
+non-payment, or when your domain is subject to deletion.</p>
+</blockquote>
+<p>As the status messages suggest, the next action he might be going to
+take is to contact the domain name registrar <code>onamae.com</code> as
+they are not something we have control.</p>
+<hr />
+<p>TODO:</p>
+<ul>
+<li>2044E, F</li>
+<li>2048D</li>
+<li>Lunar New Year Party (20250201)</li>
+<li>Naturalization Interview (20250207)</li>
+</ul>
+<hr />
+<p><a href="../../index.html">index</a> <a
+href="20250122.html">20250122</a> <a
+href="20250124.html">20250124</a></p>
