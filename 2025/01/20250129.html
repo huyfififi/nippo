@@ -1,0 +1,41 @@
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+<meta charset="UTF-8">
+</head>
+<h1 id="section">20250129</h1>
+<p>I’m very sleepy… what’s going on in my body!?</p>
+<ul>
+<li>Zero Second Thinking</li>
+<li>talked with my uncle</li>
+</ul>
+<h2 id="a.-kevin-and-arithmetic---800"><a
+href="https://codeforces.com/problemset/problem/2061/A">2061A. Kevin and
+Arithmetic - 800</a></h2>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># resulting s[i] is even -&gt; (s[i - 1] is even and ai is even) or (s[i - 1] is odd and ai is odd)</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># The first condition can be met only once s[0] = 0, s[i] (i &gt; 0) is always odd due to divisions</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># to max out,</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># if even exists -&gt; 1 + len(odds)</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># else -&gt; len(odds) - 1 (to create the first odd sum)</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">int</span>(<span class="bu">input</span>())):</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    n: <span class="bu">int</span> <span class="op">=</span> <span class="bu">int</span>(<span class="bu">input</span>())</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    a: <span class="bu">list</span>[<span class="bu">int</span>] <span class="op">=</span> <span class="bu">list</span>(<span class="bu">map</span>(<span class="bu">int</span>, <span class="bu">input</span>().split()))</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    evens: <span class="bu">list</span>[<span class="bu">int</span>] <span class="op">=</span> [x <span class="cf">for</span> x <span class="kw">in</span> a <span class="cf">if</span> x <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">0</span>]</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    odds: <span class="bu">list</span>[<span class="bu">int</span>] <span class="op">=</span> [x <span class="cf">for</span> x <span class="kw">in</span> a <span class="cf">if</span> x <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">1</span>]</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> evens:</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="dv">1</span> <span class="op">+</span> <span class="bu">len</span>(odds))</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="bu">len</span>(odds) <span class="op">-</span> <span class="dv">1</span>)</span></code></pre></div>
+<hr />
+<p>TODO:</p>
+<ul>
+<li>2044E, F</li>
+<li>Implement 2048D</li>
+<li>Naturalization Interview (20250207)</li>
+</ul>
+<hr />
+<p><a href="../../index.html">index</a> <a
+href="20250128.html">20250128</a> <a
+href="20250130.html">20250130</a></p>

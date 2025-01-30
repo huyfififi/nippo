@@ -108,6 +108,8 @@
 
 ## Math
 
+- 2061A. Kevin and Arithmetic - 800
+	- [20250129](./2025/01/20250129.html)
 - 2063A. Minimal Coprime - 800
 	- [20250122](./2025/01/20250122.html)
 - 2048A. Kevin and Combination Lock - 800
