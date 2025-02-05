@@ -103,6 +103,7 @@
 
 # Design Principles
 
+- [MVC (Model-View-Controller)](./2025/02/20250204.html)
 - [Object-Oriented Programming (OOP)](./2024/11/20241121.html)
 - [Simple Factory Pattern and Strategy + Factory combo](./2024/11/20241112.html)
 - [Strategy Pattern](./2024/11/20241110.html)
