@@ -1,5 +1,59 @@
 [index](index.html)
 
+- open sesame
+- aghast
+- vaudeville
+- circus
+- impeccable
+- suave
+- drapery
+- chauffeur
+- raconteur
+- kennel
+- shawl
+- genial
+- mislay
+- perpetuate
+- squander
+- legardemain
+- heedless
+- approbation
+- epitaph
+- loath
+	- I was loath to leave
+- gratify
+- blunder
+- ire
+- rebuke
+- lurid
+- pout
+- sullen
+- condemn
+- fret
+- warden
+- prostrate
+- janitor
+- tome
+- erudite
+- temerity
+- sleazeball
+	- sleazebag
+- propensity
+- mediocre
+- adage
+- hindrance
+- unnerve
+- draconian
+	- draconian laws
+- hemorrhage
+- amiable
+- fluster
+- pesky
+- deft
+- nepotism
+- red tape
+- polyglot
+- grok
 - quintessential
 - twentieth
 - at odds with
