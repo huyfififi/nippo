@@ -293,6 +293,7 @@
 
 ## Too Difficult For Me (Help Wanted)
 
+- 2048D. Kevin and Competition Memories - 1600
 - 2040C. Ordered Permutations - 1200
 	- [20241215](./2024/12/20241215.html)
 - 2036B. Startup - 800
