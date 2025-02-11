@@ -113,6 +113,7 @@
 
 # Web Development
 
+- [Progressive Web App / Web Application Manifest](./2025/02/20250210.html)
 - [Node.js](./2024/12/20241211.html)
 
 # OSS
