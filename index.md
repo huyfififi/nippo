@@ -3,6 +3,7 @@
 - [competitive programming](competitive-programming.html)
 - [research](research.html)
 - [words](words.html)
+- [subscriptions](subscriptions.html)
 
 # 2025
 
