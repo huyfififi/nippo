@@ -3,12 +3,19 @@
 ## Yearly
 
 - ChatGPT
+- Cloudflare
 
 ## Semi-yearly
 
 - Car insurance (Farmers)
 
 ## Monthly
+
+### Infrastructures
+
+- Amazon S3 (Object Storage)
+- Amazon Lightsail (VPS)
+- Amazon Route 53 (Domain Registrar)
 
 ### Web Services
 
