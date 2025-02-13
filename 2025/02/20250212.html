@@ -1,0 +1,71 @@
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+<meta charset="UTF-8">
+</head>
+<h1 id="section">20250212</h1>
+<p>I slept a lot, as I could not get enough sleep yesterday.</p>
+<ul>
+<li>journaling (zero second thinking)</li>
+<li>Designing Data-Intensive Applications</li>
+</ul>
+<h2
+id="designing-data-intensive-applications---chapter-8---the-trouble-with-distributed-systems">Designing
+Data-Intensive Applications - Chapter 8 - The Trouble with Distributed
+Systems</h2>
+<h3 id="problems-in-distributed-systems">Problems in Distributed
+Systems</h3>
+<h4 id="unreliable-network">Unreliable Network</h4>
+<p>Unlike phone lines, network communication does not guarantee reliable
+delivery—packets can be lost in the middle or experience huge delay.
+When a response is not received, the requester cannot know whether the
+issue is due to a network failure or if the receiver is completely
+down.</p>
+<p>To ensure proper resource management in distributed systems—such as
+promoting a new database leader—system failures must be detected. This
+is typically achieved using timeouts. However, because optimal timeout
+values vary depending on the infrastructure, they should be determined
+empirically, as setting it too low confuses temporary network faults as
+faults on the system side.</p>
+<h4 id="unreliable-clocks">Unreliable Clocks</h4>
+<p>Computer clocks are inherently unreliable due to hardware
+limitations, and assuming clocks of distributed systems are in sync is
+incorrect. For example, using timestamps to order database operations
+might seem intuitive, but in practice, later operations can end up with
+earlier timestamps due to clock drift or synchronization issues. (Last
+Write Wins (LWW) is a common approach to resolve such conflicts, where
+the operation with the most recent timestamp takes precendence, though
+conflicts still can occur. When designing distributed systems, we should
+be aware of those limitations and make decisions upon that).</p>
+<h4 id="process-pauses">Process Pauses</h4>
+<p>Proceses can occasionally pause, often due to system-level operations
+like Garbage Collection (GC). The Java Virtual Machine (JVM) is
+particularly known for its GC-induced pauses, which can sometimes freeze
+all running threads for several minutes. However, this issue is not
+unique to Java—Python and many other languages also experience process
+pauses due to garbage collection and other system operations.</p>
+<p>In distributed systems, such pauses can lead to critical issues. For
+example, in leader-based replication, a temporarily paused leader might
+be incorrectly considered dead, causing the system to elect a new
+leader. When the original leader resumes, they system may end up with
+multiple leaders, leading to conflicts and inconsistencies.</p>
+<h3 id="how-to-approach-the-problems">How to approach the problems</h3>
+<p>In distributed systems, things can go wrong
+<strong><em>partially</em></strong>. Many distributed systems approach
+this problem by relying on a <em>quorum</em>; when most (this number is
+configurable) nodes agree on something, it can be considered as true. In
+most cases, the quorum is more than a half of the nodes.</p>
+<hr />
+<p>TODO:</p>
+<ul>
+<li>2044E, F</li>
+<li>Oath Ceremony (20250220)</li>
+<li>catch up with Patrick (20250220)</li>
+<li>Create a TurboTax account (20250222)</li>
+<li>haircut</li>
+<li>live plants for my desk, probably Pothos</li>
+<li>Tax Return (20250415)</li>
+</ul>
+<hr />
+<p><a href="../../index.html">index</a> <a
+href="20250211.html">20250211</a> <a
+href="20250213.html">20250213</a></p>

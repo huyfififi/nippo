@@ -160,6 +160,7 @@
 
 # Books
 
+- [Designing Data-Intensive Applications - Chapter 8 - The Trouble with Distributed Systems](./2025/02/20250212.html)
 - [Designing Data-Intensive Applications - Chapter 7 - Transactions](./2025/01/20250119.html)
 - [Designing Data-Intensive Applications - Chapter 6 - Partitioning](./2025/01/20250105.html)
 - [Designing Data-Intensive Applications - Chapter 5 - Replication](./2025/01/20250103.html)

@@ -1,5 +1,16 @@
 [index](index.html)
 
+- bring [] to its knees
+- full-blown
+- disorienting
+- nightmarish
+- oscillate
+- fickle
+- a pinch of salt 
+- coarse-grained
+- fictitious
+- torus
+- truce
 - open sesame
 - aghast
 - vaudeville
