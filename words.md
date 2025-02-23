@@ -1,5 +1,10 @@
 [index](index.html)
 
+- converge
+- frivolous
+- jumble
+- subtle
+- oust
 - synopsis
 - bring [] to its knees
 - full-blown

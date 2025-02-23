@@ -92,13 +92,19 @@
 
 # Programming Languages
 
+## Python
+
+- [map(), functools.reduce(), (and MapReduce)](./2025/02/20250223.html)
 - [issubclass(bool, int) is True - Python](./2024/10/20241019.html)
 - [Decorator - Python](./2024/07/20240720.html)
 - [Rye - Python (20240718)](./2024/07/20240718.html)
 - [gc - Garbage Collector Interface - Python (20240717)](./2024/07/20240717.html)
 - [Wheel (Python) (20240714)](./2024/07/20240714.html)
-- [global installation in npm (20240506)](./2024/05/20240506.html)
 - [Duck typing (20240505)](./2024/05/20240505.html)
+
+## Others
+
+- [global installation in npm (20240506)](./2024/05/20240506.html)
 - [Responsibility of Node.js (20240504)](./2024/05/20240504.html)
 - [== vs === in JavaScript (20240425)](./2024/04/20240425.html)
 

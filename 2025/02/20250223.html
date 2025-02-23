@@ -1,0 +1,78 @@
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+<meta charset="UTF-8">
+</head>
+<h1 id="section">20250223</h1>
+<ul>
+<li>bought envelopes</li>
+<li>journaling (zero second thinking)</li>
+<li>English words
+<ul>
+<li>As I became an American, I felt the urge to be good at English.</li>
+</ul></li>
+<li>chest press, 20 minutes run, 20 minutes walk</li>
+<li>Desining Data-Intensive Applications</li>
+</ul>
+<h2 id="python-map-and-functools.reduce">Python map() and
+functools.reduce()</h2>
+<p><a
+href="https://docs.python.org/3/library/functions.html#map">Built-in
+Functions - map — Python 3.13.2 documentation</a></p>
+<p>map(function, iterable) -&gt; returns an iterator that applies
+<em>function</em> to each item of <em>iterable</em>.</p>
+<pre><code>In [1]: map(int, [&quot;1&quot;, &quot;2&quot;, &quot;3&quot;])
+Out[1]: &lt;map at 0x10351f040&gt;
+
+In [2]: list(map(int, [&quot;1&quot;, &quot;2&quot;, &quot;3&quot;]))
+Out[2]: [1, 2, 3]
+
+In [3]: list(map(lambda x: x * 2, [1, 2, 3]))
+Out[3]: [2, 4, 6]</code></pre>
+<p>I always use this function to convert stdin strings -&gt; numbers in
+competitive programming.</p>
+<p><a
+href="https://docs.python.org/3/library/functools.html#functools.reduce">functools
+- reduce - … - Python 3.13.2 documentation</a></p>
+<p>functools.reduce(function, iterable) -&gt;
+function(function(function(element 1, element 2), element 3), element 4)
+… (repeat)</p>
+<pre><code>In [1]: import functools
+
+In [2]: functools.reduce(lambda x, y: x + y, [1, 2, 3, 4])
+Out[2]: 10
+
+In [3]: functools.reduce(lambda x, y: x + y, [&quot;1&quot;, &quot;2&quot;, &quot;3&quot;, &quot;4&quot;])
+Out[3]: &#39;1234&#39;</code></pre>
+<p>I rarely use this function, but I think I should be aware of
+this.</p>
+<h3 id="mapreduce-framework">MapReduce Framework</h3>
+<p><a href="https://www.ibm.com/think/topics/mapreduce">What is
+MapReduce | IBM</a></p>
+<p>MapReduce is a common framework for batch processing, especially for
+large-scale distributed systems. Although there are some conceptual
+similarities, it seems to be better to consider them completely
+different.</p>
+<blockquote>
+<p>Mapping: On each node, the map function processes the data it
+receivesm converting the data into key/value pairs.</p>
+</blockquote>
+<blockquote>
+<p>Reducing: Reduce functions process the key/value pairs that the
+mappers emit.</p>
+</blockquote>
+<p>The reduce step aggregates results across distributed nodes, whereas
+Python reduce() combines values sequentially.</p>
+<hr />
+<p>TODO:</p>
+<ul>
+<li>Summarize Desining Data-Intensive Applications Chapter 9</li>
+<li>Create a Go script to send a request to OpenAI API</li>
+<li>Pay state taxes</li>
+<li>File the tax return</li>
+<li>2044E, F</li>
+<li>live plants for my desk, probably Pothos</li>
+</ul>
+<hr />
+<p><a href="../../index.html">index</a> <a
+href="20250222.html">20250222</a> <a
+href="20250224.html">20250224</a></p>
