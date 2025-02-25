@@ -1,5 +1,6 @@
 [index](index.html)
 
+- connoisseur
 - converge
 - frivolous
 - jumble
