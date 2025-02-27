@@ -14,12 +14,55 @@
 <li>replied back to messages</li>
 <li>asked my sister about my tax return</li>
 <li>English words + chat with ChatGPT</li>
+<li>Designing Data-Intensive Applications</li>
 </ul>
+<h2
+id="desining-data-intensive-applications---chapter-9---consistency-and-consensus">Desining
+Data-Intensive Applications - Chapter 9 - Consistency and Consensus</h2>
+<h3 id="linearizability">Linearizability</h3>
+<p>Linearizability makes a distributed system behave like a
+single-threaded program, i.e., in a linearizable system, all operations
+appear to be executed atomically on a single copy of the data, and their
+effects are immediately visible to all subsequent operations in
+real-time order. While this simple concept is appealing, achieving
+linearizability is challenging because all nodes must agree on a global
+order of oeprations, making the system susceptible to network delays and
+failures.</p>
+<h3 id="causality">Causality</h3>
+<p>Causality is a weaker guarantee than linearizability. Unlike
+linearizability, causal consistency does not enforece a global ordering
+of operations but ensures that causally related operations are observed
+in the correct sequence. That means when operation A depends on
+operation B, the system ensures the operations’ causal order is
+maintained. However, if operation C is independent of A and B, there is
+no enforced ordering between them.</p>
+<h3 id="cap-theorem-and-linearizability-vs-causality">CAP Theorem and
+Linearizability vs Causality</h3>
+<p>The CAP theorem presents the idea that ony two of consistency (C),
+availability (A), and partition tolerance (P) can be achieved in a
+distributed system. However, networks are inherently unreliable, making
+partition tolerance (P) required. Therefore, we can prioritize either
+consistency (C) or availability (A). (NOTE: The CAP theorem isn’t about
+picking “two out of three”, but rather balancing trade-offs during
+partitions.)</p>
+<p>Linearizability corresponds to strong consistency, ensuring a single
+globally ordered state. Causal consistency, while weaker than
+linearizability, still maintains order among dependent operations. While
+causal consistency can improve network fault tolerance compared to
+strict linearizability, systems that fully prioritize availability often
+prioritize causal consistency (eventual consistency), which imposes even
+fewer ordering constraints (than linearizability).</p>
+<h3 id="consensus-problem">Consensus Problem</h3>
+<p>Even with the relaxed requirements of causal consistency, nodes in a
+distributed system still need a mechanism to track and enforce causal
+dependencies, which introduces coordination challenges similar to the
+consensus problem. There are various approaches to coordinate
+distributed systems, such as quorum-based mechanisms, versioning with
+epoch numbers, and commit protocols like Two-Phase Commit (2PC).</p>
 <hr />
 <p>TODO:</p>
 <ul>
-<li>Summarize Desining Data-Intensive Applications Chapter 9
-(20250226)</li>
+<li>Get a check for tax payment (20250227)</li>
 <li>Update DL with my new name (20250305)</li>
 <li>Create a Go script to send a request to OpenAI API</li>
 <li>Pay state taxes</li>
