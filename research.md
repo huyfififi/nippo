@@ -94,6 +94,7 @@
 
 ## Python
 
+- [test coverage threshold with `pytest-cov`](./2025/02/20250227.html)
 - [map(), functools.reduce(), (and MapReduce)](./2025/02/20250223.html)
 - [issubclass(bool, int) is True - Python](./2024/10/20241019.html)
 - [Decorator - Python](./2024/07/20240720.html)
