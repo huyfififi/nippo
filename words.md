@@ -1,5 +1,6 @@
 [index](index.html)
 
+- synapse
 - prostitute
 	- prostitution
 - whirlpool
