@@ -1,5 +1,6 @@
 [index](index.html)
 
+- laborious
 - synapse
 - prostitute
 	- prostitution
