@@ -168,6 +168,7 @@
 
 # Books
 
+- [Designing Data-Intensive Applications - Chapter 11 - Stream Processing](./2025/03/20250314.html)
 - [Designing Data-Intensive Applications - Chapter 10 - Batch Processing](./2025/03/20250311.html)
 - [Designing Data-Intensive Applications - Chapter 9 - Consistency and Consensus](./2025/02/20250226.html)
 - [Designing Data-Intensive Applications - Chapter 8 - The Trouble with Distributed Systems](./2025/02/20250212.html)
