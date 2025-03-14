@@ -1,0 +1,92 @@
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+<meta charset="UTF-8">
+</head>
+<h1 id="section">20250314</h1>
+<ul>
+<li>journaling</li>
+<li>conversations on SNS</li>
+<li>re-visited Designing Data-Intensive Applications Chapter 11</li>
+<li>made progress on reading Designing Data-Intensive Applications
+Chapter 12</li>
+<li>30 minutes walk (I found out a nearby pub)</li>
+<li>called Santa Clara country for the electricity service</li>
+<li>chest press, lat pull down, kettle lift, arm curl, 30 minutes
+run</li>
+</ul>
+<p>I thought I could get more things done, but I’m exhausted now. Humans
+tend to overvalue what they can do in the future.</p>
+<h2 id="the-history-of-soldnew">The history of
+<code>s/old/new/</code></h2>
+<p>Assuming the syntax has been there in the editors/programming
+languages since their invention, the syntax propagated from the “ed”
+editor.</p>
+<p><code>ed</code> (1971, Ken Thompson)</p>
+<p><code>sed</code> (1974, Lee E.McMahon)</p>
+<p><code>vi</code> (1976, Bill Joy)</p>
+<p><code>Perl</code> (1987, Larry Wall)</p>
+<h2
+id="designing-data-intensive-applications---chapter-11---stream-processing">Designing
+Data-Intensive Applications - Chapter 11 - Stream Processing</h2>
+<p>Batch processing works well for fixed data sets, but real-world data
+often grows continuously. In these cases, stream processing is more
+suitable, as it handles unbounded data in real-time.</p>
+<p>In a stream processing context, each record is referred to as an
+<em>event</em> and grouped into a <em>topic</em>. Systems that generate
+these events and send them as messages are called <em>producers</em>,
+and those that process them are called <em>consumers</em>. There is no
+fixed limit to the number of producers or consumers in a given
+system.</p>
+<p>Sending messages (which contains events) directly from producers to
+consumers is risky if either side goes offline. To reduce this risk, a
+<em>message broker</em> (also known as a <em>message queue</em>) serves
+as an intermediary, handling the traffic between producers and
+consumers.</p>
+<p>Because consumers can crash at any time, a mechanism is needed to
+ensure reliable message delivery. This mechanism, known as
+<em>acknowledgements</em>, works by having the consumer notify the
+message broker once it has successfully processed a message, allowing
+the broker to remove the message from the queue.</p>
+<p>When multiple consumers subscribe to the same topic, there are two
+ways to deliver messages: load balancing and fan-out. In the
+load-balancing approach, each message goes to exactly one consumer,
+while in the fan-out approach, every consumer receives every
+message.</p>
+<p>(Kaz: A typical pattern when developing a web application is to use a
+load-balancing messaging setup. In this approach, you place
+time-insensitive and/or computationally expensive tasks into a message
+queue (message broker), allowing one of the consumers to pick up each
+task and perform it asynchronously. A typical example in Django projects
+is the use of the Django web server as the producer, RabbitMQ as the
+message broker, and Celery processes as consumers.)</p>
+<p>Some common use cases of stream processing include:</p>
+<ul>
+<li><em>Complex Event Processing (CEP)</em>: Detecting specific patterns
+involving multiple events in a stream.
+<ul>
+<li>Fraud Detection in Banking: detecting fraudulent activity.</li>
+</ul></li>
+<li><em>Stream Analystics</em>: Measuring statistics over fixed time
+intervals.
+<ul>
+<li>Stock Market Ticker Analysis: calculating rolling averages of stock
+prices.</li>
+</ul></li>
+<li><em>Search on Streams</em>: Searching for individual events based on
+predefined criteria.
+<ul>
+<li>Media Monitoring: subscribing to feeds of specific type of news
+articles.</li>
+</ul></li>
+</ul>
+<hr />
+<p>TODO:</p>
+<ul>
+<li>Designing Data-Intensive Applications Chapter 12</li>
+<li>Prepare a docuemnt for the board meeting</li>
+<li>2044E</li>
+</ul>
+<hr />
+<p><a href="../../index.html">index</a> <a
+href="20250313.html">20250313</a> <a
+href="20250315.html">20250315</a></p>
