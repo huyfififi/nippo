@@ -1,5 +1,22 @@
 [index](index.html)
 
+- splendor
+- overtly
+- coercion
+- extrapolate
+- discriminatory
+- counteract
+- cavalier
+- paramount
+- crossed fingers
+- off-the-shelf
+- stringent
+- amalgamation
+- grandiose
+- philosophies
+- reconcile
+- dizzyingly
+- envisage
 - taxonomy
 - laborious
 - synapse
