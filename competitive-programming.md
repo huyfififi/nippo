@@ -108,6 +108,8 @@
 
 ## Math
 
+- 2044E. Hard Problem - 1300
+	- [20250324](./2025/03/20250324.html)
 - 2061A. Kevin and Arithmetic - 800
 	- [20250129](./2025/01/20250129.html)
 - 2063A. Minimal Coprime - 800

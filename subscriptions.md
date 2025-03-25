@@ -26,8 +26,8 @@
 ### Utility Bills
 
 - eSIM (Visible by Verison) - $45
-- Rent (Apartment)
+- Rent (Apartment) - $2700
 - Maintenance fees (including sewer, Apartment)
 - Gas (PG&E)
 - Electricity (Santa Clara County, not started yet)
-- House insurance (MSI)
+- House insurance (MSI) - $13

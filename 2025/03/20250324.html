@@ -11,17 +11,59 @@
 <li>troubleshooting</li>
 </ul></li>
 <li>sent a thank-you email to my mentor</li>
+<li>40 minutes walk</li>
+<li>Codeforces 2044E</li>
+<li>considered a new signature</li>
+<li>applied for a new DL</li>
+<li>gathered documents for REAL ID</li>
+<li>chest press, 30 minutes run</li>
 </ul>
 <h2 id="e.-insane-problem---1300"><a
 href="https://codeforces.com/problemset/problem/2044/E">2044E. Insane
 Problem - 1300</a></h2>
 <p><a href="https://codeforces.com/blog/entry/137306">Codeforces Round
 993 (Div. 4) Editorial</a></p>
+<p>It’s not feasible to check all pairs of <code>x</code> and
+<code>y</code> because it takes O(n^2) time, but it’s possible for
+<code>n</code>. Even with the most strict case <code>k=2</code>, we only
+need to check
+<code>n = 1, 2, 3, ..., 32 (2 ^ 32 = 4294967296 &gt; 10 ^ 9)</code>.</p>
+<p>Once <code>n</code> is fixed, we can simply count the intersection of
+two conditions.</p>
+<pre><code>for i in range(int(input())):
+    k, l1, r1, l2, r2 = map(int, input().split())
+
+    kn, ans = 1, 0
+
+    while r2 // kn &gt;= l1:
+        # count the integer points in the intersection of
+        # A. l1 &lt;= x &lt;= r1
+        # B. ceil(l2 / k^n) &lt;= x &lt;= floor(r2 / k^n)
+        # upper bound: min(r1, floor(r2 / k^n))
+        # lower bound: max(l1, ceil(l2 / k^n))
+        ans += max(
+            0,
+            min(r2 // kn, r1) - max((l2 - 1) // kn + 1, l1) + 1,
+        )
+        kn *= k
+
+    print(ans)</code></pre>
+<p>In general, you can count the number of integer points in the
+intersection <code>A and B</code>, which is</p>
+<pre><code>max(0, min(upper bounds) - max(lower bounds) + 1)</code></pre>
+<p>It looks too obvious once I get to know the technique.</p>
+<p>TIL</p>
+<ul>
+<li>Some variables in a problem can be brute-forced if their range is
+small.</li>
+<li>Counting the number of integer points in the intersection of two
+intervals is straightforward once I know the bounds.</li>
+</ul>
 <hr />
 <p>TODO:</p>
 <ul>
-<li>write and send a than-you email to my mentor (20250324)</li>
-<li>2044E</li>
+<li>upload documents to DMV website <span class="citation"
+data-cites="WeWork">@WeWork</span></li>
 </ul>
 <hr />
 <p><a href="../../index.html">index</a> <a
