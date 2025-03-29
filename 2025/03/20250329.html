@@ -1,0 +1,377 @@
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+<meta charset="UTF-8">
+</head>
+<h1 id="section">20250329</h1>
+<p>I ate so mnay salads.</p>
+<ul>
+<li>15 minutes walk</li>
+<li>journaling</li>
+<li>chest press, lat pull down, 30 minutes run (ガチ)
+<ul>
+<li>As I worked out really hard today, my appetite never stopped.</li>
+</ul></li>
+<li>PEP8</li>
+</ul>
+<h2 id="browsing-pep8-style-guide-for-python-code">Browsing <a
+href="https://peps.python.org/pep-0008/">PEP8 — Style Guide for Python
+Code</a></h2>
+<blockquote>
+<p>This document gives coding conventions for the Python code comprising
+the standard library in the main Python distribution.</p>
+</blockquote>
+<blockquote>
+<p>Many projects have their own coding style guidelines. In the event of
+any conflicts, such project-specific guides take precedence for that
+project.</p>
+</blockquote>
+<p>I’m a bit surprised that they don’t strongly recommend PEP8 for
+everyday programming as it just says they are used in the standard
+library, while I feel most Python developers mindlessly follow them.</p>
+<p>However, I think it’s worth following them to keep code clean and
+readable because there should be reasons Guido and others created this
+style guide.</p>
+<h3 id="indentation">Indentation</h3>
+<pre><code># Correct:
+
+# Add 4 spaces (an extra level of indentation) to distinguish arguments from the rest.
+def long_function_name(
+        var_one, var_two, var_three,
+        var_four):
+    print(var_one)
+
+# Wrong:
+
+# Further indentation required as indentation is not distinguishable.
+def long_function_name(
+    var_one, var_two, var_three,
+    var_four):
+    print(var_one)</code></pre>
+<p>I didn’t know about this formatting. I usually use
+<code>black</code>, and with it, the definition becomes usually</p>
+<pre><code>def long_function_name(
+   var_one, var_two, var_three, var_four
+):
+   print(var_one)</code></pre>
+<p>or</p>
+<pre><code>def long_function_name(
+    var_one,
+    var_two,
+    var_three,
+    var_four,
+):</code></pre>
+<p>I’m so used to it that I feel more comfortable with the
+<code>black</code>’s style. I only see the <code>black</code>’s pattern,
+so I’m not very sure which is more common nowadays.</p>
+<h3 id="maximum-line-length">Maximum Line Length</h3>
+<blockquote>
+<p>Limit all lines to a maximum of 79 characters.</p>
+</blockquote>
+<p>The original version of PEP8 was created in 2001, and I think this
+suggestion is obsolete as people nowadays use wide windows that are not
+limited to 80 characters width that has a historical reason.</p>
+<p><code>black</code> set 88, and I see many projects use 120 as the
+maximum line length.</p>
+<blockquote>
+<p>Some teams strongly prefer a longer line length. For code maintained
+exclusively or primarily by a team that can reach agreement on this
+issue, it is okay to increase the line length limit up to 99 characters,
+provided that comments and docstrings are still wrapped at 72
+characters.</p>
+</blockquote>
+<p>:thinking_face: From my (limited) experience, modern Python code
+don’t strictly follow the guidance.</p>
+<blockquote>
+<p>The preferred way of wrapping long lines is by using Python’s implied
+line continuation inside parentheses, brackets and braces.</p>
+</blockquote>
+<p>I sometimes see the overuse of backslashes that don’t look great. I
+might want to cite this in the future.</p>
+<h3 id="should-a-line-break-before-or-after-a-binary-operator">Should a
+Line Break Before or After a Binary Operator?</h3>
+<pre><code># Wrong:
+# operators sit far away from their operands
+income = (gross_wages +
+          taxable_interest +
+          (dividends - qualified_dividends) -
+          ira_deduction -
+          student_loan_interest)
+
+# Correct:
+# easy to match operators with operands
+income = (gross_wages
+          + taxable_interest
+          + (dividends - qualified_dividends)
+          - ira_deduction
+          - student_loan_interest)</code></pre>
+<blockquote>
+<p>In Python code, it is permissible to break before or after a binary
+operator, as long as the convention is consistent locally. For new code
+Knuth’s style (*mentioned as the correct one aove) is suggested.</p>
+</blockquote>
+<h3 id="imports">Imports</h3>
+<pre><code># Correct:
+import os
+import sys
+
+# Wrong:
+import sys, os</code></pre>
+<p>I didn’t know that I can do <code>import lib1, lib2, lib3, ...</code>
+as this is the first time I see this pattern. I may be too young to know
+the historical development of the Python community.</p>
+<blockquote>
+<ul>
+<li>Imports should be grouped in the following order: &gt; 1. Standard
+library imports. &gt; 2. Related third party imports. &gt; 3. Local
+application/library specific imports. &gt; You should put a blank line
+between each group of imports.</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li>Absolute imports are recommended…However, explicit relative imports
+are an acceptable alternative to absolute imports…Standard library code
+should avoid complex package layouts and always use absolute
+imports.</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li>Wildcard imports (from &lt;module&gt; import *) should be avoided,
+as they make it unclear which names are present in the namespace,
+confusing both readers and many automated tools.</li>
+</ul>
+</blockquote>
+<h3 id="module-level-dunder-names">Module Level Dunder Names</h3>
+<p>This section reminds me of the use of <code>__all__</code>. It
+slipped out of my mind.</p>
+<h3 id="whitespace-in-expressions-and-statements">Whitespace in
+Expressions and Statements</h3>
+<h4 id="pet-peeves">Pet Peeves</h4>
+<blockquote>
+<ul>
+<li>Between a trailing comma and a following close parentheses:</li>
+</ul>
+</blockquote>
+<pre><code># Correct
+foo = (0,)
+
+# Wrong
+bar = (0, )</code></pre>
+<p><code>flake8</code> and <code>ruff</code> does not raise errors for
+it, but <code>black</code> fixes the wrong style. :thinking_face:</p>
+<h4 id="other-recommendations">Other Recommendations</h4>
+<blockquote>
+<ul>
+<li>If operators with different priorities are used, consider adding
+whitespace around the operators with the lowest priority(ies). Use your
+own judgment;</li>
+</ul>
+</blockquote>
+<pre><code># Correct:
+hypot2 = x*x + y*y
+
+# Wrong:
+hypot2 = x * x + y * y</code></pre>
+<p>I was not aware of this pattern. I think I should remember.</p>
+<blockquote>
+<ul>
+<li>Don’t use spaces around the = sign when used to indicate a keyword
+argument, or when used to indicate a default value for an unannotated
+function parameter:…When combining an argument annotation with a default
+value, however, do use spaces around the = sign:</li>
+</ul>
+</blockquote>
+<pre><code># Correct:
+def munge(sep: AnyStr = None): ...
+
+# Wrong:
+def munge(input: AnyStr=None): ...</code></pre>
+<h3 id="comments">Comments</h3>
+<blockquote>
+<p>Python coders from non-English speaking countries: please write your
+comments in English, unless you are 120% sure that the code will never
+be read by people who don’t speak your language.</p>
+</blockquote>
+<h3 id="naming-conventions">Naming Conventions</h3>
+<h4 id="descriptive-naming-styles">Descriptive: Naming Styles</h4>
+<blockquote>
+<p>In addition, the following special forms using leading or trailing
+underscores are recognized (these can generally be combined with any
+case convention):</p>
+</blockquote>
+<blockquote>
+<ul>
+<li>_single_leading_underscore: weak “internal use” indicator. E.g. from
+M import * does not import objects whose names start with an
+underscore.</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li>single_trailing_underscore_: used by convention to avoid conflicts
+with Python keyword, e.g. :
+<code>tkinter.Toplevel(master, class_='ClassName')</code></li>
+</ul>
+</blockquote>
+<p>My mentor pointed out this on my pull request.</p>
+<h4 id="priscriptive-naming-conventions">Priscriptive: Naming
+Conventions</h4>
+<h5 id="names-to-avoid">Names to Avoid</h5>
+<blockquote>
+<p>Never use the characters ‘l’ (lowercase letter el), ‘O’ (uppercase
+letter oh), or ‘I’ (uppercase letter eye) as single character variable
+names.</p>
+</blockquote>
+<blockquote>
+<p>In some fonts, these characters are indistinguishable from the
+numerals one and zero. When tempted to use ‘l’, use ‘L’ instead.</p>
+</blockquote>
+<h5 id="global-variable-names">Global Variable Names</h5>
+<blockquote>
+<p>Modules that are designed for use via <code>from M import *</code>
+should use the <code>__all__</code> mechanism to prevent exporting
+globals…</p>
+</blockquote>
+<h5 id="function-and-method-arguments">Function and Method
+Arguments</h5>
+<blockquote>
+<p>If a function argument’s name clashes with a reserved keyword, it is
+generally better to append a single trailing underscore rather than use
+an abbreviation or spelling corruption. Thus class_ is better than clss.
+(Perhaps better is to avoid such clashes by using a synonym.)</p>
+</blockquote>
+<h5 id="method-names-and-instance-variables">Method Names and Instance
+Variables</h5>
+<blockquote>
+<p>To avoid name clashes with subclasses, use two leading underscores to
+invoke Python’s name mangling rules. …Generally, double leading
+underscores should be used only to avoid name conflicts with attributes
+in classes designed to be subclassed.</p>
+</blockquote>
+<blockquote>
+<p>Note: there is some controversy about the use of __names (see
+below).</p>
+</blockquote>
+<p>Hmm… interesting</p>
+<h5 id="designing-for-inheritance">Designing for Inheritance</h5>
+<blockquote>
+<p>…Note 1: Try to keep the functional behavior side-effect free,
+although side-effects such as caching are generally fine…Note 2: Avoid
+using properties for computationally expensive operations; the attribute
+notation makes the caller believe that access is (relatively) cheap.</p>
+</blockquote>
+<blockquote>
+<p>If your class is intended to be subclassed, and you have attributes
+that you do not want subclasses to use, consider naming them with double
+leading underscores and no trailing underscores. This invokes Python’s
+name mangling algorithm, where the name of the class is mangled into the
+attribute name. This helps avoid attribute name collisions should
+subclasses inadvertently contain attributes with the same name.</p>
+</blockquote>
+<p>I remember I had some discussion on these points.</p>
+<h4 id="public-and-internal-interfaces">Public and Internal
+Interfaces</h4>
+<blockquote>
+<p>Any backwards compatibility guarantees apply only to public
+interfaces. Accordingly, it is important that users be able to clearly
+distinguish between public and internal interfaces.</p>
+</blockquote>
+<blockquote>
+<p>To better support introspection, modules should explicitly declare
+the names in their public API using the <code>__all__</code> attribute.
+Setting <code>__all__</code> to an empty list indicates that the module
+has no public API.</p>
+</blockquote>
+<h3 id="programming-recommendations">Programming Recommendations</h3>
+<blockquote>
+<ul>
+<li>Code should be written in a way that does not disadvantage other
+implementations of Python (PyPy, Jython, IronPython, Cython, Psyco, and
+such).</li>
+</ul>
+</blockquote>
+<p>I didn’t know many of the implementations.</p>
+<blockquote>
+<p>…For example, do not rely on CPython’s efficient implementation of
+in-place string concatenation for statements in the form
+<code>a += b</code> or <code>a = a + b</code>. This optimization is
+fragile even in CPython (it only works for some types) and isn’t present
+at all in implementations that don’t use refcounting. In performance
+sensitive parts of the library, the <code>''.join()</code> form should
+be used instead. This will ensure that concatenation occurs in linear
+time across various implementations.</p>
+</blockquote>
+<p>I see…</p>
+<blockquote>
+<p>…Also, beware of writing <code>if x</code> when you really mean
+<code>if x is not None</code> – e.g. when testing whether a variable or
+argument that defaults to None was set to some other value. The other
+value might have a type (such as a container) that could be false in a
+boolean context!</p>
+</blockquote>
+<p>I encountered this pitfall for some times in my life.</p>
+<blockquote>
+<ul>
+<li>Derive exceptions from Exception rather than BaseException. Direct
+inheritance from BaseException is reserved for exceptions where catching
+them is almost always the wrong thing to do.</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li>When catching exceptions, mention specific exceptions whenever
+possible instead of using a bare <code>except:</code> clause: …A bare
+<code>except</code>: clause will catch SystemExit and KeyboardInterrupt
+exceptions, making it harder to interrupt a program with Control-C, and
+can disguise other problems. If you want to catch all exceptions that
+signal program errors, use <code>except Exception</code>: (bare except
+is equivalent to <code>except BaseException:</code>).</li>
+</ul>
+</blockquote>
+<p>I didn’t know that a bare <code>except:</code> will catch SystemExit
+and KeyboardInterrupt.</p>
+<blockquote>
+<ul>
+<li>Additionally, for all try/except clauses, limit the try clause to
+the absolute minimum amount of code necessary. Again, this avoids
+masking bugs:</li>
+</ul>
+</blockquote>
+<p>I always adovocate this, but it seems beginner Python developers tend
+to have a very broad try-except clause.</p>
+<blockquote>
+<ul>
+<li>Use <code>''.startswith()</code> and <code>''.endswith()</code>
+instead of string slicing to check for prefixes or suffixes.
+startswith() and endswith() are cleaner and less error prone:</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li>Object type comparisons should always use isinstance() instead of
+comparing types directly:</li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li>For sequences, (strings, lists, tuples), use the fact that empty
+sequences are false:</li>
+</ul>
+</blockquote>
+<p>I remember I got a review comment about these guides.</p>
+<p>Tada! :tada: I finished reading through PEP8. It was worth it to
+re-visit style guides I was about to forget.</p>
+<hr />
+<p>TODO:</p>
+<ul>
+<li>Browse <a href="https://peps.python.org/pep-0257/">PEP 257</a> —
+Docstring Conventions</li>
+<li>Browse <a href="https://peps.python.org/pep-0484/">PEP 484</a> -
+Type Hints</li>
+<li>DMV appointment (20250513 12:20 pm) @ San Jose</li>
+</ul>
+<hr />
+<p><a href="../../index.html">index</a> <a
+href="20250328.html">20250328</a> <a
+href="20250330.html">20250330</a></p>

@@ -95,6 +95,7 @@
 
 ## Python
 
+- [Re-visiting PEP8](./2025/03/20250329.html)
 - [test coverage threshold with `pytest-cov`](./2025/02/20250227.html)
 - [map(), functools.reduce(), (and MapReduce)](./2025/02/20250223.html)
 - [issubclass(bool, int) is True - Python](./2024/10/20241019.html)
