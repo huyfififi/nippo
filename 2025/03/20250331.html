@@ -4,13 +4,97 @@
 </head>
 <h1 id="section">20250331</h1>
 <ul>
-<li>full-time job</li>
+<li>full-time job
+<ul>
+<li>As I become more senior, I spend more time reviewing pull requests
+and system designs.</li>
+<li>AI makes every work so efficient that humans burn out.</li>
+<li>I’m already tired on Monday.</li>
+</ul></li>
+<li>30 minutes walk</li>
+<li>journaling</li>
+<li><a href="https://peps.python.org/pep-0257/">PEP 257</a></li>
+<li>implemented a recursive solution for LeetCode 21</li>
+<li>cleaned a for-loop solution for LeetCode 21</li>
 </ul>
+<h2 id="browsing-pep-257">Browsing <a
+href="https://peps.python.org/pep-0257/">PEP 257</a></h2>
+<blockquote>
+<p>All modules should normally have docstrings, and all functions and
+classes exported by a module should also have docstrings. Public methods
+(including the <code>__init__</code> constructor) should also have
+docstrings.</p>
+</blockquote>
+<p>I didn’t add many docstrings… I feel a bit bad about that now.</p>
+<p>That said, I also know the argument that comments can quickly become
+outdated if the implementation changes and comments aren’t updated
+accordingly. Some people argue that we should rely on the implementation
+itself rather than adding comments that could become inconsistent and
+lead to confusion.</p>
+<blockquote>
+<ol type="1">
+<li>String literals occurring immediately after a simple assignment at
+the top level of a module, class, or <code>__init__</code> method are
+called “attribute docstrings”.</li>
+<li>String literals occurring immediately after another docstring are
+called “additional docstrings”.</li>
+</ol>
+</blockquote>
+<p>I was not aware of the “additional docstrings.”</p>
+<p>As I browsed some web pages, I came to know <a
+href="https://google.github.io/styleguide/pyguide.html">Google Python
+Style Guide</a>. Because I already use <code>black</code> and also
+haven’t met people who asked me to follow the Google’s style guide, so I
+think I’m fine skipping this for now. Anyway, if you want to be very
+strict, you should consider other options such as Rust or Haskell.
+Python’s philosophy is to let developers do their things in their
+ways.</p>
+<blockquote>
+<p>The docstring for a module should generally list the classes,
+exceptions and functions (and any other objects) that are exported by
+the module, with a one-line summary of each.</p>
+</blockquote>
+<p>I rarely see this in public GitHub repositories.</p>
+<blockquote>
+<p>The docstring for a function or method should summarize its behavior
+and document its arguments, return value(s), side effects, exceptions
+raised, and restrictions on when it can be called (all if applicable).
+Optional arguments should be indicated. It should be documented whether
+keyword arguments are part of the interface.</p>
+</blockquote>
+<p>I think I should start with this, when appropriate, though I always
+try to make functions obvious and easy to understand, and comments or
+docstrings might complicate the code.</p>
+<pre><code>def add1(a: int, b: int) -&gt; int:
+    &quot;&quot;&quot;Return the sum of two numbers&quot;&quot;&quot;
+    return a + b
+
+
+print(f&quot;{type(add1.__doc__)=}&quot;)
+print(f&quot;{add1.__doc__=}&quot;)
+# type(add1.__doc__)=&lt;class &#39;str&#39;&gt;
+# add1.__doc__=&#39;Return the sum of two numbers&#39;
+
+
+def add2(num1: int = 0, num2: int = 0) -&gt; int:
+    &quot;&quot;&quot;Return the sum of two numbers.
+
+    Keyword arguments:
+    num1 -- the first number (default 0)
+    num2 -- the second number (default 0)
+    &quot;&quot;&quot;
+    return a + b
+
+
+print(f&quot;{type(add2.__doc__)=}&quot;)
+print(f&quot;{add2.__doc__=}&quot;)
+# type(add2.__doc__)=&lt;class &#39;str&#39;&gt;
+# add2.__doc__=&#39;Return the sum of two numbers.\n\n    Keyword arguments:\n    num1 -- the first number (default 0)\n    num2 -- the second number (default 0)\n    &#39;</code></pre>
+<p>I think I should follow the Google’s Style Guide when working on a
+large project. (I don’t expect me to work on that kind of codebase).</p>
 <hr />
 <p>TODO:</p>
 <ul>
-<li>Browse <a href="https://peps.python.org/pep-0257/">PEP 257</a> —
-Docstring Conventions</li>
 <li>Browse <a href="https://peps.python.org/pep-0484/">PEP 484</a> -
 Type Hints</li>
 <li>DMV appointment (20250513 12:20 pm) @ San Jose</li>
@@ -18,4 +102,4 @@ Type Hints</li>
 <hr />
 <p><a href="../../index.html">index</a> <a
 href="20250330.html">20250330</a> <a
-href="20250401.html">20250401</a></p>
+href="../04/20250401.html">20250401</a></p>
