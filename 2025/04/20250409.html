@@ -1,0 +1,110 @@
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+<meta charset="UTF-8">
+</head>
+<h1 id="section">20250409</h1>
+<ul>
+<li>brisk walk</li>
+<li>LeetCode 226. Invert Binary Tree</li>
+<li>journaling</li>
+<li>The Algebra of Wealth</li>
+<li>browsed PEP 484
+<ul>
+<li>&gt; <strong>Python will remain a dynamically typed language, and
+the authors have no desire to ever make type hints mandatory, even by
+convention.</strong></li>
+</ul></li>
+</ul>
+<h2 id="til">TIL</h2>
+<ul>
+<li><code>"四".isalnum() is True</code> (“四” is a Chinese charactor for
+“4”).</li>
+</ul>
+<h2 id="pep-484---type-hints"><a
+href="https://peps.python.org/pep-0484/">PEP 484 - Type Hints</a></h2>
+<ul>
+<li>Type annotations are available at run-time by accessing
+<code>__annotations__</code>.</li>
+</ul>
+<pre><code>def concat_strings(s1: str, s2: str) -&gt; str:
+    return s1 + s2
+
+
+print(concat_strings.__annotations__)
+# {&#39;s1&#39;: &lt;class &#39;str&#39;&gt;, &#39;s2&#39;: &lt;class &#39;str&#39;&gt;, &#39;return&#39;: &lt;class &#39;str&#39;&gt;}</code></pre>
+<pre><code># [Type aliases](https://peps.python.org/pep-0484/#type-aliases)
+Url = str
+
+def retry(url: Url, retry_count: int) -&gt; None: ...</code></pre>
+<pre><code>from typing import TypeVar, Iterable, Tuple
+
+T = TypeVar(&#39;T&#39;, int, float, complex)
+Vector = Iterable[Tuple[T, T]]
+
+def inproduct(v: Vector[T]) -&gt; T:
+    return sum(x*y for x, y in v)</code></pre>
+<p>I have never seen type aliases. Isn’t it confusing to assign a
+different name? It might be not widely-used as we have
+<code>int | float | str</code> kind type annotations.</p>
+<blockquote>
+<p>Frameworks expecting callback functions of specific signatures might
+be type hinted using
+<code>Callable[[Arg1Type, Arg2Type], ReturnType]</code></p>
+</blockquote>
+<p>I don’t have experience with Callable, TypeVar, too.</p>
+<div class="sourceCode" id="cb4"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># PEP 484 — User-defined generic types</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> typing <span class="im">import</span> TypeVar, Generic</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> logging <span class="im">import</span> Logger</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>T <span class="op">=</span> TypeVar(<span class="st">&#39;T&#39;</span>)</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> LoggedVar(Generic[T]):</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, value: T, name: <span class="bu">str</span>, logger: Logger) <span class="op">-&gt;</span> <span class="va">None</span>:</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.name <span class="op">=</span> name</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.logger <span class="op">=</span> logger</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.value <span class="op">=</span> value</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="bu">set</span>(<span class="va">self</span>, new: T) <span class="op">-&gt;</span> <span class="va">None</span>:</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.log(<span class="st">&#39;Set &#39;</span> <span class="op">+</span> <span class="bu">repr</span>(<span class="va">self</span>.value))</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.value <span class="op">=</span> new</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> get(<span class="va">self</span>) <span class="op">-&gt;</span> T:</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.log(<span class="st">&#39;Get &#39;</span> <span class="op">+</span> <span class="bu">repr</span>(<span class="va">self</span>.value))</span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">self</span>.value</span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> log(<span class="va">self</span>, message: <span class="bu">str</span>) <span class="op">-&gt;</span> <span class="va">None</span>:</span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.logger.info(<span class="st">&#39;</span><span class="sc">{}</span><span class="st">: </span><span class="sc">{}</span><span class="st">&#39;</span>.<span class="bu">format</span>(<span class="va">self</span>.name, message))</span></code></pre></div>
+<p>I was not aware of this use case. It might be useful in the future,
+perhaps.</p>
+<blockquote>
+<p>Consider a class Employee with a subclass Manager. Now suppose we
+have a function with an argument annotated with
+<code>List[Employee]</code>. Should we be allowed to call this function
+with a variable of type <code>List[Manager]</code> as its argument? Many
+people would answer “yes, of course” without even considering the
+consequences. But unless we know more about the function, a type checker
+should reject such a call: the function might append an Employee
+instance to the list, which would violate the variable’s type in the
+caller.</p>
+</blockquote>
+<p>Hmm… I think people around me are good with meaning subsclasses.. but
+I think I should do some research on this controversy.</p>
+<p>The PEP continues to describe how type checkers should behave, but I
+think they are too much information for my current self. I’ll skip for
+now.</p>
+<hr />
+<p>PEP8: The style guide for Python code</p>
+<p>PEP 20: The Zen of Python</p>
+<p>PEP 572: Introduction of the walrus operator</p>
+<hr />
+<p>TODO:</p>
+<ul>
+<li>Bring books from my parents’ house (20250411)</li>
+<li>Get a new sticker for my car (20250411)</li>
+<li>DMV appointment (20250513 12:20 pm) @ San Jose</li>
+</ul>
+<hr />
+<p><a href="../../index.html">index</a> <a
+href="20250408.html">20250408</a> <a
+href="20250410.html">20250410</a></p>
