@@ -41,6 +41,7 @@
 
 # Database
 
+- [Browsing Web Pages on Data Management in the Microservice Architecture Pattern](./2025/04/20250424.html)
 - [Default Isolation Level in PostgreSQL](./2025/01/20250121.html)
 - [Denormalization](./2025/01/20250107.html)
 
