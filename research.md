@@ -95,6 +95,7 @@
 
 ## Python
 
+- [Template strings](./2025/04/20250423.html)
 - [MEMO: PEP 484](./2025/04/20250409.html)
 - [Re-visiting PEP8](./2025/03/20250329.html)
 - [test coverage threshold with `pytest-cov`](./2025/02/20250227.html)

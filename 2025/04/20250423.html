@@ -1,0 +1,77 @@
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+<meta charset="UTF-8">
+</head>
+<h1 id="section">20250423</h1>
+<ul>
+<li>brisk walk</li>
+<li>full-time job
+<ul>
+<li>super busy</li>
+</ul></li>
+<li>browsed <a
+href="https://docs.python.org/3/library/string.html#template-strings">template
+strings in Python</a></li>
+<li>The Algebra of Wealth</li>
+</ul>
+<h2 id="template-strings">Template strings</h2>
+<p><a
+href="https://docs.python.org/3/library/string.html#template-strings">Official
+Documentation on Template Strings</a></p>
+<blockquote>
+<p>A primary use case for template strings is for internationalization
+(i18n) since in that context, the simpler syntax and functionality makes
+it easier to translate than other built-in string formatting facilities
+in Python.</p>
+</blockquote>
+<p>I have no experience with in</p>
+<pre><code># This is copied from the official documentation mentioned above
+from string import Template
+s = Template(&#39;$who likes $what&#39;)
+s.substitute(who=&#39;tim&#39;, what=&#39;kung pao&#39;)
+&#39;tim likes kung pao&#39;
+d = dict(who=&#39;tim&#39;)
+Template(&#39;Give $who $100&#39;).substitute(d)
+Traceback (most recent call last):
+...
+ValueError: Invalid placeholder in string: line 1, col 11
+Template(&#39;$who likes $what&#39;).substitute(d)
+Traceback (most recent call last):
+...
+KeyError: &#39;what&#39;
+Template(&#39;$who likes $what&#39;).safe_substitute(d)
+&#39;tim likes $what&#39;</code></pre>
+<p>What I was surprised of first was the dict initialization. On second
+thought, the usage was obvious, but as I usually use
+<code>d = {"who": "tim"}</code>, the usage looked new to me.</p>
+<pre><code>In [1]: d1 = {&quot;who&quot;: &quot;tim&quot;}
+
+In [2]: d2 = dict(who=&quot;tim&quot;)
+
+In [3]: d1 == d2
+Out[3]: True</code></pre>
+<p>Trying the feature</p>
+<pre><code>In [1]: from string import Template
+
+In [2]: template = Template(&quot;Kaz likes $favorite1, $favorite2, and $favorite3&quot;)
+
+In [3]: kaz_favs_eng = {&quot;favorite1&quot;: &quot;apples&quot;, &quot;favorite2&quot;: &quot;berries&quot;, &quot;favorite3&quot;: &quot;banana&quot;}
+
+In [4]: template.substitute(kaz_favs_eng)
+Out[4]: &#39;Kaz likes apples, berries, and banana&#39;
+
+In [5]: kaz_favs_jap = {&quot;favorite1&quot;: &quot;林檎&quot;, &quot;favorite2&quot;: &quot;ベリー&quot;, &quot;favorite3&quot;: &quot;バナナ&quot;}
+
+In [6]: template.substitute(kaz_favs_jap)
+Out[6]: &#39;Kaz likes 林檎, ベリー, and バナナ&#39;</code></pre>
+<hr />
+<p>TODO:</p>
+<ul>
+<li>Request a maintenance for my room (20250426)</li>
+<li>Dental appointment (20250506 8:30 am)</li>
+<li>DMV appointment (20250513 12:20 pm) @ San Jose</li>
+</ul>
+<hr />
+<p><a href="../../index.html">index</a> <a
+href="20250422.html">20250422</a> <a
+href="20250424.html">20250424</a></p>
