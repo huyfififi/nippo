@@ -19,7 +19,6 @@
 
 ### Web Services
 
-- GitHub Copilot - $10
 - Amazon Prime - $15
 - YouTube Premium - $30
 
@@ -31,3 +30,9 @@
 - Gas (PG&E)
 - Electricity (Santa Clara County, not started yet)
 - House insurance (MSI) - $13
+
+---
+
+Cancelled
+
+- ~~GitHub Copilot - $10~~
