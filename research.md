@@ -4,6 +4,7 @@
 
 # Data Structure & Algorithms
 
+- [Tail Recursion / Tail Call Optimization](./2025/05/20250520.html)
 - [Takeaways from Codeforces Round 991](./2024/12/20241207.html)
 - [Radix sort](./2024/11/20241109.html)
 	- [Radix sort (string)](./2024/11/20241114.html)
