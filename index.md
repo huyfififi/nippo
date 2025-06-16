@@ -4,6 +4,7 @@
 - [research](research.html)
 - [words](words.html)
 - [subscriptions](subscriptions.html)
+- [leetcode](leetcode.html)
 
 # 2025
 
