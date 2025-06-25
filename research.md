@@ -97,6 +97,7 @@
 
 ## Python
 
+- ["Why does id({}) == id({}) and id([]) == id([]) in CPython? [duplicate]"](./2025/06/20250625.html)
 - [Template strings](./2025/04/20250423.html)
 - [MEMO: PEP 484](./2025/04/20250409.html)
 - [Re-visiting PEP8](./2025/03/20250329.html)

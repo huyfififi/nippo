@@ -1,0 +1,47 @@
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+<meta charset="UTF-8">
+</head>
+<h1 id="section">20250625</h1>
+<p>I could not sleep well because I had many meetings last evening, and
+it stimulated my nerves.</p>
+<ul>
+<li>full-time job</li>
+<li>created a pull request: 543: Diameter of Binary Tree</li>
+<li>chest press, 30 minutes jog
+<ul>
+<li>I was about to throw up</li>
+</ul></li>
+<li>LeetCode 876. Middle of the Linked List (step 1, 2)</li>
+<li>checked the behavior of <code>id()</code></li>
+</ul>
+<pre><code>In [1]: a, b = &#39;foobar&#39;, &#39;barbaz&#39;
+
+In [2]: a[:3] is b[:3]
+Out[2]: False
+
+In [3]: id(a[:3]) == id(b[:3])
+Out[3]: True
+
+In [4]: id(a[:3])
+Out[4]: 4347335216
+
+In [5]: id(b[:3])
+Out[5]: 4347019760</code></pre>
+<p><a href="https://stackoverflow.com/a/3877275/16193058">StackOverflow
+- Why does id({}) == id({}) and id([]) == id([]) in CPython?
+[duplicated]</a></p>
+<p>When evaluating <code>id(a[:3]) == id(b[:3])</code>, the first
+<code>a[:3]</code> seems to be garbage collected before evaluating
+<code>id(b[:3])</code>, and <code>b[:3]</code> seems to use the same
+address (with CPython).</p>
+<hr />
+<p>TODO:</p>
+<ul>
+<li>check how many steps Python can take in a second</li>
+<li>check available facilities for passport request</li>
+</ul>
+<hr />
+<p><a href="../../index.html">index</a> <a
+href="20250624.html">20250624</a> <a
+href="20250626.html">20250626</a></p>

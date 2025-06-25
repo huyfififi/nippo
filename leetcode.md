@@ -2,6 +2,8 @@
 
 #### Reviewed LeetCode Problems (for my personal reference)
 
+- [chanseok-lim - 141. Linked List Cycle](https://github.com/chanseok-lim/arai60/pull/10)
+	- When checking two objects are the same, `is` should be used instead of `==`.
 - [garunitule - 560. Subarray Sum Equals K](https://github.com/garunitule/coding_practice/pull/16)
 - [h1rosaka - 49. Group Anagrams](https://github.com/h1rosaka/arai60/pull/16)
 - [Kazuryu0907 - 1. Two Sum](https://github.com/Kazuryu0907/LeetCode_Arai60/pull/1)
