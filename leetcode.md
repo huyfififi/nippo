@@ -5,6 +5,10 @@
 - [chanseok-lim - 141. Linked List Cycle](https://github.com/chanseok-lim/arai60/pull/10)
 	- When checking two objects are the same, `is` should be used instead of `==`.
 - [garunitule - 560. Subarray Sum Equals K](https://github.com/garunitule/coding_practice/pull/16)
+- [garunitule - 200. Number of Islands](https://github.com/garunitule/coding_practice/pull/17)
+	- Command Query Separation
+	- Descriptive function/variable names
+	- ["個人的な感覚、union find は現実的には多くの人が知っているし、知らなくても書かれれば読めるんですが、しかし、知らない同僚がいたとしても別に動揺しないというラインだと思いますね。"](https://github.com/garunitule/coding_practice/pull/17#discussion_r2170301165)
 - [h1rosaka - 49. Group Anagrams](https://github.com/h1rosaka/arai60/pull/16)
 - [Kazuryu0907 - 1. Two Sum](https://github.com/Kazuryu0907/LeetCode_Arai60/pull/1)
 - [Kazuryu0907 - 387. First Unique Character in a String](https://github.com/Kazuryu0907/LeetCode_Arai60/pull/2)
