@@ -9,6 +9,7 @@
 	- Command Query Separation
 	- Descriptive function/variable names
 	- ["個人的な感覚、union find は現実的には多くの人が知っているし、知らなくても書かれれば読めるんですが、しかし、知らない同僚がいたとしても別に動揺しないというラインだと思いますね。"](https://github.com/garunitule/coding_practice/pull/17#discussion_r2170301165)
+- [garunitule - 695. Max Area of Island](https://github.com/garunitule/coding_practice/pull/18)
 - [h1rosaka - 49. Group Anagrams](https://github.com/h1rosaka/arai60/pull/16)
 - [Kazuryu0907 - 1. Two Sum](https://github.com/Kazuryu0907/LeetCode_Arai60/pull/1)
 - [Kazuryu0907 - 387. First Unique Character in a String](https://github.com/Kazuryu0907/LeetCode_Arai60/pull/2)
