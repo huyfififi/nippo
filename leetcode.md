@@ -2,6 +2,7 @@
 
 #### Reviewed LeetCode Problems (for my personal reference)
 
+- [brood0783 - 141. Linked List Cycle](https://github.com/brood0783/arai60/pull/2)
 - [chanseok-lim - 141. Linked List Cycle](https://github.com/chanseok-lim/arai60/pull/10)
 	- When checking two objects are the same, `is` should be used instead of `==`.
 - [garunitule - 560. Subarray Sum Equals K](https://github.com/garunitule/coding_practice/pull/16)
@@ -21,3 +22,5 @@
 - [shintaroyoshida20 - 217. Contains Duplicate](https://github.com/shintaroyoshida20/leetcode/pull/32)
 	- [MDN - Array.prototype.sort()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort)
 		- "The time and space complexity of the sort cannot be guaranteed as it depends on the implementation."
+- [tokuhirat - 322. Coin Change](https://github.com/tokuhirat/LeetCode/pull/40)
+	- TIL: `math.isinf()`
