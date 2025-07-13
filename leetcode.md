@@ -15,6 +15,7 @@
 	- To avoid `RecursionError: maximum recursion depth exceeded while pickling an object.`, it makes sense to create a stack myself to perform DFS.
 - [garunitule - 104. Maximum Depth of Binary Tree](https://github.com/garunitule/coding_practice/pull/21)
 	- Cyclomatic Complexity, great engineers always come up with a very simple solution
+	- Top down vs Bottom up
 - [garunitule - 127. Word Ladder](https://github.com/garunitule/coding_practice/pull/20)
 	- Shortest path -> BFS
 - [h1rosaka - 49. Group Anagrams](https://github.com/h1rosaka/arai60/pull/16)

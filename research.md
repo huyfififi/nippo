@@ -16,8 +16,9 @@
 	- [Applications to Codeforces problems](./2024/10/20241022.html)
 - [Memoization / Tabulation (20240530)](./2024/05/20240530.html)
 
-# Network
+# Web / Network
 
+- [CSRF (Cross-Site Request Forgery)](./2025/07/20250713.html)
 - [`whois`, `clientHold`, and `serverTransferProhibited`](./2025/01/20250123.html)
 - [Why is `Authorization` Header Used for Authentication? (Authentication vs Authorization)](./2024/11/20241113.html)
 - [PGP and PEP 761 - Deprecating PGP signatures for CPython artifacts](./2024/11/20241106.html)
@@ -97,6 +98,7 @@
 
 ## Python
 
+- [Python can run about 1 million basic steps per second](./2025/07/20250713.html)
 - ["Why does id({}) == id({}) and id([]) == id([]) in CPython? [duplicate]"](./2025/06/20250625.html)
 - [Template strings](./2025/04/20250423.html)
 - [MEMO: PEP 484](./2025/04/20250409.html)
@@ -204,6 +206,7 @@
 
 # Life
 
+- [The Trading Game: A Confession](./2025/07/20250713.html)
 - [無 (最高の状態)](./2025/07/20250706.html)
 - [億までの人 億からの人](./2025/06/20250610.html)
 - [taking breaks](./2025/01/20250114.html)
