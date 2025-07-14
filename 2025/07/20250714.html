@@ -1,0 +1,58 @@
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+<meta charset="UTF-8">
+</head>
+<h1 id="section">20250714</h1>
+<p>I’m very sleepy.</p>
+<ul>
+<li>renewed the TLS certificate for my mastodon instance, and also
+upgraded mastodon version v4.3.7 -&gt; v4.4.1
+<ul>
+<li>I just realized the certificate would expire tomorrow</li>
+</ul></li>
+<li>full-time job</li>
+<li>ACID</li>
+<li>ate a lot</li>
+</ul>
+<h2 id="acid-atomicity-consistency-isolation-durability">ACID
+(atomicity, consistency, isolation, durability)</h2>
+<p><a
+href="https://en.wikipedia.org/wiki/ACID">https://en.wikipedia.org/wiki/ACID</a></p>
+<blockquote>
+<p>In the context of databases, a sequence of database operations that
+satisfies the ACID properties (which can be perceived as a single
+logical operation on the data) is called a <em>transaction</em>.</p>
+</blockquote>
+<p>So basically, ACID is a set of properties that define key
+characteristics a database transaction should uphold.</p>
+<p><strong>Atomicity</strong>: Atomicity: A set of operations of a
+transaction is treated as a single unit, and it can completely succeed
+or fail, and no intermediate state is ever visible to other transactions
+or users.</p>
+<p><strong>Consistency</strong>: A transaction must move the database
+from one valid state to another, preserving all predefined rules,
+constraints, and invariants. These valid states are defined by the
+schema, integrity constraints such as foreign keys, and possibly busines
+logic, making the concept vaguer than the other ACID properties.</p>
+<p><strong>Isolation</strong>: A database must handle concurrent
+execution of transactions in such as way that each transaction’s effects
+are isolated from others. The outcome should be the same as if the
+transactions were executed sequentially, one after another. Different
+isolation levels provide varying guarantees about how strictly this
+isolation is enforced.</p>
+<p><strong>Durability</strong>: Once a transaction is committed, its
+changes must be permanently recorded by the database, even in the event
+of a system failure such as a program crash or power outage. This is
+typically achieved by writing data to non-volatile storage (e.g., disk
+or SSD (vs volatile RAM))</p>
+<hr />
+<p>TODO:</p>
+<ul>
+<li>Union Find (Disjoint Set)</li>
+<li>check available facilities for passport request</li>
+<li>Fidelity</li>
+</ul>
+<hr />
+<p><a href="../../index.html">index</a> <a
+href="20250713.html">20250713</a> <a
+href="20250715.html">20250715</a></p>
