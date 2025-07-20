@@ -18,6 +18,8 @@
 	- Top down vs Bottom up
 - [garunitule - 127. Word Ladder](https://github.com/garunitule/coding_practice/pull/20)
 	- Shortest path -> BFS
+- [garunitule - 111. Minimum Depth of Binary Tree](https://github.com/garunitule/coding_practice/pull/22)
+	- Search for the shallowest leaf node -> BFS
 - [h1rosaka - 49. Group Anagrams](https://github.com/h1rosaka/arai60/pull/16)
 - [Kazuryu0907 - 1. Two Sum](https://github.com/Kazuryu0907/LeetCode_Arai60/pull/1)
 - [Kazuryu0907 - 387. First Unique Character in a String](https://github.com/Kazuryu0907/LeetCode_Arai60/pull/2)
