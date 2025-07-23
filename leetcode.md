@@ -25,6 +25,8 @@
 - [Kazuryu0907 - 387. First Unique Character in a String](https://github.com/Kazuryu0907/LeetCode_Arai60/pull/2)
 - [Kazuryu0907 - 560. Subarray Sum Equals K](https://github.com/Kazuryu0907/LeetCode_Arai60/pull/4)
 - [plushn - 1. Two Sum](https://github.com/plushn/SWE-Arai60/pull/11)
+- [ryosuketc - 322. Coin Change](https://github.com/ryosuketc/leetcode_arai60/pull/53)
+	- Memoization with `functools.cache`
 - [Ryotaro25 - 226. Invert Binary Tree](https://github.com/Ryotaro25/leetcode_first60/pull/71)
 	- std::swap
 	- Google Style Guide: Do not use using-directives (e.g., using namespace foo)
@@ -33,3 +35,5 @@
 		- "The time and space complexity of the sort cannot be guaranteed as it depends on the implementation."
 - [tokuhirat - 322. Coin Change](https://github.com/tokuhirat/LeetCode/pull/40)
 	- TIL: `math.isinf()`
+- [tshimosake - 98. Validate Binary Search Tree](https://github.com/tshimosake/arai60/pull/18)
+	- BST in-order traversal -> ascending (or correctly ordered) numbers
