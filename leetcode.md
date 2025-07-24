@@ -27,6 +27,7 @@
 - [plushn - 1. Two Sum](https://github.com/plushn/SWE-Arai60/pull/11)
 - [ryosuketc - 322. Coin Change](https://github.com/ryosuketc/leetcode_arai60/pull/53)
 	- Memoization with `functools.cache`
+	- Two means of dynamic programming: memoization and tabulation
 - [Ryotaro25 - 226. Invert Binary Tree](https://github.com/Ryotaro25/leetcode_first60/pull/71)
 	- std::swap
 	- Google Style Guide: Do not use using-directives (e.g., using namespace foo)

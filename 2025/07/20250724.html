@@ -1,0 +1,47 @@
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+<meta charset="UTF-8">
+</head>
+<h1 id="section">20250724</h1>
+<ul>
+<li>full-time job
+<ul>
+<li>I’m tired.</li>
+</ul></li>
+<li>40 minutes walk</li>
+<li>reviewed solutions of 973. K Closest Points to Origin</li>
+</ul>
+<h2 id="mcp-server">MCP Server</h2>
+<p>Related page: <a href="../03/20250327.html">20250327</a></p>
+<p>References:</p>
+<ul>
+<li><a
+href="https://modelcontextprotocol.io/introduction#general-architecture">https://modelcontextprotocol.io/introduction#general-architecture</a></li>
+<li><a
+href="https://docs.anthropic.com/en/docs/mcp">https://docs.anthropic.com/en/docs/mcp</a></li>
+</ul>
+<p><strong>MCP (Model-Context Protocol)</strong> is a standard,
+streaming JSON-RPC protocol that lets an LLM obtain external data or run
+tools.</p>
+<p>An <strong>MCP server</strong> is a server that provides that data:
+it receives <code>mcp_tool_use</code> requests from the LLM, calls
+downstream services, and streams an <code>mcp_tool_result</code> back to
+the model.</p>
+<p>Let’s say we already have an API that returns the current
+temperature, we can place an MCP server in front of it:</p>
+<pre><code>LLM ──(MCP)──►  MCP server ──(REST)──► Weather-API
+               ◄───────────── result ──┘</code></pre>
+<p>Note that the LLM never talks to the Weather-API directly; the MCP
+layer gives us a uniform, model-agnostic interface and keeps service
+logic separate.</p>
+<hr />
+<p>TODO:</p>
+<ul>
+<li>Union Find (Disjoint Set)</li>
+<li>check available facilities for passport request</li>
+<li>Fidelity</li>
+</ul>
+<hr />
+<p><a href="../../index.html">index</a> <a
+href="20250723.html">20250723</a> <a
+href="20250725.html">20250725</a></p>

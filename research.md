@@ -65,6 +65,7 @@
 
 # Machine-learning / LLM
 
+- [MCP Server](./2025/07/20250724.html)
 - [Model Context Protocol (MCP)](./2025/03/20250327.html)
 - [Quick Tryout with Ollama](./2024/12/20241202.html)
 - [AWS Trainium / AWS Inferentia / AWS Neuron / Amazon SageMakder / Amazon Titan](./2024/12/20241202.html)
