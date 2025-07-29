@@ -8,6 +8,7 @@
 - [eito2002 - Valid Anagram](https://github.com/eito2002/LeetCode/pull/2)
 	- Always use if block
 		- [Chromium Code Reviews - Issue 10973006](https://chromiumcodereview.appspot.com/10973006/diff/1/content/browser/fileapi/fileapi_message_filter.cc)
+	- [EBCDIC ではアルファベットの文字コードがアルファベット順になっておらず、このコードが正しく動かないようです。ただし、 ASCII 等、近年使用されているほとんどの文字コードでは、アルファベットの文字コードがアルファベット順になっており、かつ今回の実行環境もそのようになっているので、このコードが意図通り動きます。ここまで意識できているとよいと思います。](https://github.com/eito2002/LeetCode/pull/2#discussion_r2232818790)
 	- [Use the prefix form (++i) of the increment and decrement operators unless you need postfix semantics.](https://google.github.io/styleguide/cppguide.html#Preincrement_and_Predecrement)
 		- "The prefix form is generally more readable, is never less efficient, and can be more efficient because it doesn't need to make a copy of the value as it was before the operation."
 - [garunitule - 560. Subarray Sum Equals K](https://github.com/garunitule/coding_practice/pull/16)
