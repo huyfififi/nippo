@@ -26,6 +26,9 @@
 	- Shortest path -> BFS
 - [garunitule - 111. Minimum Depth of Binary Tree](https://github.com/garunitule/coding_practice/pull/22)
 	- Search for the shallowest leaf node -> BFS
+- [garunitule - 617. Merge Two Binary Trees](https://github.com/garunitule/coding_practice/pull/23)
+	- bottom-up -> recursive approach
+	- `copy.deepcopy()` can copy an entire tree that consists of `TreeNode`
 - [h1rosaka - 49. Group Anagrams](https://github.com/h1rosaka/arai60/pull/16)
 - [Kazuryu0907 - 1. Two Sum](https://github.com/Kazuryu0907/LeetCode_Arai60/pull/1)
 - [Kazuryu0907 - 387. First Unique Character in a String](https://github.com/Kazuryu0907/LeetCode_Arai60/pull/2)
