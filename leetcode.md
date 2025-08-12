@@ -52,5 +52,6 @@
 - [skypenguins - 206. Reverse Linked List](https://github.com/skypenguins/coding-practice/pull/19)
 - [tokuhirat - 322. Coin Change](https://github.com/tokuhirat/LeetCode/pull/40)
 	- TIL: `math.isinf()`
+- [tokuhirat - 3. Longest Substring Without Repeating Characters](https://github.com/tokuhirat/LeetCode/pull/48)
 - [tshimosake - 98. Validate Binary Search Tree](https://github.com/tshimosake/arai60/pull/18)
 	- BST in-order traversal -> ascending (or correctly ordered) numbers
