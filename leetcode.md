@@ -36,6 +36,8 @@
 - [garunitule - 112. Path Sum](https://github.com/garunitule/coding_practice/pull/25)
 - [garunitule - 102. Binary Tree Level Order Traversal](https://github.com/garunitule/coding_practice/pull/26)
 - [h1rosaka - 49. Group Anagrams](https://github.com/h1rosaka/arai60/pull/16)
+- [h1rosaka - 108. Convert Sorted Array to Binary Search Tree](https://github.com/h1rosaka/arai60/pull/27)
+	- TODO: Note the discussion
 - [Kazuryu0907 - 1. Two Sum](https://github.com/Kazuryu0907/LeetCode_Arai60/pull/1)
 - [Kazuryu0907 - 387. First Unique Character in a String](https://github.com/Kazuryu0907/LeetCode_Arai60/pull/2)
 - [Kazuryu0907 - 560. Subarray Sum Equals K](https://github.com/Kazuryu0907/LeetCode_Arai60/pull/4)
