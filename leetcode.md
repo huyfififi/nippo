@@ -60,3 +60,5 @@
 - [tokuhirat - 3. Longest Substring Without Repeating Characters](https://github.com/tokuhirat/LeetCode/pull/48)
 - [tshimosake - 98. Validate Binary Search Tree](https://github.com/tshimosake/arai60/pull/18)
 	- BST in-order traversal -> ascending (or correctly ordered) numbers
+- [yosukekato165 - Linked List Cycle](https://github.com/yosukekato165/leetcode/pull/2)
+	- `a != b` is a sugar syntax of `a.__ne__(b)`
