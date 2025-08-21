@@ -2,6 +2,10 @@
 
 - [index](index.html)
 
+# Computer Architecture
+
+- [Instructions Per Cycle / Cycles Per Instructions and Classic RISC Pipeline](./2025/08/20250821.html)
+
 # Data Structure & Algorithms
 
 - [Tail Recursion / Tail Call Optimization](./2025/05/20250520.html)
