@@ -2,6 +2,8 @@
 
 #### Reviewed LeetCode Problems (for my personal reference)
 
+- [akmhmgc - 206. Reverse Linked List](https://github.com/akmhmgc/arai60/pull/7)
+	- [関数の名前は、呼んでいるときに中身を見ずに、入力から何が出てくるかが分かるといいです。](https://github.com/yosukekato165/leetcode/pull/2/commits/5ffea5e89a325b9b9795c53a4c8a27e5580d11af#r2296456227)
 - [Apo-Matchbox - 206. Reverse Linked List](https://github.com/Apo-Matchbox/LeetCode_Practice/pull/20)
 - [brood0783 - 141. Linked List Cycle](https://github.com/brood0783/arai60/pull/2)
 - [chanseok-lim - 141. Linked List Cycle](https://github.com/chanseok-lim/arai60/pull/10)
