@@ -4,6 +4,7 @@
 
 - [akmhmgc - 206. Reverse Linked List](https://github.com/akmhmgc/arai60/pull/7)
 	- [関数の名前は、呼んでいるときに中身を見ずに、入力から何が出てくるかが分かるといいです。](https://github.com/yosukekato165/leetcode/pull/2/commits/5ffea5e89a325b9b9795c53a4c8a27e5580d11af#r2296456227)
+- [akmhmgc - 104. Maximum Depth of Binary Tree](https://github.com/akmhmgc/arai60/pull/17)
 - [Apo-Matchbox - 206. Reverse Linked List](https://github.com/Apo-Matchbox/LeetCode_Practice/pull/20)
 - [brood0783 - 141. Linked List Cycle](https://github.com/brood0783/arai60/pull/2)
 - [carolina-museum 392. Is Subsequence](https://github.com/carolina-museum/coding-challenges/pull/2)
@@ -65,5 +66,6 @@
 - [tokuhirat - 3. Longest Substring Without Repeating Characters](https://github.com/tokuhirat/LeetCode/pull/48)
 - [tshimosake - 98. Validate Binary Search Tree](https://github.com/tshimosake/arai60/pull/18)
 	- BST in-order traversal -> ascending (or correctly ordered) numbers
-- [yosukekato165 - Linked List Cycle](https://github.com/yosukekato165/leetcode/pull/2)
+- [yamashita-ki - 15. 3Sum](https://github.com/yamashita-ki/codingTest/pull/4)
+- [yosukekato165 - 141. Linked List Cycle](https://github.com/yosukekato165/leetcode/pull/2)
 	- `a != b` is a sugar syntax of `a.__ne__(b)`
