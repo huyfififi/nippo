@@ -5,6 +5,7 @@
 - [akmhmgc - 206. Reverse Linked List](https://github.com/akmhmgc/arai60/pull/7)
 	- [関数の名前は、呼んでいるときに中身を見ずに、入力から何が出てくるかが分かるといいです。](https://github.com/yosukekato165/leetcode/pull/2/commits/5ffea5e89a325b9b9795c53a4c8a27e5580d11af#r2296456227)
 - [akmhmgc - 104. Maximum Depth of Binary Tree](https://github.com/akmhmgc/arai60/pull/17)
+- [akmhmgc - 102. Binary Tree Level Order Traversal](https://github.com/akmhmgc/arai60/pull/22)
 - [Apo-Matchbox - 206. Reverse Linked List](https://github.com/Apo-Matchbox/LeetCode_Practice/pull/20)
 - [brood0783 - 141. Linked List Cycle](https://github.com/brood0783/arai60/pull/2)
 - [carolina-museum 392. Is Subsequence](https://github.com/carolina-museum/coding-challenges/pull/2)
@@ -41,6 +42,7 @@
 	- Time complexity -> peak memory
 - [garunitule - 112. Path Sum](https://github.com/garunitule/coding_practice/pull/25)
 - [garunitule - 102. Binary Tree Level Order Traversal](https://github.com/garunitule/coding_practice/pull/26)
+- [garunitule - 103. Binary Tree Zigzag Level Order Traversal](https://github.com/garunitule/coding_practice/pull/27)
 - [h1rosaka - 49. Group Anagrams](https://github.com/h1rosaka/arai60/pull/16)
 - [h1rosaka - 108. Convert Sorted Array to Binary Search Tree](https://github.com/h1rosaka/arai60/pull/27)
 - [h1rosaka - 102. Binary Tree Level Order Traversal](https://github.com/h1rosaka/arai60/pull/29)
