@@ -50,6 +50,8 @@
 - [Kazuryu0907 - 1. Two Sum](https://github.com/Kazuryu0907/LeetCode_Arai60/pull/1)
 - [Kazuryu0907 - 387. First Unique Character in a String](https://github.com/Kazuryu0907/LeetCode_Arai60/pull/2)
 - [Kazuryu0907 - 560. Subarray Sum Equals K](https://github.com/Kazuryu0907/LeetCode_Arai60/pull/4)
+- [nanae772 - 49. Group Anagrams](https://github.com/nanae772/leetcode-arai60/pull/13)
+- [nanae772 - 53. Maximum Subarray](https://github.com/nanae772/leetcode-arai60/pull/31)
 - [plushn - 1. Two Sum](https://github.com/plushn/SWE-Arai60/pull/11)
 - [potrue - 3. Longest Substring Without Repeating Characters](https://github.com/potrue/leetcode/pull/48)
 - [ryosuketc - 322. Coin Change](https://github.com/ryosuketc/leetcode_arai60/pull/53)
