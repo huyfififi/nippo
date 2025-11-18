@@ -5,7 +5,51 @@
 <h1 id="section">20251118</h1>
 <ul>
 <li>full-time job (on call)</li>
+<li>coding practice
+<ul>
+<li>LeetCode 9. Palindrome Number, C++, two patterns</li>
+<li>LeetCode 14. Longest Common Prefix, C++, “<code>size_t</code> is
+always an unsigned type, meaning it can only hold non-negative
+values.”</li>
+<li>LeetCode 150. Evaluate Reverse Polish Notation, C++, std::plus,
+std::minus, std::divides, std::multiplies</li>
+</ul></li>
+<li>lat pull, 15 minutes jog</li>
 </ul>
+<pre><code>#include &lt;iostream&gt;
+#include &lt;string&gt;
+#include &lt;vector&gt;
+
+class Solution {
+public:
+    std::string longestCommonPrefix(std::vector&lt;std::string&gt;&amp; strs) {
+        size_t check_index = 0;
+        while (true) {
+            char matching_char = &#39;\0&#39;;
+            bool match = true;
+            for (std::string str : strs) {
+                if (str.size() &lt;= check_index) {
+                    match = false;
+                    break;
+                }
+                if (matching_char == &#39;\0&#39;) {
+                    matching_char = str[check_index];
+                    continue;
+                }
+                if (str[check_index] != matching_char) {
+                    match = false;
+                    break;
+                }
+            }
+            ++check_index;
+            if (!match) {
+                break;
+            }
+        }
+
+        return strs[0].substr(0, check_index - 1);
+    }
+};</code></pre>
 <h1 id="section-1">20251117</h1>
 <ul>
 <li>full-time job (I worked too hard for a Monday)</li>
@@ -22,25 +66,25 @@ must be placed out of classes</li>
 </ul></li>
 <li>chest press, 15 minutes jog</li>
 </ul>
-<div class="sourceCode" id="cb1"><pre
-class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;utility&gt;</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution <span class="op">{</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span><span class="op">:</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> removeDuplicates<span class="op">(</span>vector<span class="op">&lt;</span><span class="dt">int</span><span class="op">&gt;&amp;</span> nums<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>        <span class="dt">int</span> unique_index <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>        <span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">while</span> <span class="op">(</span>i <span class="op">&lt;</span> nums<span class="op">.</span>size<span class="op">())</span> <span class="op">{</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>            <span class="cf">while</span> <span class="op">(</span>i <span class="op">+</span> <span class="dv">1</span> <span class="op">&lt;</span> nums<span class="op">.</span>size<span class="op">()</span> <span class="op">&amp;&amp;</span> nums<span class="op">[</span>i<span class="op">]</span> <span class="op">==</span> nums<span class="op">[</span>i <span class="op">+</span> <span class="dv">1</span><span class="op">])</span> <span class="op">{</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>                <span class="op">++</span>i<span class="op">;</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>            <span class="op">}</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>            <span class="bu">std::</span>swap<span class="op">(</span>nums<span class="op">[</span>unique_index<span class="op">],</span> nums<span class="op">[</span>i<span class="op">]);</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>            <span class="op">++</span>i<span class="op">;</span></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>            <span class="op">++</span>unique_index<span class="op">;</span></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> unique_index<span class="op">;</span></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="op">};</span></span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;utility&gt;</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution <span class="op">{</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> removeDuplicates<span class="op">(</span>vector<span class="op">&lt;</span><span class="dt">int</span><span class="op">&gt;&amp;</span> nums<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>        <span class="dt">int</span> unique_index <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>        <span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">while</span> <span class="op">(</span>i <span class="op">&lt;</span> nums<span class="op">.</span>size<span class="op">())</span> <span class="op">{</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>            <span class="cf">while</span> <span class="op">(</span>i <span class="op">+</span> <span class="dv">1</span> <span class="op">&lt;</span> nums<span class="op">.</span>size<span class="op">()</span> <span class="op">&amp;&amp;</span> nums<span class="op">[</span>i<span class="op">]</span> <span class="op">==</span> nums<span class="op">[</span>i <span class="op">+</span> <span class="dv">1</span><span class="op">])</span> <span class="op">{</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>                <span class="op">++</span>i<span class="op">;</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>            <span class="op">}</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>            <span class="bu">std::</span>swap<span class="op">(</span>nums<span class="op">[</span>unique_index<span class="op">],</span> nums<span class="op">[</span>i<span class="op">]);</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>            <span class="op">++</span>i<span class="op">;</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>            <span class="op">++</span>unique_index<span class="op">;</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> unique_index<span class="op">;</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="op">};</span></span></code></pre></div>
 <h1 id="section-2">20251116</h1>
 <ul>
 <li>reviewed pull requests
