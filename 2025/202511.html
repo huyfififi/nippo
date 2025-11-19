@@ -2,7 +2,81 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <meta charset="UTF-8">
 </head>
-<h1 id="section">20251118</h1>
+<h1 id="section">20251119</h1>
+<ul>
+<li>weight: 80.3 kg</li>
+<li>full-time job</li>
+<li>coding practice
+<ul>
+<li>LeetCode 14. Longest Common Prefix, C++</li>
+<li>LeetCode 58. Length of Last Word, C++</li>
+<li>LeetCode 150. Evaluate Reverse Polish Notation, C++, code
+refinement</li>
+<li>LeetCode 66. Plus One, C++, try again tomorrow</li>
+</ul></li>
+<li>15 minutes jog, chest press, stretch</li>
+</ul>
+<h3 id="leetcode-14.-longest-common-prefix">LeetCode 14. Longest Common
+Prefix</h3>
+<p>I could simplify the while loop in yesterday’s solution, but the name
+<code>check_index</code> is confusing. I will try to come up with a
+better name tomorrow.</p>
+<p>The problem is that i used the name <code>check_index</code> to mean
+that <code>[:check_index]</code> has already been checked, and
+<code>[check_index + 1:]</code> is still pending. But the meaning breaks
+around incremenet/return operations.</p>
+<pre><code>#include &lt;string&gt;
+#include &lt;vector&gt;
+
+class Solution {
+public:
+    string longestCommonPrefix(std::vector&lt;std::string&gt;&amp; strs) {
+        size_t check_index = 0;
+        bool matched = true;
+        while (matched) {
+            char matching_char = &#39;\0&#39;;
+            for (std::string str : strs) {
+                if (str.size() &lt;= check_index) {
+                    matched = false;
+                    break;
+                }
+                if (matching_char == &#39;\0&#39;) {
+                    matching_char = str[check_index];
+                    continue;
+                }
+                if (str[check_index] != matching_char) {
+                    matched = false;
+                    break;
+                }
+            }
+            ++check_index;
+        }
+        return strs[0].substr(0, check_index - 1);
+    }
+};</code></pre>
+<h3 id="leetcode-58.-length-of-last-word">LeetCode 58. Length of Last
+Word</h3>
+<pre><code>#include &lt;string&gt;
+
+class Solution {
+public:
+    int lengthOfLastWord(std::string s) {
+        int non_space_count = 0;
+        for (int i = 0; i &lt; s.size(); ++i) {
+            if (s[i] == &#39; &#39;) {
+                if (i + 1 &lt; s.size() &amp;&amp; s[i] != s[i + 1] ) {
+                    non_space_count = 0;
+                }
+                continue;
+            }
+
+            ++non_space_count;
+        }
+
+        return non_space_count;
+    }
+};</code></pre>
+<h1 id="section-1">20251118</h1>
 <ul>
 <li>full-time job (on call)</li>
 <li>coding practice
@@ -50,7 +124,7 @@ public:
         return strs[0].substr(0, check_index - 1);
     }
 };</code></pre>
-<h1 id="section-1">20251117</h1>
+<h1 id="section-2">20251117</h1>
 <ul>
 <li>full-time job (I worked too hard for a Monday)</li>
 <li>coding practice
@@ -66,26 +140,26 @@ must be placed out of classes</li>
 </ul></li>
 <li>chest press, 15 minutes jog</li>
 </ul>
-<div class="sourceCode" id="cb2"><pre
-class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;utility&gt;</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution <span class="op">{</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span><span class="op">:</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> removeDuplicates<span class="op">(</span>vector<span class="op">&lt;</span><span class="dt">int</span><span class="op">&gt;&amp;</span> nums<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>        <span class="dt">int</span> unique_index <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>        <span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">while</span> <span class="op">(</span>i <span class="op">&lt;</span> nums<span class="op">.</span>size<span class="op">())</span> <span class="op">{</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>            <span class="cf">while</span> <span class="op">(</span>i <span class="op">+</span> <span class="dv">1</span> <span class="op">&lt;</span> nums<span class="op">.</span>size<span class="op">()</span> <span class="op">&amp;&amp;</span> nums<span class="op">[</span>i<span class="op">]</span> <span class="op">==</span> nums<span class="op">[</span>i <span class="op">+</span> <span class="dv">1</span><span class="op">])</span> <span class="op">{</span></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>                <span class="op">++</span>i<span class="op">;</span></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>            <span class="op">}</span></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>            <span class="bu">std::</span>swap<span class="op">(</span>nums<span class="op">[</span>unique_index<span class="op">],</span> nums<span class="op">[</span>i<span class="op">]);</span></span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>            <span class="op">++</span>i<span class="op">;</span></span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>            <span class="op">++</span>unique_index<span class="op">;</span></span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> unique_index<span class="op">;</span></span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="op">};</span></span></code></pre></div>
-<h1 id="section-2">20251116</h1>
+<div class="sourceCode" id="cb4"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;utility&gt;</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution <span class="op">{</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> removeDuplicates<span class="op">(</span>vector<span class="op">&lt;</span><span class="dt">int</span><span class="op">&gt;&amp;</span> nums<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>        <span class="dt">int</span> unique_index <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>        <span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">while</span> <span class="op">(</span>i <span class="op">&lt;</span> nums<span class="op">.</span>size<span class="op">())</span> <span class="op">{</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>            <span class="cf">while</span> <span class="op">(</span>i <span class="op">+</span> <span class="dv">1</span> <span class="op">&lt;</span> nums<span class="op">.</span>size<span class="op">()</span> <span class="op">&amp;&amp;</span> nums<span class="op">[</span>i<span class="op">]</span> <span class="op">==</span> nums<span class="op">[</span>i <span class="op">+</span> <span class="dv">1</span><span class="op">])</span> <span class="op">{</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>                <span class="op">++</span>i<span class="op">;</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>            <span class="op">}</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>            <span class="bu">std::</span>swap<span class="op">(</span>nums<span class="op">[</span>unique_index<span class="op">],</span> nums<span class="op">[</span>i<span class="op">]);</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>            <span class="op">++</span>i<span class="op">;</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>            <span class="op">++</span>unique_index<span class="op">;</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> unique_index<span class="op">;</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a><span class="op">};</span></span></code></pre></div>
+<h1 id="section-3">20251116</h1>
 <ul>
 <li>reviewed pull requests
 <ul>
@@ -98,12 +172,12 @@ class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb2-1"><a href="#c
 </ul></li>
 <li>Cult of the Lamb</li>
 </ul>
-<h1 id="section-3">20251111-20251115</h1>
+<h1 id="section-4">20251111-20251115</h1>
 <ul>
 <li>Sick Leaves</li>
 <li>Cough, Headache, Fatigue</li>
 </ul>
-<h1 id="section-4">20251110</h1>
+<h1 id="section-5">20251110</h1>
 <ul>
 <li>weight: 81.5 kg</li>
 <li>cancelled a dental appointment</li>
@@ -117,13 +191,13 @@ declaring a type for std::stack</li>
 <li>LeetCode 21. Merge Two Sorted Lists, <code>.</code> for object
 itself, <code>-&gt;</code> for a pointer to access members</li>
 </ul>
-<h1 id="section-5">20251109</h1>
+<h1 id="section-6">20251109</h1>
 <p>I didn’t feel well (cough), so I took some rest</p>
 <ul>
 <li>weight: 80.9 kg</li>
 <li>Pho</li>
 </ul>
-<h1 id="section-6">20251108</h1>
+<h1 id="section-7">20251108</h1>
 <ul>
 <li>weight: 80.4 kg</li>
 <li>household chores</li>
@@ -131,7 +205,7 @@ itself, <code>-&gt;</code> for a pointer to access members</li>
 <li>15 minutes jog</li>
 <li>picture drawing</li>
 </ul>
-<h1 id="section-7">20251107</h1>
+<h1 id="section-8">20251107</h1>
 <ul>
 <li>weight: 80.3 kg</li>
 <li>full-time job
@@ -148,14 +222,14 @@ brute-force, map, sorting + two pointers</li>
 <li>LeetCode 20. Valid Parentheses, std::stack, stack.push(),
 stack.pop(), stack.top()</li>
 </ul>
-<h1 id="section-8">20251106</h1>
+<h1 id="section-9">20251106</h1>
 <ul>
 <li>weight: 80.7 kg</li>
 <li>full-time job</li>
 <li>Pokemon Rank Match</li>
 <li>15 minutes jog, chest press, lat pull</li>
 </ul>
-<h1 id="section-9">20251105</h1>
+<h1 id="section-10">20251105</h1>
 <ul>
 <li>weight: 80.7 kg</li>
 <li>full-time job (super hard)
@@ -170,7 +244,7 @@ pointers</li>
 std::to_string()</li>
 <li>15 minutes jog</li>
 </ul>
-<h1 id="section-10">20251104</h1>
+<h1 id="section-11">20251104</h1>
 <ul>
 <li>weight: 80.5 kg</li>
 <li>LeetCode 1. Two Sum (C++, sorting + two pointers, brute-force, hash
@@ -189,7 +263,7 @@ constructor</li>
 </ul></li>
 <li>15 minutes jog, chest press, lat pull</li>
 </ul>
-<h1 id="section-11">20251103</h1>
+<h1 id="section-12">20251103</h1>
 <ul>
 <li>set up the reminder app of iOS to remind me of weighing myself every
 morning</li>
@@ -218,7 +292,7 @@ href="https://google.github.io/styleguide/cppguide.html#Preincrement_and_Predecr
 </ul></li>
 <li>drawing</li>
 </ul>
-<h1 id="section-12">20251101-20251102</h1>
+<h1 id="section-13">20251101-20251102</h1>
 <ul>
 <li>my wife and I didn’t feel very well</li>
 <li>Eating &amp; Sleep &amp; Pokemon</li>
