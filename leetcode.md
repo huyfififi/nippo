@@ -12,6 +12,8 @@
 - [carolina-museum 35. Search Insert Position](https://github.com/carolina-museum/coding-challenges/pull/3)
 - [chanseok-lim - 141. Linked List Cycle](https://github.com/chanseok-lim/arai60/pull/10)
 	- When checking two objects are the same, `is` should be used instead of `==`.
+- [docto-rin - 21. Merge Two Sorted Lists](https://github.com/docto-rin/leetcode/pull/62)
+	- Discussions on the use of `value or value` and one-liners
 - [eito2002 - Valid Anagram](https://github.com/eito2002/LeetCode/pull/2)
 	- Always use if block
 		- [Chromium Code Reviews - Issue 10973006](https://chromiumcodereview.appspot.com/10973006/diff/1/content/browser/fileapi/fileapi_message_filter.cc)
