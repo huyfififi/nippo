@@ -14,6 +14,7 @@
 	- When checking two objects are the same, `is` should be used instead of `==`.
 - [docto-rin - 21. Merge Two Sorted Lists](https://github.com/docto-rin/leetcode/pull/62)
 	- Discussions on the use of `value or value` and one-liners
+- [docto-rin - 125. Valid Palindrome](https://github.com/docto-rin/leetcode/pull/63)
 - [eito2002 - Valid Anagram](https://github.com/eito2002/LeetCode/pull/2)
 	- Always use if block
 		- [Chromium Code Reviews - Issue 10973006](https://chromiumcodereview.appspot.com/10973006/diff/1/content/browser/fileapi/fileapi_message_filter.cc)
