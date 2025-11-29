@@ -1,5 +1,8 @@
 [index](index.html)
 
+- meticulously
+- perceptive
+- impasse
 - inflection
 - wunderkind
 - lawyerly

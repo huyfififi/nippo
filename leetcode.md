@@ -60,6 +60,7 @@
 - [ryosuketc - 322. Coin Change](https://github.com/ryosuketc/leetcode_arai60/pull/53)
 	- Memoization with `functools.cache`
 	- Two means of dynamic programming: memoization and tabulation
+- [ryosuketc - 111. Minimum Depth of Binary Tree](https://github.com/ryosuketc/leetcode_arai60/pull/22)
 - [Ryotaro25 - 226. Invert Binary Tree](https://github.com/Ryotaro25/leetcode_first60/pull/71)
 	- std::swap
 	- Google Style Guide: Do not use using-directives (e.g., using namespace foo)
