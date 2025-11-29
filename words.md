@@ -1,5 +1,18 @@
 [index](index.html)
 
+- inflection
+- wunderkind
+- lawyerly
+- preclude
+- tantalize
+- deterrence
+- moat
+- morsel
+- relegate
+- sentience
+- quintessential
+- electorate
+- sustenance
 - splendor
 - overtly
 - coercion
