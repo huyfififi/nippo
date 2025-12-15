@@ -1,5 +1,8 @@
 [index](index.html)
 
+- hobble
+- derivative
+- retrograde
 - meticulously
 - perceptive
 - impasse
