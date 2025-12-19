@@ -2,13 +2,72 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <meta charset="UTF-8">
 </head>
-<h1 id="section">20251218</h1>
+<h1 id="section">20251219</h1>
+<ul>
+<li>weight: 80.3 kg</li>
+<li>full-time job (the workload was light becuase it was Friday)</li>
+<li>reviewed pull requests
+<ul>
+<li>LeetCode 20. Valid Parentheses</li>
+<li>LeetCode 542. 01 Matrix</li>
+</ul></li>
+<li>Barron’s Essential Words for the TOEFL
+<ul>
+<li><ol start="14" type="a">
+<li>export, avert, sporadic</li>
+</ol></li>
+</ul></li>
+<li>The Technological Republic - finished the chapter 15</li>
+<li>coding practice
+<ul>
+<li>LeetCode 153. Find Minimum in Rotated Sorted Array</li>
+</ul></li>
+<li>push ups, 40 minutes jog</li>
+</ul>
+<h3 id="leetcode-153.-find-minimum-in-rotated-sorted-array">LeetCode
+153. Find Minimum in Rotated Sorted Array</h3>
+<p>TODO: Clean up the conditions. I feel my current solution is messy
+and can be improved (maybe by consolidating if conditions)</p>
+<p>I checked others’ solution <a
+href="https://github.com/garunitule/coding_practice/pull/40">https://github.com/garunitule/coding_practice/pull/40</a>.
+I feel, my solution is acceptable (of course depending on the
+conversation with interviewers) under specific time limit.</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution:</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> findMin(<span class="va">self</span>, nums: <span class="bu">list</span>[<span class="bu">int</span>]) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>        <span class="co"># [1, 2, 3, 4, 5] -&gt; right = middle</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>        <span class="co"># [2, 3, 4, 5, 1] -&gt; left = middle, same as below</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>        <span class="co"># [3, 4, 5, 1, 2] -&gt; left = middle, because arr[-1] &lt; arr[0]</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>        <span class="co"># [4, 5, 1, 2, 3] -&gt; left = middle</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>        <span class="co"># [5, 1, 2, 3, 4] -&gt; right = middle</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>        left <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>        right <span class="op">=</span> <span class="bu">len</span>(nums) <span class="op">-</span> <span class="dv">1</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">while</span> left <span class="op">&lt;</span> right:</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> right <span class="op">-</span> left <span class="op">==</span> <span class="dv">1</span>:</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>                <span class="cf">return</span> <span class="bu">min</span>(nums[left], nums[right])</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>            middle <span class="op">=</span> (left <span class="op">+</span> right) <span class="op">//</span> <span class="dv">2</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> nums[left] <span class="op">&lt;</span> nums[right]:</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>                <span class="cf">if</span> nums[left] <span class="op">&lt;</span> nums[middle] <span class="op">&lt;</span> nums[right]:</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>                    right <span class="op">=</span> middle</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>                <span class="cf">else</span>:</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>                    left <span class="op">=</span> middle</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>            <span class="cf">else</span>:</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>                <span class="cf">if</span> nums[middle] <span class="op">&lt;</span> <span class="bu">min</span>(nums[left], nums[right]):</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>                    right <span class="op">=</span> middle</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>                <span class="cf">else</span>:</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>                    left <span class="op">=</span> middle</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>        <span class="cf">assert</span> left <span class="op">==</span> right</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> nums[left]</span></code></pre></div>
+<h1 id="section-1">20251218</h1>
 <ul>
 <li>weight: 79.0 kg</li>
+<li>drawing</li>
+<li>20 minutes walk</li>
 <li>full-time job (mainly review tasks)</li>
-<li>The Technological Republic</li>
+<li>push ups</li>
 </ul>
-<h1 id="section-1">20251217</h1>
+<h1 id="section-2">20251217</h1>
 <ul>
 <li>weight: 79.8 kg</li>
 <li>full-time job</li>
@@ -16,7 +75,7 @@
 <li>The Technological Republic</li>
 <li>push ups</li>
 </ul>
-<h1 id="section-2">20251216</h1>
+<h1 id="section-3">20251216</h1>
 <ul>
 <li>weight: 79.4 kg</li>
 <li>push ups</li>
@@ -24,7 +83,7 @@
 <li>drawing</li>
 <li>The Technological Republic</li>
 </ul>
-<h1 id="section-3">20251215</h1>
+<h1 id="section-4">20251215</h1>
 <ul>
 <li>weight: 79.8 kg</li>
 <li>full-time job</li>
@@ -32,7 +91,7 @@
 <li>Barron’s Essential Words for the TOEFL</li>
 <li>drawing</li>
 </ul>
-<h1 id="section-4">20251214</h1>
+<h1 id="section-5">20251214</h1>
 <ul>
 <li>weight: 80.6 kg</li>
 <li>The Technological Republic
@@ -44,7 +103,7 @@ like this.</li>
 </ul></li>
 <li>drawing</li>
 </ul>
-<h1 id="section-5">20251213</h1>
+<h1 id="section-6">20251213</h1>
 <ul>
 <li>drawing</li>
 <li>Barron’s Essential Words for the TOEFL
@@ -53,7 +112,7 @@ like this.</li>
 </ul></li>
 <li>The Technological Republic</li>
 </ul>
-<h1 id="section-6">20251212</h1>
+<h1 id="section-7">20251212</h1>
 <ul>
 <li>weight: 80.6 kg</li>
 <li>full-time job</li>
@@ -61,7 +120,7 @@ like this.</li>
 <li>Barron’s Essential Words for the TOEFL</li>
 <li>The Technical Republic</li>
 </ul>
-<h1 id="section-7">20251211</h1>
+<h1 id="section-8">20251211</h1>
 <ul>
 <li>weight: 80.6 kg</li>
 <li>full-time job (somewhat hard, communications)</li>
@@ -72,7 +131,7 @@ upstanding, trite</li>
 </ul></li>
 <li>push ups, 40 minutes jog</li>
 </ul>
-<h1 id="section-8">20251210</h1>
+<h1 id="section-9">20251210</h1>
 <ul>
 <li>full-time job (less workload)</li>
 <li>spent some time with my wife</li>
@@ -82,7 +141,7 @@ upstanding, trite</li>
 </ul></li>
 <li>push-ups</li>
 </ul>
-<h1 id="section-9">20251209</h1>
+<h1 id="section-10">20251209</h1>
 <ul>
 <li>full-time job (super hard)
 <ul>
@@ -90,17 +149,17 @@ upstanding, trite</li>
 </ul></li>
 <li>My wife is very good at cooking</li>
 </ul>
-<h1 id="section-10">20251208</h1>
+<h1 id="section-11">20251208</h1>
 <ul>
 <li>full-time job (super hard)</li>
 <li>30 minutes walk</li>
 <li>Barron’s Essential Words for the TOEFL</li>
 </ul>
-<h1 id="section-11">20251207</h1>
+<h1 id="section-12">20251207</h1>
 <ul>
 <li>rest</li>
 </ul>
-<h1 id="section-12">20251206</h1>
+<h1 id="section-13">20251206</h1>
 <p>I feel tired and frustrated. Work is hard, and also there have been
 unaddressed desires.</p>
 <ul>
@@ -110,7 +169,7 @@ unaddressed desires.</p>
 <li>conscientious, arduous</li>
 </ul></li>
 </ul>
-<h1 id="section-13">20251205</h1>
+<h1 id="section-14">20251205</h1>
 <ul>
 <li>weight: 80.5 kg</li>
 <li>full-time job</li>
@@ -124,7 +183,7 @@ sandwitch @ Joe &amp; The Juice, filed for denaturalization, frozen hot
 cocoa @ Ghiradelli, took a picture for tourists, asked a strander about
 Clipper, visited our local Indian shops, tried a Thai restaurant</li>
 </ul>
-<h1 id="section-14">20251204</h1>
+<h1 id="section-15">20251204</h1>
 <ul>
 <li>weight: 80.1 kg</li>
 <li>Barron’s Essential Words for the TOEFL
@@ -135,7 +194,7 @@ Clipper, visited our local Indian shops, tried a Thai restaurant</li>
 <li>prepared documents for denaturalization</li>
 <li>The Technological Republic</li>
 </ul>
-<h1 id="section-15">20251203</h1>
+<h1 id="section-16">20251203</h1>
 <ul>
 <li>weight: 80.7 kg (I always weigh more after I run hard outside. My
 muscles might be damaged and hold more water than usual)</li>
@@ -150,7 +209,7 @@ muscles might be damaged and hold more water than usual)</li>
 avert</li>
 </ul></li>
 </ul>
-<h1 id="section-16">20251202</h1>
+<h1 id="section-17">20251202</h1>
 <ul>
 <li>weight: 80.2 kg</li>
 <li>The Technological Republic</li>
@@ -165,7 +224,7 @@ avert</li>
 <li>full-time job</li>
 <li>17 minutes run</li>
 </ul>
-<h1 id="section-17">20251201</h1>
+<h1 id="section-18">20251201</h1>
 <ul>
 <li>weight: 80.5 kg</li>
 <li>full-time job (super hard)

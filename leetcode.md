@@ -15,6 +15,7 @@
 - [docto-rin - 21. Merge Two Sorted Lists](https://github.com/docto-rin/leetcode/pull/62)
 	- Discussions on the use of `value or value` and one-liners
 - [docto-rin - 125. Valid Palindrome](https://github.com/docto-rin/leetcode/pull/63)
+- [docto-rin - 542. 01 Matrix](https://github.com/docto-rin/leetcode/pull/73)
 - [eito2002 - Valid Anagram](https://github.com/eito2002/LeetCode/pull/2)
 	- Always use if block
 		- [Chromium Code Reviews - Issue 10973006](https://chromiumcodereview.appspot.com/10973006/diff/1/content/browser/fileapi/fileapi_message_filter.cc)
@@ -53,6 +54,7 @@
 - [Kazuryu0907 - 1. Two Sum](https://github.com/Kazuryu0907/LeetCode_Arai60/pull/1)
 - [Kazuryu0907 - 387. First Unique Character in a String](https://github.com/Kazuryu0907/LeetCode_Arai60/pull/2)
 - [Kazuryu0907 - 560. Subarray Sum Equals K](https://github.com/Kazuryu0907/LeetCode_Arai60/pull/4)
+- [komdoroid - 20. Valid Parentheses](https://github.com/komdoroid/arai60/pull/12)
 - [nanae772 - 49. Group Anagrams](https://github.com/nanae772/leetcode-arai60/pull/13)
 - [nanae772 - 53. Maximum Subarray](https://github.com/nanae772/leetcode-arai60/pull/31)
 - [plushn - 1. Two Sum](https://github.com/plushn/SWE-Arai60/pull/11)
