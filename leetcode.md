@@ -55,6 +55,7 @@
 - [Kazuryu0907 - 387. First Unique Character in a String](https://github.com/Kazuryu0907/LeetCode_Arai60/pull/2)
 - [Kazuryu0907 - 560. Subarray Sum Equals K](https://github.com/Kazuryu0907/LeetCode_Arai60/pull/4)
 - [komdoroid - 20. Valid Parentheses](https://github.com/komdoroid/arai60/pull/12)
+- [mamo3gr - 1. Two Sum](https://github.com/mamo3gr/arai60/pull/11)
 - [nanae772 - 49. Group Anagrams](https://github.com/nanae772/leetcode-arai60/pull/13)
 - [nanae772 - 53. Maximum Subarray](https://github.com/nanae772/leetcode-arai60/pull/31)
 - [plushn - 1. Two Sum](https://github.com/plushn/SWE-Arai60/pull/11)
@@ -71,6 +72,8 @@
 		- "The time and space complexity of the sort cannot be guaranteed as it depends on the implementation."
 - [shintaro1993 - 53. Maximum Subarray](https://github.com/shintaro1993/arai60/pull/36)
 - [skypenguins - 206. Reverse Linked List](https://github.com/skypenguins/coding-practice/pull/19)
+- [tNita - 20. Valid Parentheses](https://github.com/tNita/arai60/pull/7)
+- [tNita - 2. Add Two Numbers](https://github.com/tNita/arai60/pull/6)
 - [tokuhirat - 322. Coin Change](https://github.com/tokuhirat/LeetCode/pull/40)
 	- TIL: `math.isinf()`
 - [tokuhirat - 3. Longest Substring Without Repeating Characters](https://github.com/tokuhirat/LeetCode/pull/48)
