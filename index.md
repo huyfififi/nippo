@@ -6,6 +6,10 @@
 - [subscriptions](subscriptions.html)
 - [leetcode](leetcode.html)
 
+# 2026
+
+- [202601](./2026/202601.html)
+
 # 2025
 
 - [202512](./2025/202512.html)
