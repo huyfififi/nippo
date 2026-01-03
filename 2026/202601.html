@@ -2,7 +2,69 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <meta charset="UTF-8">
 </head>
-<h1 id="section">20260102</h1>
+<h1 id="section">20260104</h1>
+<ul>
+<li>TODO: LeetCode 21. Merge Two Sorted Lists</li>
+<li>TODO: LeetCode 206. Course Schedule (Kahn’s and DFS)</li>
+</ul>
+<h1 id="section-1">20260103</h1>
+<ul>
+<li>LeetCode 20. Valid Parentheses
+<ul>
+<li>checked review comments
+<ul>
+<li>std::stack.empty() over std::stack.size() == 0</li>
+<li>for historical reasons, when writing if condition, “…curly braces
+may be omitted if as a result the entire statement appears on either a
+single line”)</li>
+</ul></li>
+</ul></li>
+<li>LeetCode 207. Course Schedule
+<ul>
+<li>checked review comments
+<ul>
+<li>received feedback from Noda-san here: <a
+href="https://github.com/huyfififi/coding-challenges/pull/34">https://github.com/huyfififi/coding-challenges/pull/34</a></li>
+<li>I was forgetting that dict keys can be traversed without
+<code>dict.keys()</code></li>
+<li>C++: array cannot be created with a size that depends on run time
+execution</li>
+<li>retried Kahn’s algorithm</li>
+<li>tackled the vector-based approach (replace <code>std::set</code>
+-&gt; <code>std::vector</code> by defining num class constants)</li>
+</ul></li>
+<li>LeetCode went down :sweat:</li>
+</ul></li>
+<li>30 minutes walk, push ups</li>
+<li>leetCode 21. Merge Two Sorted Lists
+<ul>
+<li>“Use values to own data, pointers to traverse linked structures, and
+references to alias a specific object.” by ChatGPT</li>
+<li><code>list1</code> -&gt; address of node, <code>*list1</code> -&gt;
+the node itself</li>
+<li>Every new must have a corresponding delete.</li>
+</ul></li>
+<li>LeetCode 122. Best Time to Buy and Sell Stock II
+<ul>
+<li>1 -&gt; 5 is equivalent to 1 -&gt; 3 and 3 -&gt; 5 (greedy)</li>
+<li>complicated DP</li>
+</ul></li>
+</ul>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;algorithm&gt;</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;vector&gt;</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution <span class="op">{</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> maxProfit<span class="op">(</span><span class="bu">std::</span>vector<span class="op">&lt;</span><span class="dt">int</span><span class="op">&gt;&amp;</span> prices<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>        <span class="dt">int</span> profit <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">1</span><span class="op">;</span> i <span class="op">&lt;</span> prices<span class="op">.</span>size<span class="op">();</span> <span class="op">++</span>i<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>            profit <span class="op">+=</span> <span class="bu">std::</span>max<span class="op">(</span><span class="dv">0</span><span class="op">,</span> prices<span class="op">[</span>i<span class="op">]</span> <span class="op">-</span> prices<span class="op">[</span>i <span class="op">-</span> <span class="dv">1</span><span class="op">]);</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> profit<span class="op">;</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="op">};</span></span></code></pre></div>
+<h1 id="section-2">20260102</h1>
 <ul>
 <li>LeetCode 207. Course Schedule
 <ul>
@@ -23,7 +85,7 @@ map variable name)</li>
 </ul></li>
 <li>30 minutes jog</li>
 </ul>
-<h1 id="section-1">20260101</h1>
+<h1 id="section-3">20260101</h1>
 <ul>
 <li>LeetCode 1. Two Sum
 <ul>

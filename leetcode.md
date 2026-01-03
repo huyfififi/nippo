@@ -52,6 +52,7 @@
 - [h1rosaka - 108. Convert Sorted Array to Binary Search Tree](https://github.com/h1rosaka/arai60/pull/27)
 - [h1rosaka - 102. Binary Tree Level Order Traversal](https://github.com/h1rosaka/arai60/pull/29)
 - [h1rosaka - 53. Maximum Subarray](https://github.com/h1rosaka/arai60/pull/34)
+- [Hiroto-Iizuka - 49. Group Anagram](https://github.com/Hiroto-Iizuka/coding_practice/pull/12)
 - [Kazuryu0907 - 1. Two Sum](https://github.com/Kazuryu0907/LeetCode_Arai60/pull/1)
 - [Kazuryu0907 - 387. First Unique Character in a String](https://github.com/Kazuryu0907/LeetCode_Arai60/pull/2)
 - [Kazuryu0907 - 560. Subarray Sum Equals K](https://github.com/Kazuryu0907/LeetCode_Arai60/pull/4)
