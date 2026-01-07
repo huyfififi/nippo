@@ -19,7 +19,7 @@
 - [dxxsxsxkx - 20. Valid Parentheses](https://github.com/dxxsxsxkx/leetcode/pull/6)
 - [dxxsxsxkx - 206. Reverse Linked List](https://github.com/dxxsxsxkx/leetcode/pull/7)
 - [dxxsxsxkx - 703. Kth Largest Element in a Stream](https://github.com/dxxsxsxkx/leetcode/pull/8)
-- [dxxsxsxkx - 104. Maximum Depth of Binary Tree](https://github.com/mamo3gr/arai60/pull/21)
+- [dxxsxsxkx - 347. Top K Frequent Elements](https://github.com/dxxsxsxkx/leetcode/pull/9)
 - [eito2002 - Valid Anagram](https://github.com/eito2002/LeetCode/pull/2)
 	- Always use if block
 		- [Chromium Code Reviews - Issue 10973006](https://chromiumcodereview.appspot.com/10973006/diff/1/content/browser/fileapi/fileapi_message_filter.cc)
@@ -61,6 +61,7 @@
 - [Kazuryu0907 - 560. Subarray Sum Equals K](https://github.com/Kazuryu0907/LeetCode_Arai60/pull/4)
 - [komdoroid - 20. Valid Parentheses](https://github.com/komdoroid/arai60/pull/12)
 - [mamo3gr - 1. Two Sum](https://github.com/mamo3gr/arai60/pull/11)
+- [mamo3gr - 104. Maximum Depth of Binary Tree](https://github.com/mamo3gr/arai60/pull/21)
 - [nanae772 - 49. Group Anagrams](https://github.com/nanae772/leetcode-arai60/pull/13)
 - [nanae772 - 53. Maximum Subarray](https://github.com/nanae772/leetcode-arai60/pull/31)
 - [plushn - 1. Two Sum](https://github.com/plushn/SWE-Arai60/pull/11)
