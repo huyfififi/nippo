@@ -2,7 +2,81 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <meta charset="UTF-8">
 </head>
-<h1 id="section">20260107</h1>
+<h1 id="section">20260108</h1>
+<ul>
+<li>full-time job</li>
+<li>LeetCode 373. Find K Pairs with Smallest Sum
+<ul>
+<li>tried myself</li>
+<li>code review</li>
+<li>There are two approaches
+<ul>
+<li>starting from (i, 0), check (index1, index2 + 1)</li>
+<li>starting from (0, 0), check (index1 + 1) and (index1, index2 +
+1)</li>
+</ul></li>
+</ul></li>
+<li>30 minutes walk</li>
+<li>30 minutes walk + English conversation with ChatGPT</li>
+</ul>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode 373_start_from_min.py"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> heapq</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution:</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> kSmallestPairs(</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>, nums1: <span class="bu">list</span>[<span class="bu">int</span>], nums2: <span class="bu">list</span>[<span class="bu">int</span>], k: <span class="bu">int</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    ) <span class="op">-&gt;</span> <span class="bu">list</span>[<span class="bu">list</span>[<span class="bu">int</span>]]:</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>        sum_and_pairs: <span class="bu">list</span>[<span class="bu">tuple</span>[<span class="bu">int</span>, <span class="bu">tuple</span>[<span class="bu">int</span>, <span class="bu">int</span>]]] <span class="op">=</span> [</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>            (nums1[<span class="dv">0</span>] <span class="op">+</span> nums2[<span class="dv">0</span>], (<span class="dv">0</span>, <span class="dv">0</span>))</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>        ]</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>        checked_pairs: <span class="bu">set</span>[<span class="bu">tuple</span>[<span class="bu">int</span>, <span class="bu">int</span>]] <span class="op">=</span> <span class="bu">set</span>()</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>        smallest_pairs: <span class="bu">list</span>[<span class="bu">list</span>[<span class="bu">int</span>]] <span class="op">=</span> []</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">while</span> sum_and_pairs <span class="kw">and</span> <span class="bu">len</span>(smallest_pairs) <span class="op">&lt;</span> k:</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>            index1, index2 <span class="op">=</span> heapq.heappop(sum_and_pairs)[<span class="dv">1</span>]</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> (index1, index2) <span class="kw">in</span> checked_pairs:</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>                <span class="cf">continue</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>            smallest_pairs.append([nums1[index1], nums2[index2]])</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>            checked_pairs.add((index1, index2))</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> index1 <span class="op">+</span> <span class="dv">1</span> <span class="op">&lt;</span> <span class="bu">len</span>(nums1):</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>                heapq.heappush(</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>                    sum_and_pairs,</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>                    (nums1[index1 <span class="op">+</span> <span class="dv">1</span>] <span class="op">+</span> nums2[index2], (index1 <span class="op">+</span> <span class="dv">1</span>, index2)),</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>                )</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> index2 <span class="op">+</span> <span class="dv">1</span> <span class="op">&lt;</span> <span class="bu">len</span>(nums2):</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>                heapq.heappush(</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>                    sum_and_pairs,</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>                    (nums1[index1] <span class="op">+</span> nums2[index2 <span class="op">+</span> <span class="dv">1</span>], (index1, index2 <span class="op">+</span> <span class="dv">1</span>)),</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>                )</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> smallest_pairs</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode 373_start_from_nums1.py"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> heapq</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution:</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> kSmallestPairs(</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>, nums1: <span class="bu">list</span>[<span class="bu">int</span>], nums2: <span class="bu">list</span>[<span class="bu">int</span>], k: <span class="bu">int</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    ) <span class="op">-&gt;</span> <span class="bu">list</span>[<span class="bu">list</span>[<span class="bu">int</span>]]:</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>        sum_and_pairs <span class="op">=</span> []</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(nums1)):</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>            heapq.heappush(sum_and_pairs, (nums1[i] <span class="op">+</span> nums2[<span class="dv">0</span>], (i, <span class="dv">0</span>)))</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>        smallest_pairs <span class="op">=</span> []</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">while</span> sum_and_pairs <span class="kw">and</span> <span class="bu">len</span>(smallest_pairs) <span class="op">&lt;</span> k:</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>            index1, index2 <span class="op">=</span> heapq.heappop(sum_and_pairs)[<span class="dv">1</span>]</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>            smallest_pairs.append([nums1[index1], nums2[index2]])</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> index2 <span class="op">+</span> <span class="dv">1</span> <span class="op">&lt;</span> <span class="bu">len</span>(nums2):</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>                heapq.heappush(</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>                    sum_and_pairs,</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>                    (nums1[index1] <span class="op">+</span> nums2[index2 <span class="op">+</span> <span class="dv">1</span>], (index1, index2 <span class="op">+</span> <span class="dv">1</span>)),</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>                )</span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> smallest_pairs</span></code></pre></div>
+<h1 id="section-1">20260107</h1>
 <ul>
 <li>full-time job</li>
 <li>reviewed English words I noted yesterday
@@ -35,7 +109,7 @@ href="https://github.com/huyfififi/coding-challenges/pull/38">https://github.com
 </ul></li>
 <li>push ups, 20 minutes run</li>
 </ul>
-<h1 id="section-1">20260106</h1>
+<h1 id="section-2">20260106</h1>
 <ul>
 <li>LeetCode 322. Coin Change
 <ul>
@@ -64,7 +138,7 @@ aggravate</li>
 <li>LeetCode 238. Product of Array Except Self</li>
 <li>25 minutes run</li>
 </ul>
-<h1 id="section-2">20260105</h1>
+<h1 id="section-3">20260105</h1>
 <ul>
 <li>full-time job
 <ul>
@@ -86,7 +160,7 @@ aggravate</li>
 href="https://github.com/huyfififi/coding-challenges/pull/36">https://github.com/huyfififi/coding-challenges/pull/36</a></li>
 </ul></li>
 </ul>
-<h1 id="section-3">20260104</h1>
+<h1 id="section-4">20260104</h1>
 <ul>
 <li>replied to Nishimura-san</li>
 <li>LeetCode 206. Reverse Linked List
@@ -107,7 +181,7 @@ href="https://github.com/huyfififi/coding-challenges/pull/35">https://github.com
 <li>sorted out Dependabot PRs (full-time position)</li>
 <li>30 minutes jog</li>
 </ul>
-<h1 id="section-4">20260103</h1>
+<h1 id="section-5">20260103</h1>
 <ul>
 <li>LeetCode 20. Valid Parentheses
 <ul>
@@ -150,21 +224,21 @@ the node itself</li>
 <li>complicated DP</li>
 </ul></li>
 </ul>
-<div class="sourceCode" id="cb1"><pre
-class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;algorithm&gt;</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;vector&gt;</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution <span class="op">{</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span><span class="op">:</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> maxProfit<span class="op">(</span><span class="bu">std::</span>vector<span class="op">&lt;</span><span class="dt">int</span><span class="op">&gt;&amp;</span> prices<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>        <span class="dt">int</span> profit <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">1</span><span class="op">;</span> i <span class="op">&lt;</span> prices<span class="op">.</span>size<span class="op">();</span> <span class="op">++</span>i<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>            profit <span class="op">+=</span> <span class="bu">std::</span>max<span class="op">(</span><span class="dv">0</span><span class="op">,</span> prices<span class="op">[</span>i<span class="op">]</span> <span class="op">-</span> prices<span class="op">[</span>i <span class="op">-</span> <span class="dv">1</span><span class="op">]);</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> profit<span class="op">;</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="op">};</span></span></code></pre></div>
-<h1 id="section-5">20260102</h1>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;algorithm&gt;</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;vector&gt;</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution <span class="op">{</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> maxProfit<span class="op">(</span><span class="bu">std::</span>vector<span class="op">&lt;</span><span class="dt">int</span><span class="op">&gt;&amp;</span> prices<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>        <span class="dt">int</span> profit <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">1</span><span class="op">;</span> i <span class="op">&lt;</span> prices<span class="op">.</span>size<span class="op">();</span> <span class="op">++</span>i<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>            profit <span class="op">+=</span> <span class="bu">std::</span>max<span class="op">(</span><span class="dv">0</span><span class="op">,</span> prices<span class="op">[</span>i<span class="op">]</span> <span class="op">-</span> prices<span class="op">[</span>i <span class="op">-</span> <span class="dv">1</span><span class="op">]);</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> profit<span class="op">;</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="op">};</span></span></code></pre></div>
+<h1 id="section-6">20260102</h1>
 <ul>
 <li>LeetCode 207. Course Schedule
 <ul>
@@ -185,7 +259,7 @@ map variable name)</li>
 </ul></li>
 <li>30 minutes jog</li>
 </ul>
-<h1 id="section-6">20260101</h1>
+<h1 id="section-7">20260101</h1>
 <ul>
 <li>LeetCode 1. Two Sum
 <ul>
