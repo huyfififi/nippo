@@ -23,6 +23,7 @@
 - [dxxsxsxkx - 347. Top K Frequent Elements](https://github.com/dxxsxsxkx/leetcode/pull/9)
 - [dxxsxsxkx - 373. Find K Smallest Pairs](https://github.com/dxxsxsxkx/leetcode/pull/10)
 - [dxxsxsxkx - 1. Two Sum](https://github.com/dxxsxsxkx/leetcode/pull/11)
+- [dxxsxsxkx - 49. Group Anagrams](https://github.com/dxxsxsxkx/leetcode/pull/12)
 - [eito2002 - Valid Anagram](https://github.com/eito2002/LeetCode/pull/2)
 	- Always use if block
 		- [Chromium Code Reviews - Issue 10973006](https://chromiumcodereview.appspot.com/10973006/diff/1/content/browser/fileapi/fileapi_message_filter.cc)
