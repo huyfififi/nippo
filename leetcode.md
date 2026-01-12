@@ -4,6 +4,7 @@
 
 - [05ryt31 - 617. Merge Two Binary Trees](https://github.com/05ryt31/leetcode/pull/14)
 - [05ryt31 - 108. Convert Sorted Array to Binary Search Tree](https://github.com/05ryt31/leetcode/pull/15)
+- [05ryt31 - 112. Path Sum](https://github.com/05ryt31/leetcode/pull/16)
 - [akmhmgc - 206. Reverse Linked List](https://github.com/akmhmgc/arai60/pull/7)
 	- [関数の名前は、呼んでいるときに中身を見ずに、入力から何が出てくるかが分かるといいです。](https://github.com/yosukekato165/leetcode/pull/2/commits/5ffea5e89a325b9b9795c53a4c8a27e5580d11af#r2296456227)
 - [akmhmgc - 104. Maximum Depth of Binary Tree](https://github.com/akmhmgc/arai60/pull/17)
@@ -26,6 +27,7 @@
 - [dxxsxsxkx - 1. Two Sum](https://github.com/dxxsxsxkx/leetcode/pull/11)
 - [dxxsxsxkx - 49. Group Anagrams](https://github.com/dxxsxsxkx/leetcode/pull/12)
 - [dxxsxsxkx - 349. Intersection of Two Arrays](https://github.com/dxxsxsxkx/leetcode/pull/13)
+- [dxxsxsxkx - 929. Unique Email Addresses](https://github.com/dxxsxsxkx/leetcode/pull/14)
 - [eito2002 - Valid Anagram](https://github.com/eito2002/LeetCode/pull/2)
 	- Always use if block
 		- [Chromium Code Reviews - Issue 10973006](https://chromiumcodereview.appspot.com/10973006/diff/1/content/browser/fileapi/fileapi_message_filter.cc)
@@ -68,6 +70,7 @@
 - [komdoroid - 20. Valid Parentheses](https://github.com/komdoroid/arai60/pull/12)
 - [mamo3gr - 1. Two Sum](https://github.com/mamo3gr/arai60/pull/11)
 - [mamo3gr - 104. Maximum Depth of Binary Tree](https://github.com/mamo3gr/arai60/pull/21)
+- [mamo3gr - 98. Validate Binary Search Tree](https://github.com/mamo3gr/arai60/pull/26)
 - [nanae772 - 49. Group Anagrams](https://github.com/nanae772/leetcode-arai60/pull/13)
 - [nanae772 - 53. Maximum Subarray](https://github.com/nanae772/leetcode-arai60/pull/31)
 - [plushn - 1. Two Sum](https://github.com/plushn/SWE-Arai60/pull/11)
