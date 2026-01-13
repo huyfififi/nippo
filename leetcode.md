@@ -28,6 +28,7 @@
 - [dxxsxsxkx - 49. Group Anagrams](https://github.com/dxxsxsxkx/leetcode/pull/12)
 - [dxxsxsxkx - 349. Intersection of Two Arrays](https://github.com/dxxsxsxkx/leetcode/pull/13)
 - [dxxsxsxkx - 929. Unique Email Addresses](https://github.com/dxxsxsxkx/leetcode/pull/14)
+- [dxxsxsxkx - 387. First Unique Character in a String](https://github.com/dxxsxsxkx/leetcode/pull/15)
 - [eito2002 - Valid Anagram](https://github.com/eito2002/LeetCode/pull/2)
 	- Always use if block
 		- [Chromium Code Reviews - Issue 10973006](https://chromiumcodereview.appspot.com/10973006/diff/1/content/browser/fileapi/fileapi_message_filter.cc)
