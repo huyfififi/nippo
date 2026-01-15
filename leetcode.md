@@ -36,6 +36,7 @@
 - [dxxsxsxkx - 929. Unique Email Addresses](https://github.com/dxxsxsxkx/leetcode/pull/14)
 - [dxxsxsxkx - 387. First Unique Character in a String](https://github.com/dxxsxsxkx/leetcode/pull/15)
 - [dxxsxsxkx - 560. Subarray Sum Equals K](https://github.com/dxxsxsxkx/leetcode/pull/16)
+- [dxxsxsxkx - 200. Number of Islands](https://github.com/dxxsxsxkx/leetcode/pull/17)
 - [eito2002 - Valid Anagram](https://github.com/eito2002/LeetCode/pull/2)
 	- Always use if block
 		- [Chromium Code Reviews - Issue 10973006](https://chromiumcodereview.appspot.com/10973006/diff/1/content/browser/fileapi/fileapi_message_filter.cc)
@@ -83,6 +84,7 @@
 - [h1rosaka - 108. Convert Sorted Array to Binary Search Tree](https://github.com/h1rosaka/arai60/pull/27)
 - [h1rosaka - 102. Binary Tree Level Order Traversal](https://github.com/h1rosaka/arai60/pull/29)
 - [h1rosaka - 53. Maximum Subarray](https://github.com/h1rosaka/arai60/pull/34)
+- [h1rosaka - 39. Combination Sum](https://github.com/h1rosaka/arai60/pull/53)
 - [Hiroto-Iizuka - 49. Group Anagram](https://github.com/Hiroto-Iizuka/coding_practice/pull/12)
 - [irohafternoon - 20. Valid Parentheses](https://github.com/irohafternoon/LeetCode/pull/8)
 - [irohafternoon - 1. Two Sum](https://github.com/irohafternoon/LeetCode/pull/13)
