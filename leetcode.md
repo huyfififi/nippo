@@ -37,6 +37,7 @@
 - [dxxsxsxkx - 387. First Unique Character in a String](https://github.com/dxxsxsxkx/leetcode/pull/15)
 - [dxxsxsxkx - 560. Subarray Sum Equals K](https://github.com/dxxsxsxkx/leetcode/pull/16)
 - [dxxsxsxkx - 200. Number of Islands](https://github.com/dxxsxsxkx/leetcode/pull/17)
+- [dxxsxsxkx - 695. Max Area of Island](https://github.com/dxxsxsxkx/leetcode/pull/18)
 - [eito2002 - Valid Anagram](https://github.com/eito2002/LeetCode/pull/2)
 	- Always use if block
 		- [Chromium Code Reviews - Issue 10973006](https://chromiumcodereview.appspot.com/10973006/diff/1/content/browser/fileapi/fileapi_message_filter.cc)
