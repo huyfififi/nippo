@@ -38,6 +38,7 @@
 - [dxxsxsxkx - 560. Subarray Sum Equals K](https://github.com/dxxsxsxkx/leetcode/pull/16)
 - [dxxsxsxkx - 200. Number of Islands](https://github.com/dxxsxsxkx/leetcode/pull/17)
 - [dxxsxsxkx - 695. Max Area of Island](https://github.com/dxxsxsxkx/leetcode/pull/18)
+- [dxxsxsxkx - 323. Number of Connected Components in an Undirected Graph](https://github.com/dxxsxsxkx/leetcode/pull/19)
 - [eito2002 - Valid Anagram](https://github.com/eito2002/LeetCode/pull/2)
 	- Always use if block
 		- [Chromium Code Reviews - Issue 10973006](https://chromiumcodereview.appspot.com/10973006/diff/1/content/browser/fileapi/fileapi_message_filter.cc)
@@ -112,6 +113,7 @@
 - [Nbotter - 268. Missing Number](https://github.com/Nbotter/leetcode/pull/3)
 - [Nbotter - 1. Two Sum](https://github.com/Nbotter/coding-practice/pull/1)
 - [Nbotter - 9. Palindrome Number](https://github.com/Nbotter/coding-practice/pull/2)
+- [Nbotter - 1929. Concatenation of Array](https://github.com/Nbotter/Concatenation-of-Array/pull/1)
 - [olsen-blue - 121. Best Time to Buy and Sell Stock](https://github.com/olsen-blue/Arai60/pull/37)
 - [plushn - 1. Two Sum](https://github.com/plushn/SWE-Arai60/pull/11)
 - [potrue - 20. Valid Parentheses](https://github.com/potrue/leetcode/pull/6)
