@@ -8,7 +8,7 @@
 
 ## Semi-yearly
 
-- Car insurance (Farmers) - $860
+- Car insurance (GEICO) - $675
 
 ## Monthly
 
@@ -19,20 +19,13 @@
 
 ### Web Services
 
-- Amazon Prime - $15
 - YouTube Premium - $30
 
 ### Utility Bills
 
 - eSIM (Visible by Verison) - $45
-- Rent (Apartment) - $2700
+- Rent (Apartment) - $2800
 - Maintenance fees (including sewer, Apartment)
 - Gas (PG&E)
 - Electricity (Santa Clara County, not started yet)
 - House insurance (MSI) - $13
-
----
-
-Cancelled
-
-- ~~GitHub Copilot - $10~~
