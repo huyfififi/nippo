@@ -151,6 +151,7 @@
 - [syoshida20 - 206. Reverse Linked List](https://github.com/syoshida20/leetcode/pull/12)
 - [syoshida20 - 217. Contains Duplicate](https://github.com/syoshida20/leetcode/pull/32)
 - [t-ooka - 142. Linked List Cycle II](https://github.com/t-ooka/leetcode/pull/9)
+- [t9a-dev - 46. Permutations](https://github.com/t9a-dev/LeetCode_arai60/pull/50)
 - [TakayaShirai - 200. Number of Islands](https://github.com/TakayaShirai/leetcode_practice/pull/17)
 - [tNita - 20. Valid Parentheses](https://github.com/tNita/arai60/pull/7)
 - [tNita - 2. Add Two Numbers](https://github.com/tNita/arai60/pull/6)
