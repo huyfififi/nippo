@@ -104,6 +104,7 @@
 - [Kazuryu0907 - 560. Subarray Sum Equals K](https://github.com/Kazuryu0907/LeetCode_Arai60/pull/4)
 - [koko5959 - 20. Valid Parentheses](https://github.com/koko5959/leetcode-practice/pull/3)
 - [komdoroid - 20. Valid Parentheses](https://github.com/komdoroid/arai60/pull/12)
+- [ksaito0629 - 206. Reverse Linked List](https://github.com/ksaito0629/leetcode_arai60/pull/3)
 - [Kyosuke-Asaki - 1. Two Sum](https://github.com/Kyosuke-Asaki/leetcode/pull/1)
 - [kunimomo - 20. Valid Parentheses](https://github.com/kunimomo/leetcode/pull/8)
 - [locol23 - 1. Two Sum](https://github.com/locol23/leetcode/pull/1)
