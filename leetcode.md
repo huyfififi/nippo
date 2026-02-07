@@ -114,6 +114,7 @@
 - [mamo3gr - 104. Maximum Depth of Binary Tree](https://github.com/mamo3gr/arai60/pull/21)
 - [mamo3gr - 98. Validate Binary Search Tree](https://github.com/mamo3gr/arai60/pull/26)
 - [mamo3gr - 322. Coin Change](https://github.com/mamo3gr/arai60/pull/38)
+- [mamo3gr - 33. Search in Rotated Sorted Array](https://github.com/mamo3gr/arai60/pull/41)
 - [mcs2357 - 141. Linked List Cycle](https://github.com/mcs2357/arai60/pull/1)
 - [Miyamoto-tryk - 20. Valid Parentheses](https://github.com/Miyamoto-tryk/leetcode-arai60/pull/2)
 - [nanae772 - 49. Group Anagrams](https://github.com/nanae772/leetcode-arai60/pull/13)
