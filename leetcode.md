@@ -46,6 +46,7 @@
 - [dxxsxsxkx - 108. Convert Sorted Array to Binary Search Tree](https://github.com/dxxsxsxkx/leetcode/pull/24)
 - [dxxsxsxkx - 102. Binary Tree Level Order Traversal](https://github.com/dxxsxsxkx/leetcode/pull/26)
 - [dxxsxsxkx - 98. Validate Binary Search Tree](https://github.com/dxxsxsxkx/leetcode/pull/28)
+- [dxxsxsxkx - 105. Construct Binary Tree from Preorder and Inorder Traversal](https://github.com/dxxsxsxkx/leetcode/pull/29)
 - [eito2002 - Valid Anagram](https://github.com/eito2002/LeetCode/pull/2)
 	- Always use if block
 		- [Chromium Code Reviews - Issue 10973006](https://chromiumcodereview.appspot.com/10973006/diff/1/content/browser/fileapi/fileapi_message_filter.cc)
@@ -108,6 +109,7 @@
 - [komdoroid - 20. Valid Parentheses](https://github.com/komdoroid/arai60/pull/12)
 - [ksaito0629 - 206. Reverse Linked List](https://github.com/ksaito0629/leetcode_arai60/pull/3)
 - [ksaito0629 - 703. Kth Largest Element in a Stream](https://github.com/ksaito0629/leetcode_arai60/pull/4)
+- [ksaito0629 - 347. Top K Frequent Elements](https://github.com/ksaito0629/leetcode_arai60/pull/5)
 - [Kyosuke-Asaki - 1. Two Sum](https://github.com/Kyosuke-Asaki/leetcode/pull/1)
 - [kunimomo - 20. Valid Parentheses](https://github.com/kunimomo/leetcode/pull/8)
 - [locol23 - 1. Two Sum](https://github.com/locol23/leetcode/pull/1)
