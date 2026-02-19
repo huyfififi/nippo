@@ -114,6 +114,7 @@
 - [ksaito0629 - 347. Top K Frequent Elements](https://github.com/ksaito0629/leetcode_arai60/pull/5)
 - [ksaito0629 - 373. Find K Pairs with Smallest Sums](https://github.com/ksaito0629/leetcode_arai60/pull/6)
 - [ksaito0629 - 1. Two Sum](https://github.com/ksaito0629/leetcode_arai60/pull/10)
+- [ksaito0629 - 49. Group Anagrams](https://github.com/ksaito0629/leetcode_arai60/pull/11)
 - [Kyosuke-Asaki - 1. Two Sum](https://github.com/Kyosuke-Asaki/leetcode/pull/1)
 - [kunimomo - 20. Valid Parentheses](https://github.com/kunimomo/leetcode/pull/8)
 - [locol23 - 1. Two Sum](https://github.com/locol23/leetcode/pull/1)
