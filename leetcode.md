@@ -144,6 +144,7 @@
 - [Nbotter - 1929. Concatenation of Array](https://github.com/Nbotter/Concatenation-of-Array/pull/3)
 - [Nbotter - 1480. Running Sum of 1d Array](https://github.com/Nbotter/Concatenation-of-Array/pull/4)
 - [Nbotter - 26. Remove Duplicates from Sorted Array](https://github.com/Nbotter/Concatenation-of-Array/pull/5)
+- [Nbotter - 28. Find the Index of the First Occurrence in a String](https://github.com/Nbotter/Concatenation-of-Array/pull/6)
 - [olsen-blue - 121. Best Time to Buy and Sell Stock](https://github.com/olsen-blue/Arai60/pull/37)
 - [plushn - 1. Two Sum](https://github.com/plushn/SWE-Arai60/pull/11)
 - [potrue - 20. Valid Parentheses](https://github.com/potrue/leetcode/pull/6)
