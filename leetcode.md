@@ -128,6 +128,7 @@
 - [mamo3gr - 46. Permutations](https://github.com/mamo3gr/arai60/pull/47)
 - [mcs2357 - 141. Linked List Cycle](https://github.com/mcs2357/arai60/pull/1)
 - [Miyamoto-tryk - 20. Valid Parentheses](https://github.com/Miyamoto-tryk/leetcode-arai60/pull/2)
+- [mt2324 - 1. Two Sum](https://github.com/mt2324/leetcode/pull/2)
 - [n6o - 200. Number of Islands](http://github.com/n6o/leetcode_arai60/pull/17)
 - [n6o - 98. Validate Binary Search Tree](https://github.com/n6o/leetcode_arai60/pull/19)
 - [nanae772 - 49. Group Anagrams](https://github.com/nanae772/leetcode-arai60/pull/13)
@@ -185,6 +186,7 @@
 - [TORUS0818 - 3. Longest Substring Without Repeating Characters](https://github.com/TORUS0818/leetcode/pull/50)
 - [tshimosake - 98. Validate Binary Search Tree](https://github.com/tshimosake/arai60/pull/18)
 	- BST in-order traversal -> ascending (or correctly ordered) numbers
+- [xbam326 - 98. Validate Binary Search Tree](https://github.com/xbam326/leetcode/pull/30)
 - [yakataN - 1. Two Sum](https://github.com/yakataN/Arai60/pull/1)
 - [yakataN - 387. First Unique Character in a String](https://github.com/yakataN/Arai60/pull/4)
 - [yamashita-ki - 15. 3Sum](https://github.com/yamashita-ki/codingTest/pull/4)
