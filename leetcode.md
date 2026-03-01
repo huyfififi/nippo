@@ -49,6 +49,7 @@
 - [dxxsxsxkx - 98. Validate Binary Search Tree](https://github.com/dxxsxsxkx/leetcode/pull/28)
 - [dxxsxsxkx - 105. Construct Binary Tree from Preorder and Inorder Traversal](https://github.com/dxxsxsxkx/leetcode/pull/29)
 - [dxxsxsxkx - 53. Maximum Subarray](https://github.com/dxxsxsxkx/leetcode/pull/32)
+- [dxxsxsxkx - 322. Coin Change](https://github.com/dxxsxsxkx/leetcode/pull/40)
 - [eito2002 - Valid Anagram](https://github.com/eito2002/LeetCode/pull/2)
 	- Always use if block
 		- [Chromium Code Reviews - Issue 10973006](https://chromiumcodereview.appspot.com/10973006/diff/1/content/browser/fileapi/fileapi_message_filter.cc)
@@ -118,6 +119,7 @@
 - [ksaito0629 - 49. Group Anagrams](https://github.com/ksaito0629/leetcode_arai60/pull/11)
 - [ksaito0629 - 929. Unique Email Addresses](https://github.com/ksaito0629/leetcode_arai60/pull/13)
 - [ksaito0629 - 387. First Unique Character in String](https://github.com/ksaito0629/leetcode_arai60/pull/14)
+- [ksaito0629 - 200. Number of Islands](https://github.com/ksaito0629/leetcode_arai60/pull/16)
 - [Kyosuke-Asaki - 1. Two Sum](https://github.com/Kyosuke-Asaki/leetcode/pull/1)
 - [kunimomo - 20. Valid Parentheses](https://github.com/kunimomo/leetcode/pull/8)
 - [locol23 - 1. Two Sum](https://github.com/locol23/leetcode/pull/1)
@@ -201,3 +203,4 @@
 - [yamashita-ki - 15. 3Sum](https://github.com/yamashita-ki/codingTest/pull/4)
 - [yosukekato165 - 141. Linked List Cycle](https://github.com/yosukekato165/leetcode/pull/2)
 	- `a != b` is a sugar syntax of `a.__ne__(b)`
+- [yumyum116 - 387. First Unique Character in a String](https://github.com/yumyum116/LeetCode_Arai60/pull/4)
