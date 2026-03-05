@@ -2,7 +2,41 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <meta charset="UTF-8">
 </head>
-<h1 id="section">20260304</h1>
+<h1 id="section">20260305</h1>
+<ul>
+<li>full-time job (hard)</li>
+<li>replied to Oda-san</li>
+<li>LeetCode
+<ul>
+<li>416. Partition Equal Subset Sum</li>
+<li>139. Word Break
+<ul>
+<li>DP, Trie, pay attention to invariants</li>
+</ul></li>
+</ul></li>
+<li>push ups, arm curl, 35 minutes jog</li>
+</ul>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;cstdint&gt;</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;string&gt;</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;vector&gt;</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution <span class="op">{</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span><span class="op">:</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="dt">bool</span> wordBreak<span class="op">(</span><span class="at">const</span> <span class="bu">std::</span>string<span class="op">&amp;</span> s<span class="op">,</span> <span class="at">const</span> <span class="bu">std::</span>vector<span class="op">&lt;</span><span class="bu">std::</span>string<span class="op">&gt;&amp;</span> wordDict<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>        <span class="bu">std::</span>vector<span class="op">&lt;</span><span class="dt">uint8_t</span><span class="op">&gt;</span> possible<span class="op">(</span>s<span class="op">.</span>size<span class="op">()</span> <span class="op">+</span> <span class="dv">1</span><span class="op">);</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>        possible<span class="op">[</span><span class="dv">0</span><span class="op">]</span> <span class="op">=</span> <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> <span class="op">(</span><span class="dt">size_t</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> s<span class="op">.</span>size<span class="op">();</span> <span class="op">++</span>i<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> <span class="op">(</span><span class="at">const</span> <span class="kw">auto</span><span class="op">&amp;</span> word <span class="op">:</span> wordDict<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>                <span class="cf">if</span> <span class="op">(</span>i <span class="op">+</span> word<span class="op">.</span>size<span class="op">()</span> <span class="op">&gt;</span> s<span class="op">.</span>size<span class="op">())</span> <span class="op">{</span> <span class="cf">continue</span><span class="op">;</span> <span class="op">}</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>                possible<span class="op">[</span>i <span class="op">+</span> word<span class="op">.</span>size<span class="op">()]</span> <span class="op">|=</span> possible<span class="op">[</span>i<span class="op">]</span> <span class="op">&amp;&amp;</span> <span class="op">!</span>s<span class="op">.</span>compare<span class="op">(</span>i<span class="op">,</span> word<span class="op">.</span>size<span class="op">(),</span> word<span class="op">);</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>            <span class="op">}</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> possible<span class="op">[</span>s<span class="op">.</span>size<span class="op">()];</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="op">};</span></span></code></pre></div>
+<h1 id="section-1">20260304</h1>
 <ul>
 <li>full-time job
 <ul>
@@ -14,7 +48,7 @@
 </ul></li>
 <li>replied to Oda-san</li>
 </ul>
-<h1 id="section-1">20260303</h1>
+<h1 id="section-2">20260303</h1>
 <ul>
 <li>took a long nap to recover</li>
 <li>full-time job (hard)
@@ -39,7 +73,7 @@ href="https://github.com/huyfififi/coding-challenges/pull/51">https://github.com
 <li>chest press, 30 minutes jog</li>
 <li>drawing</li>
 </ul>
-<h1 id="section-2">20260302</h1>
+<h1 id="section-3">20260302</h1>
 <ul>
 <li>so many misc work cancelling trips :sob:</li>
 <li>full-time job (very hard)</li>
@@ -50,7 +84,7 @@ href="https://github.com/huyfififi/coding-challenges/pull/51">https://github.com
 </ul></li>
 <li>chest press, 40 minutes jog</li>
 </ul>
-<h1 id="section-3">20260301</h1>
+<h1 id="section-4">20260301</h1>
 <ul>
 <li>misc work for my full-time position
 <ul>
