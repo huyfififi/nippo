@@ -152,6 +152,7 @@
 - [Nbotter - 28. Find the Index of the First Occurrence in a String](https://github.com/Nbotter/leetcode-easy-swe-practice/pull/6)
 - [Nbotter - 35. Search Insert Position](https://github.com/Nbotter/leetcode-easy-swe-practice/pull/7)
 - [Nbotter - 58. Length of Last Word](https://github.com/Nbotter/leetcode-easy-swe-practice/pull/8)
+- [Nbotter - 66. Plus One](https://github.com/Nbotter/leetcode-easy-swe-practice/pull/9)
 - [olsen-blue - 121. Best Time to Buy and Sell Stock](https://github.com/olsen-blue/Arai60/pull/37)
 - [plushn - 1. Two Sum](https://github.com/plushn/SWE-Arai60/pull/11)
 - [potrue - 20. Valid Parentheses](https://github.com/potrue/leetcode/pull/6)
