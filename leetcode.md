@@ -133,6 +133,7 @@
 - [mamo3gr - 33. Search in Rotated Sorted Array](https://github.com/mamo3gr/arai60/pull/41)
 - [mamo3gr - 46. Permutations](https://github.com/mamo3gr/arai60/pull/47)
 - [mamo3gr - 39. Combination Sum](https://github.com/mamo3gr/arai60/pull/49)
+- [Manato110 - 141. Linked List Cycle](https://github.com/Manato110/LeetCode-arai60/pull/1)
 - [mcs2357 - 141. Linked List Cycle](https://github.com/mcs2357/arai60/pull/1)
 - [Miyamoto-tryk - 20. Valid Parentheses](https://github.com/Miyamoto-tryk/leetcode-arai60/pull/2)
 - [mt2324 - 1. Two Sum](https://github.com/mt2324/leetcode/pull/2)
