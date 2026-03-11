@@ -121,6 +121,7 @@
 - [ksaito0629 - 929. Unique Email Addresses](https://github.com/ksaito0629/leetcode_arai60/pull/13)
 - [ksaito0629 - 387. First Unique Character in String](https://github.com/ksaito0629/leetcode_arai60/pull/14)
 - [ksaito0629 - 200. Number of Islands](https://github.com/ksaito0629/leetcode_arai60/pull/16)
+- [ksaito0629 - 98. Validate Binary Search Tree](https://github.com/ksaito0629/leetcode_arai60/pull/20)
 - [Kyosuke-Asaki - 1. Two Sum](https://github.com/Kyosuke-Asaki/leetcode/pull/1)
 - [kunimomo - 20. Valid Parentheses](https://github.com/kunimomo/leetcode/pull/8)
 - [locol23 - 1. Two Sum](https://github.com/locol23/leetcode/pull/1)
