@@ -106,6 +106,7 @@
 - [irohafternoon - 200. Number of Islands](https://github.com/irohafternoon/LeetCode/pull/19)
 - [irohafternoon - 121. Best Time to Buy and Sell Stock](https://github.com/irohafternoon/LeetCode/pull/40)
 - [jiku0730 - 1046. Last Stone Weight](https://github.com/jiku0730/LeetCode/pull/9)
+- [Kazuuuuuuu-u - 1. Two Sum](https://github.com/Kazuuuuuuu-u/arai60/pull/14)
 - [Kazuryu0907 - 1. Two Sum](https://github.com/Kazuryu0907/LeetCode_Arai60/pull/1)
 - [Kazuryu0907 - 387. First Unique Character in a String](https://github.com/Kazuryu0907/LeetCode_Arai60/pull/2)
 - [Kazuryu0907 - 560. Subarray Sum Equals K](https://github.com/Kazuryu0907/LeetCode_Arai60/pull/4)
