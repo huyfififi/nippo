@@ -137,6 +137,7 @@
 - [mamo3gr - 46. Permutations](https://github.com/mamo3gr/arai60/pull/47)
 - [mamo3gr - 39. Combination Sum](https://github.com/mamo3gr/arai60/pull/49)
 - [Manato110 - 141. Linked List Cycle](https://github.com/Manato110/LeetCode-arai60/pull/1)
+- [Manato110 - 703. Kth Largest Element in a Stream](https://github.com/Manato110/LeetCode-arai60/pull/8)
 - [mcs2357 - 141. Linked List Cycle](https://github.com/mcs2357/arai60/pull/1)
 - [Miyamoto-tryk - 20. Valid Parentheses](https://github.com/Miyamoto-tryk/leetcode-arai60/pull/2)
 - [mt2324 - 1. Two Sum](https://github.com/mt2324/leetcode/pull/2)
@@ -183,6 +184,7 @@
 - [shintaro1993 - 20. Valid Parentheses](https://github.com/shintaro1993/arai60/pull/9)
 - [shintaro1993 - 206. Reverse Linked List](https://github.com/shintaro1993/arai60/pull/11)
 - [shintaro1993 - 53. Maximum Subarray](https://github.com/shintaro1993/arai60/pull/36)
+- [Shunii85 - 703. Kth Largest Element in a Stream](https://github.com/Shunii85/arai60/pull/8)
 - [skypenguins - 2. Add Two Numbers](https://github.com/skypenguins/coding-practice/pull/2)
 - [skypenguins - 206. Reverse Linked List](https://github.com/skypenguins/coding-practice/pull/19)
 - [sota009 - 88. Merge Sorted Array](https://github.com/sota009/swe-coding-practice/pull/1)
@@ -203,7 +205,7 @@
 - [tokuhirat - 322. Coin Change](https://github.com/tokuhirat/LeetCode/pull/40)
 	- TIL: `math.isinf()`
 - [tokuhirat - 3. Longest Substring Without Repeating Characters](https://github.com/tokuhirat/LeetCode/pull/48)
-- [tom4649 - 703. Kth Largest Element in a Stream](https://github.com/Shunii85/arai60/pull/8)
+- [tom4649 - 103. Binary Tree Zigzag Level Order Traversal](https://github.com/tom4649/Coding/pull/26)
 - [TORUS0818 - 3. Longest Substring Without Repeating Characters](https://github.com/TORUS0818/leetcode/pull/50)
 - [tshimosake - 98. Validate Binary Search Tree](https://github.com/tshimosake/arai60/pull/18)
 	- BST in-order traversal -> ascending (or correctly ordered) numbers
