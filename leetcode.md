@@ -206,6 +206,7 @@
 	- TIL: `math.isinf()`
 - [tokuhirat - 3. Longest Substring Without Repeating Characters](https://github.com/tokuhirat/LeetCode/pull/48)
 - [tom4649 - 103. Binary Tree Zigzag Level Order Traversal](https://github.com/tom4649/Coding/pull/26)
+- [tom4649 - 98. Validate Binary Search Tree](https://github.com/tom4649/Coding/pull/27)
 - [TORUS0818 - 3. Longest Substring Without Repeating Characters](https://github.com/TORUS0818/leetcode/pull/50)
 - [tshimosake - 98. Validate Binary Search Tree](https://github.com/tshimosake/arai60/pull/18)
 	- BST in-order traversal -> ascending (or correctly ordered) numbers
