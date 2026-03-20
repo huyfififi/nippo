@@ -8,6 +8,7 @@
 - [5ky7 - 20. Valid Parentheses](https://github.com/5ky7/arai60/pull/7)
 - [5ky7 - 2. Add Two Numbers](https://github.com/5ky7/arai60/pull/6)
 - [5ky7 - 322. Coin Change](https://github.com/5ky7/arai60/pull/30)
+- [5ky7 - 139. Word Break](https://github.com/5ky7/arai60/pull/40)
 - [aiueoriku - 49. Group Anagrams](https://github.com/aiueoriku/LeetCode/pull/2)
 - [aiueoriku - 929. Unique Email Addresses](https://github.com/aiueoriku/LeetCode/pull/4)
 - [aki235 - 1. Two Sum](https://github.com/aki235/Arai60/pull/11)
@@ -51,6 +52,7 @@
 - [dxxsxsxkx - 53. Maximum Subarray](https://github.com/dxxsxsxkx/leetcode/pull/32)
 - [dxxsxsxkx - 322. Coin Change](https://github.com/dxxsxsxkx/leetcode/pull/40)
 - [dxxsxsxkx - 33. Search in Rotated Sorted Array](https://github.com/dxxsxsxkx/leetcode/pull/43)
+- [dxxsxsxkx - 46. Permutations](https://github.com/dxxsxsxkx/leetcode/pull/50)
 - [eito2002 - Valid Anagram](https://github.com/eito2002/LeetCode/pull/2)
 	- Always use if block
 		- [Chromium Code Reviews - Issue 10973006](https://chromiumcodereview.appspot.com/10973006/diff/1/content/browser/fileapi/fileapi_message_filter.cc)
