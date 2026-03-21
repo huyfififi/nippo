@@ -53,6 +53,7 @@
 - [dxxsxsxkx - 322. Coin Change](https://github.com/dxxsxsxkx/leetcode/pull/40)
 - [dxxsxsxkx - 33. Search in Rotated Sorted Array](https://github.com/dxxsxsxkx/leetcode/pull/43)
 - [dxxsxsxkx - 46. Permutations](https://github.com/dxxsxsxkx/leetcode/pull/50)
+- [dxxsxsxkx - 78. Subsets](https://github.com/dxxsxsxkx/leetcode/pull/51)
 - [eito2002 - Valid Anagram](https://github.com/eito2002/LeetCode/pull/2)
 	- Always use if block
 		- [Chromium Code Reviews - Issue 10973006](https://chromiumcodereview.appspot.com/10973006/diff/1/content/browser/fileapi/fileapi_message_filter.cc)
@@ -162,6 +163,7 @@
 - [Nbotter - 58. Length of Last Word](https://github.com/Nbotter/leetcode-easy-swe-practice/pull/8)
 - [Nbotter - 66. Plus One](https://github.com/Nbotter/leetcode-easy-swe-practice/pull/9)
 - [Nbotter - 1051. Height Checker](https://github.com/Nbotter/leetcode-easy-swe-practice/pull/10)
+- [Nbotter - 141. Linked List Cycle](https://github.com/Nbotter/leetcode-easy-swe-practice/pull/11)
 - [olsen-blue - 121. Best Time to Buy and Sell Stock](https://github.com/olsen-blue/Arai60/pull/37)
 - [plushn - 1. Two Sum](https://github.com/plushn/SWE-Arai60/pull/11)
 - [potrue - 20. Valid Parentheses](https://github.com/potrue/leetcode/pull/6)
