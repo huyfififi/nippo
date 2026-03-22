@@ -54,6 +54,7 @@
 - [dxxsxsxkx - 33. Search in Rotated Sorted Array](https://github.com/dxxsxsxkx/leetcode/pull/43)
 - [dxxsxsxkx - 46. Permutations](https://github.com/dxxsxsxkx/leetcode/pull/50)
 - [dxxsxsxkx - 78. Subsets](https://github.com/dxxsxsxkx/leetcode/pull/51)
+- [dxxsxsxkx - 39. Combination Sum](https://github.com/dxxsxsxkx/leetcode/pull/52)
 - [eito2002 - Valid Anagram](https://github.com/eito2002/LeetCode/pull/2)
 	- Always use if block
 		- [Chromium Code Reviews - Issue 10973006](https://chromiumcodereview.appspot.com/10973006/diff/1/content/browser/fileapi/fileapi_message_filter.cc)
@@ -141,6 +142,7 @@
 - [mamo3gr - 39. Combination Sum](https://github.com/mamo3gr/arai60/pull/49)
 - [Manato110 - 141. Linked List Cycle](https://github.com/Manato110/LeetCode-arai60/pull/1)
 - [Manato110 - 703. Kth Largest Element in a Stream](https://github.com/Manato110/LeetCode-arai60/pull/8)
+- [MasukagamiHinata - 387. First Unique Character in a String](https://github.com/MasukagamiHinata/Arai60/pull/12)
 - [mcs2357 - 141. Linked List Cycle](https://github.com/mcs2357/arai60/pull/1)
 - [Miyamoto-tryk - 20. Valid Parentheses](https://github.com/Miyamoto-tryk/leetcode-arai60/pull/2)
 - [mt2324 - 1. Two Sum](https://github.com/mt2324/leetcode/pull/2)
@@ -221,3 +223,4 @@
 - [yosukekato165 - 141. Linked List Cycle](https://github.com/yosukekato165/leetcode/pull/2)
 	- `a != b` is a sugar syntax of `a.__ne__(b)`
 - [yumyum116 - 387. First Unique Character in a String](https://github.com/yumyum116/LeetCode_Arai60/pull/4)
+- [yumyum116 - 33. Search in Rotated Sorted Array](https://github.com/yumyum116/LeetCode_Arai60/pull/9)
