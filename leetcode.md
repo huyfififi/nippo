@@ -101,6 +101,7 @@
 - [garunitule - 39. Combination Sum](https://github.com/garunitule/coding_practice/pull/52)
 - [h-masder - 82. Remove Duplicates from Sorted List II](https://github.com/h-masder/Arai60/pull/5)
 - [h-masder - 703. Kth Largest Element in a Stream](https://github.com/h-masder/Arai60/pull/9)
+- [h-masder - 347. Top K Frequent Elements](https://github.com/h-masder/Arai60/pull/10)
 - [h1rosaka - 49. Group Anagrams](https://github.com/h1rosaka/arai60/pull/16)
 - [h1rosaka - 108. Convert Sorted Array to Binary Search Tree](https://github.com/h1rosaka/arai60/pull/27)
 - [h1rosaka - 102. Binary Tree Level Order Traversal](https://github.com/h1rosaka/arai60/pull/29)
@@ -215,6 +216,7 @@
 - [tokuhirat - 3. Longest Substring Without Repeating Characters](https://github.com/tokuhirat/LeetCode/pull/48)
 - [tom4649 - 103. Binary Tree Zigzag Level Order Traversal](https://github.com/tom4649/Coding/pull/26)
 - [tom4649 - 98. Validate Binary Search Tree](https://github.com/tom4649/Coding/pull/27)
+- [tom4649 - 105. Construct Binary Tree from Preorder and Inorder Traversal](https://github.com/tom4649/Coding/pull/28)
 - [TORUS0818 - 3. Longest Substring Without Repeating Characters](https://github.com/TORUS0818/leetcode/pull/50)
 - [tshimosake - 98. Validate Binary Search Tree](https://github.com/tshimosake/arai60/pull/18)
 	- BST in-order traversal -> ascending (or correctly ordered) numbers
