@@ -119,6 +119,7 @@
 - [Kazuryu0907 - 387. First Unique Character in a String](https://github.com/Kazuryu0907/LeetCode_Arai60/pull/2)
 - [Kazuryu0907 - 560. Subarray Sum Equals K](https://github.com/Kazuryu0907/LeetCode_Arai60/pull/4)
 - [kitano-kazuki - 373. Find K Pairs with Smallest Sums](https://github.com/kitano-kazuki/leetcode/pull/10)
+- [kitano-kazuki - 62. Unique Paths](https://github.com/kitano-kazuki/leetcode/pull/33)
 - [koko5959 - 20. Valid Parentheses](https://github.com/koko5959/leetcode-practice/pull/3)
 - [komdoroid - 20. Valid Parentheses](https://github.com/komdoroid/arai60/pull/12)
 - [ksaito0629 - 206. Reverse Linked List](https://github.com/ksaito0629/leetcode_arai60/pull/3)
