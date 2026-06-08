@@ -137,6 +137,7 @@
 - [kunimomo - 20. Valid Parentheses](https://github.com/kunimomo/leetcode/pull/8)
 - [locol23 - 1. Two Sum](https://github.com/locol23/leetcode/pull/1)
 - [M-Satou955 - 1. Two Sum](https://github.com/M-Satou955/leetcode_arai60/pull/1)
+- [MA-yo-TA - 20. Valid Parentheses](https://github.com/MA-yo-TA/leetcode/pull/7)
 - [maeken4 - 206. Reverse Linked List](https://github.com/maeken4/Arai60/pull/7)
 - [mamo3gr - 1. Two Sum](https://github.com/mamo3gr/arai60/pull/11)
 - [mamo3gr - 104. Maximum Depth of Binary Tree](https://github.com/mamo3gr/arai60/pull/21)
