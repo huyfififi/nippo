@@ -2,7 +2,42 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <meta charset="UTF-8">
 </head>
-<h1 id="section">20260711</h1>
+<h1 id="section">20260712</h1>
+<ul>
+<li>Computer Organization and Design</li>
+<li>work (hard)</li>
+<li>LeetCode
+<ul>
+<li>342. Power of Four
+<ul>
+<li>I missed to ues <code>2^10 = 1024 =~ 10 ^ 3</code></li>
+<li><code>n &amp; (n - 1) == 0</code></li>
+<li>tomorrow, I’ll explore the math trick approach</li>
+</ul></li>
+</ul></li>
+</ul>
+<pre><code>CPU Core
+   │
+Registers    (~1 KB, fastest)
+   │
+L1 Cache     (~32–64 KB)
+   │
+L2 Cache     (~256 KB–2 MB)
+   │
+L3 Cache     (~8–64 MB)
+   │
+RAM          (GBs)
+   │
+SSD / HDD    (TBs)</code></pre>
+<div class="sourceCode" id="cb2"><pre class="sourceCode py"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution:</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> isPowerOfFour(<span class="va">self</span>, n: <span class="bu">int</span>) <span class="op">-&gt;</span> <span class="bu">bool</span>:</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> (</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>            n <span class="op">&gt;</span> <span class="dv">0</span>  <span class="co"># 4 ^ x cannot be negative</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>            <span class="kw">and</span> n <span class="op">&amp;</span> (n <span class="op">-</span> <span class="dv">1</span>) <span class="op">==</span> <span class="dv">0</span>  <span class="co"># exactly one bit is set</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>            <span class="kw">and</span> n <span class="op">&amp;</span> <span class="bn">0x55555555</span> <span class="op">==</span> n  <span class="co"># 1 bit at even position - 4 ^ x</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>            <span class="co"># and (n &amp; 0x55555555) != 0  # alternative</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>        )</span></code></pre></div>
+<h1 id="section-1">20260711</h1>
 <ul>
 <li>work
 <ul>
@@ -21,71 +56,71 @@
 <li>7/11 free slurpee</li>
 <li>squats</li>
 </ul>
-<div class="sourceCode" id="cb1"><pre class="sourceCode py"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># I know this solution does not pass the test cases</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># This is just for my reference</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> collections</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution:</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> findMinHeightTrees(<span class="va">self</span>, n: <span class="bu">int</span>, edges: <span class="bu">list</span>[<span class="bu">list</span>[<span class="bu">int</span>]]) <span class="op">-&gt;</span> <span class="bu">list</span>[<span class="bu">int</span>]:</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>        node_to_neighbors <span class="op">=</span> collections.defaultdict(<span class="bu">list</span>)</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> node1, node2 <span class="kw">in</span> edges:</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>            node_to_neighbors[node1].append(node2)</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>            node_to_neighbors[node2].append(node1)</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>        <span class="kw">def</span> get_height(node: <span class="bu">int</span>, parent: <span class="bu">int</span>) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> <span class="bu">max</span>(</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>                (</span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>                    get_height(neighbor, node)</span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>                    <span class="cf">for</span> neighbor <span class="kw">in</span> node_to_neighbors[node]</span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>                    <span class="cf">if</span> neighbor <span class="op">!=</span> parent</span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>                ),</span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>                default<span class="op">=</span><span class="dv">0</span></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>            ) <span class="op">+</span> <span class="dv">1</span></span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>        min_height <span class="op">=</span> <span class="bu">float</span>(<span class="st">&quot;inf&quot;</span>)</span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>        min_roots <span class="op">=</span> []</span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> node <span class="kw">in</span> <span class="bu">range</span>(n):</span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>            height <span class="op">=</span> get_height(node, <span class="va">None</span>)</span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> height <span class="op">&gt;</span> min_height:</span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>                <span class="cf">continue</span></span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>            <span class="cf">elif</span> height <span class="op">&lt;</span> min_height:</span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>                min_height <span class="op">=</span> height</span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>                min_roots <span class="op">=</span> [node]</span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>            <span class="cf">else</span>:  <span class="co"># height == min_height</span></span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>                min_roots.append(node)</span>
-<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> min_roots</span></code></pre></div>
-<h1 id="section-1">20260710</h1>
+<div class="sourceCode" id="cb3"><pre class="sourceCode py"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># I know this solution does not pass the test cases</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># This is just for my reference</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> collections</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution:</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> findMinHeightTrees(<span class="va">self</span>, n: <span class="bu">int</span>, edges: <span class="bu">list</span>[<span class="bu">list</span>[<span class="bu">int</span>]]) <span class="op">-&gt;</span> <span class="bu">list</span>[<span class="bu">int</span>]:</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>        node_to_neighbors <span class="op">=</span> collections.defaultdict(<span class="bu">list</span>)</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> node1, node2 <span class="kw">in</span> edges:</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>            node_to_neighbors[node1].append(node2)</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>            node_to_neighbors[node2].append(node1)</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>        <span class="kw">def</span> get_height(node: <span class="bu">int</span>, parent: <span class="bu">int</span>) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> <span class="bu">max</span>(</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>                (</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>                    get_height(neighbor, node)</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>                    <span class="cf">for</span> neighbor <span class="kw">in</span> node_to_neighbors[node]</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>                    <span class="cf">if</span> neighbor <span class="op">!=</span> parent</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>                ),</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>                default<span class="op">=</span><span class="dv">0</span></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>            ) <span class="op">+</span> <span class="dv">1</span></span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>        min_height <span class="op">=</span> <span class="bu">float</span>(<span class="st">&quot;inf&quot;</span>)</span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>        min_roots <span class="op">=</span> []</span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> node <span class="kw">in</span> <span class="bu">range</span>(n):</span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>            height <span class="op">=</span> get_height(node, <span class="va">None</span>)</span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> height <span class="op">&gt;</span> min_height:</span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>                <span class="cf">continue</span></span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>            <span class="cf">elif</span> height <span class="op">&lt;</span> min_height:</span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>                min_height <span class="op">=</span> height</span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>                min_roots <span class="op">=</span> [node]</span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>            <span class="cf">else</span>:  <span class="co"># height == min_height</span></span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>                min_roots.append(node)</span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> min_roots</span></code></pre></div>
+<h1 id="section-2">20260710</h1>
 <ul>
 <li>work</li>
 <li>squats, chest press, lat pull down</li>
 <li><a href="https://owasp.org/Top10/2025/">OWASP Top 10:2025</a></li>
 <li>LeetCode 200. Number of Islands</li>
 </ul>
-<h1 id="section-2">20250709</h1>
+<h1 id="section-3">20250709</h1>
 <ul>
 <li>push ups, squats</li>
 <li>work</li>
 <li>I wore a kurta to the office.</li>
 </ul>
-<h1 id="section-3">20260708</h1>
+<h1 id="section-4">20260708</h1>
 <ul>
 <li>Darkest Dungeon</li>
 <li>Hunter x Hunter</li>
 <li>rest</li>
 </ul>
-<h1 id="section-4">20260707</h1>
+<h1 id="section-5">20260707</h1>
 <ul>
 <li>work (some chores)</li>
 <li>submitted reimbersement requests</li>
 </ul>
-<h1 id="section-5">20250706</h1>
+<h1 id="section-6">20250706</h1>
 <ul>
 <li>rest</li>
 <li>drawing</li>
 </ul>
-<h1 id="section-6">20260621-20260705</h1>
+<h1 id="section-7">20260621-20260705</h1>
 <ul>
 <li>business trip to India</li>
 </ul>
