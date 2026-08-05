@@ -2,17 +2,52 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 <meta charset="UTF-8">
 </head>
-<h1 id="section">20260804</h1>
+<h1 id="section">20260805</h1>
+<ul>
+<li>work (hard)</li>
+<li>LeetCode
+<ul>
+<li>283. Move Zeros</li>
+</ul></li>
+<li>spent some time with my wife</li>
+<li>squats, 30-minute indoor bike, 11000 steps, diet log, 77.1 kg
+<ul>
+<li>I may be able to share my ChatGPT log later</li>
+</ul></li>
+</ul>
+<div class="sourceCode" id="cb1"><pre class="sourceCode py"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution:</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> moveZeroes(<span class="va">self</span>, nums: List[<span class="bu">int</span>]) <span class="op">-&gt;</span> <span class="va">None</span>:</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>        <span class="co">&quot;&quot;&quot;</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co">        Do not return anything, modify nums in-place instead.</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co">        &quot;&quot;&quot;</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>        non_zero_end <span class="op">=</span> <span class="op">-</span><span class="dv">1</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> checking <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(nums)):</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> nums[checking] <span class="op">!=</span> <span class="dv">0</span>:</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>                non_zero_end <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>                nums[checking], nums[non_zero_end] <span class="op">=</span> nums[non_zero_end], nums[checking]</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode py"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution:</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> moveZeroes(<span class="va">self</span>, nums: <span class="bu">list</span>[<span class="bu">int</span>]) <span class="op">-&gt;</span> <span class="va">None</span>:</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>        <span class="co">&quot;&quot;&quot;</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co">        Do not return anything, modify nums in-place instead.</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co">        &quot;&quot;&quot;</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>        zero_count <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">while</span> <span class="dv">0</span> <span class="kw">in</span> nums:</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>            nums.remove(<span class="dv">0</span>)</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>            zero_count <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(zero_count):</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>            nums.append(<span class="dv">0</span>)</span></code></pre></div>
+<h1 id="section-1">20260804</h1>
 <ul>
 <li>arm curls, squats, push ups, 6 km run, 13000 steps in total, diet
 log</li>
-<li>work</li>
+<li>work (hard)</li>
 <li>LeetCode
 <ul>
 <li>27. Remove Element</li>
 </ul></li>
 </ul>
-<h1 id="section-1">20260803</h1>
+<h1 id="section-2">20260803</h1>
 <ul>
 <li>work</li>
 <li>created a small PR for my friend’s project</li>
@@ -23,12 +58,12 @@ log</li>
 </ul></li>
 <li>squats, 9000 steps, diet log</li>
 </ul>
-<h1 id="section-2">20260802</h1>
+<h1 id="section-3">20260802</h1>
 <ul>
 <li>限りなく透明に近いブルー</li>
 <li>12 km jog, 18000 steps in total, diet log</li>
 </ul>
-<h1 id="section-3">20260801</h1>
+<h1 id="section-4">20260801</h1>
 <p>Augest already? Time flies by when my life is falling apart.</p>
 <ul>
 <li>My wife surprised me with a new backpack. It looks really cool.</li>
