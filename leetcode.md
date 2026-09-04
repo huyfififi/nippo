@@ -24,6 +24,7 @@
 - [carolina-museum 35. Search Insert Position](https://github.com/carolina-museum/coding-challenges/pull/3)
 - [chanseok-lim - 141. Linked List Cycle](https://github.com/chanseok-lim/arai60/pull/10)
 	- When checking two objects are the same, `is` should be used instead of `==`.
+- [chryschron - 78. Subsets](https://github.com/chryschron/codings/pull/48)
 - [dgs7101 - 141. Linked List Cycle](https://github.com/dgs7101/coding-challenges/pull/1)
 - [docto-rin - 21. Merge Two Sorted Lists](https://github.com/docto-rin/leetcode/pull/62)
 	- Discussions on the use of `value or value` and one-liners
@@ -63,6 +64,7 @@
 		- "The prefix form is generally more readable, is never less efficient, and can be more efficient because it doesn't need to make a copy of the value as it was before the operation."
 - [fuga-98 - 121. Best Time to Buy and Sell Stock](https://github.com/fuga-98/arai60/pull/37)
 	- type, isinstance, duck typing
+- [Gami19 - 1. Two Sum](https://github.com/Gami19/coding-practice/pull/1)
 - [garunitule - 20. Valid Parentheses](https://github.com/garunitule/coding_practice/pull/6)
 - [garunitule - 206. Reverse Linked List](https://github.com/garunitule/coding_practice/pull/7)
 - [garunitule - 703. Kth Largest Element in a Stream](https://github.com/garunitule/coding_practice/pull/8)
@@ -112,6 +114,7 @@
 - [Hiroto-Iizuka - 49. Group Anagram](https://github.com/Hiroto-Iizuka/coding_practice/pull/12)
 - [Hiroto-Iizuka - 102. Binary Tree Level Order Traversal](https://github.com/Hiroto-Iizuka/coding_practice/pull/26)
 - [Hiroto-Iizuka - 112. Path Sum](https://github.com/Hiroto-Iizuka/coding_practice/pull/25)
+- [Hiroto-Iizuka - 62. Unique Paths](https://github.com/Hiroto-Iizuka/coding_practice/pull/33)
 - [irohafternoon - 20. Valid Parentheses](https://github.com/irohafternoon/LeetCode/pull/8)
 - [irohafternoon - 1. Two Sum](https://github.com/irohafternoon/LeetCode/pull/13)
 - [irohafternoon - 200. Number of Islands](https://github.com/irohafternoon/LeetCode/pull/19)
