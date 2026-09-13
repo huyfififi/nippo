@@ -3,15 +3,106 @@
 <meta charset="UTF-8">
 </head>
 <p>TOOD: Close PR in prismatic-io</p>
-<h1 id="section">20260913</h1>
+<h1 id="section">20250914</h1>
+<h2 id="todays-stretches">Today’s Stretches</h2>
+<ul>
+<li>LeetCode
+<ul>
+<li>4053. Minimum Operations to Make Every Element Palindromic
+<ul>
+<li>It turned out that the acceptance rate is <code>8~12%</code>. It’s
+not my fault I couldn’t solve the problem. I feel relieved.</li>
+</ul></li>
+</ul></li>
+</ul>
+<p>This is a sample code AI generated (fixing my solution), but I won’t
+care much about it (at least for now)</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode py"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution:</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> minOperations(<span class="va">self</span>, nums: <span class="bu">list</span>[<span class="bu">int</span>]) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>        num_operations <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>        <span class="kw">def</span> decade(d, k):</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>            <span class="co"># (smallest, largest) k-digit number whose leading digit is d</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> k <span class="op">==</span> <span class="dv">1</span>:</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>                <span class="cf">return</span> d, d</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> d <span class="op">*</span> <span class="dv">10</span> <span class="op">**</span> (k <span class="op">-</span> <span class="dv">1</span>), (d <span class="op">+</span> <span class="dv">1</span>) <span class="op">*</span> <span class="dv">10</span> <span class="op">**</span> (k <span class="op">-</span> <span class="dv">1</span>) <span class="op">-</span> <span class="dv">1</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>        <span class="kw">def</span> mirror(prefix_str, length):</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> length <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>                <span class="cf">return</span> <span class="bu">int</span>(prefix_str <span class="op">+</span> prefix_str[::<span class="op">-</span><span class="dv">1</span>])</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>            <span class="cf">else</span>:</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>                <span class="cf">return</span> <span class="bu">int</span>(prefix_str <span class="op">+</span> prefix_str[<span class="op">-</span><span class="dv">2</span>::<span class="op">-</span><span class="dv">1</span>])</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> num <span class="kw">in</span> nums:</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> num <span class="op">&lt;</span> <span class="dv">10</span>:</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>                <span class="cf">continue</span>  <span class="co"># single digits are always palindromes</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>            num_str <span class="op">=</span> <span class="bu">str</span>(num)</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>            L <span class="op">=</span> <span class="bu">len</span>(num_str)</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>            half_len <span class="op">=</span> (L <span class="op">+</span> <span class="dv">1</span>) <span class="op">//</span> <span class="dv">2</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>            prefix_with_middle <span class="op">=</span> num_str[:half_len]</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>            prefix_val <span class="op">=</span> <span class="bu">int</span>(prefix_with_middle)</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>            leading_digit <span class="op">=</span> <span class="bu">int</span>(prefix_with_middle[<span class="dv">0</span>])</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>            required_parity <span class="op">=</span> num <span class="op">%</span> <span class="dv">2</span></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>            best_diff <span class="op">=</span> <span class="bu">float</span>(<span class="st">&quot;inf&quot;</span>)</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>            <span class="co"># same length: keep the prefix, or shift it by 1</span></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> candidate_prefix <span class="kw">in</span> (prefix_val <span class="op">-</span> <span class="dv">1</span>, prefix_val, prefix_val <span class="op">+</span> <span class="dv">1</span>):</span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>                <span class="cf">if</span> candidate_prefix <span class="op">&lt;=</span> <span class="dv">0</span>:</span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>                    <span class="cf">continue</span></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>                candidate_str <span class="op">=</span> <span class="bu">str</span>(candidate_prefix)</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>                <span class="cf">if</span> <span class="bu">len</span>(candidate_str) <span class="op">!=</span> half_len:</span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>                    <span class="cf">continue</span>  <span class="co"># crosses a digit-length change; handled below</span></span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>                candidate <span class="op">=</span> mirror(candidate_str, L)</span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>                <span class="cf">if</span> candidate <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> required_parity:</span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>                    best_diff <span class="op">=</span> <span class="bu">min</span>(best_diff, <span class="bu">abs</span>(candidate <span class="op">-</span> num))</span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>            <span class="co"># same length, but the natural neighborhood has the wrong parity:</span></span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>            <span class="co"># jump to whichever adjacent decade has the correct leading-digit parity</span></span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> leading_digit <span class="op">%</span> <span class="dv">2</span> <span class="op">!=</span> required_parity:</span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>                k <span class="op">=</span> half_len</span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>                <span class="cf">for</span> d <span class="kw">in</span> (leading_digit <span class="op">-</span> <span class="dv">1</span>, leading_digit <span class="op">+</span> <span class="dv">1</span>):</span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>                    <span class="cf">if</span> <span class="dv">1</span> <span class="op">&lt;=</span> d <span class="op">&lt;=</span> <span class="dv">9</span>:</span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>                        lo, hi <span class="op">=</span> decade(d, k)</span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>                        h <span class="op">=</span> hi <span class="cf">if</span> d <span class="op">&lt;</span> leading_digit <span class="cf">else</span> lo</span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>                        candidate <span class="op">=</span> mirror(<span class="bu">str</span>(h), L)</span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a>                        best_diff <span class="op">=</span> <span class="bu">min</span>(best_diff, <span class="bu">abs</span>(candidate <span class="op">-</span> num))</span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a>            <span class="co"># shrink to L-1 digits: largest (L-1)-digit palindrome with correct parity</span></span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> L <span class="op">&gt;</span> <span class="dv">1</span>:</span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a>                d <span class="op">=</span> <span class="dv">9</span> <span class="cf">if</span> required_parity <span class="op">==</span> <span class="dv">1</span> <span class="cf">else</span> <span class="dv">8</span></span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a>                k2 <span class="op">=</span> ((L <span class="op">-</span> <span class="dv">1</span>) <span class="op">+</span> <span class="dv">1</span>) <span class="op">//</span> <span class="dv">2</span></span>
+<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a>                _, hi <span class="op">=</span> decade(d, k2)</span>
+<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a>                best_diff <span class="op">=</span> <span class="bu">min</span>(best_diff, <span class="bu">abs</span>(mirror(<span class="bu">str</span>(hi), L <span class="op">-</span> <span class="dv">1</span>) <span class="op">-</span> num))</span>
+<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a>            <span class="co"># grow to L+1 digits: smallest (L+1)-digit palindrome with correct parity</span></span>
+<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a>            d <span class="op">=</span> <span class="dv">1</span> <span class="cf">if</span> required_parity <span class="op">==</span> <span class="dv">1</span> <span class="cf">else</span> <span class="dv">2</span></span>
+<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a>            k3 <span class="op">=</span> ((L <span class="op">+</span> <span class="dv">1</span>) <span class="op">+</span> <span class="dv">1</span>) <span class="op">//</span> <span class="dv">2</span></span>
+<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a>            lo, _ <span class="op">=</span> decade(d, k3)</span>
+<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a>            best_diff <span class="op">=</span> <span class="bu">min</span>(best_diff, <span class="bu">abs</span>(mirror(<span class="bu">str</span>(lo), L <span class="op">+</span> <span class="dv">1</span>) <span class="op">-</span> num))</span>
+<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a>            num_operations <span class="op">+=</span> best_diff <span class="op">//</span> <span class="dv">2</span></span>
+<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> num_operations</span></code></pre></div>
+<h2 id="daily-reps">Daily Reps</h2>
+<ul>
+<li>LeetCode
+<ul>
+<li>198. House Robber</li>
+<li>213. House Robber II</li>
+</ul></li>
+<li>exercises, diet log</li>
+</ul>
+<h1 id="section-1">20260913</h1>
 <ul>
 <li>LeetCode
 <ul>
 <li>Minimum Operations to Make Every Element Palindromic</li>
 </ul></li>
 </ul>
-<h1 id="section-1">20260912</h1>
-<h2 id="todays-stretches">Today’s Stretches</h2>
+<h1 id="section-2">20260912</h1>
+<h2 id="todays-stretches-1">Today’s Stretches</h2>
 <ul>
 <li>LeetCode
 <ul>
@@ -27,7 +118,7 @@ something I didn’t feel comfortable with.</li>
 </ul></li>
 </ul></li>
 </ul>
-<h2 id="daily-reps">Daily Reps</h2>
+<h2 id="daily-reps-1">Daily Reps</h2>
 <ul>
 <li>a bit of work</li>
 <li>LeetCode
@@ -37,8 +128,8 @@ something I didn’t feel comfortable with.</li>
 </ul></li>
 <li>exercises, diet log</li>
 </ul>
-<h1 id="section-2">20260911</h1>
-<h2 id="todays-stretches-1">Today’s Stretches</h2>
+<h1 id="section-3">20260911</h1>
+<h2 id="todays-stretches-2">Today’s Stretches</h2>
 <ul>
 <li>LeetCode
 <ul>
@@ -49,7 +140,7 @@ something I didn’t feel comfortable with.</li>
 </ul></li>
 </ul></li>
 </ul>
-<h2 id="daily-reps-1">Daily Reps</h2>
+<h2 id="daily-reps-2">Daily Reps</h2>
 <ul>
 <li>work</li>
 <li>LeetCode
@@ -60,10 +151,10 @@ something I didn’t feel comfortable with.</li>
 <li>time with my wife</li>
 <li>exercises, diet log</li>
 </ul>
-<h1 id="section-3">20260910</h1>
+<h1 id="section-4">20260910</h1>
 <p>It was so hot that I couldn’t sleep well. I didn’t perform well
 today.</p>
-<h2 id="todays-stretches-2">Today’s Stretches</h2>
+<h2 id="todays-stretches-3">Today’s Stretches</h2>
 <ul>
 <li>213. House Robber II
 <ul>
@@ -71,28 +162,28 @@ today.</p>
 </ul></li>
 <li>exercises</li>
 </ul>
-<div class="sourceCode" id="cb1"><pre class="sourceCode py"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution:</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> rob(<span class="va">self</span>, nums: <span class="bu">list</span>[<span class="bu">int</span>]) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="bu">len</span>(nums) <span class="op">==</span> <span class="dv">1</span>:</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> nums[<span class="dv">0</span>]</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>        <span class="kw">def</span> rob_linear(nums: <span class="bu">list</span>[<span class="bu">int</span>]) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>            two_back <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>            one_back <span class="op">=</span> nums[<span class="dv">0</span>]</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="bu">len</span>(nums)):</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>                two_back, one_back <span class="op">=</span> one_back, <span class="bu">max</span>(one_back, two_back <span class="op">+</span> nums[i])</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> one_back</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="bu">max</span>(rob_linear(nums[<span class="dv">1</span>:]), rob_linear(nums[:<span class="op">-</span><span class="dv">1</span>]))</span></code></pre></div>
-<h2 id="daily-reps-2">Daily Reps</h2>
+<div class="sourceCode" id="cb2"><pre class="sourceCode py"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution:</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> rob(<span class="va">self</span>, nums: <span class="bu">list</span>[<span class="bu">int</span>]) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="bu">len</span>(nums) <span class="op">==</span> <span class="dv">1</span>:</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> nums[<span class="dv">0</span>]</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>        <span class="kw">def</span> rob_linear(nums: <span class="bu">list</span>[<span class="bu">int</span>]) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>            two_back <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>            one_back <span class="op">=</span> nums[<span class="dv">0</span>]</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="bu">len</span>(nums)):</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>                two_back, one_back <span class="op">=</span> one_back, <span class="bu">max</span>(one_back, two_back <span class="op">+</span> nums[i])</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> one_back</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="bu">max</span>(rob_linear(nums[<span class="dv">1</span>:]), rob_linear(nums[:<span class="op">-</span><span class="dv">1</span>]))</span></code></pre></div>
+<h2 id="daily-reps-3">Daily Reps</h2>
 <ul>
 <li>drawing</li>
 <li>work</li>
 <li>diet log</li>
 </ul>
-<h1 id="section-4">20260909</h1>
-<h2 id="todays-stretches-3">Today’s Stretches</h2>
+<h1 id="section-5">20260909</h1>
+<h2 id="todays-stretches-4">Today’s Stretches</h2>
 <ul>
 <li>LeetCode
 <ul>
@@ -103,7 +194,7 @@ today.</p>
 </ul></li>
 <li>exercises (hard)</li>
 </ul>
-<h2 id="daily-reps-3">Daily Reps</h2>
+<h2 id="daily-reps-4">Daily Reps</h2>
 <ul>
 <li>drawing</li>
 <li>work (&amp; social) (hard)</li>
@@ -116,8 +207,8 @@ today.</p>
 </ul></li>
 <li>diet log</li>
 </ul>
-<h1 id="section-5">20260908</h1>
-<h2 id="todays-stretches-4">Today’s Stretches</h2>
+<h1 id="section-6">20260908</h1>
+<h2 id="todays-stretches-5">Today’s Stretches</h2>
 <ul>
 <li>PR in OSS</li>
 <li>LeetCode
@@ -129,7 +220,7 @@ and led to MLE)</li>
 </ul></li>
 </ul></li>
 </ul>
-<h2 id="daily-reps-4">Daily Reps</h2>
+<h2 id="daily-reps-5">Daily Reps</h2>
 <ul>
 <li>work</li>
 <li>LeetCode
@@ -146,8 +237,8 @@ and led to MLE)</li>
 </ul></li>
 <li>exercises, diet log</li>
 </ul>
-<h1 id="section-6">20260907</h1>
-<h2 id="todays-stretches-5">Today’s Stretches</h2>
+<h1 id="section-7">20260907</h1>
+<h2 id="todays-stretches-6">Today’s Stretches</h2>
 <ul>
 <li>LeetCode
 <ul>
@@ -174,84 +265,84 @@ the base cases and recurrence easier to reason about.</em></li>
 </ul></li>
 </ul></li>
 </ul>
-<div class="sourceCode" id="cb2"><pre class="sourceCode py"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution:</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> getRow(<span class="va">self</span>, rowIndex: <span class="bu">int</span>) <span class="op">-&gt;</span> <span class="bu">list</span>[<span class="bu">int</span>]:</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>        row <span class="op">=</span> [<span class="dv">1</span>]</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> row_i <span class="kw">in</span> <span class="bu">range</span>(rowIndex):</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>            row.append(<span class="dv">1</span>)</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> pos <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(row) <span class="op">-</span> <span class="dv">2</span>, <span class="dv">0</span>, <span class="op">-</span><span class="dv">1</span>):</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>                row[pos] <span class="op">+=</span> row[pos <span class="op">-</span> <span class="dv">1</span>]</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> row</span></code></pre></div>
-<div class="sourceCode" id="cb3"><pre class="sourceCode py"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> collections</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution:</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> getRow(<span class="va">self</span>, rowIndex: <span class="bu">int</span>) <span class="op">-&gt;</span> <span class="bu">list</span>[<span class="bu">int</span>]:</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>        row <span class="op">=</span> collections.deque([<span class="dv">1</span>])</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> row_i <span class="kw">in</span> <span class="bu">range</span>(rowIndex):</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>            row.appendleft(<span class="dv">1</span>)</span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> pos <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="bu">len</span>(row) <span class="op">-</span> <span class="dv">1</span>):</span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>                row[pos] <span class="op">+=</span> row[pos <span class="op">+</span> <span class="dv">1</span>]</span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="bu">list</span>(row)</span></code></pre></div>
-<div class="sourceCode" id="cb4"><pre class="sourceCode py"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> functools</span>
+<div class="sourceCode" id="cb3"><pre class="sourceCode py"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution:</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> getRow(<span class="va">self</span>, rowIndex: <span class="bu">int</span>) <span class="op">-&gt;</span> <span class="bu">list</span>[<span class="bu">int</span>]:</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>        row <span class="op">=</span> [<span class="dv">1</span>]</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> row_i <span class="kw">in</span> <span class="bu">range</span>(rowIndex):</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>            row.append(<span class="dv">1</span>)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> pos <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(row) <span class="op">-</span> <span class="dv">2</span>, <span class="dv">0</span>, <span class="op">-</span><span class="dv">1</span>):</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>                row[pos] <span class="op">+=</span> row[pos <span class="op">-</span> <span class="dv">1</span>]</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> row</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode py"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> collections</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution:</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> rob(<span class="va">self</span>, nums: <span class="bu">list</span>[<span class="bu">int</span>]) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">@functools.cache</span></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>        <span class="kw">def</span> max_earning(house: <span class="bu">int</span>) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> house <span class="op">==</span> <span class="dv">0</span>:</span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>                <span class="cf">return</span> <span class="dv">0</span></span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> house <span class="op">==</span> <span class="dv">1</span>:</span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>                <span class="cf">return</span> nums[<span class="dv">0</span>]</span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> <span class="bu">max</span>(</span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>                nums[house <span class="op">-</span> <span class="dv">1</span>] <span class="op">+</span> max_earning(house <span class="op">-</span> <span class="dv">2</span>),</span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>                max_earning(house <span class="op">-</span> <span class="dv">1</span>),</span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>            )</span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> max_earning(<span class="bu">len</span>(nums))</span></code></pre></div>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> getRow(<span class="va">self</span>, rowIndex: <span class="bu">int</span>) <span class="op">-&gt;</span> <span class="bu">list</span>[<span class="bu">int</span>]:</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>        row <span class="op">=</span> collections.deque([<span class="dv">1</span>])</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> row_i <span class="kw">in</span> <span class="bu">range</span>(rowIndex):</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>            row.appendleft(<span class="dv">1</span>)</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> pos <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="bu">len</span>(row) <span class="op">-</span> <span class="dv">1</span>):</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>                row[pos] <span class="op">+=</span> row[pos <span class="op">+</span> <span class="dv">1</span>]</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="bu">list</span>(row)</span></code></pre></div>
 <div class="sourceCode" id="cb5"><pre class="sourceCode py"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> functools</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution:</span>
 <span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> rob(<span class="va">self</span>, nums: <span class="bu">list</span>[<span class="bu">int</span>]) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="bu">len</span>(nums) <span class="op">&lt;=</span> <span class="dv">2</span>:</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> <span class="bu">max</span>(nums[:<span class="dv">2</span>])</span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>        <span class="at">@functools.cache</span></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>        <span class="kw">def</span> max_earning(house_i: <span class="bu">int</span>) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> house_i <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">@functools.cache</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>        <span class="kw">def</span> max_earning(house: <span class="bu">int</span>) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> house <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>                <span class="cf">return</span> <span class="dv">0</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> house <span class="op">==</span> <span class="dv">1</span>:</span>
 <span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>                <span class="cf">return</span> nums[<span class="dv">0</span>]</span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> house_i <span class="op">==</span> <span class="dv">1</span>:</span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>                <span class="cf">return</span> <span class="bu">max</span>(nums[:<span class="dv">2</span>])</span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> <span class="bu">max</span>(</span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>                nums[house_i] <span class="op">+</span> max_earning(house_i <span class="op">-</span> <span class="dv">2</span>),</span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>                max_earning(house_i <span class="op">-</span> <span class="dv">1</span>),</span>
-<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>            )</span>
-<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> max_earning(<span class="bu">len</span>(nums) <span class="op">-</span> <span class="dv">1</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb6"><pre class="sourceCode py"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution:</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> rob(<span class="va">self</span>, nums: <span class="bu">list</span>[<span class="bu">int</span>]) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="bu">len</span>(nums) <span class="op">&lt;=</span> <span class="dv">2</span>:</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> <span class="bu">max</span>(nums)</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>        two_back <span class="op">=</span> nums[<span class="dv">0</span>]</span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>        one_back <span class="op">=</span> <span class="bu">max</span>(nums[<span class="dv">0</span>], nums[<span class="dv">1</span>])</span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">2</span>, <span class="bu">len</span>(nums)):</span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>            two_back, one_back <span class="op">=</span> (</span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>                one_back,</span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>                <span class="bu">max</span>(nums[i] <span class="op">+</span> two_back, one_back)</span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>            )</span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> one_back</span></code></pre></div>
-<h2 id="daily-reps-5">Daily Reps</h2>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> <span class="bu">max</span>(</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>                nums[house <span class="op">-</span> <span class="dv">1</span>] <span class="op">+</span> max_earning(house <span class="op">-</span> <span class="dv">2</span>),</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>                max_earning(house <span class="op">-</span> <span class="dv">1</span>),</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>            )</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> max_earning(<span class="bu">len</span>(nums))</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode py"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> functools</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution:</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> rob(<span class="va">self</span>, nums: <span class="bu">list</span>[<span class="bu">int</span>]) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="bu">len</span>(nums) <span class="op">&lt;=</span> <span class="dv">2</span>:</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> <span class="bu">max</span>(nums[:<span class="dv">2</span>])</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>        <span class="at">@functools.cache</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>        <span class="kw">def</span> max_earning(house_i: <span class="bu">int</span>) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> house_i <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>                <span class="cf">return</span> nums[<span class="dv">0</span>]</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> house_i <span class="op">==</span> <span class="dv">1</span>:</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>                <span class="cf">return</span> <span class="bu">max</span>(nums[:<span class="dv">2</span>])</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> <span class="bu">max</span>(</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>                nums[house_i] <span class="op">+</span> max_earning(house_i <span class="op">-</span> <span class="dv">2</span>),</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>                max_earning(house_i <span class="op">-</span> <span class="dv">1</span>),</span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>            )</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> max_earning(<span class="bu">len</span>(nums) <span class="op">-</span> <span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode py"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution:</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> rob(<span class="va">self</span>, nums: <span class="bu">list</span>[<span class="bu">int</span>]) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="bu">len</span>(nums) <span class="op">&lt;=</span> <span class="dv">2</span>:</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> <span class="bu">max</span>(nums)</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>        two_back <span class="op">=</span> nums[<span class="dv">0</span>]</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>        one_back <span class="op">=</span> <span class="bu">max</span>(nums[<span class="dv">0</span>], nums[<span class="dv">1</span>])</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">2</span>, <span class="bu">len</span>(nums)):</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>            two_back, one_back <span class="op">=</span> (</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>                one_back,</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>                <span class="bu">max</span>(nums[i] <span class="op">+</span> two_back, one_back)</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>            )</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> one_back</span></code></pre></div>
+<h2 id="daily-reps-6">Daily Reps</h2>
 <ul>
 <li>work</li>
 <li>exercises, diet log</li>
 </ul>
-<h1 id="section-7">20260906</h1>
-<h2 id="todays-stretches-6">Today’s Stretches</h2>
+<h1 id="section-8">20260906</h1>
+<h2 id="todays-stretches-7">Today’s Stretches</h2>
 <ul>
 <li>LeetCode
 <ul>
@@ -274,7 +365,7 @@ position does not cost <code>cost[i]</code> immediately. I only pay
 </ul></li>
 </ul></li>
 </ul>
-<h2 id="daily-reps-6">Daily Reps</h2>
+<h2 id="daily-reps-7">Daily Reps</h2>
 <ul>
 <li>LeetCode
 <ul>
@@ -284,12 +375,12 @@ position does not cost <code>cost[i]</code> immediately. I only pay
 </ul></li>
 <li>work out, 6.5k jog, diet log</li>
 </ul>
-<h1 id="section-8">20260905</h1>
-<h2 id="todays-stretches-7">Today’s Stretches</h2>
+<h1 id="section-9">20260905</h1>
+<h2 id="todays-stretches-8">Today’s Stretches</h2>
 <ul>
 <li>LeetCode Weekly Contest 518</li>
 </ul>
-<h2 id="daily-reps-7">Daily Reps</h2>
+<h2 id="daily-reps-8">Daily Reps</h2>
 <ul>
 <li>12km run</li>
 <li>LeetCode
@@ -299,7 +390,7 @@ position does not cost <code>cost[i]</code> immediately. I only pay
 <li>76. Minimum Window Substring</li>
 </ul></li>
 </ul>
-<h1 id="section-9">20260904</h1>
+<h1 id="section-10">20260904</h1>
 <ul>
 <li>work</li>
 <li>took my wife to the test center</li>
@@ -325,7 +416,7 @@ PEP8</li>
 </ul></li>
 <li>stretch, diet log</li>
 </ul>
-<h1 id="section-10">20260903</h1>
+<h1 id="section-11">20260903</h1>
 <ul>
 <li>work</li>
 <li>LeetCode
@@ -342,7 +433,7 @@ PEP8</li>
 </ul></li>
 <li>exercises, diet log</li>
 </ul>
-<h1 id="section-11">20260902</h1>
+<h1 id="section-12">20260902</h1>
 <ul>
 <li>work (fairly hard)</li>
 <li>LeetCode
@@ -353,28 +444,28 @@ PEP8</li>
 </ul></li>
 <li>exercises, diet log</li>
 </ul>
-<div class="sourceCode" id="cb7"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">## Daily Report — Sep 2, 2026</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Weight:** 73.9 kg</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Calories:** ~2,200 kcal</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Meals:** Fries 200, Soup 100, Sushi 300, Natto Salad 200, Chips 150, Protein Shake 150, Fruits 200, Eggs 200, Gyoza 300, Onigiri 200, Ice cream 100, Chocolate 100</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Hunger:** 4/10</span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Stress:** 4/10</span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Steps:** 6,265</span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Exercise:** 1h 28m</span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span>Walk: 1.71 km — 25m</span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span>Indoor cycling: 9.33 km — 20m</span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span>Strength: 23m — 16 sets</span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span>Yoga: 18m</span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Active Calories (COROS):** 699 kcal</span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Sleep:** 9h 11m</span>
-<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**HRV:** 46 ms — Normal (baseline 48 ms; normal 43–53)</span>
-<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**COROS Stress:** 21</span>
-<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>**Note:** Weight dropped substantially today, but I may have been somewhat dehydrated, and I had a bowel movement before weighing in. I won&#39;t interpret the entire drop as actual weight loss.</span>
-<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>**Summary:** Calories landed exactly at the current soft target, with manageable hunger and stress. Today&#39;s 73.9 kg is encouraging but unusually low relative to recent measurements, so wait for subsequent weigh-ins before interpreting the change. No reason to lower the calorie target right now.</span></code></pre></div>
-<h1 id="section-12">20260901</h1>
+<div class="sourceCode" id="cb8"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">## Daily Report — Sep 2, 2026</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Weight:** 73.9 kg</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Calories:** ~2,200 kcal</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Meals:** Fries 200, Soup 100, Sushi 300, Natto Salad 200, Chips 150, Protein Shake 150, Fruits 200, Eggs 200, Gyoza 300, Onigiri 200, Ice cream 100, Chocolate 100</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Hunger:** 4/10</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Stress:** 4/10</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Steps:** 6,265</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Exercise:** 1h 28m</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span>Walk: 1.71 km — 25m</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span>Indoor cycling: 9.33 km — 20m</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span>Strength: 23m — 16 sets</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span>Yoga: 18m</span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Active Calories (COROS):** 699 kcal</span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Sleep:** 9h 11m</span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**HRV:** 46 ms — Normal (baseline 48 ms; normal 43–53)</span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**COROS Stress:** 21</span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>**Note:** Weight dropped substantially today, but I may have been somewhat dehydrated, and I had a bowel movement before weighing in. I won&#39;t interpret the entire drop as actual weight loss.</span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>**Summary:** Calories landed exactly at the current soft target, with manageable hunger and stress. Today&#39;s 73.9 kg is encouraging but unusually low relative to recent measurements, so wait for subsequent weigh-ins before interpreting the change. No reason to lower the calorie target right now.</span></code></pre></div>
+<h1 id="section-13">20260901</h1>
 <ul>
 <li>work (very hard)
 <ul>
