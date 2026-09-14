@@ -158,6 +158,7 @@
 - [Minato110 - 78. Subsets](https://github.com/Manato110/LeetCode-arai60/pull/52)
 - [Miyamoto-tryk - 20. Valid Parentheses](https://github.com/Miyamoto-tryk/leetcode-arai60/pull/2)
 - [mt2324 - 1. Two Sum](https://github.com/mt2324/leetcode/pull/2)
+- [mt2324 - 387. First Unique Character in a String](https://github.com/mt2324/leetcode/pull/10)
 - [n6o - 200. Number of Islands](http://github.com/n6o/leetcode_arai60/pull/17)
 - [n6o - 98. Validate Binary Search Tree](https://github.com/n6o/leetcode_arai60/pull/19)
 - [n6o - 62. Unique Paths](https://github.com/n6o/leetcode_arai60/pull/26)
