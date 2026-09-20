@@ -1,3 +1,3 @@
 - practice like sports
-
+	- 頭を使うのは当然だが、練習して身体に馴染ませないといけない。
 - invariants
