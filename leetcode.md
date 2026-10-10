@@ -226,6 +226,7 @@
 - [tNita - 20. Valid Parentheses](https://github.com/tNita/arai60/pull/7)
 - [tNita - 2. Add Two Numbers](https://github.com/tNita/arai60/pull/6)
 - [tNita - 111. Minimum Depth of Binary Tree](https://github.com/tNita/arai60/pull/21)
+- [tNita - 323. Number of Connected Components in an Undirected Graph](https://github.com/tNita/arai60/pull/22)
 - [tokuhirat - 20. Valid Parentheses](https://github.com/tokuhirat/LeetCode/pull/6)
 - [tokuhirat - 111. Minimum Depth of Binary Tree](https://github.com/tokuhirat/LeetCode/pull/22)
 - [tokuhirat - 322. Coin Change](https://github.com/tokuhirat/LeetCode/pull/40)
