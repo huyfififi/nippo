@@ -183,6 +183,7 @@
 - [Nbotter - 1051. Height Checker](https://github.com/Nbotter/leetcode-easy-swe-practice/pull/10)
 - [Nbotter - 141. Linked List Cycle](https://github.com/Nbotter/leetcode-easy-swe-practice/pull/11)
 - [Nbotter - 27. Remove Element](https://github.com/Nbotter/leetcode-easy-swe-practice/pull/15)
+- [officermushroom-dotcom - 349. Intersection of Two Arrays](https://github.com/officermushroom-dotcom/leetcode_practice/pull/3)
 - [olsen-blue - 121. Best Time to Buy and Sell Stock](https://github.com/olsen-blue/Arai60/pull/37)
 - [plushn - 1. Two Sum](https://github.com/plushn/SWE-Arai60/pull/11)
 - [potrue - 20. Valid Parentheses](https://github.com/potrue/leetcode/pull/6)
