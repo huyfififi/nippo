@@ -8,7 +8,88 @@
 <li>Check the YubiKey official site (Nov 23)</li>
 <li>401(k)</li>
 </ul>
-<h1 id="section">20261108</h1>
+<h1 id="section">20261110</h1>
+<ul>
+<li>drawing</li>
+<li>LeetCode
+<ul>
+<li>543. Diameter of Binary Tree</li>
+<li>169. Majority Element</li>
+<li>206. Reverse Linked List</li>
+</ul></li>
+<li>Speak</li>
+<li>work</li>
+</ul>
+<div class="sourceCode" id="cb1"><pre class="sourceCode py"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Definition for singly-linked list.</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># class ListNode:</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">#     def __init__(self, val=0, next=None):</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co">#         self.val = val</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co">#         self.next = next</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution:</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> reverseList(<span class="va">self</span>, head: ListNode <span class="op">|</span> <span class="va">None</span>) <span class="op">-&gt;</span> ListNode <span class="op">|</span> <span class="va">None</span>:</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>        reversing <span class="op">=</span> head</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>        reversed_head <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">while</span> reversing <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span>:</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>            next_reversing <span class="op">=</span> reversing.<span class="bu">next</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>            reversing.<span class="bu">next</span> <span class="op">=</span> reversed_head</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>            reversed_head <span class="op">=</span> reversing</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>            reversing <span class="op">=</span> next_reversing</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> reversed_head</span></code></pre></div>
+<h1 id="section-1">20261109</h1>
+<ul>
+<li>Speak</li>
+<li>work</li>
+<li>LeetCode
+<ul>
+<li>70. Climbing Stairs</li>
+<li>83. Ransom Note</li>
+<li>409. Longest Palindrome</li>
+<li>278. First Bad Version</li>
+</ul></li>
+<li>arm curls, push ups, 4k run</li>
+</ul>
+<div class="sourceCode" id="cb2"><pre class="sourceCode py"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> collections</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution:</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> canConstruct(<span class="va">self</span>, ransomNote: <span class="bu">str</span>, magazine: <span class="bu">str</span>) <span class="op">-&gt;</span> <span class="bu">bool</span>:</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> collections.Counter(ransomNote) <span class="op">&lt;=</span> collections.Counter(magazine)</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode py"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> collections</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution:</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> longestPalindrome(<span class="va">self</span>, s: <span class="bu">str</span>) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>        char_to_count <span class="op">=</span> collections.Counter(s)</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>        max_length <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> count <span class="kw">in</span> char_to_count.values():</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> <span class="dv">2</span> <span class="op">&lt;=</span> count:</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>                <span class="cf">if</span> count <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>                    max_length <span class="op">+=</span> count</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>                <span class="cf">else</span>:</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>                    max_length <span class="op">+=</span> count <span class="op">-</span> <span class="dv">1</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> max_length <span class="op">&lt;</span> <span class="bu">len</span>(s):</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>            max_length <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> max_length</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode py"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The isBadVersion API is already defined for you.</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"># def isBadVersion(version: int) -&gt; bool:</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Solution:</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> firstBadVersion(<span class="va">self</span>, n: <span class="bu">int</span>) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>        <span class="kw">def</span> find_first_bad(start: <span class="bu">int</span>, end: <span class="bu">int</span>) <span class="op">-&gt;</span> <span class="bu">int</span>:</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> start <span class="op">==</span> end:</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>                <span class="cf">return</span> start</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>            mid <span class="op">=</span> (start <span class="op">+</span> end) <span class="op">//</span> <span class="dv">2</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> <span class="kw">not</span> isBadVersion(mid):</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>                <span class="cf">return</span> find_first_bad(mid <span class="op">+</span> <span class="dv">1</span>, end)</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>            <span class="cf">else</span>:</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>                <span class="cf">return</span> find_first_bad(start, mid)</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> find_first_bad(<span class="dv">1</span>, n)</span></code></pre></div>
+<h1 id="section-2">20261108</h1>
 <ul>
 <li>Speak</li>
 <li>LeetCode
@@ -25,7 +106,7 @@
 </ul></li>
 <li>arm curls, push ups, 4k jog</li>
 </ul>
-<h1 id="section-1">20261107</h1>
+<h1 id="section-3">20261107</h1>
 <p>I was a about to join this week’s LeetCode contest, but I couldn’t.
 The start time changed because the daylight saving time ended…</p>
 <ul>
@@ -44,7 +125,7 @@ The start time changed because the daylight saving time ended…</p>
 <li>drawing, posted</li>
 <li>walking</li>
 </ul>
-<h1 id="section-2">20261106</h1>
+<h1 id="section-4">20261106</h1>
 <ul>
 <li>Speak
 <ul>
@@ -59,7 +140,7 @@ The start time changed because the daylight saving time ended…</p>
 <li>visited a game shop my friend runs &amp; Boba Holics</li>
 <li>walking, 10k run (PB)</li>
 </ul>
-<h1 id="section-3">20261105</h1>
+<h1 id="section-5">20261105</h1>
 <p>I was exhausted after working all night, so I slept a lot.</p>
 <ul>
 <li>!Speak</li>
@@ -82,7 +163,7 @@ curls, kettle lift</li>
 <li>1235. Maximum Profit in Job Scheduling</li>
 </ul></li>
 </ul>
-<h1 id="section-4">20261104</h1>
+<h1 id="section-6">20261104</h1>
 <ul>
 <li>!Speak</li>
 <li>work (super hard)
@@ -95,7 +176,7 @@ curls, kettle lift</li>
 <li>84. Largest Rectangle in Histogram</li>
 </ul></li>
 </ul>
-<h1 id="section-5">20261103</h1>
+<h1 id="section-7">20261103</h1>
 <ul>
 <li>!Speak</li>
 <li>!LeetCode
@@ -108,7 +189,7 @@ curls, kettle lift</li>
 </ul></li>
 <li>push ups, walking, jogging</li>
 </ul>
-<h1 id="section-6">20261102</h1>
+<h1 id="section-8">20261102</h1>
 <ul>
 <li>!Speak</li>
 <li>!LeetCode
@@ -121,7 +202,7 @@ curls, kettle lift</li>
 </ul></li>
 <li>arm curls, push ups, 4k run</li>
 </ul>
-<h1 id="section-7">20261101</h1>
+<h1 id="section-9">20261101</h1>
 <ul>
 <li>!weight: 71.7 kg</li>
 <li>!LeetCode
